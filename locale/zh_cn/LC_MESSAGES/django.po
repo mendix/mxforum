@@ -27,59 +27,59 @@ msgstr ""
 
 #: .\django_authopenid\forms.py:67 .\django_authopenid\views.py:93
 msgid "i-names are not supported"
-msgstr "i-names不支持。"
+msgstr "i-namesDoes not support it."
 
 #: .\django_authopenid\forms.py:100 .\django_authopenid\forms.py:156
 #: .\django_authopenid\forms.py:205
 msgid ""
 "Usernames can only contain                     letters, numbers and "
 "underscores"
-msgstr "用户名格式有误。只有字母，数字和下划线是允许的。"
+msgstr "User name format is wrong. Only letters, numbers and underscores are permitted."
 
 #: .\django_authopenid\forms.py:107
 msgid ""
 "This username does not exist                     in our database. Please "
 "choose another."
-msgstr "用户名不存在。请重新输入。"
+msgstr "User name does not exist. Please re-enter."
 
 #: .\django_authopenid\forms.py:124 .\django_authopenid\forms.py:229
 msgid ""
 "Please enter a valid                     username and password. Note that "
 "both fields are                     case-sensitive."
-msgstr "请输入用户名和密码。注意区分大小写。"
+msgstr "Please enter a user name and password. Attention to case-sensitive."
 
 #: .\django_authopenid\forms.py:128 .\django_authopenid\forms.py:233
 msgid "This account is inactive."
-msgstr "用户已冻结。"
+msgstr "Users have been frozen."
 
 #: .\django_authopenid\forms.py:168
 msgid "This username is already                 taken. Please choose another."
-msgstr "用户名已经被注册，请选用一个新的帐号。"
+msgstr "User name has been registered, please choose a new account."
 
 #: .\django_authopenid\forms.py:182
 msgid ""
 "This email is already                 registered in our database. Please "
 "choose another."
-msgstr "电子邮件已被注册。请使用一个新的邮件地址。"
+msgstr "E-mail has been registered. Please use a new e-mail address."
 
 #: .\django_authopenid\forms.py:212
 msgid ""
 "This username don't exist.                         Please choose another."
-msgstr "用户名不存在"
+msgstr "User name does not exist"
 
 #: .\django_authopenid\forms.py:328
 msgid ""
 "Old password is incorrect.                     Please enter the correct "
 "password."
-msgstr "旧密码错误。"
+msgstr "The old password wrong."
 
 #: .\django_authopenid\forms.py:340
 msgid "new passwords do not match"
-msgstr "新密码不匹配"
+msgstr "New password does not match"
 
 #: .\django_authopenid\forms.py:432
 msgid "Incorrect username."
-msgstr "用户名不正确"
+msgstr "User name is incorrect"
 
 #: .\django_authopenid\urls.py:10
 msgid "signout/"
@@ -123,77 +123,77 @@ msgstr ""
 
 #: .\django_authopenid\views.py:99
 #, python-format
-msgid "非法OpenID地址： %s"
+msgid "Illegal OpenID Address： %s"
 msgstr ""
 
 #: .\django_authopenid\views.py:366
 msgid "Welcome"
-msgstr "欢迎"
+msgstr "Welcome"
 
 #: .\django_authopenid\views.py:456
 msgid "Password changed."
-msgstr "密码已更新。"
+msgstr "Password has been updated."
 
 #: .\django_authopenid\views.py:488
 msgid "Email changed."
-msgstr "邮件地址已更新。"
+msgstr "E-mail address has been updated."
 
 #: .\django_authopenid\views.py:519 .\django_authopenid\views.py:671
 #, python-format
 msgid "No OpenID %s found associated in our database"
-msgstr "该OpenID %s 不在系统中。"
+msgstr "The OpenID %s not in the system."
 
 #: .\django_authopenid\views.py:523 .\django_authopenid\views.py:678
 #, python-format
 msgid "The OpenID %s isn't associated to current user logged in"
-msgstr "OpenID %s 没有和当前登录用户绑定。"
+msgstr "OpenID %s not bind the current logged-on user."
 
 #: .\django_authopenid\views.py:531
 msgid "Email Changed."
-msgstr "邮件地址已更新。"
+msgstr "E-mail address has been updated."
 
 #: .\django_authopenid\views.py:606
 msgid "This OpenID is already associated with another account."
-msgstr "这个OpenID已经绑定到另外一个帐号。"
+msgstr "This OpenID already bound to another account."
 
 #: .\django_authopenid\views.py:611
 #, python-format
 msgid "OpenID %s is now associated with your account."
-msgstr "OpenID %s 已经绑定到您的帐号。"
+msgstr "OpenID %s already bound to your account."
 
 #: .\django_authopenid\views.py:681
 msgid "Account deleted."
-msgstr "帐号已删除。"
+msgstr "Account has been deleted."
 
 #: .\django_authopenid\views.py:721
 msgid "Request for new password"
-msgstr "找回密码"
+msgstr "Retrieve password"
 
 #: .\django_authopenid\views.py:734
 msgid "A new password has been sent to your email address."
-msgstr "新的密码已经发送到您的邮件帐号。"
+msgstr "New password has been sent to your email account."
 
 #: .\django_authopenid\views.py:764
 #, python-format
 msgid ""
 "Could not change password. Confirmation key '%s'                is not "
 "registered."
-msgstr "不能修改密码。确认信息 '%s' 有误。"
+msgstr "Password can not be amended. Confirmation '%s' is incorrect."
 
 #: .\django_authopenid\views.py:773
 msgid ""
 "Can not change password. User don't exist anymore                 in our "
 "database."
-msgstr "不能修改密码。用户帐号不存在。"
+msgstr "Password can not be amended. User account does not exist."
 
 #: .\django_authopenid\views.py:782
 #, python-format
 msgid "Password changed for %s. You may now sign in."
-msgstr "帐号 %s 的密码已经修改。您现在可以用它来登录。"
+msgstr "Account %s password has been amended. You can now use it to log on."
 
 #: .\templates\authopenid\changeemail.html.py:8
 msgid "Account: change email"
-msgstr "修改电子邮件"
+msgstr "Modified e-mail"
 
 #: .\templates\authopenid\changeemail.html.py:10
 msgid ""
@@ -201,8 +201,8 @@ msgid ""
 "Please keep this email address up to date so we can send you a password-"
 "reset email if you request one."
 msgstr ""
-"您可以在这里修改您的电子邮件，请确保这个邮件地址有效-找回密码将发送新密码到您"
-"的邮件地址。"
+"Here you can modify your e-mail, please ensure that an effective e-mail address - to find the password will be sent a new password to your"
+"E-mail address."
 
 #: .\templates\authopenid\changeemail.html.py:12
 #: .\templates\authopenid\changeopenid.html.py:9
@@ -214,71 +214,71 @@ msgstr ""
 #: .\templates\authopenid\sendpw.html.py:11
 #: .\templates\authopenid\signup.html.py:15
 msgid "Please correct errors below:"
-msgstr "请改正以下错误："
+msgstr "Please correct the following errors："
 
 #: .\templates\authopenid\changeemail.html.py:29
 #: .\templates\authopenid\complete.html.py:52
 msgid "Email"
-msgstr "电子邮件"
+msgstr "E-mail"
 
 #: .\templates\authopenid\changeemail.html.py:30
 #: .\templates\authopenid\complete.html.py:68
 msgid "Password"
-msgstr "密码"
+msgstr "Password"
 
 #: .\templates\authopenid\changeemail.html.py:32
 msgid "Change email"
-msgstr "修改电子邮件"
+msgstr "Modified e-mail"
 
 #: .\templates\authopenid\changeopenid.html.py:5
 msgid "Account: change OpenID URL"
-msgstr "修改OpenID地址"
+msgstr "Modified OpenID address"
 
 #: .\templates\authopenid\changeopenid.html.py:7
 msgid ""
 "This is where you can change your OpenID URL. Make sure you remember it!"
-msgstr "请修改您的OpenID地址，请不要忘记这个地址！"
+msgstr "Please modify your OpenID address, please do not forget this address!"
 
 #: .\templates\authopenid\changeopenid.html.py:24
 msgid "OpenID URL:"
-msgstr "OpenID地址："
+msgstr "OpenID address："
 
 #: .\templates\authopenid\changeopenid.html.py:25
 msgid "Change OpenID"
-msgstr "修改OpenID"
+msgstr "Modified OpenID"
 
 #: .\templates\authopenid\changepw.html.py:11
 msgid "Account: change password"
-msgstr "修改密码"
+msgstr "Change Password"
 
 #: .\templates\authopenid\changepw.html.py:13
 msgid "This is where you can change your password. Make sure you remember it!"
-msgstr "请修改您的密码，切记不要忘记！"
+msgstr "Please change your password, remember do not forget!"
 
 #: .\templates\authopenid\changepw.html.py:23
 msgid "Current password"
-msgstr "旧密码"
+msgstr "Old Password"
 
 #: .\templates\authopenid\changepw.html.py:24
 msgid "New password"
-msgstr "新密码"
+msgstr "New Password"
 
 #: .\templates\authopenid\changepw.html.py:25
 msgid "New password again"
-msgstr "重复密码"
+msgstr "Repeat password"
 
 #: .\templates\authopenid\changepw.html.py:26
 msgid "Change password"
-msgstr "修改密码"
+msgstr "Change Password"
 
 #: .\templates\authopenid\complete.html.py:12
 msgid "Your OpenID is verified! "
-msgstr "您的OpenID帐号已经验证通过"
+msgstr "Your OpenID account has already been verified through"
 
 
 #: .\templates\authopenid\complete.html.py:17
 msgid "Associate your OpenID"
-msgstr "绑定您的OpenID"
+msgstr "Bind your OpenID"
 
 #: .\templates\authopenid\complete.html.py:18
 msgid ""
@@ -289,60 +289,60 @@ msgid ""
 "\t"
 msgstr ""
 "\n"
-"\t<p>输入您的新帐号或者指定已经存在的帐号。</p>\n"
+"\t<p>Enter your new account or the account specified already exists.</p>\n"
 "\t"
 
 #: .\templates\authopenid\complete.html.py:50
 msgid "A new account"
-msgstr "新帐号"
+msgstr "New Account"
 
 #: .\templates\authopenid\complete.html.py:51
 #: .\templates\authopenid\complete.html.py:67
 #: .\templates\authopenid\sendpw.html.py:24
 msgid "Username"
-msgstr "用户名"
+msgstr "User Name"
 
 #: .\templates\authopenid\complete.html.py:66
 msgid "An exisiting account"
-msgstr "已经存在的帐号"
+msgstr "Account already exists"
 
 #: .\templates\authopenid\delete.html.py:6
 msgid "Account: delete account"
-msgstr "删除帐号"
+msgstr "Delete Account"
 
 #: .\templates\authopenid\delete.html.py:8
 msgid ""
 "Note: After deleting your account, anyone will be able to register this "
 "username."
-msgstr "注意：删除您的帐号后，任何其他人可以再注册这个帐号。"
+msgstr "Note: To delete your account, any other person can be registered in this account."
 
 #: .\templates\authopenid\delete.html.py:12
 msgid "Check confirm box, if you want delete your account."
-msgstr "如果确定删除，请选中多选框。"
+msgstr "If it is determined that the deletion, select the check box."
 
 #: .\templates\authopenid\delete.html.py:15
 msgid "Password:"
-msgstr "密码："
+msgstr "Password："
 
 #: .\templates\authopenid\delete.html.py:27
 msgid "I am sure I want to delete my account."
-msgstr "我确认要删除这个帐号。"
+msgstr "I confirm that you want to delete this account。"
 
 #: .\templates\authopenid\delete.html.py:28
 msgid "Password/OpenID URL"
-msgstr "密码/OpenID地址"
+msgstr "Password/OpenID URL"
 
 #: .\templates\authopenid\delete.html.py:28
 msgid "(required for your security)"
-msgstr "（必需）"
+msgstr "（Necessary）"
 
 #: .\templates\authopenid\delete.html.py:30
 msgid "Delete account permanently"
-msgstr "永久删除帐号"
+msgstr "Permanently delete account"
 
 #: .\templates\authopenid\sendpw.html.py:7
 msgid "Account: Send a new password"
-msgstr "发送一个新的密码"
+msgstr "Send a new password"
 
 #: .\templates\authopenid\sendpw.html.py:9
 msgid ""
@@ -351,28 +351,28 @@ msgid ""
 "password. This new password will be activated only after you have clicked on "
 "the link in the email."
 msgstr ""
-"丢失了您的密码？你可以在这里重设密码。输入用户名你会收到新的密码的邮件。密码"
-"只有您在激活邮件中的链接才会被激活。"
+"Lost your password? Here you can reset your password. Enter the user name you will receive a new password e-mail. Password"
+"Only you activate the link in the e-mail will be activated."
 
 #: .\templates\authopenid\sendpw.html.py:26
 msgid "Send new password"
-msgstr "发送新密码"
+msgstr "Send new password"
 
 #: .\templates\authopenid\settings.html.py:29
 msgid "Give your  account a new password."
-msgstr "修改密码"
+msgstr "Change Password"
 
 #: .\templates\authopenid\settings.html.py:31
 msgid "Add or update the email address associated with your account."
-msgstr "添加或者更新您的邮件地址。"
+msgstr "Add or update your e-mail address.。"
 
 #: .\templates\authopenid\settings.html.py:34
 msgid "Change openid associated to your account"
-msgstr "修改和你帐号绑定的OpenID地址"
+msgstr "Modification and binding of your account OpenID address"
 
 #: .\templates\authopenid\settings.html.py:38
 msgid "Erase your username and all your data from website"
-msgstr "删除您的帐号和所有内容"
+msgstr "Delete your account and all the contents of"
 
 #: .\templates\authopenid\signup.html.py:7
 msgid ""

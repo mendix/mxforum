@@ -155,11 +155,11 @@ class OpenidRegisterForm(forms.Form):
         """ test if username is valid and exist in database """
         if 'username' in self.cleaned_data:
             if not username_re.search(self.cleaned_data['username']):
-                raise forms.ValidationError(u"用户名只能包含英文字母、数字和下划线")
+                raise forms.ValidationError(u"User name can contain only English letters, numbers and underscores")
             if self.cleaned_data['username'] in RESERVED_NAMES:
-                raise forms.ValidationError(u'对不起，您不能注册该用户名，请换一个试试')
+                raise forms.ValidationError(u'Sorry, you can not sign up for the user name, please try another')
             if len(self.cleaned_data['username']) < 3:
-                raise forms.ValidationError(u'用户名太短，请使用三个或三个以上字符')
+                raise forms.ValidationError(u'User name is too short, use three or more characters')
             try:
                 user = User.objects.get(
                         username__exact = self.cleaned_data['username']
@@ -167,8 +167,8 @@ class OpenidRegisterForm(forms.Form):
             except User.DoesNotExist:
                 return self.cleaned_data['username']
             except User.MultipleObjectsReturned:
-                raise forms.ValidationError(u'该用户名已被注册，请换一个试试')
-            raise forms.ValidationError(u'该用户名已被注册，请换个试试')
+                raise forms.ValidationError(u'The user name has been registered, please try another')
+            raise forms.ValidationError(u'The user name has been registered, please try another')
             
     def clean_email(self):
         """For security reason one unique email in database"""

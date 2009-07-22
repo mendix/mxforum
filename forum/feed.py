@@ -13,11 +13,12 @@
 from django.contrib.syndication.feeds import Feed, FeedDoesNotExist
 from models import Question
 class RssLastestQuestionsFeed(Feed):
-    title = u"CNProg程序员问答社区-最新问题"
-    link = u"http://www.cnprog.com/questions/"
-    description = u"中国程序员的编程技术问答社区。我们做专业的、可协作编辑的技术问答社区。"
+    title = u"Mendix Programmer Q & A community - the latest issue of"
+    link = u"http://www.mxforum.com/questions/"
+    description = u"English programmers Q & A community-based programming technology. We do professional and collaborative editing technology can Q & A community."
     #ttl = 10
-    copyright = u'Copyright(c)2009.CNPROG.COM'
+    #copyright = u'Copyright(c)2009.CNPROG.COM'
+    copyright = u'Copyright(c)2009.MENDIX.COM'
 
     def item_link(self, item):
         return '/questions/%s/' % item.id

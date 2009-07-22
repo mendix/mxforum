@@ -13,61 +13,61 @@ class UserView:
 USER_TEMPLATE_VIEWS = (
     UserView(
         id = 'stats',
-        tab_title = u'概览',
-        tab_description = u'用户概览',
-        page_title = u'概览-用户资料',
+        tab_title = u'Overview',
+        tab_description = u'User Profile',
+        page_title = u'Overview - User Profile',
         view_name = 'user_stats',
         template_file = 'user_stats.html'
     ),
     UserView(
         id = 'recent',
-        tab_title = u'最近活动',
-        tab_description = u'用户最近的活动状况',
-        page_title = u'最近活动 - 用户资料',
+        tab_title = u'Recent activities',
+        tab_description = u'User recent activity',
+        page_title = u'Recent activities - Profile',
         view_name = 'user_recent',
         template_file = 'user_recent.html',
         data_size = 50
     ),
     UserView(
         id = 'responses',
-        tab_title = u'回应',
-        tab_description = u'其他用户的回复和评论',
-        page_title = u'回应 - 用户资料',
+        tab_title = u'Response',
+        tab_description = u'Other users of the responses and comments',
+        page_title = u'Response - Profile',
         view_name = 'user_responses',
         template_file = 'user_responses.html',
         data_size = 50
     ),
     UserView(
         id = 'reputation',
-        tab_title = u'积分',
-        tab_description = u'用户社区积分',
-        page_title = u'积分 - 用户资料',
+        tab_title = u'Points',
+        tab_description = u'User community points',
+        page_title = u'Points - Profile',
         view_name = 'user_reputation',
         template_file = 'user_reputation.html'
     ),
     UserView(
         id = 'favorites',
-        tab_title = u'收藏',
-        tab_description = u'用户收藏的问题',
-        page_title = u'收藏 - 用户资料',
+        tab_title = u'Favorites',
+        tab_description = u'Collection of user issues',
+        page_title = u'Collection - User Information',
         view_name = 'user_favorites',
         template_file = 'user_favorites.html',
         data_size = 50
     ),
     UserView(
         id = 'votes',
-        tab_title = u'投票',
-        tab_description = u'用户所有投票',
-        page_title = u'投票 - 用户资料',
+        tab_title = u'Vote',
+        tab_description = u'Users of all voting',
+        page_title = u'Vote - Profile',
         view_name = 'user_votes',
         template_file = 'user_votes.html',
         data_size = 50
     ),
     UserView(
         id = 'preferences',
-        tab_title = u'设置',
-        tab_description = u'用户参数设置',
-        page_title = u'设置 - 用户资料',
+        tab_title = u'Set',
+        tab_description = u'User parameter setting',
+        page_title = u'Settings - User Profile',
         view_name = 'user_preferences',
         template_file = 'user_preferences.html'
     )
