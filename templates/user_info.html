@@ -1,0 +1,91 @@
+{% load extra_tags %}
+{% load extra_filters %}
+{% load humanize %}
+<div id="subheader">
+    <h1>{{view_user.username}}</h1>
+    
+</div>
+
+<table width="950">
+    <tr>
+    <!--cell-->
+        <td width="170" style="vertical-align: top;">
+            <table>
+                <tr>
+                    <td style="padding: 20px 20px 8px;">
+                        {% gravatar view_user 128 %}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="summaryinfo">
+                        <div class="summarycount">{{view_user.reputation|intcomma}}</div>
+                        <div style="margin-top: 5px; font-weight: bold;">Points</div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <!--cell-->
+        <td width="350" style="vertical-align: top;">
+            <div style="float: right; margin-top: 19px; margin-right: 10px;">
+                {% if request.user|can_view_user_edit:view_user %}
+                <a href="/users/{{ view_user.id }}/edit/">Update my information</a>
+                {% endif %}
+            </div>
+            <h2 style="margin-top: 20px;">Registered users</h2>
+            <table class="user-details">
+                <tr>
+                    <th width="120" ></th>
+                    <th width="230" ></th>
+                </tr>
+                {% if view_user.real_name %}
+                <tr>
+                    <td >Name</td>
+                    <td ><b>{{view_user.real_name}}</b></td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <td>Has joined</td>
+                    <td>{{ view_user.date_joined|timesince }}</td>
+                </tr>
+                {% if view_user.last_seen %}
+                <tr>
+                    <td>Last time</td>
+                    <td><span class="relativetime" title="{{ view_user.last_seen }}">{{ view_user.last_seen|timesince }} ago</span></td>
+                </tr>
+                {% endif %}
+                {% if view_user.website %}
+                <tr>
+                    <td>Personal Website</td>
+                    <td><a rel="nofollow" target="_blank" href="{{view_user.website}}">{{view_user.website}}</a></td>
+                </tr>
+                {% endif  %}
+                {% if view_user.location %}
+                <tr>
+                    <td>City</td>
+                    <td>{{view_user.location}}</td>
+                </tr>
+                {% endif %}
+                {% if view_user.date_of_birth%}
+                <tr>
+                    <td>Age</td>
+                    <td>{% get_age view_user.date_of_birth %} 岁</td>
+                </tr>
+                {% endif %}
+                {% if votes_today_left %}
+                <tr>
+                    <td>The remainder of the votes cast today</td>
+                    <td><span class="big darkred">{{ votes_today_left }}</span> Votes</td>
+                </tr>
+                {% endif %}
+            </table>
+        </td>
+        <!--cell-->
+        <td width="380">
+            <div id="user-about-me">
+            {% if view_user.about %}
+                {{view_user.about|safe|linebreaks}}
+            {% endif %}
+            </div>
+        </td>
+    </tr>
+</table>

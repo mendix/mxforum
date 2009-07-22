@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load extra_tags %}
+{% load humanize %}
+{% block title %}{% spaceless %}List of badges{% endspaceless %}{% endblock %}
+{% block forejs %}
+       <script type="text/javascript">
+        $().ready(function(){
+            $("#nav_badges").attr('className',"youarehere");
+        });
+         
+        </script>
+{% endblock %}
+{% block content %}
+<div id="main-bar" class="">
+    <h3>
+        List of badges
+    </h3>
+</div>
+<div id="main-body" style="width:100%">
+	<div style="" class="paragraph">
+		Ask questions, give answers, cast your votes - all these actions contribute
+		towards your reputation and can earn you badges.
+		<br />
+		Here are all the badges and the users that have earned them.
+    </div>
+    <div id="badge-list">
+        {% for badge in badges %}
+        <div style="clear:both;line-height:30px">
+            <div style="float:left;min-width:30px;text-align:right;height:30px">
+            {% for a in mybadges %}
+                {% ifequal a.badge_id badge.id %}
+                 <span style="font-size:175%; padding-right:5px; color:#5B9058;">&#10004;</span>
+                {% endifequal %}
+            {% endfor %}
+            </div>
+            <div style="float:left;width:180px;">
+                <a href="{{badge.get_absolute_url}}" title="{{ badge.get_type_display }} : {{ badge.description }}" class="badge"><span class="badge{{ badge.type }}">&#9679;</span>&nbsp;{{ badge.name }}</a><span class="tag-number"> × {{ badge.awarded_count|intcomma }}</span>
+            </div>
+            <div style="float:left;width:350px;">
+                {{ badge.description }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+{% block sidebar %}
+
+<div class="gray-box" style="margin-top:50px">
+    <h3>Community badges</h3>
+    <div class="paragraph">
+        <a style="cursor:default;" title="Gold medal: the highest honor a very rare" class="badge"><span class="badge1">&#9679;</span>&nbsp;Gold</a>
+    </div>
+		<div class="paragraph">
+			Gold is very rare. You not only to participate in community question and
+			answer, polling and other activities, but also have profound knowledge
+			and ability to obtain. Means that you won the gold in a level has already
+			reached its peak.
+    </div>
+    <div class="paragraph">
+        <a style="cursor:default;" title="Silver: occasionally awarded the Medal of quality" class="badge"><span class="badge2">&#9679;</span>&nbsp;Silver</a>
+    </div>
+		<div class="paragraph">
+			Silver medal to go through a long struggle to obtain. It is an unusual
+			honor, as long as you pay will be enough effort. 
+    </div>
+    <div class="paragraph">
+        <a style="cursor:default;" title="Bronze: often given special honor" class="badge"><span class="badge3">&#9679;</span>&nbsp;Bronze</a>
+    </div>
+		<div class="paragraph">
+			Bronze will be active in the community when you have, it is relatively
+			easy to obtain, but it is also a special honor.
+    </div>
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block title %}{% spaceless %}Amend the answer{% endspaceless %}{% endblock %}
+{% block forejs %}
+        <script type='text/javascript' src='/content/js/com.cnprog.editor.js'></script>
+        <script type='text/javascript' src='/content/js/com.cnprog.post.js'></script>
+        <script type='text/javascript' src='/content/js/jquery.validate.pack.js'></script>
+        <script type='text/javascript' src='/content/js/wmd/showdown-min.js'></script>
+        <script type='text/javascript' src='/content/js/wmd/wmd-min.js'></script>
+        <link rel="stylesheet" type="text/css" href="/content/js/wmd/wmd.css" />
+        <script type="text/javascript">
+        
+        $().ready(function(){
+            $('#editor').TextAreaResizer();
+            
+            //highlight code synctax when editor has new text
+            $("#editor").typeWatch({highlight: false, wait: 3000,
+                             captureLength: 5, callback: lanai.highlightSyntax});
+                             
+            //toggle preview of editor
+            var display = true;
+            var txt = "禁用预览";
+            $('#pre-collapse').text(txt);
+            $('#pre-collapse').bind('click', function(){
+                txt = display ? "Opening preview" : "Disable preview";
+                display = !display;
+                $('#previewer').toggle();
+                $('#pre-collapse').text(txt);
+            });
+
+            setupFormValidation("#fmedit", CPValidator.getQuestionFormRules(), CPValidator.getQuestionFormMessages());
+            
+            $('#id_revision').unbind().change(function(){
+                $("#select_revision").click();
+            });
+            
+            lanai.highlightSyntax();
+            
+        });
+        </script>
+{% endblock %}
+        
+{% block content %}
+<div id="main-bar" class="">
+    <h3>
+        Amend the answer [<a href="{{ answer.question.get_absolute_url }}#{{ answer.id }}">Return</a>]
+    </h3>
+    
+</div>
+<div id="main-body" class="">
+    <div id="askform">
+        <form id="fmedit" action="{% url edit_answer answer.id %}" method="post" >
+            <label for="id_revision" ><strong>Version:</strong></label> <br> 
+            {% if revision_form.revision.errors %}{{ revision_form.revision.errors.as_ul }}{% endif %}
+            <div style="vertical-align:middle">
+            {{ revision_form.revision }} <input type="submit" style="display:none" id="select_revision" name="select_revision" value="Select Version">
+            </div><br>
+            <div class="form-item">
+                <div id="wmd-button-bar" class="wmd-panel"></div>
+                {{ form.text }}
+                <span class="form-error"></span>
+                <div class="preview-toggle"><span id="pre-collapse" title="Open or close the real-time editor Markdown preview">Preview switch</span></div>
+                <div id="previewer" class="wmd-preview"></div>
+                <br>
+            </div>
+            
+            <strong>{{ form.summary.label_tag }}</strong> <br>
+            {{ form.summary }}  {{ form.summary.errors }}
+            <div class="title-desc">
+                {{ form.summary.help_text }}
+            </div>
+            <br>
+            <input type="submit" value="Now revised" class="submit" />
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="yellow-box">
+    <h3 class="darkred">Popular questions</h3>
+    <div>
+        <ul class="list-item">
+            <li>
+                <b>Your programming associated with it?</b>
+            </li>
+            <li>
+              We recommend that you question can be answered, and not only can be discussed
+            </li>
+            <li>
+              Please describe your problem in detail.
+            </li>
+            <li>
+              We recommend you use the English description of the problem, so that answer can be given more opportunities.
+            </li>
+        </ul>
+         <a href="/faq/" target="_blank" title="See Frequently Asked Questions" style="float:right;position:relative">faq »</a>
+         <br>  
+    </div>
+</div>
+
+<div class="gray-box">
+    <h3>Quick Reference Markdown</h3>
+    <ul class="list-item">
+        <li>
+            * Italic * or italics _ _
+
+        </li>
+        <li>
+            ** Bold ** bold or __ __
+
+        </li>
+        <li>
+           <b> link </ b>: a [example] (http://url.com/ "title")
+
+        </li>
+        
+        <li>
+            <b> picture </ b>:! [alt text] (/ path / img.jpg "title")
+
+        </li>
+        <li>
+            List:
+            1.  Foo
+            2.  Bar
+        </li>
+        <li>
+            Basic HTML tags are also supported by
+        </li>
+    </ul>
+    <a href="http://en.wikipedia.org/wiki/Markdown" target="_blank" style="float:right;position:relative">Details on the Markdown »</a>
+    <br>  
+</div>
+
+{% endblock %}
+
+{% block endjs %}
+{% endblock %}
+

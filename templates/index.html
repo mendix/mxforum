@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% load extra_tags %}
+{% load humanize %}
+{% block title %}{% spaceless %}Home{% endspaceless %}{% endblock %}
+{% block meta %}
+  <meta name="keywords" content="mendix, community, mxforum, modeling, modeler, dsl" />
+  <meta name="description" content="Mendix Community questions, discussions and items of interest" />
+{% endblock %}
+{% block forejs %}
+       <script type="text/javascript">
+        $().ready(function(){
+            $("#nav_home").attr('className',"youarehere");
+            $("#ipSearchTag").focus();
+            
+            var orderby = "{{ tab_id }}";
+            if(orderby != "used" && orderby != "name")
+                orderby = "used";
+            $("#sort_" + orderby).attr('className',"youarehere");
+        });
+         
+        </script>
+{% endblock %}
+{% block content %}
+<div id="main-bar" class="">
+    <h3>
+        Questions
+    </h3>
+    <div id="tab" class="">
+        <a id="latest" href="?sort=latest" title="Lastest questions">Latest</a>
+        <a id="hottest" href="?sort=hottest" title="Hottest questions">Hottest</a>
+        <a id="mostvoted" href="?sort=mostvoted" title="Number of issues to vote">Most voted</a>
+        <a id="trans" href="?sort=trans" title="Foreign language translation of the classic problems">Translated</a>
+    </div>
+
+</div>
+<div id="main-body" class="">
+    {% for question in questions %}
+    <div class="question-item">
+
+        <div class="boxes">
+            <table height="100%">
+                <tr>
+                    <td width="50px" class="boxes-cell">
+                        <div class="vote" style="padding:5px">
+                            <table style="padding:5px;text-align:center;width:100%">
+                                <tr>
+                                    <td>
+                                        <span class="box-number">{{ question.score|intcomma }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="box-unit">Votes</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                    <td width="50px" class="boxes-cell">
+                        <div {% if question.answer_accepted %}class="answered-accepted"{% else %}{% ifequal question.answer_count 0 %}class="unanswered"{% else %}class="answered"{% endifequal %}{% endif %}  style="padding:5px;">
+                            <table style="padding:5px;text-align:center;width:100%">
+                                <tr>
+                                    <td>
+                                        <span class="box-number">{{ question.answer_count|intcomma }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="box-unit">Answers</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                    <td width="50px" class="boxes-cell">
+                        <div class="view" style="padding:5px">
+                            <table style="padding:5px;text-align:center;width:100%">
+                                <tr>
+                                    <td>
+                                        <span class="box-number">{{ question.view_count|intcomma }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      <div class="box-unit">Views</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="summary">
+            <div class="qustion-title">
+                <h3>
+                    <a href="{{ question.get_absolute_url }}" title="{{ question.summary }}...">
+                        {{ question.get_question_title }}
+                    </a>
+                </h3>
+
+            </div>
+
+            <div class="question-tag">
+                {% for tag in question.tagname_list %}
+                    <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="View of the '{{ tag }}' question" rel="tag">{{ tag }}</a>
+                {% endfor %}
+            </div>
+            <div class="question-started">
+                    {% if question.wiki %}
+                    <span class="gray">Community Wiki</span>
+                    {% else %}
+                    <span class="updatedtime" title="{{ question.last_activity_at }}"><strong>{% diff_date question.last_activity_at %}</strong></span> <span class="big"><a href="{{ question.last_activity_by.get_profile_url }}">{{ question.last_activity_by }}</a></span>&nbsp;{% get_score_badge question.last_activity_by %}
+                    {% endif %}
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block sidebar %}
+{% if not request.user.is_authenticated %}
+<div class="yellow-box">
+    <h3 class="darkred">Mendix Community</h3>
+    <div class="highlight-box">
+      <span class="darkred">Mendix QA </span>
+      is a community where developers and modelers can edit the Q &amp; A community.
+      <p>
+      Here you can question the technical aspects of various procedures -
+      regardless of language and platform issues. At the same time also hope
+      that whatever your other questions, give your valuable answer. [todo]
+        </p>
+        <div style="text-align:right">
+            <a href="/about">About »</a>
+            <br>
+            <a href="/faq">FAQ »</a>
+            <br>
+        </div>
+    </div>
+</div>
+{% endif %}
+<div class="gray-box">
+    <h3>Latest tags</h3>
+    <div id="recent-tags">
+        {% for tag in tags %}
+            <a class="post-tag" rel="tag" title="View of the '{{ tag.name }}'" style="font-size:{% tag_font_size max min tag.used_count %}px;" href="{% url forum.views.tag tag.name|urlencode %}">{{ tag.name }}</a><span class="gray small" >({{ tag.used_count|intcomma }})</span>
+        {% endfor %}
+        <br>
+        <a href="/tags" style="float:right;position:relative">Popular tags »</a>
+         <br>
+    </div>
+</div>
+<div class="gray-box">
+    <h3>The latest medal</h3>
+    {% for award in awards %}
+    <div style="clear:both;line-height:35px">
+        <a href="/badges/{{award.badge_id}}/{{award.badge_name}}" title="{{ award.badge_description }}" class="badge">
+        <span class="badge{{ award.badge_type }}">&#9679;</span>&nbsp;{{ award.badge_name }}</a> award/give
+        <a href="/users/{{award.user_id}}/{{award.user_name}}">{{ award.user_name }}</a>
+    </div>
+    {% endfor %}
+    <a href="{% url badges %}" style="float:right;position:relative">All the medals »</a>
+    <br>
+</div>
+{% endblock %}
+{% block tail %}
+<div>
+    <h3>Looking for more items? Try <a href="/questions">questions</a>,
+    <a href="/tags">tags </a> or <a href="/questions/unanswered">unanswered questions</a>.
+    </h3>
+</div>
+<div style="float:right">
+<span>
+<img src="/content/images/feed-icon-small.png" style="vertical-align:bottom"
+     title="RSS feed Mendix Community" height="14" width="14" border="0">
+<a href="/feeds/rss" title="RSS feeds Mendix Community">RSS feeds</a></span>
+</div>
+{% endblock %}

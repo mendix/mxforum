@@ -1,0 +1,16 @@
+{% load extra_filters %}
+<div id="subheader">
+    <div id="tab">
+        <a id="stats" {% ifequal tab_name "stats" %}class="youarehere"{% endifequal %} title="User Profile" href="/users/{{view_user.id}}/{{view_user.username}}?sort=stats">Overview</a>
+        <a id="recent" {% ifequal tab_name "recent" %}class="youarehere"{% endifequal %} title="Recent activities" href="/users/{{view_user.id}}/{{view_user.username}}?sort=recent">Recent activities</a>
+        <a id="responses" {% ifequal tab_name "responses" %}class="youarehere"{% endifequal %} title="Other users of the responses and comments" href="/users/{{view_user.id}}/{{view_user.username}}?sort=responses">Response</a>
+        <a id="reputation" {% ifequal tab_name "reputation" %}class="youarehere"{% endifequal %} title="The user's history of community integration" href="/users/{{view_user.id}}/{{view_user.username}}?sort=reputation">Points</a>
+        {% if request.user|can_view_user_votes:view_user %}
+        <a id="votes" {% ifequal tab_name "votes" %}class="youarehere"{% endifequal %} title="Users of all voting" href="/users/{{view_user.id}}/{{view_user.username}}?sort=votes">Vote</a>
+        {% endif %}
+        <a id="favorites" {% ifequal tab_name "favorites" %}class="youarehere"{% endifequal %} title="Collection of user issues" href="/users/{{view_user.id}}/{{view_user.username}}?sort=favorites">Favorites</a>
+        {% if request.user|can_view_user_preferences:view_user %}
+        <a id="preferences" {% ifequal tab_name "preferences" %}class="youarehere"{% endifequal %} title="User parameter settings" href="/users/{{view_user.id}}/{{view_user.username}}?sort=preferences">Set</a>
+        {% endif %}
+    </div>
+</div>

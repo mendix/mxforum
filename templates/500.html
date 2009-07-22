@@ -1,0 +1,36 @@
+{% extends "base_content.html" %}
+{% block title %}{% spaceless %}500 Error{% endspaceless %}{% endblock %}
+{% block forejs %}
+        <script type="text/javascript">
+        $().ready(function(){
+            $("#linkPrevious").bind("click", back=function(){history.go(-1);})            
+        });
+         
+        </script>
+{% endblock %}
+{% block content %}
+<div id="main-bar" class="">
+    <h3>
+        500 Server Error
+    </h3>
+
+</div>
+<div id="main-body" class="">
+    <div style="padding:5px 0px 10px 0;line-height:25px">
+        <h3>Sorry, system error, can not respond to your request!</h3>
+        <br>
+        System error log has been recorded, we will resolve this problem as soon as possible.<br>
+        If this issue has not been a long time to repair, please<span class="darkred"><a title="cnprog.uservoice.com" href="http://cnprog.uservoice.com/" >Search View the current issue of the status of, or report new bug</a></span>. Thank you for your support!
+        
+        <ul>
+            <li><a href="#" id="linkPrevious">Back to previous page</li>
+            <li><a href="/questions">See the latest issue of</a></li>
+            <li><a href="/tags/">See label list</a></li>
+        </u>
+    </div>
+
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,28 @@
+{% extends "base_content.html" %}
+{% load extra_tags %}
+{% load humanize %}
+{% block title %}{% spaceless %}Logout{% endspaceless %}{% endblock %}
+{% block forejs %}
+    <script type="text/javascript">
+    $().ready(function(){
+        $('#btLogout').bind('click', function(){ window.location.href='/account/signout/?next={{ next }}'; });
+    
+    });
+    </script>
+{% endblock %}
+{% block content %}
+<div id="main-bar" class="">
+    <h3>
+        Logout
+    </h3>
+</div>
+<div id="main-body" style="width:100%">
+    <div class="paragraph">You are the system <strong class="darkred">login</strong> users can use OpenID account, or log on to the system write-off of the registry.</div>
+ 
+    <h3><input id="btLogout" type="button" value="Click Logout"></h3>
+    <br><br>
+</div>
+{% endblock %}
+
+
+

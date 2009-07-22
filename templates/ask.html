@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% block title %}{% spaceless %}I would like to ask{% endspaceless %}{% endblock %}
+{% block forejs %}
+        <script type='text/javascript' src='/content/js/com.cnprog.editor.js'></script>
+        <script type='text/javascript' src='/content/js/com.cnprog.post.pack.js'></script>
+        <script type='text/javascript' src='/content/js/jquery.validate.pack.js'></script>
+        <script type='text/javascript' src='/content/js/wmd/showdown-min.js'></script>
+        <script type='text/javascript' src='/content/js/wmd/wmd-min.js'></script>
+        <link rel="stylesheet" type="text/css" href="/content/js/wmd/wmd.css" />
+        <script type="text/javascript">
+        $().ready(function(){
+            //set current module button style
+            $("#nav_ask").attr('className',"youarehere");
+            $('#editor').TextAreaResizer();
+
+            //highlight code synctax when editor has new text
+            $("#editor").typeWatch({highlight: false, wait: 3000,
+                             captureLength: 5, callback: lanai.highlightSyntax});
+
+            //toggle preview of editor
+            var display = true;
+            var txt = "[Disable preview]";
+            $('#pre-collapse').text(txt);
+            $('#pre-collapse').bind('click', function(){
+                txt = display ? "[Enable preview]" : "[Disable preview]";
+                display = !display;
+                $('#previewer').toggle();
+                $('#pre-collapse').text(txt);
+            });
+
+            //Tags autocomplete action
+            var tags = {{ tags|safe }};
+        	$("#id_tags").autocomplete(tags, {
+                minChars: 1,
+        		matchContains: true,
+                max: 20,
+                multiple: true,
+                multipleSeparator: " ",
+        		formatItem: function(row, i, max) {
+        			return row.n + " ("+ row.c +")";
+        		},
+                formatResult: function(row, i, max){
+                    return row.n;
+                }
+
+            });
+
+            setupFormValidation("#fmask", CPValidator.getQuestionFormRules(), CPValidator.getQuestionFormMessages());
+            lanai.highlightSyntax();
+
+        });
+        </script>
+{% endblock %}
+
+{% block content %}
+<div id="main-bar" class="">
+    <h3>
+      Ask
+    </h3>
+
+</div>
+<div id="main-body" class="">
+    <div id="askform">
+        <form id="fmask" action="{% url forum.views.ask %}" method="post" >
+            <div class="form-item">
+                <label for="id_title" ><strong>{{ form.title.label_tag }}:</strong></label> <span class="form-error"></span><br>
+                {{ form.title }} {{ form.title.errors }}
+                <div class="title-desc">
+                    {{ form.title.help_text }}
+                </div>
+            </div>
+
+            <div class="form-item">
+                <div id="wmd-button-bar" class="wmd-panel"></div>
+                {{ form.text }}
+
+                <div class="preview-toggle">
+                    <table width="100%">
+                        <tr>
+                            <td>
+                                <span id="pre-collapse" title="Open or close the real-time editor Markdown preview">Preview switch</span>
+                            </td>
+                            <td style="text-align:right;">
+                                {{ form.wiki }} <span style="font-weight:normal;cursor:help" title="{{form.wiki.help_text}}">{{ form.wiki.label_tag }} </span>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+                <div id="previewer" class="wmd-preview"></div>
+                <span class="form-error"></span>
+                <br>
+            </div>
+            <div class="form-item">
+                <strong>{{ form.tags.label_tag }}:</strong> <span class="form-error"></span><br>
+                {{ form.tags }}  {{ form.tags.errors }}
+                <div class="title-desc">
+                    {{ form.tags.help_text }}
+                </div>
+            </div>
+            <br>
+            {% if not request.user.is_authenticated %}
+            <table id="login-box">
+                <tr>
+                    <td style="vertical-align:middle;">
+                    <strong>使用 <a href="http://openid.net/" title="Learn more about OpenID information">OpenID</a> Login:</strong><br>
+                        {{ form.openid }}
+                        <div class="title-desc">
+                            Access to your own <a href="https://www.myopenid.com/" target=="_blank">OpenID</a>。
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle; padding: 0px 40px 0px 40px">
+                        <div style="position: absolute; margin-top:40px; background-color:white; margin-left:-10px; padding:5px;">or</div>
+                        <div style="width:1px; border-left:solid 1px #999; height:8em; margin:auto;"></div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <strong>Your name:</strong><br>
+                        {{ form.user }}
+                        <p>
+                        <strong>E-mail: (will not be publicly displayed)</strong><br>
+                        {{ form.email }}
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            {% endif %}
+            <input type="submit" value="Ask question" class="submit" />
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<!--
+<div class="yellow-box">
+    <h3 class="darkred">Popular questions</h3>
+    <div>
+        <ul class="list-item">
+            <li>
+                <b>Your programming associated with it?</b>
+            </li>
+            <li>
+                We recommend that you question can be answered, and not only can be discussed.
+            </li>
+            <li>
+                Please describe your problem in detail.
+            </li>
+            <li>
+                We recommend you use the Chinese description of the problem, so that answer can be given more opportunities.
+            </li>
+        </ul>
+         <a href="/faq/" target="_blank" title="See Frequently Asked Questions" style="float:right;position:relative">faq »</a>
+         <br>
+    </div>
+</div>
+
+<div class="gray-box">
+    <h3>Quick Reference Markdown</h3>
+    <ul class="list-item">
+        <li>
+            * Italic * or italics _ _
+
+        </li>
+        <li>
+	    ** Bold ** bold or __ __
+
+        </li>
+        <li>
+            <b> link </b>: a [example] (http://url.com/ "title")
+
+        </li>
+
+        <li>
+            <b> picture </b>:! [alt text] (/ path / img.jpg "title")
+
+        </li>
+        <li>
+            List:
+            1.  Foo
+            2.  Bar
+        </li>
+        <li>
+            Basic HTML tags are also supported by
+        </li>
+    </ul>
+    <a href="http://en.wikipedia.org/wiki/Markdown" target="_blank" style="float:right;position:relative">Details on the Markdown »</a>
+    <br>
+</div>
+
+-->
+{% endblock %}
+
+{% block endjs %}
+{% endblock %}
+

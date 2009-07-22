@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}{% spaceless %}Revision tags{% endspaceless %}{% endblock %}
+{% block forejs %}
+        <script type='text/javascript' src='/content/js/com.cnprog.editor.js'></script>
+        <script type='text/javascript' src='/content/js/com.cnprog.post.js'></script>
+        <script type='text/javascript' src='/content/js/jquery.validate.pack.js'></script>
+        <script type="text/javascript">
+        
+        $().ready(function(){
+            //Tags autocomplete action
+            var tags = {{ tags|safe }};
+        	$("#id_tags").autocomplete(tags, {
+                minChars: 1,
+        		matchContains: true,
+                max: 20,
+                multiple: true,
+                multipleSeparator: " ",
+        		formatItem: function(row, i, max) {
+        			return row.n + " ("+ row.c +")";
+        		},
+                formatResult: function(row, i, max){
+                    return row.n;
+                }
+                
+            });
+           
+             $("#fmretag").validate({
+                rules: {
+        			tags: {
+        				required: true,
+        				maxength: 105
+        			}
+        		},
+                messages: {
+        			tags: {
+                        required: " Tags can not be empty.",
+                        maxlength: " Up to five labels, each label is less than 20 characters in length."
+                    }
+                }
+                
+            });
+            lanai.highlightSyntax();
+
+        });
+        </script>
+{% endblock %}
+        
+{% block content %}
+<div id="main-bar" class="">
+    <h3>
+        Modified label [<a href="{{ question.get_absolute_url }}">return</a>]
+    </h3>
+    
+</div>
+<div id="main-body" class="">
+    <div id="askform">
+        <form id="fmretag" action="{% url edit_question question.id %}" method="post" >
+            <h3>
+                {{ question.get_question_title }}
+            </h3>
+            <div id="description" class="edit-content-html">
+                {{ question.html|safe }}
+            </div>
+           
+            
+            <div class="form-item">
+                <strong>{{ form.tags.label_tag }}:</strong> <span class="form-error"></span><br>
+                {{ form.tags }}  {{ form.tags.errors }}
+                <div class="title-desc">
+                    {{ form.tags.help_text }}
+                </div>
+            </div>
+            <br>
+            
+            <div class="error" ></div>
+            <input type="submit" value="Now revised" class="submit" />
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="gray-box">
+    <h3>The question of why I can only edit tags?</h3>
+    <ul class="list-item">
+        
+        <li>
+            CNProg label to the information classification system
+
+        </li>
+        <li>
+            Integrity need to modify the user's points reach a certain conditions (such as: points> = 3000 hours, except for their distribution), and users to achieve a relatively low point when the problem can be amended on the label (eg: points> = 500, where The label refers to all the problems).
+
+        </li>
+        <li>
+            Modify the label of the user community will be awarded a special medal 
+
+        </li>
+    </ul>
+    <a href="{% url faq %}" style="float:right;position:relative">faq »</a>
+    <br>  
+</div>
+
+{% endblock %}
+
+{% block endjs %}
+{% endblock %}
+

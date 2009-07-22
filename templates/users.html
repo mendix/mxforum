@@ -1,0 +1,81 @@
+{% extends "base_content.html" %}
+{% load extra_tags %}
+{% load humanize %}
+{% block title %}{% spaceless %}Users{% endspaceless %}{% endblock %}
+{% block forejs %}
+       <script type="text/javascript">
+        $().ready(function(){
+            $("#nav_users").attr('className',"youarehere");
+            $("#ipSearchUser").focus();
+            
+            var orderby = "{{ tab_id }}";
+            $("#sort_" + orderby).attr('className',"youarehere");
+        });
+         
+        </script>
+{% endblock %}
+{% block content %}
+<div id="main-bar" class="">
+    <h3>
+        Users
+    </h3>
+    <div id="tab" class="">
+        <a id="sort_reputation" href="?sort=reputation" title="Points">By reputation</a>
+        <a id="sort_newest" href="?sort=newest" title="The latest to join">Newest</a>
+        <a id="sort_last" href="?sort=last" title="First joined the">Oldest</a>
+        <a id="sort_user" href="?sort=user" title="User Name">Alphabetical</a>
+    </div>
+</div>
+<div id="main-body" style="width:100%">
+    <div class="paragraph">
+        <form action="/users/" method="post">
+            <table>
+    	        <tr>
+    	        	<td>Find user : </td>
+    	        	<td width="310px"><input id="name" name="name" autocomplete="off" size="40"></td>
+                  <td> <input id="btSearchTag" type="submit" class="submit" value="Go!" /></td>
+    	        </tr>
+    	        
+            </table>
+        </form>
+        {% if suser %}
+            Users matching '<span class="darkred"><strong>{{ suser }}</strong></span>' :
+        {% endif %}
+    </div>
+    {% if not users.object_list %}
+        <span >No matching users found</span>
+    {% endif %}
+		<div id="user-list">
+        	<table class="list-table">
+    	        <tr>    
+    	            <td class="list-td">
+    	            	{% for user in users.object_list %}
+                        
+                        <div class="user-info">
+                            <div class="user-gravatar32"><a href="{{ user.get_profile_url }}">{% gravatar user 32 %}</a></div>
+                            <div class="user-details">
+                                <a href="{{ user.get_profile_url }}">{{user.username}}</a><br>{% get_score_badge user %}
+                            
+                            </div>
+                        </div>
+                        
+                {% if forloop.counter|divisibleby:"7" %}
+                    </td>
+                    <td>
+                {% endif %}
+
+    		            {% endfor %}
+    	            </td>
+    	        </tr>   
+    	    </table>
+		</div>
+    <div class="paginator-container">
+        {% cnprog_paginator context %}
+    </div>
+    
+    
+</div>
+{% endblock %}
+
+
+

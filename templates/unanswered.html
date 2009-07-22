@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load extra_tags %}
+{% load humanize %}
+{% block title %}{% spaceless %}Unanswered questions{% endspaceless %}{% endblock %}
+{% block forejs %}
+       <script type="text/javascript">
+        $().ready(function(){
+            $("#nav_unanswered").attr('className',"youarehere");
+        });
+         
+        </script>
+{% endblock %}
+{% block content %}
+<div id="main-bar" class="">
+    <h3>
+        Unanswered
+    </h3>
+    <div id="tab" >
+        <a id="latest" class="youarehere" href="?sort=latest" title="The latest to join system">Newest first</a>
+    </div>
+    
+</div>
+<div id="main-body" class="">
+    {% for question in questions.object_list %}
+    <div class="question-item">
+        <table class="questions-boxes-container">
+            <tr>
+                <td>
+                    <div class="questions-boxes">
+                        <div class="vote" style="text-align:center">
+                            <div class="questions-votebox">
+                                 <span class="questions-vote-number">{{ question.score|intcomma }}</span><br>
+                                 <span class="box-unit">votes</span>
+                            </div>
+                            <div class="questions-answerbox">
+                                <div {% if question.answer_accepted %}class="answered-accepted"{% else %}{% ifequal question.answer_count 0 %}class="unanswered"{% else %}class="answered"{% endifequal %}{% endif %} id="questions-answerbox-cell">
+                                    <span class="questions-answer-number">{{ question.answer_count|intcomma }}</span><br>
+                                    <span class="box-unit">answers</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="questions-viewbox">
+                            <span class="box-unit">{{ question.view_count|intcomma }} views</span>
+                        </div>
+                    </div>
+                </td>
+                <td class="questions-boxicon">
+                <img src="/content/images/box-arrow.gif">
+                </td>
+            </tr>
+	        
+        </table>
+        
+        <div class="questions-summary-container">
+            <div class="qustion-title">
+                <h3>
+                    <a href="{{ question.get_absolute_url }}" title="{{ question.summary }}...">
+                        {{ question.get_question_title }}
+                    </a>
+                </h3>
+                
+            </div>
+            <div class="qustions-summary">
+                {{ question.summary }}...                
+            </div>
+            <div class="question-tag">
+                {% for tag in question.tagname_list %}
+                    <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="View of the '{{ tag }}' of the problem" rel="tag">{{ tag }}</a>
+                {% endfor %}
+            </div>
+            <div  class="questions-mark">
+                <table width="100%">
+                    <tr>
+                        <td colspan="2" class="gray"> 
+                            Added <strong>{{ question.added_at|timesince }}</strong> ago
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="40px" style="vertical-align:bottom">
+                        {% gravatar question.author 32 %}
+                        </td>
+                        <td style="width:120px; vertical-align:top">
+                            <div><a href="/users/{{ question.author.id }}/{{ question.author }}"><span class="big">{{ question.author }}</span></a></div>
+                            <div>
+                            {% get_score_badge question.author %}
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block tail %}
+                            {% cnprog_paginator context %}
+                        <div class="paginator-container">
+                            {% cnprog_pagesize context %}
+                        </div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="gray-box">
+	<div>
+		<center>
+        You are viewing <br><div class="questions-count">{{ questions_count|intcomma }}</div>
+        <div class="paragraph"><span class="darkred"><strong> unanswered </strong></span> questions</div>
+        
+				<div class="paragraph">Why not <strong>raise your reputation</strong> by answering a few? </div>
+			</center>
+
+    </div>
+</div>
+<div class="gray-box">
+    <h3>Related tags</h3>
+    <div id="related-tags">
+        {% for tag in tags %}
+            <a class="post-tag" rel="tag" title="See related '{{ tag.name }}' of the problem"  href="{% url forum.views.tag tag.name|urlencode %}">{{ tag.name }}</a>
+            <span class="tag-number">× {{ tag.used_count|intcomma }}</span>
+            <br>
+        {% endfor %}
+        <br>
+    </div>
+</div>
+
+{% endblock %}
+

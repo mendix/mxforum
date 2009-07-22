@@ -1,0 +1,70 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>{% block title %}{% endblock %} - Mendix Community</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="/content/images/favicon.ico" >
+        <link href="/content/style/default.css" rel="stylesheet" type="text/css" />
+		 {% spaceless %}
+        {% block forestyle %}{% endblock %}
+        {% endspaceless %}
+        <script type='text/javascript' src='/content/js/com.cnprog.utils.js'></script>
+        <script src="http://www.google.com/jsapi"></script>
+        <script>google.load("jquery", "1.2.6");</script>
+        {% if request.user.is_anonymous and not request.session.message_silent %}
+        <style type="text/css">
+            body { margin-top:2.4em; }
+        </style>
+        <script type="text/javascript">
+            $().ready(function() {
+                notify.show();
+            });
+         </script>
+        {% else %}
+        {% with request.user.get_messages as messages%}
+        {% if messages %}
+        <style type="text/css">
+            body { margin-top:2.4em; }
+        </style>
+        <script type="text/javascript">
+            $().ready(function() {
+                notify.show();
+            });
+        </script>
+        {% endif %}
+        {% endwith %}
+        {% endif %}
+        {% block forejs %}
+        {% endblock %}
+    </head>
+    <body>
+			{% if request.user.get_messages %}
+			<div class="notify" style="display:none">
+				<span>
+					Congratulations, you, the community presented a medal to you：{% for message in request.user.get_messages %}
+					<font class="darkred">{{ message }}</font>, {% endfor %}View
+					<a href="{{ request.user.get_profile_url }}">Personal Data</a></span>
+
+				<a class="close-notify" onclick="notify.close(true)">&times;</a>
+			</div>
+			{% endif %}
+
+        <div id="container">
+            <div id="header">
+                 {% include "header.html" %}
+            </div>
+            <div id="content">
+                <div id="container">
+                    {% block content%}
+                    {% endblock%}
+
+                </div>
+
+            </div>
+
+        </div>
+        {% block endjs %}
+        {% endblock %}
+	{% include 'footer.html' %}
+    </body>
+</html>

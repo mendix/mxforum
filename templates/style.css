@@ -1,0 +1,79 @@
+			/*-- header --*/
+
+			.mendixLogo {
+				float:left;
+				position:relative;
+				top:60px;
+				width:330px;
+			}
+
+			.Mendixhead {
+				margin:auto;
+				position:relative;
+				width:960px;
+			}
+
+			.MendixheadNavigation {	
+				background-image:url('https://world.mendix.com/img/bg_menu.png');
+				background-repeat:no-repeat;
+				float:right;
+				font-size:12px;
+				height:32px;
+				position:relative;
+				top:60px;
+				width:603px;
+			}
+
+			.MendixheadNavigation a {
+				color: #fff;
+				font-size: 12px;
+				text-decoration: none;
+			}
+
+			.MendixheadNavigation a:hover {
+				text-decoration: underline;
+			}
+
+			.MendixheadNavigation ul{
+				margin: 0px;
+				padding: 0px;
+			}
+
+			.MendixheadNavigation li {
+				float: left;
+				padding:7px 15px 0 25px;
+				list-style-type: none;
+			}
+
+			.MendixfakeDiv {
+				height:120px;
+			}
+
+			.MendixheadText {
+				position: relative;
+				float: right;
+				font-size:12px;
+			}
+
+			.MendixheadText a {
+				text-decoration: none;
+				color: #D93500;
+				font-size:12px;
+			}
+
+			.MendixheadText a:hover {
+				text-decoration: underline;
+			}
+
+			.MendixContainer {
+				font-family:Helvetica,Arial,sans-serif;
+				line-height:1.4; 
+				margin: 0;
+				padding 0;
+			}
+
+			body {
+				background-image: url('https://world.mendix.com/img/clouds.png');
+				background-repeat: no-repeat;
+				background-position: top center;
+			}

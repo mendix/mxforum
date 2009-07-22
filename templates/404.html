@@ -1,0 +1,51 @@
+{% extends "base_content.html" %}
+{% block title %}{% spaceless %}404 Error{% endspaceless %}{% endblock %}
+{% block forestyle%}
+    <style type="text/css">
+ 		form input { margin-right: 5px; }
+	</style>
+{% endblock %}
+{% block forejs %}
+       <script type="text/javascript">
+        $().ready(function(){
+            $("#linkPrevious").bind("click", back=function(){history.go(-1);})            
+        });
+         
+        </script>
+{% endblock %}
+{% block content %}
+<div id="main-bar" class="">
+    <h3>
+        404 Not Found
+    </h3>
+
+</div>
+<div id="main-body" class="">
+    <div style="padding:5px 0px 10px 0;line-height:25px;">
+        <h3>Sorry, could not find the page you requested!</h3>
+        <div style="margin-top:5px">
+        May lead to the following reasons:<br>
+        <ul>
+            <li>You are viewing to answer questions or have been deleted;</li>
+            <li>Address requests for an error - please verify the URL address of the original;</li>
+            <li>Visit the page be protected or not your points, see<a href="/faq"> faq</a>;</li>
+            <li>If you are convinced that there should not be a 404 error, please<a href="http://cnprog.uservoice.com/" target="_blank">Report this question</a></li>
+            </u>
+        </div>
+        <!--<script type="text/javascript">
+            var GOOG_FIXURL_LANG = 'zh-cn';
+            var GOOG_FIXURL_SITE = 'http://cnprog.com/';
+        </script>
+        <script type="text/javascript" src="http://linkhelp.clients.google.com/tbproxy/lh/wm/fixurl.js"></script>-->
+        <ul>
+            <li><a href="#" id="linkPrevious">Back to previous page » </li>
+            <li><a href="/questions">See the latest issue of » </a></li>
+            <li><a href="/tags/">See label list » </a></li>
+        </u>
+    </div>
+
+</div>
+{% endblock %}
+
+
+
