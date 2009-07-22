@@ -445,7 +445,7 @@ function createComments(type) {
                 var form = '<form id="' + formId + '" class="post-comments"><div>';
                 form += '<textarea name="comment" cols="60" rows="5" maxlength="300" onblur="'+ objectType +'Comments.updateTextCounter(this)" ';
                 form += 'onfocus="' + objectType + 'Comments.updateTextCounter(this)" onkeyup="'+ objectType +'Comments.updateTextCounter(this)"></textarea>';
-                form += '<input type="submit" value="添加评论" /><br><span class="text-counter"></span>';
+                form += '<input type="submit" value="Add a comment" /><br><span class="text-counter"></span>';
                 form += '<span class="form-error"></span></div></form>';
 
                 jDiv.append(form);
@@ -458,7 +458,7 @@ function createComments(type) {
         else {
             var divId = "comments-rep-needed-" + objectType + '-' + id;
             if (jDiv.find("#" + divId).length == 0) {
-                jDiv.append('<div id="' + divId + '" style="color:red">评论需要 ' + repNeededForComments + ' 社区积分 - <a href="/faq" class="comment-user">查看faq</a></span>');
+                jDiv.append('<div id="' + divId + '" style="color:red">Comment on the need for ' + repNeededForComments + ' Community Points - <a href="/faq" class="comment-user">See faq</a></span>');
             }
         }
     };
@@ -496,7 +496,7 @@ function createComments(type) {
             var imgHover = "/content/images/close-small-hover.png";
             html += '<img onclick="' + objectType + 'Comments.deleteComment($(this), ' + json.object_id + ', \'' + json.delete_url + '\')" src="' + img;
             html += '" onmouseover="$(this).attr(\'src\', \'' + imgHover + '\')" onmouseout="$(this).attr(\'src\', \'' + img
-            html += '\')" title="删除此评论" />';
+            html += '\')" title="Delete this comment" />';
         }
 
         html += '</div>';
@@ -543,13 +543,13 @@ function createComments(type) {
             renderForm(id, jDiv);
             jDiv.show();
             if (canPostComments(id, jDiv)) jDiv.find("textarea").get(0).focus();
-            jDiv.siblings("a").unbind("click").click(function() { commentsFactory[objectType].hide(id); }).text("隐藏评论");
+            jDiv.siblings("a").unbind("click").click(function() { commentsFactory[objectType].hide(id); }).text("Hide comments");
         },
 
         hide: function(id) {
             var jDiv = jDivInit(id);
             var len = jDiv.children("div.comments").children().length;
-            var anchorText = len == 0 ? "添加评论" : "评论 (<b>" + len + "</b>)";
+            var anchorText = len == 0 ? "Add a comment" : "Comments (<b>" + len + "</b>)";
 
             jDiv.hide();
             jDiv.siblings("a").unbind("click").click(function() { commentsFactory[objectType].show(id); }).html(anchorText);
@@ -557,7 +557,7 @@ function createComments(type) {
         },
 
         deleteComment: function(jImg, id, deleteUrl) {
-            if (confirm("真要删除此评论吗？")) {
+            if (confirm("Really want to delete this comment?")) {
                 jImg.hide();
                 appendLoaderImg(id);
                 $.post(deleteUrl, { dataNeeded: "forIIS7" }, function(json) {
@@ -570,7 +570,7 @@ function createComments(type) {
             var length = textarea.value ? textarea.value.length : 0;
             var color = length > 270 ? "#f00" : length > 200 ? "#f60" : "#999";
             var jSpan = $(textarea).siblings("span.text-counter");
-            jSpan.html('还可写' + (300 - length) + ' 字符').css("color", color);
+            jSpan.html('Can write ' + (300 - length) + ' characters').css("color", color);
         }
     };
 }

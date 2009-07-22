@@ -1,5 +1,5 @@
 var showMessage = function(object, msg) {
-    var div = $('<div class="vote-notification"><h3>' + msg + '</h3>(点击消息框关闭)</div>');
+    var div = $('<div class="vote-notification"><h3>' + msg + '</h3>(Click the message box to close)</div>');
 
     div.click(function(event) {
         $(".vote-notification").fadeOut("fast", function() { $(this).remove(); });
@@ -33,7 +33,7 @@ var notify = function() {
 } ();
 
 function appendLoader(containerSelector) {
-    $(containerSelector).append('<img class="ajax-loader" src="/content/images/indicator.gif" title="读取中..." alt="读取中..." />');
+    $(containerSelector).append('<img class="ajax-loader" src="/content/images/indicator.gif" title="Read in..." alt="Read in..." />');
 }
 
 function removeLoader() {
@@ -96,16 +96,16 @@ var CPValidator = function(){
         getQuestionFormMessages: function(){
             return {
                 tags: {
-                    required: " 标签不能为空。",
-                    maxlength: " 最多5个标签，每个标签长度小于20个字符。"
+                    required: " Tags can not be empty。",
+                    maxlength: " Up to five labels, each label is less than 20 characters in length."
                 },
                 text: {
-                    required: " 内容不能为空。",
-                    minlength: jQuery.format(" 请输入至少 {0} 字符。")
+                    required: " Content can not be empty.",
+                    minlength: jQuery.format(" Please enter at least (10) characters.")
                 },
                 title: {
-                    required: " 请输入标题。",
-                    minlength: jQuery.format(" 请输入至少 {0} 字符。")
+                    required: " Please enter a title.",
+                    minlength: jQuery.format(" Please enter at least (10) characters.")
                 }
             };
         }
