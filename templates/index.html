@@ -9,15 +9,15 @@
 {% block forejs %}
        <script type="text/javascript">
         $().ready(function(){
-            $("#nav_home").attr('className',"youarehere");
             $("#ipSearchTag").focus();
             
-            var orderby = "{{ tab_id }}";
-            if(orderby != "used" && orderby != "name")
-                orderby = "used";
-            $("#sort_" + orderby).attr('className',"youarehere");
+            var tab_id = "{{ tab_id }}";
+            $("#"+tab_id).attr('className',"youarehere");
+           $("#nav_home").attr('className',"youarehere");
         });
          
+	
+
         </script>
 {% endblock %}
 {% block content %}
