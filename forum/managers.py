@@ -70,7 +70,6 @@ class QuestionManager(models.Manager):
         This will search the same tag list for give question(by exactly same string) first.
         Questions with the individual tags will be added to list if above questions are not full.
         """
-        #print datetime.datetime.now()
         from forum.models import Question
         questions = list(Question.objects.filter(tagnames = question.tagnames).all())
 
@@ -80,8 +79,8 @@ class QuestionManager(models.Manager):
             for item in extend_questions:
                 if item not in questions and len(questions) < 10:
                     questions.append(item)
-          
-        #print datetime.datetime.now()
+        
+        questions.remove(question)
         return questions    
     
 class TagManager(models.Manager):
