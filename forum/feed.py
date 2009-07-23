@@ -14,14 +14,14 @@ from django.contrib.syndication.feeds import Feed, FeedDoesNotExist
 from models import Question
 class RssLastestQuestionsFeed(Feed):
     title = u"Mendix Programmer Q & A community - the latest issue of"
-    link = u"http://www.mxforum.com/questions/"
+    link = u"http://mxforum.mendix.com/questions/"
     description = u"English programmers Q & A community-based programming technology. We do professional and collaborative editing technology can Q & A community."
     #ttl = 10
     #copyright = u'Copyright(c)2009.CNPROG.COM'
     copyright = u'Copyright(c)2009.MENDIX.COM'
 
     def item_link(self, item):
-        return '/questions/%s/' % item.id
+        return self.link + '%s/' % item.id
 
     def item_author_name(self, item):
         return item.author.username

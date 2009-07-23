@@ -13,7 +13,7 @@ class UserView:
 USER_TEMPLATE_VIEWS = (
     UserView(
         id = 'stats',
-        tab_title = u'Overview',
+        tab_title = u'Stats',
         tab_description = u'User Profile',
         page_title = u'Overview - User Profile',
         view_name = 'user_stats',
@@ -21,7 +21,7 @@ USER_TEMPLATE_VIEWS = (
     ),
     UserView(
         id = 'recent',
-        tab_title = u'Recent activities',
+        tab_title = u'Recent',
         tab_description = u'User recent activity',
         page_title = u'Recent activities - Profile',
         view_name = 'user_recent',
@@ -30,7 +30,7 @@ USER_TEMPLATE_VIEWS = (
     ),
     UserView(
         id = 'responses',
-        tab_title = u'Response',
+        tab_title = u'Responses',
         tab_description = u'Other users of the responses and comments',
         page_title = u'Response - Profile',
         view_name = 'user_responses',
@@ -39,7 +39,7 @@ USER_TEMPLATE_VIEWS = (
     ),
     UserView(
         id = 'reputation',
-        tab_title = u'Points',
+        tab_title = u'Reputation',
         tab_description = u'User community points',
         page_title = u'Points - Profile',
         view_name = 'user_reputation',
@@ -56,7 +56,7 @@ USER_TEMPLATE_VIEWS = (
     ),
     UserView(
         id = 'votes',
-        tab_title = u'Vote',
+        tab_title = u'Votes',
         tab_description = u'Users of all voting',
         page_title = u'Vote - Profile',
         view_name = 'user_votes',
@@ -65,7 +65,7 @@ USER_TEMPLATE_VIEWS = (
     ),
     UserView(
         id = 'preferences',
-        tab_title = u'Set',
+        tab_title = u'Preferences',
         tab_description = u'User parameter setting',
         page_title = u'Settings - User Profile',
         view_name = 'user_preferences',

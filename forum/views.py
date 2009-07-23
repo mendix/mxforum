@@ -1755,13 +1755,13 @@ def upload(request):
 
         result = xml_template % ('Good', '', default_storage.url(new_file_name))
     except UploadPermissionNotAuthorized:
-        result = xml_template % ('', u"上传图片只限于积分+60以上注册用户!", '')
+        result = xml_template % ('', u"Upload picture above is limited to registered users +60 points!", '')
     except FileTypeNotAllow:
-        result = xml_template % ('', u"只允许上传'jpg', 'jpeg', 'gif', 'bmp', 'png', 'tiff'类型的文件！", '')
+        result = xml_template % ('', u"Form only allows 'jpg', 'jpeg', 'gif', 'bmp', 'png', 'tiff' rypes of files!", '')
     except FileSizeNotAllow:
-        result = xml_template % ('', u"只允许上传%sK大小的文件！" % settings.ALLOW_MAX_FILE_SIZE / 1024, '')
+        result = xml_template % ('', u"Only allows upload file size% sK!" % settings.ALLOW_MAX_FILE_SIZE / 1024, '')
     except Exception:
-        result = xml_template % ('', u"在文件上传过程中产生了错误，请联系管理员，谢谢^_^", '')
+        result = xml_template % ('', u"In the file upload process error, please contact the administrator, thank you.", '')
 
     return HttpResponse(result, mimetype="application/xml")
 

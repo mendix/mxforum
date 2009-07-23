@@ -1,9 +1,20 @@
 {% extends "user.html" %}
 {% load extra_tags %}
 {% load humanize %}
-
+ 
 {% block usercontent %}
         <div style="padding:5px;">
-            <h1>Surprise will be here soon ;-)</h1>
+        <fieldset>
+            <legend><b>Twitter Sync message</b></legend>
+            <form>
+                <label for="name">Account:</label>
+                <input id="name" /><br>
+                <label for="password">Password:</label>
+                <input id="password" type="password"/><br>
+                <input id="cbMessage" type="checkbox" />Release my question to my Twitter<br>
+                <input id="cbReply" type="checkbox" />Release my answer to my Twitter<br>
+                <input type="submit" value="Save" />
+            </form>
+        </fieldset>
         </div>
 {% endblock %}
