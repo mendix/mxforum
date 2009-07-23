@@ -1813,16 +1813,16 @@ class UserImportService(DjangoSoapApp):
 
 	if len(u) == 0:
            u = User()
-	   u.password = _password
+	   u.set_password(_password)
 	   u.save()
-	   return len(u) != 0
+	   return 1
 
 	else:
 	   u = User()
 	   u.username = _name
 	   u.email = _email
-	   u.set_password = _password
+	   u.set_password(_password)
 	   u.save()
-	   return len(u) != 0
+	   return 2
 
 user_import_service = UserImportService()
