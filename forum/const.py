@@ -59,7 +59,7 @@ TYPE_ACTIVITY = (
     (TYPE_ACTIVITY_UPDATE_QUESTION, u'Modification'),
     (TYPE_ACTIVITY_UPDATE_ANSWER, u'Amend the answer'),
     (TYPE_ACTIVITY_PRIZE, u'Award-winning'),
-    (TYPE_ACTIVITY_MARK_ANSWER, u'Marking the best answer'),
+    (TYPE_ACTIVITY_MARK_ANSWER, u'Accepted'),
     (TYPE_ACTIVITY_VOTE_UP, u'Vote in favor of'),
     (TYPE_ACTIVITY_VOTE_DOWN, u'Vote against'),
     (TYPE_ACTIVITY_CANCEL_VOTE, u'Revocation of voting'),
