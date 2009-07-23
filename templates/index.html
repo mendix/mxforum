@@ -29,7 +29,6 @@
         <a id="latest" href="?sort=latest" title="Lastest questions">Latest</a>
         <a id="hottest" href="?sort=hottest" title="Hottest questions">Hottest</a>
         <a id="mostvoted" href="?sort=mostvoted" title="Number of issues to vote">Most voted</a>
-        <a id="trans" href="?sort=trans" title="Foreign language translation of the classic problems">Translated</a>
     </div>
 
 </div>
@@ -161,7 +160,7 @@
         <a href="/users/{{award.user_id}}/{{award.user_name}}">{{ award.user_name }}</a>
     </div>
     {% endfor %}
-    <a href="{% url badges %}" style="float:right;position:relative">All the medals »</a>
+    <a href="{% url badges %}" style="float:right;position:relative">Badges</a>
     <br>
 </div>
 {% endblock %}
