@@ -1811,14 +1811,14 @@ class UserImportService(DjangoSoapApp):
         from forum.models import *
         u = User.objects.filter(email=_email)
 
-	if len(u) == 0:
-           u = User()
+	if len(u) != 0:
+           u.set_username(_name)
 	   u.set_password(_password)
 	   u.save()
 	   return 1
 
 	else:
-	   u = User()
+           u = User()
 	   u.username = _name
 	   u.email = _email
 	   u.set_password(_password)
