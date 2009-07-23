@@ -48,26 +48,7 @@ var Vote = function(){
     var questionControlsId = 'question-controls';
     var removeQuestionLinkIdPrefix = 'question-delete-link-';
     var removeAnswerLinkIdPrefix = 'answer-delete-link-';
-    
-//     var acceptAnonymousMessage = "用户权限不在操作范围";
-//     var acceptOwnAnswerMessage = "不能设置自己的回答为最佳答案";
-//     var favoriteAnonymousMessage = "匿名用户不能收藏问题，请先<a href='/account/signin/?next=/questions/{{QuestionID}}'>注册或者登录</a>";
-//     var voteAnonymousMessage = "匿名用户不能投票，请先<a href='/account/signin/?next=/questions/{{QuestionID}}'>注册或者登录</a>";
-//     var upVoteRequiredScoreMessage = "需要+15积分才能投支持票。查看<a href='/faq'>faq</a>";
-//     var downVoteRequiredScoreMessage = "需要+100积分才能投反对票。查看<a href='/faq'>faq</a>";
-//     var voteOwnDeniedMessage = "不能给自己的帖子投票";
-//     var voteRequiredMoreVotes = "对不起，您已用完今日所有的投票。查看<a href='/faq'>faq</a>";
-//     var voteDenyCancelMessage = "这个投票已经过时，不能撤销。查看<a href='/faq'>faq</a>";
-//     var offensiveConfirmation = "确定要归类该帖为广告、人身攻击、恶意言论吗？";
-//     var offensiveAnonymousMessage = "匿名用户不能操作，请先<a href='/account/signin/?next=/questions/{{QuestionID}}'>注册或者登录</a>";
-//     var offensiveTwiceMessage = "不能重复操作。查看<a href='/faq'>faq</a>";
-//     var offensiveNoFlagsLeftMessage = "对不起，您已用完今日所有的5次‘水帖’操作。查看<a href='/faq'>faq</a>";
-//     var offensiveNoPermissionMessage = "需要+15积分才能归类‘垃圾帖’。查看<a href='/faq'>faq</a>";
-//     var removeConfirmation = "确定要删除/撤销删除该帖吗？";
-//     var removeAnonymousMessage = "匿名用户不能删除或撤销删除帖子";
-//     var recoveredMessage = "操作成功！该帖子已被恢复。";
-//     var deletedMessage = "操作成功！该帖子已删除。"
-    
+        
     var acceptAnonymousMessage = "User rights are not operating range";
     var acceptOwnAnswerMessage = "can not set up your own answer as the best answer";
     var favoriteAnonymousMessage = "anonymous users can not be the issue of collection, please log in or <a href='/account/signin/?next=/questions/{{QuestionID}}'> registration </ a>";
