@@ -31,7 +31,7 @@ from base_command import BaseCommand
 (7, 'patrol', 3, 'patrol', 'spam messages marked the first time', 0, 0),
 (8, 'cleaner', 3, 'cleaner', 'the first revocation of voting', 0, 0),
 (9, 'critics', 3,' critics', 'the first time against', 0, 0),
-(10, '小编', 3, '小编', 'the first editor to update', 0, 0),
+(10, 'Fastest', 3, 'Fastest', 'the first editor to update', 0, 0),
 (11, 'village', 3, 'village', 'the first time to re-label', 0, 0),
 (12, 'scholars', 3,' scholars', 'marked the first time the answer', 0, 0),
 (13, 'students', 3,' Student ',' the first time and there is more than one question in favor of ', 0, 0),
@@ -51,7 +51,7 @@ from base_command import BaseCommand
 (27, 'editorial director', 2, 'editorial director', 'edit posts 100', 0, 0),
 (28, 'generalists', 2,' generalists', 'active in a number of labels', 0, 0),
 (29, 'experts', 2,' experts', 'a label in the field of active outstanding', 0, 0),
-(30, '老鸟', 2, '老鸟', 'active user for more than a year', 0, 0),
+(30, 'Old bird', 2, 'Old bird', 'active user for more than a year', 0, 0),
 (31, 'the most talked about issues', 2,' the most talked about issues', 'views the issue of more than 2500 passengers', 1, 0),
 (32, 'scholars', 2,' scholars', 'answer was the first time voted for more than 10', 0, 0),
 (33, 'beta users', 2,' beta users', 'beta during the active participation', 0, 0),
@@ -107,7 +107,7 @@ class Command(BaseCommand):
     
     def delete_question_be_voted_up_3(self):
         """
-        (1, '炼狱法师', 3, '炼狱法师', '删除自己有3个以上赞成票的帖子', 1, 0),
+        (1, 'Purgatory Master', 3, 'Purgatory Master', '3 delete their posts in favor of the above', 1, 0),
         """
         query = "SELECT act.id, act.user_id, act.object_id FROM activity act, question q WHERE act.object_id = q.id AND\
                 act.activity_type = %s AND\
@@ -117,7 +117,7 @@ class Command(BaseCommand):
         
     def delete_answer_be_voted_up_3(self):
         """
-        (1, '炼狱法师', 3, '炼狱法师', '删除自己有3个以上赞成票的帖子', 1, 0),
+        (1, 'Purgatory Master', 3, 'Purgatory Master', '3 delete their posts in favor of the above',  0),
         """
         query = "SELECT act.id, act.user_id, act.object_id FROM activity act, answer an WHERE act.object_id = an.id AND\
                 act.activity_type = %s AND\
@@ -127,7 +127,7 @@ class Command(BaseCommand):
         
     def delete_question_be_vote_down_3(self):
         """
-        (2, '压力白领', 3, '压力白领', '删除自己有3个以上反对票的帖子', 1, 0),
+        (2, 'Pressure on white-collar', 3, 'Pressure on white-collar', 'Delete their own against more than 3 posts', 1, 0),
         """
         query = "SELECT act.id, act.user_id, act.object_id FROM activity act, question q WHERE act.object_id = q.id AND\
                 act.activity_type = %s AND\
@@ -138,7 +138,7 @@ class Command(BaseCommand):
 
     def delete_answer_be_voted_down_3(self):
         """
-        (2, '压力白领', 3, '压力白领', '删除自己有3个以上反对票的帖子', 1, 0),
+        (2, 'Pressure on white-collar', 3, 'Pressure on white-collar', 'Delete their own against more than 3 posts', 1, 0),
         """
         query = "SELECT act.id, act.user_id, act.object_id FROM activity act, answer an WHERE act.object_id = an.id AND\
                 act.activity_type = %s AND\
@@ -148,7 +148,7 @@ class Command(BaseCommand):
         
     def answer_be_voted_up_10(self):
         """
-        (3, '优秀回答', 3, '优秀回答', '回答好评10次以上', 1, 0),
+        (3, 'Excellent answer', 3, 'Excellent answer', 'Answer well more than 10', 1, 0),
         """
         query = "SELECT act.id, act.user_id, act.object_id FROM \
                     activity act, answer a WHERE act.object_id = a.id AND\
@@ -159,7 +159,7 @@ class Command(BaseCommand):
         
     def question_be_voted_up_10(self):
         """
-        (4, '优秀问题', 3, '优秀问题', '问题好评10次以上', 1, 0),
+        (4, 'Outstanding issues', 3, 'Outstanding issues', 'Issues received more than 10', 1, 0),
         """
         query = "SELECT act.id, act.user_id, act.object_id FROM \
                     activity act, question q WHERE act.object_id = q.id AND\
@@ -170,7 +170,7 @@ class Command(BaseCommand):
     
     def question_view_1000(self):
         """
-        (6, '流行问题', 3, '流行问题', '问题的浏览量超过1000人次', 1, 0),
+        (6, 'Epidemic', 3, 'Epidemic', 'Views the issue of more than 1000 views', 1, 0),
         """
         query = "SELECT act.id, act.user_id, act.object_id FROM \
                     activity act, question q WHERE act.activity_type = %s AND\
@@ -182,7 +182,7 @@ class Command(BaseCommand):
     
     def answer_self_question_be_voted_up_3(self):
         """
-        (17, '自学成才', 3, '自学成才', '回答自己的问题并且有3个以上赞成票', 1, 0),
+        (17, 'Self-taught', 3, 'Self-taught', 'Answer their own problems and there is more than three in favor of', 1, 0),
         """
         query = "SELECT act.id, act.user_id, act.object_id FROM \
                     activity act, answer an WHERE act.activity_type = %s AND\
@@ -195,7 +195,7 @@ class Command(BaseCommand):
     
     def answer_be_voted_up_100(self):
         """
-        (18, '最有价值回答', 1, '最有价值回答', '回答超过100次赞成票', 1, 0),
+        (18, 'Most valuable answer', 1, 'Most valuable answer', 'Answered more than 100 times in favor of', 1, 0),
         """
         query = "SELECT an.id, an.author_id FROM answer an WHERE an.vote_up_count >= 100 AND an.id NOT IN \
                 (SELECT object_id FROM award WHERE award.badge_id = %s)" % (18)
@@ -204,7 +204,7 @@ class Command(BaseCommand):
     
     def question_be_voted_up_100(self):
         """
-        (19, '最有价值问题', 1, '最有价值问题', '问题超过100次赞成票', 1, 0),
+        (19, 'Most valuable question', 1, 'Most valuable question', 'The question is favored more than 100 times', 1, 0),
         """
         query = "SELECT q.id, q.author_id FROM question q WHERE q.vote_up_count >= 100 AND q.id NOT IN \
                 (SELECT object_id FROM award WHERE award.badge_id = %s)" % (19)
@@ -213,7 +213,7 @@ class Command(BaseCommand):
     
     def question_be_favorited_100(self):
         """
-        (20, '万人迷', 1, '万人迷', '问题被100人以上收藏', 1, 0),
+        (20, 'David', 1, 'David', 'The problem is more than 100 collections', 1, 0),
         """
         query = "SELECT q.id, q.author_id FROM question q WHERE q.favourite_count >= 100 AND q.id NOT IN \
                 (SELECT object_id FROM award WHERE award.badge_id = %s)" % (20)
@@ -222,7 +222,7 @@ class Command(BaseCommand):
 
     def question_view_10000(self):
         """
-        (21, '著名问题', 1, '著名问题', '问题的浏览量超过10000人次', 1, 0),
+        (21, 'Well-known problem', 1, 'Well-known problem', 'Views the issue of more than 10,000 view', 1, 0),
         """
         query = "SELECT q.id, q.author_id FROM question q WHERE q.view_count >= 10000 AND q.id NOT IN \
                 (SELECT object_id FROM award WHERE award.badge_id = %s)" % (21)
