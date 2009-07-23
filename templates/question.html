@@ -225,11 +225,11 @@
             {% ifnotequal question.answer_count 0 %}
                 <div id="main-bar" class="">
                     <a name="sort-top"></a>
-                    <h3>{{ question.answer_count }} answers : </h3>
+                    <h3>{{ question.answer_count }} Answers </h3>
                     <div id="tab" class="">
-                        <a id="votes" href="?sort=votes#sort-top" title="Highest number of votes appear in the top">Top voted</a>
+                        <a id="votes" href="?sort=votes#sort-top" title="Highest number of votes appear in the top">Votes</a>
                         <a id="oldest" href="?sort=oldest#sort-top" title="The first answer to appear in the top">Oldest</a>
-                        <a id="latest" href="?sort=latest#sort-top" title="Answer is displayed in the top of the latest">Lastest</a>
+                        <a id="latest" href="?sort=latest#sort-top" title="Answer is displayed in the top of the latest">Newest</a>
                     </div>
                 </div>
                 {% cnprog_paginator context %}
@@ -383,7 +383,7 @@
             {% if not question.closed %}
             {% if request.user.is_authenticated %}
             <div style="padding:10px 0 0 0;">
-                <h3>Your answer : </h3>
+                <h3>Your answer </h3>
             </div>
 
             <div id="description" class="" >
@@ -406,18 +406,17 @@
                 {{ answer.text.errors }}
                 
             </div>
-            <input type="submit" value="Answer" class="submit"><span class="form-error"></span>
+            <input type="submit" value="Post Your Answer" class="submit" style="width: 160px;"><span class="form-error"></span>
             {% else %}
             <h3><input id="btLogin" type="button" value="Log in and answer the question"></h3>
             {% endif %}
             {% endif %}
             
             <br><br>
-						<div><h3>Didn't find what you were looking for? <br />
-								Search through other questions marked 
+						<div><h3>Not the answer you're looking for? Browse other questions tagged
                 {% for tag in question.tagname_list %}
-                     <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="View of the '{{ tag }}' of the problem" rel="tag">{{ tag }}</a>
-                {% endfor %} - or <a href="{% url ask %}">ask your own questions</a>.</h3></div>
+                     <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="View of the '{{ tag }}' of the problem" rel="tag">{{ tag }}</a><br>
+                {% endfor %} or <a href="{% url ask %}">ask your own questions</a>.</h3></div>
         </form>
     </div>
 </div>

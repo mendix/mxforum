@@ -1,7 +1,7 @@
 {% extends "base_content.html" %}
 {% load extra_tags %}
 {% load humanize %}
-{% block title %}{% spaceless %}Tag list{% endspaceless %}{% endblock %}
+{% block title %}{% spaceless %}Tags{% endspaceless %}{% endblock %}
 {% block forejs %}
        <script type="text/javascript">
         $().ready(function(){
@@ -19,19 +19,22 @@
 {% block content %}
 <div id="main-bar" class="">
     <h3>
-       Tag list
+       Tags
     </h3>
     <div id="tab" class="">
-        <a id="sort_name" href="?sort=name" title="Sort by name">Sort by name</a>
-        <a id="sort_used" href="?sort=used" title="Sort by usage">Sort by usage</a>
+	<a id="sort_used" href="?sort=used" title="Sort by usage">Popular</a>
+        <a id="sort_name" href="?sort=name" title="Sort by name">Name</a>
     </div>
 </div>
 <div id="main-body" style="width:100%">
     <div class="paragraph">
         <form action="/tags/" method="post">
             <table>
+		
+			<p>Questions are grouped by tags. Using the right tags makes it easier for others to find and answer your question.</p>
+		
     	        <tr>
-    	        	<td>Enter tags to find : </td>
+    	        	<td>Type and press search to find tags:</td>
     	        	<td width="310px"><input id="ipSearchTag" name="ipSearchTag" autocomplete="off" size="40" ></td>
                   <td><input id="btSearchTag" type="submit" class="submit" value="Search" /></td>
     	        </tr>

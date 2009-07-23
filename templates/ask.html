@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{% spaceless %}I would like to ask{% endspaceless %}{% endblock %}
+{% block title %}{% spaceless %}Ask a Question{% endspaceless %}{% endblock %}
 {% block forejs %}
         <script type='text/javascript' src='/content/js/com.cnprog.editor.js'></script>
         <script type='text/javascript' src='/content/js/com.cnprog.post.pack.js'></script>
@@ -55,7 +55,7 @@
 {% block content %}
 <div id="main-bar" class="">
     <h3>
-      Ask
+      Ask a Question
     </h3>
 
 </div>
@@ -103,7 +103,7 @@
             <table id="login-box">
                 <tr>
                     <td style="vertical-align:middle;">
-                    <strong>使用 <a href="http://openid.net/" title="Learn more about OpenID information">OpenID</a> Login:</strong><br>
+                    <strong>Use <a href="http://openid.net/" title="Learn more about OpenID information">OpenID</a> Login:</strong><br>
                         {{ form.openid }}
                         <div class="title-desc">
                             Access to your own <a href="https://www.myopenid.com/" target=="_blank">OpenID</a>。
@@ -124,7 +124,7 @@
                 </tr>
             </table>
             {% endif %}
-            <input type="submit" value="Ask question" class="submit" />
+            <input type="submit" value="Ask Your Question" class="submit" style="width: 170px;"/>
         </form>
     </div>
 </div>

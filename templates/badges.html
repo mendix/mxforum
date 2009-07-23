@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load extra_tags %}
 {% load humanize %}
-{% block title %}{% spaceless %}List of badges{% endspaceless %}{% endblock %}
+{% block title %}{% spaceless %}Badges{% endspaceless %}{% endblock %}
 {% block forejs %}
        <script type="text/javascript">
         $().ready(function(){
@@ -18,10 +18,7 @@
 </div>
 <div id="main-body" style="width:100%">
 	<div style="" class="paragraph">
-		Ask questions, give answers, cast your votes - all these actions contribute
-		towards your reputation and can earn you badges.
-		<br />
-		Here are all the badges and the users that have earned them.
+		Ask questions, provide answers, vote for the things you find helpful — and Mendix will bestow badges upon you. Here's a list of all the badges, along with a count of how many users have earned each one so far:
     </div>
     <div id="badge-list">
         {% for badge in badges %}
@@ -47,29 +44,24 @@
 {% block sidebar %}
 
 <div class="gray-box" style="margin-top:50px">
-    <h3>Community badges</h3>
+    <h3>Legend</h3>
     <div class="paragraph">
         <a style="cursor:default;" title="Gold medal: the highest honor a very rare" class="badge"><span class="badge1">&#9679;</span>&nbsp;Gold</a>
     </div>
 		<div class="paragraph">
-			Gold is very rare. You not only to participate in community question and
-			answer, polling and other activities, but also have profound knowledge
-			and ability to obtain. Means that you won the gold in a level has already
-			reached its peak.
+			Gold Badges are rare. You'll have to not only participate but be skilled and knowledgeable to earn these. They're something of an accomplishment!
     </div>
     <div class="paragraph">
         <a style="cursor:default;" title="Silver: occasionally awarded the Medal of quality" class="badge"><span class="badge2">&#9679;</span>&nbsp;Silver</a>
     </div>
 		<div class="paragraph">
-			Silver medal to go through a long struggle to obtain. It is an unusual
-			honor, as long as you pay will be enough effort. 
+			Silver badges are earned for longer term goals. Silver badges are uncommon, but definitely attainable if you’re interested enough.
     </div>
     <div class="paragraph">
         <a style="cursor:default;" title="Bronze: often given special honor" class="badge"><span class="badge3">&#9679;</span>&nbsp;Bronze</a>
     </div>
 		<div class="paragraph">
-			Bronze will be active in the community when you have, it is relatively
-			easy to obtain, but it is also a special honor.
+			Bronze badges are earned for basic use of the Mendix site; they are relatively easy to earn.
     </div>
 </div>
 {% endblock %}

@@ -31,7 +31,7 @@
                 <a href="/users/{{ view_user.id }}/edit/">Update my information</a>
                 {% endif %}
             </div>
-            <h2 style="margin-top: 20px;">Registered users</h2>
+            <h2 style="margin-top: 20px;">Registered user</h2>
             <table class="user-details">
                 <tr>
                     <th width="120" ></th>
@@ -44,12 +44,12 @@
                 </tr>
                 {% endif %}
                 <tr>
-                    <td>Has joined</td>
+                    <td>Member for</td>
                     <td>{{ view_user.date_joined|timesince }}</td>
                 </tr>
                 {% if view_user.last_seen %}
                 <tr>
-                    <td>Last time</td>
+                    <td>Seen</td>
                     <td><span class="relativetime" title="{{ view_user.last_seen }}">{{ view_user.last_seen|timesince }} ago</span></td>
                 </tr>
                 {% endif %}
