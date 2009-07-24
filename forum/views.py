@@ -1683,7 +1683,12 @@ def delete_answer_comment(request, answer_id, comment_id):
 def logout(request):
     url = request.GET.get('next')
     return render_to_response('logout.html', {
-        'next' : url,
+        'next' : '/',
+    }, context_instance=RequestContext(request))
+
+def profile(request):
+    return render_to_response('profile.html', {
+        'next' : '/',
     }, context_instance=RequestContext(request))
 
 def badges(request):
