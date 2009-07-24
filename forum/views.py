@@ -1800,9 +1800,10 @@ class UserImportService(DjangoSoapApp):
     @soapmethod(soap_types.String, soap_types.String, soap_types.String, _returns=soap_types.Integer)
     def user_import(self, name, email, password):
         u = User()
-        u.username = name
-        u.set_password(password)
         u.email = email
+        u.username = email
+		u.real_name = name
+        u.set_password(password)
         u.save()
         return 1
 
