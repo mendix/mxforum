@@ -1817,7 +1817,7 @@ class UserImportService(DjangoSoapApp):
 
         u.username  = _email
         u.email     = _email
-        u.real_name = _name)
+        u.real_name = _name
         u.set_password(_password)
         u.save()
         return 1
