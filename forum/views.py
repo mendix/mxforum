@@ -1810,22 +1810,18 @@ class UserImportService(DjangoSoapApp):
     @soapmethod(soap_types.String, soap_types.String, soap_types.String, _returns=soap_types.Boolean)
     def set_user(self, _email, _name, _password):
         from forum.models import *
-        u = User.objects.filter(email=_email)
+        users = User.objects.filter(email=_email)
 
-	if len(u) != 0:
-           u.set_username(_name)
-           u.set_real_name(_name)
-	   u.set_password(_password)
-	   u.save()
-	   return 1
+        if len(users) != 0:
+            u = users[0]
+        else:
+            u = User()
 
-	else:
-           u = User()
-	   u.username = _name
-           u.real_name = _name
-	   u.email = _email
-	   u.set_password(_password)
-	   u.save()
-	   return 2
+        u.username  = _email
+        u.email     = _email
+        u.real_name = _name)
+        u.set_password(_password)
+        u.save()
+        return 1
 
 user_import_service = UserImportService()
