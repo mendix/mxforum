@@ -15,6 +15,7 @@ from django.utils import simplejson
 from django.core import serializers
 from django.db import transaction
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth import *
 
 from utils.html import sanitize_html
 from markdown2 import Markdown

@@ -1,6 +1,8 @@
 import os.path
 from django.conf.urls.defaults import *
 from django.contrib import admin
+from django.contrib.auth import *
+from django.contrib.auth.views import login, logout
 from forum.views import index
 from forum import views as app
 from forum.feed import RssLastestQuestionsFeed
@@ -21,8 +23,8 @@ urlpatterns = patterns('',
     (r'^upfiles/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': os.path.join(APP_PATH, 'templates/upfiles').replace('\\','/')}
     ),
-    (r'^account/', include('django_authopenid.urls')),
-    (r'^signin/$', 'django_authopenid.views.signin'),
+    (r'^accounts/login/$',  login, {'template_name': 'login.html', 'redirect_field_name' : '/'}),
+    (r'^accounts/logout/$', logout, {'template_name': 'logout.html'}),
     url(r'^about/$', app.about, name='about'),
     url(r'^faq/$', app.faq, name='faq'),
     url(r'^privacy/$', app.privacy, name='privacy'),
@@ -52,7 +54,6 @@ urlpatterns = patterns('',
     url(r'^badges/$',app.badges, name='badges'),
     url(r'^badges/(?P<id>\d+)//*', app.badge, name='badge'),
     url(r'^messages/markread/$',app.read_message, name='read_message'),
-    # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/(.*)', admin.site.root),
     # (r'^nimda/(.*)', admin.site.root),
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
