@@ -19,18 +19,22 @@
 		{% endif %}
 
 		<form method="post" action="{% url django.contrib.auth.views.login %}">
-		<table>
+		<table style="margin: 2px;">
 		<tr>
-				<td>{{ form.username.label_tag }}</td>
-				<td>{{ form.username }}</td>
+				<td width="100px" style="padding: 2px;">{{ form.username.label_tag }}:</td>
+				<td style="padding: 2px;">{{ form.username }}</td>
 		</tr>
 		<tr>
-				<td>{{ form.password.label_tag }}</td>
-				<td>{{ form.password }}</td>
+				<td style="padding: 2px;">{{ form.password.label_tag }}:</td>
+				<td style="padding: 2px;">{{ form.password }}</td>
+		</tr>
+		
+
+		<tr>
+			<td></td>
+			<td style="padding: 2px;"><input type="submit" value="login" /></td>
 		</tr>
 		</table>
-
-		<input type="submit" value="login" />
 		<input type="hidden" name="next" value="{{ next }}" />
 		</form>
 

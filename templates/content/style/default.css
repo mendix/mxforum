@@ -30,6 +30,7 @@ body{
 	background-image: url('https://world.mendix.com/img/clouds.png');
 	background-repeat: no-repeat;
 	background-position: top center;
+	overflow-y: scroll;
 }
 blockquote, q
 {
