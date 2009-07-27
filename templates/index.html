@@ -132,9 +132,9 @@
       that whatever your other questions, give your valuable answer. [todo]
         </p>
         <div style="text-align:right">
-            <a href="/about">About »</a>
+            <a href="/about/">About »</a>
             <br>
-            <a href="/faq">FAQ »</a>
+            <a href="/faq/">FAQ »</a>
             <br>
         </div>
     </div>
@@ -147,7 +147,7 @@
             <a class="post-tag" rel="tag" title="View of the '{{ tag.name }}'" style="font-size:{% tag_font_size max min tag.used_count %}px;" href="{% url forum.views.tag tag.name|urlencode %}">{{ tag.name }}</a><span class="gray small" >({{ tag.used_count|intcomma }})</span>
         {% endfor %}
         <br>
-        <a href="/tags" style="float:right;position:relative">Popular tags »</a>
+        <a href="/tags/" style="float:right;position:relative">Popular tags »</a>
          <br>
     </div>
 </div>
@@ -167,7 +167,7 @@
 {% block tail %}
 <div>
     <h3>Looking for more? Browse the <a href="/questions">complete list of questions</a>,
-    or <a href="/tags">popular tags</a>. Help us<br> answer <a href="/questions/unanswered">unanswered questions</a>.
+    or <a href="/tags/">popular tags</a>. Help us<br> answer <a href="/questions/unanswered">unanswered questions</a>.
     </h3>
 </div>
 <div style="float:right">
