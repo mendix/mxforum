@@ -51,18 +51,18 @@ var Vote = function(){
         
     var acceptAnonymousMessage = "User rights are not operating range";
     var acceptOwnAnswerMessage = "can not set up your own answer as the best answer";
-    var favoriteAnonymousMessage = "anonymous users can not be the issue of collection, please log in or <a href='/account/signin/?next=/questions/{{QuestionID}}'> registration </ a>";
-    var voteAnonymousMessage = "anonymous users can not vote, please log in or <a href='/account/signin/?next=/questions/{{QuestionID}}'> registration </ a>";
-    var upVoteRequiredScoreMessage = "need +15 to vote in favor of integration. See <a href='/faq'> faq </ a>";
-    var downVoteRequiredScoreMessage = "need to be voted +100 points. See <a href='/faq'> faq </ a>";
+    var favoriteAnonymousMessage = "anonymous users can not be the issue of collection, please log in or <a href='/accounts/login/?next=/questions/{{QuestionID}}'> registration </ a>";
+    var voteAnonymousMessage = "anonymous users can not vote, please log in or <a href='/accounts/login/?next=/questions/{{QuestionID}}'> registration </ a>";
+    var upVoteRequiredScoreMessage = "need +15 to vote in favor of integration. See <a href='/faq/'> faq </ a>";
+    var downVoteRequiredScoreMessage = "need to be voted +100 points. See <a href='/faq/'> faq </ a>";
     var voteOwnDeniedMessage = "can not vote to post their own";
-    var voteRequiredMoreVotes = "Sorry, you have used up all of the voting today. See <a href='/faq'> faq </ a>";
-    var voteDenyCancelMessage = "This vote is outdated and can not be revoked. See <a href='/faq'> faq </ a>";
+    var voteRequiredMoreVotes = "Sorry, you have used up all of the voting today. See <a href='/faq/'> faq </ a>";
+    var voteDenyCancelMessage = "This vote is outdated and can not be revoked. See <a href='/faq/'> faq </ a>";
     var offensiveConfirmation = "sure you want to categorize the message for the advertising, personal attacks, malicious remarks?";
-    var offensiveAnonymousMessage = "anonymous users can not operate, please <a href='/account/signin/?next=/questions/{{QuestionID}}'> register or login </ a>";
-    var offensiveTwiceMessage = "can not repeat the operation. See <a href='/faq'> faq </ a>";
-    var offensiveNoFlagsLeftMessage = "Sorry, you have used up all 5 times today 'water with' operation. See <a href='/faq'> faq </ a>";
-    var offensiveNoPermissionMessage = "need to be classified +15 points' spam '. See <a href='/faq'> faq </ a>";
+    var offensiveAnonymousMessage = "anonymous users can not operate, please <a href='/accounts/login/?next=/questions/{{QuestionID}}'> register or login </ a>";
+    var offensiveTwiceMessage = "can not repeat the operation. See <a href='/faq/'> faq </ a>";
+    var offensiveNoFlagsLeftMessage = "Sorry, you have used up all 5 times today 'water with' operation. See <a href='/faq/'> faq </ a>";
+    var offensiveNoPermissionMessage = "need to be classified +15 points' spam '. See <a href='/faq/'> faq </ a>";
     var removeConfirmation = "sure you want to delete / remove the withdrawal with it?";
     var removeAnonymousMessage = "anonymous users can not delete or revoke delete posts";
     var recoveredMessage = "Operation successful! the posts have been restored.";
@@ -439,7 +439,7 @@ function createComments(type) {
         else {
             var divId = "comments-rep-needed-" + objectType + '-' + id;
             if (jDiv.find("#" + divId).length == 0) {
-                jDiv.append('<div id="' + divId + '" style="color:red">Comment on the need for ' + repNeededForComments + ' Community Points - <a href="/faq" class="comment-user">See faq</a></span>');
+                jDiv.append('<div id="' + divId + '" style="color:red">Comment on the need for ' + repNeededForComments + ' Community Points - <a href="/faq/" class="comment-user">See faq</a></span>');
             }
         }
     };
