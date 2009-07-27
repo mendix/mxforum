@@ -425,7 +425,7 @@
 {% block sidebar %}
 <div class="gray-box">
     <div class="paragraph">
-        This question has the following tags,
+        This question has the following tags:
     </div>
     <div class="paragraph-extra">
         {% for tag in tags %}
@@ -433,13 +433,13 @@
         {% endfor %}
     </div>
     <div class="paragraph">
-        Added <div class="big" title="{{ question.added_at }}">{{ question.added_at|timesince }} ago</div>
+        Askedro <div class="big" title="{{ question.added_at }}">{{ question.added_at|timesince }} ago</div>
     </div>
     <div class="paragraph"> 
-     Views : <div class="big">{{ question.view_count|intcomma }} views</div>
+     Viewed <div class="big">{{ question.view_count|intcomma }} views</div>
     </div>
     <div class="paragraph"> 
-        Last activity : <div class="big" title="{{ question.last_activity_at }}">{{ question.last_activity_at|timesince }} ago</div>
+        Latest activity : <div class="big" title="{{ question.last_activity_at }}">{{ question.last_activity_at|timesince }} ago</div>
     </div>
 </div>
 
