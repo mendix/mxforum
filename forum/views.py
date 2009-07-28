@@ -1765,6 +1765,43 @@ def upload(request):
 
     return HttpResponse(result, mimetype="application/xml")
 
+def search(request):
+    search = request.POST.get("ipSearchTag").strip()
+       
+    questions = Question.objects.filter(tagnames__icontains=search)
+
+    # RISK - inner join queries
+    #questions = questions.select_related();
+    tags = Tag.objects.all().order_by("-id")[:INDEX_TAGS_SIZE]
+
+    MIN = 1
+    MAX = 100
+    begin = end = 0
+    if len(tags) > 0:
+        sorted_tags = list(tag.used_count for tag in tags)
+        begin = min(sorted_tags)
+        end = max(sorted_tags)
+    mi = MIN if begin < MIN else begin
+    ma = MAX if end > MAX else end
+
+    awards = Award.objects.extra(
+        select={'badge_id': 'badge.id', 'badge_name':'badge.name',
+                      'badge_description': 'badge.description', 'badge_type': 'badge.type',
+                      'user_id': 'auth_user.id', 'user_name': 'auth_user.username'
+                      },
+        tables=['award', 'badge', 'auth_user'],
+        order_by=['-awarded_at'],
+        where=['auth_user.id=award.user_id AND badge_id=badge.id'],
+    ).values('badge_id', 'badge_name', 'badge_description', 'badge_type', 'user_id', 'user_name')
+
+    return render_to_response('search.html', {
+        "questions" : questions,
+        "tags" : tags,
+        "max" : ma,
+        "min" : mi,
+        "awards" : awards[:INDEX_AWARD_SIZE],
+        }, context_instance=RequestContext(request))
+
 #
 # WSDL fun
 # 
