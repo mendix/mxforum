@@ -114,14 +114,8 @@ def index(request):
         "awards" : awards[:INDEX_AWARD_SIZE],
         }, context_instance=RequestContext(request))
 
-def about(request):
-    return render_to_response('about.html', context_instance=RequestContext(request))
-
 def faq(request):
     return render_to_response('faq.html', context_instance=RequestContext(request))
-
-def privacy(request):
-    return render_to_response('privacy.html', context_instance=RequestContext(request))
 
 def unanswered(request):
     return questions(request, unanswered=True)
