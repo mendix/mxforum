@@ -9,8 +9,5 @@
         <a id="votes" {% ifequal tab_name "votes" %}class="youarehere"{% endifequal %} title="Users of all voting" href="/users/{{view_user.id}}/{{view_user.username}}?sort=votes">Vote</a>
         {% endif %}
         <a id="favorites" {% ifequal tab_name "favorites" %}class="youarehere"{% endifequal %} title="Collection of user issues" href="/users/{{view_user.id}}/{{view_user.username}}?sort=favorites">Favorites</a>
-        {% if request.user|can_view_user_preferences:view_user %}
-        <a id="preferences" {% ifequal tab_name "preferences" %}class="youarehere"{% endifequal %} title="User parameter settings" href="/users/{{view_user.id}}/{{view_user.username}}?sort=preferences">Set</a>
-        {% endif %}
     </div>
 </div>

@@ -65,12 +65,6 @@
                     <td>{{view_user.location}}</td>
                 </tr>
                 {% endif %}
-                {% if view_user.date_of_birth%}
-                <tr>
-                    <td>Age</td>
-                    <td>{% get_age view_user.date_of_birth %} 岁</td>
-                </tr>
-                {% endif %}
                 {% if votes_today_left %}
                 <tr>
                     <td>The remainder of the votes cast today</td>
