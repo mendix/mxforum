@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load extra_tags %}
 {% load humanize %}
-{% block title %}{% spaceless %}Home{% endspaceless %}{% endblock %}
+{% block title %}{% spaceless %}Search&nbsp;results{% endspaceless %}{% endblock %}
 {% block meta %}
   <meta name="keywords" content="mendix, community, mxforum, modeling, modeler, dsl" />
   <meta name="description" content="Mendix Community questions, discussions and items of interest" />
@@ -21,13 +21,8 @@
 {% block content %}
 <div id="main-bar" class="">
     <h3>
-        Recent&nbsp;Questions
+        Search&nbsp;results
     </h3>
-    <div id="tab" class="">
-        <a id="latest" href="?sort=latest" title="Lastest questions">Latest</a>
-        <a id="hottest" href="?sort=hottest" title="Hottest questions">Hottest</a>
-        <a id="mostvoted" href="?sort=mostvoted" title="Number of issues to vote">Most voted</a>
-    </div>
 
 </div>
 <div id="main-body" class="">
@@ -158,18 +153,5 @@
     {% endfor %}
     <a href="{% url badges %}" style="float:right;position:relative">Badges</a>
     <br>
-</div>
-{% endblock %}
-{% block tail %}
-<div>
-    <h3>Looking for more? Browse the <a href="/questions/">complete list of questions</a>,
-    or <a href="/tags/">popular tags</a>. Help us<br> answer <a href="/questions/unanswered">unanswered questions</a>.
-    </h3>
-</div>
-<div style="float:right">
-<span>
-<img src="/content/images/feed-icon-small.png" style="vertical-align:bottom"
-     title="RSS feed Mendix Community" height="14" width="14" border="0">
-<a href="/feeds/rss/" title="RSS feeds Mendix Community">RSS feeds</a></span>
 </div>
 {% endblock %}

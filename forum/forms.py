@@ -162,7 +162,6 @@ class EditUserForm(forms.Form):
     realname = forms.CharField(label=u'Real name', required=False, max_length=255, widget=forms.TextInput(attrs={'size' : 35}))
     website = forms.URLField(label=u'Personal Website', required=False, max_length=255, widget=forms.TextInput(attrs={'size' : 35}))
     city = forms.CharField(label=u'City', required=False, max_length=255, widget=forms.TextInput(attrs={'size' : 35}))
-    birthday = forms.DateField(label=u'Birthday', help_text=u'Will not open, will only show you the age, format：YYYY-MM-DD', required=True, widget=forms.TextInput(attrs={'size' : 35}))
     about = forms.CharField(label=u'Profile', required=False, widget=forms.Textarea(attrs={'cols' : 60}))
 
     def __init__(self, user, *args, **kwargs):
@@ -172,10 +171,6 @@ class EditUserForm(forms.Form):
         self.fields['website'].initial = user.website
         self.fields['city'].initial = user.location
 
-        if user.date_of_birth is not None:
-            self.fields['birthday'].initial = user.date_of_birth.date()
-        else:
-            self.fields['birthday'].initial = '1990-01-01'
         self.fields['about'].initial = user.about
         self.user = user
 

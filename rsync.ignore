@@ -1,0 +1,7 @@
+*.svn
+*~
+rsync.ignore
+*.pyc
+settings.py
+local_settings.py
+.gitignore

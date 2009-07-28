@@ -948,15 +948,11 @@ def edit_user(request, id):
             user.real_name = sanitize_html(form.cleaned_data['realname'])
             user.website = sanitize_html(form.cleaned_data['website'])
             user.location = sanitize_html(form.cleaned_data['city'])
-            user.date_of_birth = sanitize_html(form.cleaned_data['birthday'])
-            if len(user.date_of_birth) == 0:
-                user.date_of_birth = '1900-01-01'
             user.about = sanitize_html(form.cleaned_data['about'])
 
             user.save()
             # send user updated singal if full fields have been updated
-            if user.email and user.real_name and user.website and user.location and \
-                user.date_of_birth and user.about:
+            if user.email and user.real_name and user.website and user.location and user.about:
                 user_updated.send(sender=user.__class__, instance=user, updated_by=user)
             return HttpResponseRedirect(user.get_profile_url())
     else:
