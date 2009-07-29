@@ -395,9 +395,6 @@
                             <td>
                                 <span id="pre-collapse" title="Open or close the real-time editor Markdown preview">Preview switch</span>
                             </td>
-                            <td style="text-align:right;">
-                                {{ answer.wiki }} <span style="font-weight:normal;cursor:help" title="{{answer.wiki.help_text}}">{{ answer.wiki.label_tag }} </span>
-                            </td>
                         </tr>
                     
                     </table>  
@@ -433,7 +430,7 @@
         {% endfor %}
     </div>
     <div class="paragraph">
-        Askedro <div class="big" title="{{ question.added_at }}">{{ question.added_at|timesince }} ago</div>
+        Asked <div class="big" title="{{ question.added_at }}">{{ question.added_at|timesince }} ago</div>
     </div>
     <div class="paragraph"> 
      Viewed <div class="big">{{ question.view_count|intcomma }} views</div>

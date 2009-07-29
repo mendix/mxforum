@@ -5,3 +5,4 @@ rsync.ignore
 settings.py
 local_settings.py
 .gitignore
+*.swp
