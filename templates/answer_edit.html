@@ -18,7 +18,7 @@
                              
             //toggle preview of editor
             var display = true;
-            var txt = "禁用预览";
+            var txt = "Disable preview";
             $('#pre-collapse').text(txt);
             $('#pre-collapse').bind('click', function(){
                 txt = display ? "Opening preview" : "Disable preview";
@@ -42,7 +42,7 @@
 {% block content %}
 <div id="main-bar" class="">
     <h3>
-        Amend the answer [<a href="{{ answer.question.get_absolute_url }}#{{ answer.id }}">Return</a>]
+        Amend&nbsp;the&nbsp;answer&nbsp;[<a href="{{ answer.question.get_absolute_url }}#{{ answer.id }}">Return</a>]
     </h3>
     
 </div>

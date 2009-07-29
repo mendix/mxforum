@@ -27,18 +27,18 @@ Attacklab.wmdBase = function(){
 	global.isOpera 		= /opera/.test(nav.userAgent.toLowerCase());
 	global.isKonqueror 	= /konqueror/.test(nav.userAgent.toLowerCase());
 	
-	var toolbar_strong_label = "粗体 <strong> Ctrl-B";
-    var toolbar_emphasis_label = "斜体 <em> Ctrl-I";
-    var toolbar_hyperlink_label = "超链接 <a> Ctrl-L";
-    var toolbar_blockquote_label = "引用 <blockquote> Ctrl-.";
-    var toolbar_code_label = "代码 <pre><code> Ctrl-K";
-    var toolbar_image_label = "图片 <img> Ctrl-G";
-    var toolbar_numbered_label = "数字编号列表 <ol> Ctrl-O";
-    var toolbar_bulleted_label = "项目符号列表 <ul> Ctrl-U";
-    var toolbar_heading_label = "标题 <h1>/<h2> Ctrl-H";
-    var toolbar_horizontal_label = "水平线 <hr> Ctrl-R";
-    var toolbar_undo_label = "撤销 Ctrl-Z";
-    var toolbar_redo_label = "重做 Ctrl-Y";
+	var toolbar_strong_label = "Bold <strong> Ctrl-B";
+    var toolbar_emphasis_label = "Italic <em> Ctrl-I";
+    var toolbar_hyperlink_label = "Hyperlinks <a> Ctrl-L";
+    var toolbar_blockquote_label = "Quote <blockquote> Ctrl-.";
+    var toolbar_code_label = "Code <pre><code> Ctrl-K";
+    var toolbar_image_label = "Picture <img> Ctrl-G";
+    var toolbar_numbered_label = "List of figures <ol> Ctrl-O";
+    var toolbar_bulleted_label = "Bulleted list <ul> Ctrl-U";
+    var toolbar_heading_label = "Title <h1>/<h2> Ctrl-H";
+    var toolbar_horizontal_label = "Horizontal <hr> Ctrl-R";
+    var toolbar_undo_label = "Revocation Ctrl-Z";
+    var toolbar_redo_label = "Redo Ctrl-Y";
     
 	// -------------------------------------------------------------------
 	//  YOUR CHANGES GO HERE
@@ -49,19 +49,13 @@ Attacklab.wmdBase = function(){
 	
 	// The text that appears on the upper part of the dialog box when
 	// entering links.
-	var imageDialogText = "<p style='margin-top: 0px'><b>输入图片地址</b></p><p>示例：<br />"+
-    "http://www.cnprog.com/images/temp.jpg   \"我的截图\"</p>";
-	var linkDialogText = "<p style='margin-top: 0px'><b>输入Web地址</b></p><p>示例：<br />"+
-        "http://www.cnprog.com/   \"我的网站\"</p>";
-	var uploadImageHTML ="<div>或者上传本地图片：</div>" + 
-        "<input type=\"file\" name=\"file-upload\" id=\"file-upload\" size=\"26\" "+
-        "onchange=\"return ajaxFileUpload($('#image-url'));\"/><br>" + 
-        "<img id=\"loading\" src=\"/content/images/indicator.gif\" style=\"display:none;\"/>";
+	var imageDialogText = "<p style='margin-top: 0px'><b>Enter address</b></p>";
+	var linkDialogText = "<p style='margin-top: 0px'><b>输入Web地址</b></p>";
     
 	// The default text that appears in the dialog input box when entering
 	// links.
-	var imageDefaultText = "http://";
-	var linkDefaultText = "http://";
+	var imageDefaultText = "https://";
+	var linkDefaultText = "https://";
 	
 	// The location of your button images relative to the base directory.
 	var imageDirectory = "images/";
@@ -1087,22 +1081,8 @@ Attacklab.wmdBase = function(){
 			};
 			setupButton(redoButton, true);
 			buttonRow.appendChild(redoButton); 
-			/*
-			var helpButton = document.createElement("li");
-			helpButton.className = "wmd-button";
-			helpButton.id = "wmd-help-button";
-			helpButton.XShift = "-240px";
-			helpButton.isHelp = true;
-			
-			var helpAnchor = document.createElement("a");
-			helpAnchor.href = helpLink;
-			helpAnchor.target = helpTarget
-			helpAnchor.title = helpHoverTitle;
-			helpButton.appendChild(helpAnchor);
-			
-			setupButton(helpButton, true);
 			buttonRow.appendChild(helpButton);
-			*/
+			
 			setUndoRedoButtonStates();
 		}
 		
