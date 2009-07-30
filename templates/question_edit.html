@@ -60,7 +60,7 @@
 {% block content %}
 <div id="main-bar" class="">
     <h3>
-        Modification&nbsp;[<a href="{{ question.get_absolute_url }}">return</a>]
+        Modification [<a href="{{ question.get_absolute_url }}">return</a>]
     </h3>
     
 </div>
@@ -88,6 +88,9 @@
                         <tr>
                             <td>
                                 <span id="pre-collapse" title="Open or close the real-time editor Markdown preview">Preview switch</span>
+                            </td>
+                            <td style="text-align:right;">
+                                {{ form.wiki }} <span style="color:#000;cursor:help" title="{{form.wiki.help_text}}">{{ form.wiki.label_tag }} </span>
                             </td>
                         </tr>
                     
@@ -119,27 +122,6 @@
 {% endblock %}
 
 {% block sidebar %}
-<div class="yellow-box">
-    <h3 class="darkred">Popular questions</h3>
-    <div>
-        <ul class="list-item">
-            <li>
-                <b>Your programming associated with it?</b>
-            </li>
-            <li>
-		We recommend that you question can be answered, and not only can be discussed.
-            </li>
-            <li>
-               Please describe your problem in detail.
-            </li>
-            <li>
-                We recommend you use the Chinese description of the problem, so that answer can be given more opportunities.。
-            </li>
-        </ul>
-         <a href="/faq/" target="_blank" title="See Frequently Asked Questions" style="float:right;position:relative">faq »</a>
-         <br>  
-    </div>
-</div>
 
 <div class="gray-box">
     <h3>Quick Reference Markdown</h3>
