@@ -1,7 +1,7 @@
 {% extends "base_content.html" %}
 {% load extra_tags %}
 {% load humanize %}
-{% block title %}{% spaceless %}{{ badge.name }}-Medal{% endspaceless %}{% endblock %}
+{% block title %}{% spaceless %}{{ badge.name }}-Badge{% endspaceless %}{% endblock %}
 {% block forejs %}
        <script type="text/javascript">
         $().ready(function(){
@@ -13,7 +13,7 @@
 {% block content %}
 <div id="main-bar" class="">
     <h3>
-        Medal
+        Badge
     </h3>
 </div>
 <div id="main-body" style="width:100%;margin-bottom:20px">
@@ -23,7 +23,7 @@
     <div>
         {% if badge.awarded_count %}
         <div style="float:left"><span class="summarycount">{{ awards|length|intcomma }}</span></div>
-        <div style="float:left;padding:12px 0px 0px 5px"><h2>The user has been awarded the medal. The user has recently been awarded are:</h2></div>
+        <div style="float:left;padding:12px 0px 0px 5px"><h2>The users who recently deserved this badge are:</h2></div>
         {% endif %}
     </div>
     <div id="award-list" style="clear:both;margin-left:20px;line-height:25px;">

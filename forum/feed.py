@@ -13,9 +13,9 @@
 from django.contrib.syndication.feeds import Feed, FeedDoesNotExist
 from models import Question
 class RssLastestQuestionsFeed(Feed):
-    title = u"Mendix Programmer Q & A community - the latest issue of"
+    title = u"Mendix Forum"
     link = u"https://mxforum.mendix.com/questions/"
-    description = u"English programmers Q & A community-based programming technology. We do professional and collaborative editing technology can Q & A community."
+    description = u"The place where modelers and developers meet to discess, ask and answer Mendix related questions and topics."
     #ttl = 10
     #copyright = u'Copyright(c)2009.CNPROG.COM'
     copyright = u'Copyright(c)2009.MENDIX.COM'
