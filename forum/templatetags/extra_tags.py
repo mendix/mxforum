@@ -113,19 +113,19 @@ def cnprog_pagesize(context):
         
 @register.simple_tag
 def get_score_badge(user):
-    BADGE_TEMPLATE = '<span class="reputation-score" title="%(reputation)s用户积分">%(reputation)s</span>'
+    BADGE_TEMPLATE = '<span class="reputation-score" title="%(reputation)s User points">%(reputation)s</span>'
     if user.gold > 0 :
-        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(gold)s枚金牌">'
+        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(gold)s Gold medals">'
         '<span class="badge1">●</span>'
         '<span class="badgecount">%(gold)s</span>'
         '</span>')
     if user.silver > 0:
-        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(silver)s枚银牌">'
+        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(silver)s Silver medals">'
         '<span class="badge2">●</span>'
         '<span class="badgecount">%(silver)s</span>'
         '</span>')
     if user.bronze > 0:
-        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(bronze)s枚铜牌">'
+        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(bronze)s Bronze medals">'
         '<span class="badge3">●</span>'
         '<span class="badgecount">%(bronze)s</span>'
         '</span>')
@@ -139,19 +139,19 @@ def get_score_badge(user):
     
 @register.simple_tag
 def get_score_badge_by_details(rep, gold, silver, bronze):
-    BADGE_TEMPLATE = '<span class="reputation-score" title="%(reputation)s用户积分">%(reputation)s</span>'
+    BADGE_TEMPLATE = '<span class="reputation-score" title="%(reputation)s User reputation">%(reputation)s</span>'
     if gold > 0 :
-        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(gold)s枚金牌">'
+        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(gold)s Gold medals">'
         '<span class="badge1">●</span>'
         '<span class="badgecount">%(gold)s</span>'
         '</span>')
     if silver > 0:
-        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(silver)s枚银牌">'
+        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(silver)s Silver medals">'
         '<span class="badge2">●</span>'
         '<span class="badgecount">%(silver)s</span>'
         '</span>')
     if bronze > 0:
-        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(bronze)s枚铜牌">'
+        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(bronze)s Bronze medals">'
         '<span class="badge3">●</span>'
         '<span class="badgecount">%(bronze)s</span>'
         '</span>')
