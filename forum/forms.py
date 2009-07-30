@@ -160,7 +160,7 @@ class EditAnswerForm(forms.Form):
         self.fields['text'].initial = revision.text
 
 class EditUserForm(forms.Form):
-    email = forms.EmailField(label=u'Email', help_text=u'Will not be used for image display services', required=False, max_length=255, widget=forms.TextInput(attrs={'size' : 35}))
+    email = forms.EmailField(label=u'Email', help_text=u'Changing your gravatar', required=False, max_length=255, widget=forms.TextInput(attrs={'size' : 35}))
     realname = forms.CharField(label=u'Real name', required=False, max_length=255, widget=forms.TextInput(attrs={'size' : 35}))
     website = forms.URLField(label=u'Personal Website', required=False, max_length=255, widget=forms.TextInput(attrs={'size' : 35}))
     city = forms.CharField(label=u'City', required=False, max_length=255, widget=forms.TextInput(attrs={'size' : 35}))

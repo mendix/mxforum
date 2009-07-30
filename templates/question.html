@@ -71,10 +71,10 @@
                             <img id="question-img-downvote-{{ question.id }}" class="question-img-downvote" src="/content/images/vote-arrow-down.png" title="Vote down" >    
                             {% endif %}
                             {% if favorited %}
-                            <img class="question-img-favorite" src="/content/images/vote-favorite-on.png" title="Collection of this issue I would like to (once again click cancel)" >
+                            <img class="question-img-favorite" src="/content/images/vote-favorite-on.png" title="Remove from favorites" >
                             <div id="favorite-number" class="favorite-number my-favorite-number">{{ question.favourite_count }}</div>
                             {% else %}
-                            <img class="question-img-favorite" src="/content/images/vote-favorite-off.png" title="Collection of this issue I would like to (once again click cancel)" >   
+                            <img class="question-img-favorite" src="/content/images/vote-favorite-off.png" title="Add to favorites" >   
                                 
                             <div id="favorite-number" class="favorite-number">{% ifnotequal question.favourite_count 0 %}{{ question.favourite_count }}{% endifnotequal %}</div>
                         

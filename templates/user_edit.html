@@ -15,7 +15,7 @@
 {% block content %}
 <div id="main-bar" class="">
     <h3>
-        {{ request.user.username }}&nbsp;-&nbsp;Modify&nbsp;the&nbsp;information
+        {{ request.user.first_name }}&nbsp;-&nbsp;Edit&nbsp;user&nbsp;info
     </h3>
 </div>
 <div id="main-body" style="width:100%;padding-top:10px">
@@ -27,7 +27,7 @@
             <img src="/content/images/nophoto.png">
             {% endif %}
             <div style="padding:20px 0 0 20px;font-weight:bold;font-size:150%">
-                <a href="http://www.gravatar.com/" target="_blank" title="gravatar and your e-mail address is bound">Modified head</a>
+                <a href="http://www.gravatar.com/" target="_blank" title="gravatar and your e-mail address is bound">Change Gravatar</a>
             </div>
         </div>
         
