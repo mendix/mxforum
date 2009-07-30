@@ -12,7 +12,7 @@ from forum.const import *
 register = template.Library()
 
 GRAVATAR_TEMPLATE = ('<img width="%(size)s" height="%(size)s" '
-                     'src="http://www.gravatar.com/avatar/%(gravatar_hash)s'
+                     'src="https://secure.gravatar.com/avatar/%(gravatar_hash)s'
                      '?s=%(size)s&d=identicon&r=PG">')
 
 @register.simple_tag
