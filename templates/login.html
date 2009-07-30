@@ -18,11 +18,11 @@
 		<p>Your username and password didn't match. Please try again.</p>
 		{% endif %}
 
-		<form method="post" action="{% url django.contrib.auth.views.login %}">
+		<form method="post" action="/accounts/login/">
 		<table style="margin: 2px;">
 		<tr>
 				<td width="100px" style="padding: 2px;">{{ form.username.label_tag }}:</td>
-				<td style="padding: 2px;"><input type="text" maxlength="50" name="username" id="id_username"/></td>
+				<td style="padding: 2px;">{{ form.username }}</td>
 		</tr>
 		<tr>
 				<td style="padding: 2px;">{{ form.password.label_tag }}:</td>

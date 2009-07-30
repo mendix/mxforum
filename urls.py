@@ -2,8 +2,8 @@ import os.path
 from django.conf.urls.defaults import *
 from django.contrib import admin
 from django.contrib.auth import *
-from django.contrib.auth.views import login, logout
-from forum.views import index
+from django.contrib.auth.views import logout
+from forum.views import index, frank_login
 from forum import views as app
 from forum.feed import RssLastestQuestionsFeed
 
@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     (r'^upfiles/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': os.path.join(APP_PATH, 'templates/upfiles').replace('\\','/')}
     ),
-    (r'^accounts/login/$',  login, {'template_name': 'login.html', 'redirect_field_name' : '/'}),
+    (r'^accounts/login/$',  frank_login, {'template_name': 'login.html', 'redirect_field_name' : '/'}),
     (r'^accounts/logout/$',  logout, {'template_name': 'logout.html'}),
     (r'^accounts/profile/$',  app.profile),
     url(r'^faq/$', app.faq, name='faq'),
