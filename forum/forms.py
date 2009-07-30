@@ -42,7 +42,7 @@ class TagNamesField(forms.CharField):
         self.widget = forms.TextInput(attrs={'size' : 50, 'autocomplete' : 'off'})
         self.max_length = 255
         self.label  = u'Tags'
-        self.help_text = u'Please use spaces to separate tags'
+        self.help_text = u'Please use spaces to separate tags and use - to combine words, for example: model-driven'
         self.initial = ''
 
     def clean(self, value):
