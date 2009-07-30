@@ -60,7 +60,7 @@
 {% block content %}
 <div id="main-bar" class="">
     <h3>
-        Modification [<a href="{{ question.get_absolute_url }}">return</a>]
+        Modification&nbsp;[<a href="{{ question.get_absolute_url }}">return</a>]
     </h3>
     
 </div>
@@ -89,9 +89,6 @@
                             <td>
                                 <span id="pre-collapse" title="Open or close the real-time editor Markdown preview">Preview switch</span>
                             </td>
-                            <td style="text-align:right;">
-                                {{ form.wiki }} <span style="color:#000;cursor:help" title="{{form.wiki.help_text}}">{{ form.wiki.label_tag }} </span>
-                            </td>
                         </tr>
                     
                     </table>   
@@ -115,7 +112,7 @@
             <br>
 
             <div class="error" ></div>
-            <input type="submit" value="Now revised" class="submit" />
+            <input type="submit" value="Edit" class="submit" />
         </form>
     </div>
 </div>

@@ -62,13 +62,13 @@
                     <td style="width:50px;vertical-align:top">
                         <div class="vote-buttons">
                             {% if question_vote %}
-                            <img id="question-img-upvote-{{ question.id }}" class="question-img-upvote" src="/content/images/vote-arrow-up{% if question_vote.is_upvote %}-on{% endif %}.png" title="This post valuable (once again click cancel)" >
+                            <img id="question-img-upvote-{{ question.id }}" class="question-img-upvote" src="/content/images/vote-arrow-up{% if question_vote.is_upvote %}-on{% endif %}.png" title="Vote up" >
                             <div id="question-vote-number-{{ question.id }}" class="vote-number">{{ question.score }}</div>
-                            <img id="question-img-downvote-{{ question.id }}" class="question-img-downvote" src="/content/images/vote-arrow-down{% if question_vote.is_downvote %}-on{% endif %}.png" title="This post has no value (again click cancel)" >
+                            <img id="question-img-downvote-{{ question.id }}" class="question-img-downvote" src="/content/images/vote-arrow-down{% if question_vote.is_downvote %}-on{% endif %}.png" title="Vote down" >
                             {% else %}
-                            <img id="question-img-upvote-{{ question.id }}" class="question-img-upvote" src="/content/images/vote-arrow-up.png" title="This post valuable (once again click cancel)" >
+                            <img id="question-img-upvote-{{ question.id }}" class="question-img-upvote" src="/content/images/vote-arrow-up.png" title="Vote up" >
                             <div id="question-vote-number-{{ question.id }}" class="vote-number">{{ question.score }}</div>
-                            <img id="question-img-downvote-{{ question.id }}" class="question-img-downvote" src="/content/images/vote-arrow-down.png" title="This post has no value (again click cancel)" >    
+                            <img id="question-img-downvote-{{ question.id }}" class="question-img-downvote" src="/content/images/vote-arrow-down.png" title="Vote down" >    
                             {% endif %}
                             {% if favorited %}
                             <img class="question-img-favorite" src="/content/images/vote-favorite-on.png" title="Collection of this issue I would like to (once again click cancel)" >
@@ -117,7 +117,7 @@
                                             {% endif %}
                                             {% endif %}
                                             
-                                            <span id="question-offensive-flag-{{ question.id }}" class="offensive-flag" title="To refuse to report the message 'with water' (including advertising, personal attacks, malicious speech, etc.)"><a>Spam?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if question.offensive_flag_count %}({{ question.offensive_flag_count }}){% endif %}{% endif %}</span>
+                                            <span id="question-offensive-flag-{{ question.id }}" class="offensive-flag" title="Report as spam"><a>Spam?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if question.offensive_flag_count %}({{ question.offensive_flag_count }}){% endif %}{% endif %}</span>
                                                              
                                             </span>
                                             
@@ -241,9 +241,9 @@
                             <tr>
                                 <td style="width:50px;vertical-align:top">
                                     <div class="vote-buttons">
-                                        <img id="answer-img-upvote-{{ answer.id }}" class="answer-img-upvote" src="/content/images/vote-arrow-up{% get_user_vote_image user_answer_votes answer.id 1 %}.png" title="This post valuable (once again click cancel)" >
+										<img id="answer-img-upvote-{{ answer.id }}" class="answer-img-upvote" src="/content/images/vote-arrow-up{% get_user_vote_image user_answer_votes answer.id 1 %}.png" title="Vote up" >
                                         <div id="answer-vote-number-{{ answer.id }}" class="vote-number">{{ answer.score }}</div>
-                                        <img id="answer-img-downvote-{{ answer.id }}" class="answer-img-downvote" src="/content/images/vote-arrow-down{% get_user_vote_image user_answer_votes answer.id -1 %}.png" title="This post has no value (again click cancel)" >
+                                        <img id="answer-img-downvote-{{ answer.id }}" class="answer-img-downvote" src="/content/images/vote-arrow-down{% get_user_vote_image user_answer_votes answer.id -1 %}.png" title="Vote down" >
                                         {% ifequal request.user question.author  %}
                                         <img id="answer-img-accept-{{ answer.id }}" class="answer-img-accept" src="/content/images/vote-accepted{% if answer.accepted %}-on{% endif %}.png" title="The best answer (once again click cancel)" >
                                         {% else %}
@@ -276,7 +276,7 @@
                                                             </a>
                                                         </span>
                                                         <span class="action-link-separator">|</span>
-                                                        <span id="answer-offensive-flag-{{ answer.id }}" class="offensive-flag" title="To refuse to report the message 'with water' (including advertising, personal attacks, malicious speech, etc.)"><a>Mark as spam/offensive?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if answer.offensive_flag_count %}({{ answer.offensive_flag_count }}){% endif %}{% endif %}</span></span>
+                                                        <span id="answer-offensive-flag-{{ answer.id }}" class="offensive-flag" title="Report as spam"><a>Mark as spam/offensive?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if answer.offensive_flag_count %}({{ answer.offensive_flag_count }}){% endif %}{% endif %}</span></span>
                                                     </td>
                         	                    	<td width="200px" style="vertical-align:top">
                                                     {% if answer.last_edited_by %}

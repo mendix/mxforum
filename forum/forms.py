@@ -13,7 +13,7 @@ class TitleField(forms.CharField):
         self.widget = forms.TextInput(attrs={'size' : 70, 'autocomplete' : 'off'})
         self.max_length = 255
         self.label  = u'Title'
-        self.help_text = u'Please enter a description of the nature of the problem with the title - "Help! Urgent!" Is not a recommended description.'
+        self.help_text = u''
         self.initial = ''
 
     def clean(self, value):
@@ -85,7 +85,7 @@ class SummaryField(forms.CharField):
         self.widget = forms.TextInput(attrs={'size' : 50, 'autocomplete' : 'off'})
         self.max_length = 300
         self.label  = u'Update Summary：'
-        self.help_text = u'Enter the revised brief overview (for example: Do not modify the word and correct the grammar, such as improved style. Non-required.)'
+        self.help_text = u'Changes made'
 
 class AskForm(forms.Form):
     title  = TitleField()

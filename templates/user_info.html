@@ -49,7 +49,7 @@
                 </tr>
                 {% if view_user.last_seen %}
                 <tr>
-                    <td>Seen</td>
+                    <td>Last activity</td>
                     <td><span class="relativetime" title="{{ view_user.last_seen }}">{{ view_user.last_seen|timesince }} ago</span></td>
                 </tr>
                 {% endif %}
@@ -67,7 +67,7 @@
                 {% endif %}
                 {% if votes_today_left %}
                 <tr>
-                    <td>The remainder of the votes cast today</td>
+                    <td>Votes left today</td>
                     <td><span class="big darkred">{{ votes_today_left }}</span> Votes</td>
                 </tr>
                 {% endif %}
