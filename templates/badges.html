@@ -23,12 +23,6 @@
     <div id="badge-list">
         {% for badge in badges %}
         <div style="clear:both;line-height:30px">
-            
-            {% for a in mybadges %}
-                {% ifequal a.badge_id badge.id %}
-                 <span style="font-size:175%; padding-right:5px; color:#5B9058;">&#10004;</span>
-                {% endifequal %}
-            {% endfor %}
             </div>
             <div style="float:left;width:230px;">
                 <a href="{{badge.get_absolute_url}}" title="{{ badge.get_type_display }} : {{ badge.description }}" class="badge"><span class="badge{{ badge.type }}">&#9679;</span>&nbsp;{{ badge.name }}</a><span class="tag-number"> × {{ badge.awarded_count|intcomma }}</span>
