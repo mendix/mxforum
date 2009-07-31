@@ -8,7 +8,7 @@ CLOSE_REASONS = (
     (2, u'Technical issues rather than programming'),
     (3, u'Too subjective, the question arising from a quarrel'),
     (4, u'Is not an answer to the "problem"'),
-    (5, u'Problems have been solved, have been the right answer'),
+    (5, u'Accepted answer has been provided'),
     (6, u'Is outdated and can not reproduce the problem'),
     (7, u'Too local, the question of the localization'),
     (8, u'Malicious remarks'),
