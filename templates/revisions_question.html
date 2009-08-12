@@ -62,7 +62,7 @@
                                 <tr >
                                     <td colspan="2" style="padding:3px 0 3px 0"> 
                                         {% ifequal revision.revision 1 %}
-                                        Question<strong title="{{ post.added_at }}">{% diff_date post.added_at  %}</strong>
+                                        Asked<strong title="{{ post.added_at }}">{% diff_date post.added_at  %}</strong>
                                         {% else %}
                                         Updated<strong title="{{ post.last_edited_at }}">{% diff_date revision.revised_at  %}</strong>
                                         {% endifequal %}

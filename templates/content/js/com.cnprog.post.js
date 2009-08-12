@@ -551,7 +551,7 @@ function createComments(type) {
             var length = textarea.value ? textarea.value.length : 0;
             var color = length > 270 ? "#f00" : length > 200 ? "#f60" : "#999";
             var jSpan = $(textarea).siblings("span.text-counter");
-            jSpan.html('Can write ' + (300 - length) + ' characters').css("color", color);
+            jSpan.html('Maximum of ' + (300 - length) + ' characters').css("color", color);
         }
     };
 }
