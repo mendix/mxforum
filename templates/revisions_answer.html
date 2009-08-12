@@ -60,9 +60,9 @@
                                 <tr >
                                     <td colspan="2" style="padding:3px 0 3px 0"> 
                                         {% ifequal revision.revision 1 %}
-                                        提问于<strong title="{{ post.added_at }}">{% diff_date post.added_at  %}</strong>
+                                        Question<strong title="{{ post.added_at }}">{% diff_date post.added_at  %}</strong>
                                         {% else %}
-                                        更新于<strong title="{{ post.last_edited_at }}">{% diff_date revision.revised_at  %}</strong>
+                                        Updated<strong title="{{ post.last_edited_at }}">{% diff_date revision.revised_at  %}</strong>
                                         {% endifequal %}
                                     </td>
                                     
