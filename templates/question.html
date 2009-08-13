@@ -263,7 +263,7 @@
                         	                    <tr>
                                                     <td width="200px" style="vertical-align:top">
                                                         {% if request.user|can_edit_post:answer %}
-                                                        <span class="action-link"><a href="{% url edit_answer answer.id %}">Editor</a></span>
+                                                        <span class="action-link"><a href="{% url edit_answer answer.id %}">Edit</a></span>
                                                         <span class="action-link-separator">|</span>
                                                         {% endif %}
                                                         {% if request.user|can_delete_post:answer %}
@@ -271,12 +271,12 @@
                                                         <span class="action-link-separator">|</span>
                                                         {% endif %}
                                                         <span class="linksopt">
-                                                            <a href="#{{ answer.id }}" title="The answer to the link address">
+                                                            <a href="#{{ answer.id }}" title="Link to specific answer">
                                                             Link
                                                             </a>
                                                         </span>
                                                         <span class="action-link-separator">|</span>
-                                                        <span id="answer-offensive-flag-{{ answer.id }}" class="offensive-flag" title="Report as spam"><a>Mark as spam/offensive?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if answer.offensive_flag_count %}({{ answer.offensive_flag_count }}){% endif %}{% endif %}</span></span>
+                                                        <span id="answer-offensive-flag-{{ answer.id }}" class="offensive-flag" title="Report as spam"><a>Mark as spam / offensive?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if answer.offensive_flag_count %}({{ answer.offensive_flag_count }}){% endif %}{% endif %}</span></span>
                                                     </td>
                         	                    	<td width="200px" style="vertical-align:top">
                                                     {% if answer.last_edited_by %}
