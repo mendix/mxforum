@@ -316,7 +316,7 @@ class Command(BaseCommand):
                 object_id = row[2]
                 
                 user = get_object_or_404(User, id=user_id)
-                award = Award(user=user, badge=badge, content_type=content_type, object_id=objet_id)
+                award = Award(user=user, badge=badge, content_type=content_type, object_id=object_id)
                 award.save()
                 
                 if update_auditted:
