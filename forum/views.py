@@ -18,6 +18,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import *
 from django.contrib.sites.models import Site
 
+from django.db.models import Q
+
 from utils.html import sanitize_html
 from markdown2 import Markdown
 #from lxml.html.diff import htmldiff
@@ -165,13 +167,11 @@ def questions(request, tagname=None, unanswered=False):
 
     # check if request is from tagged questions
     if tagname is not None:
-        #print datetime.datetime.now()
         objects = Question.objects.filter(deleted=False, tags__name = unquote(tagname)).order_by(orderby)
-        #print datetime.datetime.now()
     elif unanswered:
         #check if request is from unanswered questions
         template_file = "unanswered.html"
-        objects = Question.objects.filter(deleted=False, answer_count=0).order_by(orderby)
+        objects = Question.objects.filter(Q(answer_count__gt=2) | Q(answer_accepted=False), deleted=False).order_by(orderby)
     else:
         objects = Question.objects.filter(deleted=False).order_by(orderby)
 
