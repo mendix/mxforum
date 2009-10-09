@@ -439,7 +439,7 @@ function createComments(type) {
         else {
             var divId = "comments-rep-needed-" + objectType + '-' + id;
             if (jDiv.find("#" + divId).length == 0) {
-                jDiv.append('<div id="' + divId + '" style="color:red">Comment on the need for ' + repNeededForComments + ' Community Points - <a href="/faq/" class="comment-user">See faq</a></span>');
+                jDiv.append('<div id="' + divId + '" style="color:red">You need at least ' + repNeededForComments + ' Community Points to comment- <a href="/faq/" class="comment-user">See faq</a></span>');
             }
         }
     };
