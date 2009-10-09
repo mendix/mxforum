@@ -57,7 +57,7 @@ class TagNamesField(forms.CharField):
         if len(list) > 5:
             raise forms.ValidationError(u'There can be up to 5 labels')
         for tag in list:
-            if len(tag) > 20:
+            if len(tag) > 30:
                 raise forms.ValidationError(u'The length of each label of no more than 20')
 
             #TODO: regex match not allowed characters here
