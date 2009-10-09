@@ -1766,7 +1766,7 @@ def upload(request):
 def search(request):
     search = request.POST.get("ipSearchTag").strip()
        
-    questions = Question.objects.filter(tagnames__icontains=search)
+    questions = Question.objects.filter(Q(tagnames__icontains=search) | Q(html__contains=search), deleted=False)
 
     # RISK - inner join queries
     #questions = questions.select_related();
