@@ -1629,7 +1629,7 @@ def __comments(request, obj, type, user):
             return __generate_comments_json(obj, type, user)
 
 def __generate_comments_json(obj, type, user):
-    comments = obj.comments.all().order_by('-id')
+    comments = obj.comments.all().order_by('added_at')
     # {"Id":6,"PostId":38589,"CreationDate":"an hour ago","Text":"hello there!","UserDisplayName":"Jarrod Dixon","UserUrl":"/users/3/jarrod-dixon","DeleteUrl":null}
     json_comments = []
     for comment in comments:
