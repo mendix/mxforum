@@ -872,6 +872,7 @@ def vote(request, id):
                 else:
                     onDeleted(post, request.user)
                     delete_post_or_answer.send(sender=post.__class__, instance=post, delete_by=request.user)
+                Question.objects.update_answer_count(question)
         else:
             response_data['success'] = 0
             response_data['message'] = u'Request mode is not supported. Please try again.'
