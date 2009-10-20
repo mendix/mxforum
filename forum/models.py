@@ -11,6 +11,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.template.defaultfilters import slugify
 from django.db.models.signals import post_delete, post_save, pre_save
 import django.dispatch
+import re
 
 from forum.managers import *
 from const import *
@@ -151,7 +152,7 @@ class Question(models.Model):
         return [name for name in self.tagnames.split(u' ')]
 
     def get_absolute_url(self):
-        return ('%s%s' % (reverse('question', args=[self.id]), self.title)).replace(" ", "_")
+        return ('%s%s' % (reverse('question', args=[self.id]), re.compile('[^a-zA-Z0-9\s]+').sub('', self.title))).replace(' ','-')
 
     def has_favorite_by_user(self, user):
         if not user.is_authenticated():
