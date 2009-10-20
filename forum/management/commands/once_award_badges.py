@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 #encoding:utf-8
 #-------------------------------------------------------------------------------
 # Name:        Award badges command
@@ -123,14 +123,14 @@ class Command(BaseCommand):
         """
         This will award below badges for users first behaviors:
 
-        (7, '巡逻兵', 3, '巡逻兵', '第一次标记垃圾帖子', 0, 0),
-        (8, '清洁工', 3, '清洁工', '第一次撤销投票', 0, 0),
-        (9, '批评家', 3, '批评家', '第一次反对票', 0, 0),
-        (10, '小编', 3, '小编', '第一次编辑更新', 0, 0),
-        (11, '村长', 3, '村长', '第一次重新标签', 0, 0),
-        (12, '学者', 3, '学者', '第一次标记答案', 0, 0),
-        (14, '支持者', 3, '支持者', '第一次赞成票', 0, 0),
-        (16, '自传作者', 3, '自传作者', '完整填写用户资料所有选项', 0, 0),
+        (7, 'FLOEP', 3, 'FLOEP', 'FLOEP', 0, 0),
+        (8, 'FLOEP', 3, 'FLOEP', 'FLOEP', 0, 0),
+        (9, 'FLOEP', 3, 'FLOEP', 'FLOEP', 0, 0),
+        (10, 'FLOEP', 3, 'FLOEP', 'FLOEP', 0, 0),
+        (11, 'FLOEP', 3, 'FLOEP', 'FLOEP', 0, 0),
+        (12, 'FLOEP', 3, 'FLOEP', 'FLOEP', 0, 0),
+        (14, 'FLOEP', 3, 'FLOEP', 'FLOEP', 0, 0),
+        (16, 'FLOEP', 3, 'FLOEP', 'FLOEP', 0, 0),
         """
         activity_types = ','.join('%s' % item for item in BADGE_AWARD_TYPE_FIRST.keys())
         # ORDER BY user_id, activity_type
@@ -181,7 +181,7 @@ class Command(BaseCommand):
         """
         For user asked question and got first upvote, we award him following badge:
 
-        (13, '学生', 3, '学生', '第一次提问并且有一次以上赞成票', 0, 0),
+        (13, 'FLOEP', 3, 'FLOEP', 'FLOEP', 0, 0),
         """
         query = "SELECT act.user_id, q.vote_up_count, act.object_id FROM \
                     activity act, question q WHERE act.activity_type = %s AND \
@@ -211,7 +211,7 @@ class Command(BaseCommand):
         """
         When user answerd questions and got first upvote, we award him following badge:
 
-        (15, '教师', 3, '教师', '第一次回答问题并且得到一个以上赞成票', 0, 0),
+        (15, 'FLOEP', 3, 'FLOEP', 'FLOEP', 0, 0),
         """
         query = "SELECT act.user_id, a.vote_up_count, act.object_id FROM \
                     activity act, answer a WHERE act.activity_type = %s AND \
@@ -239,7 +239,7 @@ class Command(BaseCommand):
 
     def first_answer_be_voted_10(self):
         """
-        (32, '学问家', 2, '学问家', '第一次回答被投赞成票10次以上', 0, 0)
+        (32, 'FLOEP', 2, 'FLOEP', 'FLOEP10FLOEP', 0, 0)
         """
         query = "SELECT act.user_id, act.object_id FROM \
                     activity act, answer a WHERE act.object_id = a.id AND\
@@ -267,7 +267,7 @@ class Command(BaseCommand):
 
     def vote_count_300(self):
         """
-        (26, '优秀市民', 2, '优秀市民', '投票300次以上', 0, 0)
+        (26, 'FLOEP', 2, 'FLOEP', 'FLOEP300FLOEP', 0, 0)
         """
         query = "SELECT count(*) vote_count, user_id FROM activity WHERE \
                     activity_type = %s OR \
@@ -279,7 +279,7 @@ class Command(BaseCommand):
 
     def edit_count_100(self):
         """
-        (27, '编辑主任', 2, '编辑主任', '编辑了100个帖子', 0, 0)
+        (27, 'FLOEP', 2, 'FLOEP', 'FLOEP100FLOEP', 0, 0)
         """
         query = "SELECT count(*) vote_count, user_id FROM activity WHERE \
                     activity_type = %s OR \
@@ -291,7 +291,7 @@ class Command(BaseCommand):
 
     def comment_count_10(self):
         """
-        (5, '评论家', 3, '评论家', '评论10次以上', 0, 0),
+        (5, 'FLOEP', 3, 'FLOEP', 'FLOEP10FLOEP', 0, 0),
         """
         query = "SELECT count(*) vote_count, user_id FROM activity WHERE \
                     activity_type = %s OR \
