@@ -171,7 +171,8 @@ def questions(request, tagname=None, unanswered=False):
     elif unanswered:
         #check if request is from unanswered questions
         template_file = "unanswered.html"
-        objects = Question.objects.filter(Q(answer_accepted=False), deleted=False).order_by(orderby)
+        #objects = Question.objects.filter( Q(answer_accepted=False) | Q(answers__vote_up_count__gt=1), deleted=False).order_by(orderby)
+        objects = Question.objects.filter( Q(answer_accepted=False), deleted=False).exclude(answers__vote_up_count__gt=4).order_by(orderby)
     else:
         objects = Question.objects.filter(deleted=False).order_by(orderby)
 
