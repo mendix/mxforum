@@ -269,7 +269,7 @@ class Command(BaseCommand):
         """
         (26, 'FLOEP', 2, 'FLOEP', 'FLOEP300FLOEP', 0, 0)
         """
-        query = "SELECT count(*) vote_count, user_id FROM activity WHERE \
+        query = "SELECT count(*) vote_count, user_id, object_id FROM activity WHERE \
                     activity_type = %s OR \
                     activity_type = %s AND \
                     user_id NOT IN (SELECT user_id FROM award WHERE badge_id = %s) \
@@ -281,7 +281,7 @@ class Command(BaseCommand):
         """
         (27, 'FLOEP', 2, 'FLOEP', 'FLOEP100FLOEP', 0, 0)
         """
-        query = "SELECT count(*) vote_count, user_id FROM activity WHERE \
+        query = "SELECT count(*) vote_count, user_id, object_id FROM activity WHERE \
                     activity_type = %s OR \
                     activity_type = %s AND \
                     user_id NOT IN (SELECT user_id FROM award WHERE badge_id = %s) \
@@ -293,7 +293,7 @@ class Command(BaseCommand):
         """
         (5, 'FLOEP', 3, 'FLOEP', 'FLOEP10FLOEP', 0, 0),
         """
-        query = "SELECT count(*) vote_count, user_id FROM activity WHERE \
+        query = "SELECT count(*) vote_count, user_id, object_id FROM activity WHERE \
                     activity_type = %s OR \
                     activity_type = %s AND \
                     user_id NOT IN (SELECT user_id FROM award WHERE badge_id = %s) \
@@ -311,10 +311,11 @@ class Command(BaseCommand):
             for row in rows:
                 vote_count = row[0]
                 user_id = row[1]
+                object_id = row[2]
 
                 if user_id not in awarded_users:
                     user = get_object_or_404(User, id=user_id)
-                    award = Award(user=user, badge=badge)
+                    award = Award(user=user, badge=badge, content_type=ContentType.objects.get_for_model(Activity), object_id=object_id)
                     award.save()
                     awarded_users.append(user_id)
         finally:
