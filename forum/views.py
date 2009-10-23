@@ -2,6 +2,9 @@
 import os.path
 import time, datetime, calendar, random
 import logging
+
+import shlex
+
 from urllib import quote, unquote
 from django.conf import settings
 from django.core.files.storage import default_storage
@@ -1765,9 +1768,12 @@ def upload(request):
     return HttpResponse(result, mimetype="application/xml")
 
 def search(request):
-    search = request.POST.get("ipSearchTag").strip()
-       
-    questions = Question.objects.filter(Q(tagnames__icontains=search) | Q(html__contains=search), deleted=False)
+    search = shlex.split(request.POST.get("ipSearchTag").strip().__str__())
+    query = Question.objects.all()
+    for s in search:
+        query = query.filter(Q(tagnames__icontains=s) | Q(html__icontains=s) | Q(title__icontains=s))
+
+    questions = query
 
     # RISK - inner join queries
     #questions = questions.select_related();
