@@ -270,8 +270,8 @@ class Command(BaseCommand):
         (26, 'FLOEP', 2, 'FLOEP', 'FLOEP300FLOEP', 0, 0)
         """
         query = "SELECT count(*) vote_count, user_id, object_id FROM activity WHERE \
-                    activity_type = %s OR \
-                    activity_type = %s AND \
+                    (activity_type = %s OR \
+                    activity_type = %s) AND \
                     user_id NOT IN (SELECT user_id FROM award WHERE badge_id = %s) \
                     GROUP BY user_id HAVING vote_count >= 300" % (TYPE_ACTIVITY_VOTE_UP, TYPE_ACTIVITY_VOTE_DOWN, 26)
 
@@ -282,8 +282,8 @@ class Command(BaseCommand):
         (27, 'FLOEP', 2, 'FLOEP', 'FLOEP100FLOEP', 0, 0)
         """
         query = "SELECT count(*) vote_count, user_id, object_id FROM activity WHERE \
-                    activity_type = %s OR \
-                    activity_type = %s AND \
+                    (activity_type = %s OR \
+                    activity_type = %s) AND \
                     user_id NOT IN (SELECT user_id FROM award WHERE badge_id = %s) \
                     GROUP BY user_id HAVING vote_count >= 100" % (TYPE_ACTIVITY_UPDATE_QUESTION, TYPE_ACTIVITY_UPDATE_ANSWER, 27)
 
@@ -294,8 +294,8 @@ class Command(BaseCommand):
         (5, 'FLOEP', 3, 'FLOEP', 'FLOEP10FLOEP', 0, 0),
         """
         query = "SELECT count(*) vote_count, user_id, object_id FROM activity WHERE \
-                    activity_type = %s OR \
-                    activity_type = %s AND \
+                    (activity_type = %s OR \
+                    activity_type = %s) AND \
                     user_id NOT IN (SELECT user_id FROM award WHERE badge_id = %s) \
                     GROUP BY user_id HAVING vote_count >= 10" % (TYPE_ACTIVITY_COMMENT_QUESTION, TYPE_ACTIVITY_COMMENT_ANSWER, 5)
         self.__award_for_count_num(query, 5)
