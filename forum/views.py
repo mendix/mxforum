@@ -88,6 +88,9 @@ def index(request):
         questions = Question.objects.filter(deleted=False).order_by(orderby)[:INDEX_PAGE_SIZE]
     # RISK - inner join queries
     questions = questions.select_related();
+    #for q in questions:
+    #    if q.view_count>999:
+    #        q.view_count = "%s%s" % (str(q.view_count/1000), "k")
     tags = Tag.objects.all().order_by("-id")[:INDEX_TAGS_SIZE]
     #print datetime.datetime.now()
     MIN = 1

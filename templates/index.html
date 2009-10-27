@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load extra_tags %}
+{% load extra_filters %}
 {% load humanize %}
 {% block title %}{% spaceless %}Home{% endspaceless %}{% endblock %}
 {% block meta %}
@@ -74,12 +75,12 @@
                             <table style="padding:5px;text-align:center;width:100%">
                                 <tr>
                                     <td>
-                                        <span class="box-number">{{ question.view_count|intcomma }}</span>
+                                        <span class="box-number">{{ question.view_count|rint }}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                      <div class="box-unit">Views</div>
+                                      <div class="box-unit">views</div>
                                     </td>
                                 </tr>
                             </table>

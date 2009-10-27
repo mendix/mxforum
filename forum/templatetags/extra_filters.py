@@ -4,6 +4,17 @@ from forum import auth
 register = template.Library()
 
 @register.filter
+def rint(value):
+    if value>999999:
+        return str(round(value/1000000.0,1)) + "m"
+    if value>999:
+        if value%1000>100:
+            return str(round(value/1000.,1)) + "k"
+        else:
+            return str(value/1000) + "k"
+    return value
+
+@register.filter
 def can_vote_up(user):
     return auth.can_vote_up(user)
 

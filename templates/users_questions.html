@@ -1,5 +1,6 @@
 {% load extra_tags %}
 {% load humanize %}
+{% load extra_filters %}
 <div class="user-stats-table">
     {% for question in questions%}
         {% if question.favourite_count %}
@@ -44,10 +45,10 @@
                     <table width="100%">
                         <tr>
                             <td height="25" style="vertical-align: middle;">
-                                <strong style="font-size: 190%;">{{question.view_count|intcomma}}</strong>
+                                <strong style="font-size: 190%;">{{question.view_count|rint}}</strong>
                             </td>
                         </tr>
-                        <tr><td class="box-unit">Browse</td></tr>
+                        <tr><td class="box-unit">views</td></tr>
                     </table>
                 </div>
             </div>

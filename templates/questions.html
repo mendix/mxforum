@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load extra_tags %}
+{% load extra_filters %}
 {% load humanize %}
 {% block title %}{% spaceless %}All questions{% endspaceless %}{% endblock %}
 {% block forejs %}
@@ -47,7 +48,7 @@
                             </div>
                         </div>
                         <div class="questions-viewbox">
-                            <span class="box-unit">{{ question.view_count|intcomma }} views</span>
+                            <span class="box-unit">{{ question.view_count|rint }} views</span>
                         </div>
                     </div>
                 </td>
