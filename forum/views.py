@@ -1567,7 +1567,8 @@ def user_favorites(request, user_id, user_view):
             'la_user_gold' : 'auth_user.gold',
             'la_user_silver' : 'auth_user.silver',
             'la_user_bronze' : 'auth_user.bronze',
-            'la_user_reputation' : 'auth_user.reputation'
+            'la_user_reputation' : 'auth_user.reputation',
+            'la_real_name' : 'auth_user.real_name'
             },
         select_params=[user_id],
         tables=['question', 'auth_user', 'favorite_question'],
@@ -1595,7 +1596,8 @@ def user_favorites(request, user_id, user_view):
              'la_user_gold',
              'la_user_silver',
              'la_user_bronze',
-             'la_user_reputation')
+             'la_user_reputation',
+             'la_real_name')
     return render_to_response(user_view.template_file,{
         "tab_name" : user_view.id,
         "tab_description" : user_view.tab_description,
