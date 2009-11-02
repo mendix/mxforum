@@ -1709,7 +1709,7 @@ def badges(request):
 def badge(request, id):
     badge = get_object_or_404(Badge, id=id)
     awards = Award.objects.extra(
-        select={'id': 'auth_user.id', 'name': 'auth_user.username', 'rep':'auth_user.reputation', 'gold': 'auth_user.gold', 'silver': 'auth_user.silver', 'bronze': 'auth_user.bronze'},
+        select={'id': 'auth_user.id', 'name': 'auth_user.real_name', 'rep':'auth_user.reputation', 'gold': 'auth_user.gold', 'silver': 'auth_user.silver', 'bronze': 'auth_user.bronze'},
         tables=['award', 'auth_user'],
         where=['badge_id=%s AND user_id=auth_user.id'],
         params=[id]
