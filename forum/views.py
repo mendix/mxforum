@@ -981,7 +981,8 @@ def user_stats(request, user_id, user_view):
             'la_user_gold' : 'auth_user.gold',
             'la_user_silver' : 'auth_user.silver',
             'la_user_bronze' : 'auth_user.bronze',
-            'la_user_reputation' : 'auth_user.reputation'
+            'la_user_reputation' : 'auth_user.reputation',
+            'la_real_name' : 'auth_user.real_name'
             },
         select_params=[user_id],
         tables=['question', 'auth_user'],
@@ -1009,7 +1010,8 @@ def user_stats(request, user_id, user_view):
              'la_user_gold',
              'la_user_silver',
              'la_user_bronze',
-             'la_user_reputation')[:100]
+             'la_user_reputation',
+             'la_real_name')[:100]
 
     answered_questions = Question.objects.extra(
         select={

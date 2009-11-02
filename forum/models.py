@@ -396,13 +396,11 @@ User.add_to_class('questions_per_page',
                   models.SmallIntegerField(choices=QUESTIONS_PER_PAGE_CHOICES, default=10))
 User.add_to_class('last_seen',
                   models.DateTimeField(default=datetime.datetime.now))
-User.add_to_class('real_name', models.CharField(max_length=100, blank=True))
+User.add_to_class('real_name', models.CharField(max_length=100, blank=False))
 User.add_to_class('website', models.URLField(max_length=200, blank=True))
 User.add_to_class('location', models.CharField(max_length=100, blank=True))
-#User.add_to_class('date_of_birth', models.DateField(null=True, blank=True))
 User.add_to_class('about', models.TextField(blank=True))
 User._meta.get_field_by_name('username')[0].max_length=50
-#User._meta.get_field_by_name('email')[0].unique=True
 
 # custom signal
 tags_updated = django.dispatch.Signal(providing_args=["question"])

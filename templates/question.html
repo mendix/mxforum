@@ -138,7 +138,7 @@
                                                         {% gravatar question.last_edited_by 32 %}
                                                         </td>
                                                         <td style="width:160px; vertical-align:top">
-                                                            <a href="/users/{{ question.last_edited_by.id }}/{{ question.last_edited_by.username }}">{{ question.last_edited_by.username }}</a>
+                                                            <a href="/users/{{ question.last_edited_by.id }}/{{ question.last_edited_by.username }}">{{ question.last_edited_by.real_name }}</a>
                                                         </td>
                                                     </tr>
                                                     {% else %}
@@ -153,7 +153,7 @@
                                                         {% gravatar question.last_edited_by 32 %}
                                                         </td>
                                                         <td style="width:120px; vertical-align:top">
-                                                            <div><a href="/users/{{ question.last_edited_by.id }}/{{ question.last_edited_by.username }}">{{ question.last_edited_by.username }}</a></div>
+                                                            <div><a href="/users/{{ question.last_edited_by.id }}/{{ question.last_edited_by.username }}">{{ question.last_edited_by.real_name }}</a></div>
                                 
                                                             <div>
                                                             {% get_score_badge question.last_edited_by %}
@@ -187,7 +187,7 @@
                                                         {% gravatar question.author 32 %}
                                                         </td>
                                                         <td style="width:120px; vertical-align:top">
-                                                            <div><a href="/users/{{ question.author.id }}/{{ question.author }}">{{ question.author }}</a></div>
+                                                            <div><a href="/users/{{ question.author.id }}/{{ question.author }}">{{ question.author.real_name }}</a></div>
                                                             <div>
                                                             {% get_score_badge question.author %}
                                                             </div>
@@ -294,7 +294,7 @@
                                                                 {% gravatar answer.last_edited_by 32 %}
                                                                 </td>
                                                                 <td style="width:160px; vertical-align:top">
-                                                                    <div><a href="/users/{{ answer.last_edited_by.id }}/{{ answer.last_edited_by.username }}">{{ answer.last_edited_by.username }}</a></div>
+                                                                    <div><a href="/users/{{ answer.last_edited_by.id }}/{{ answer.last_edited_by.username }}">{{ answer.last_edited_by.real_name }}</a></div>
                                                                
                                                                 </td>
                                                             </tr>
@@ -310,7 +310,7 @@
                                                                 {% gravatar answer.last_edited_by 32 %}
                                                                 </td>
                                                                 <td style="width:120px; vertical-align:top">
-                                                                    <div><a href="/users/{{ answer.last_edited_by.id }}/{{ answer.last_edited_by.username }}">{{ answer.last_edited_by.username }}</a></div>
+                                                                    <div><a href="/users/{{ answer.last_edited_by.id }}/{{ answer.last_edited_by.username }}">{{ answer.last_edited_by.real_name }}</a></div>
                                                                     <div>
                                                                     {% get_score_badge answer.last_edited_by %}
                                                                     </div>
@@ -341,7 +341,7 @@
                                                                 {% gravatar answer.author 32 %}
                                                                 </td>
                                                                 <td style="width:120px; vertical-align:top">
-                                                                    <div><a href="/users/{{ answer.author.id }}/{{ answer.author.username }}">{{ answer.author }}</a></div>
+                                                                    <div><a href="/users/{{ answer.author.id }}/{{ answer.author.username }}">{{ answer.author.real_name }}</a></div>
                                                                     <div>
                                                                     {% get_score_badge answer.author %}
                                                                     </div>
