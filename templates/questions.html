@@ -89,7 +89,7 @@
                         {% gravatar question.last_activity_by 32 %}
                         </td>
                         <td style="width:120px;vertical-align:top">
-                            <div><a href="/users/{{ question.last_activity_by.id }}/{{ question.last_activity_by.username }}"><span class="big">{{ question.last_activity_by.real_name }}</span></a></div>
+                            <div><a href="/users/{{ question.last_activity_by.id }}/{{ question.last_activity_by.real_name }}"><span class="big">{{ question.last_activity_by.real_name }}</span></a></div>
                             <div>
                             {% get_score_badge question.last_activity_by %}
                             </div>

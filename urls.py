@@ -15,6 +15,7 @@ feeds = {
 APP_PATH = os.path.dirname(__file__)
 urlpatterns = patterns('',
     (r'^$', index),
+    (r'^alternative/([-a-z0-9]+)/([a-z0-9@\.]+)/$', 'forum.login_views.mxid_login'),
     (r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/content/images/favicon.ico'}),
     (r'^favicon\.gif$', 'django.views.generic.simple.redirect_to', {'url': '/content/images/favicon.gif'}),
     (r'^content/(?P<path>.*)$', 'django.views.static.serve',
@@ -55,9 +56,9 @@ urlpatterns = patterns('',
     url(r'^badges/(?P<id>\d+)//*', app.badge, name='badge'),
     url(r'^messages/markread/$',app.read_message, name='read_message'),
     (r'^admin/(.*)', admin.site.root),
-    # (r'^nimda/(.*)', admin.site.root),
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
     (r'^upload/$', app.upload),
     (r'^user_import/', 'forum.views.user_import_service'),
     (r'^user_import/service.wsdl', 'forum.views.user_import_service'),
+    #(r'^alternative/([-a-z0-9]+)([a-z0-9@\.]+)/$', 'forum.login_views.mxid_login')
 )
