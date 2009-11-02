@@ -107,12 +107,12 @@ def index(request):
     awards = Award.objects.extra(
         select={'badge_id': 'badge.id', 'badge_name':'badge.name',
                       'badge_description': 'badge.description', 'badge_type': 'badge.type',
-                      'user_id': 'auth_user.id', 'user_name': 'auth_user.username'
+					  'user_id': 'auth_user.id', 'user_name': 'auth_user.username', 'real_name' : 'auth_user.real_name'
                       },
         tables=['award', 'badge', 'auth_user'],
         order_by=['-awarded_at'],
         where=['auth_user.id=award.user_id AND badge_id=badge.id'],
-    ).values('badge_id', 'badge_name', 'badge_description', 'badge_type', 'user_id', 'user_name')
+    ).values('badge_id', 'badge_name', 'badge_description', 'badge_type', 'user_id', 'user_name', 'real_name')
 
     return render_to_response('index.html', {
         "questions" : questions,
