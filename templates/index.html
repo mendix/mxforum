@@ -150,7 +150,7 @@
     <div style="clear:both;line-height:35px">
         <a href="/badges/{{award.badge_id}}/{{award.badge_name}}" title="{{ award.badge_description }}" class="badge">
 			<span class="badge{{ award.badge_type }}">&#9679;</span>&nbsp;{{ award.badge_name }}</a>
-		<a href="/users/{{award.user_id}}/{{award.user.real_name}}">{{ award.real_name }}</a>
+		<a href="/users/{{award.user_id}}/{{award.user.real_name}}">{{ award.user.real_name }}</a>
     </div>
     {% endfor %}
     <a href="{% url badges %}" style="float:right;position:relative">Badges</a>
