@@ -52,9 +52,9 @@
     	            	{% for user in users.object_list %}
                         
                         <div class="user-info">
-                            <div class="user-gravatar32"><a href="{{ user.get_profile_url }}">{% gravatar user 32 %}</a></div>
+							<div class="user-gravatar32"><a href="/users/{{ user.id }}/{{ user.real_name }}/">{% gravatar user 32 %}</a></div>
                             <div class="user-details">
-                                <a href="{{ user.get_profile_url }}">{{user.real_name}}</a><br>{% get_score_badge user %}
+								<a href="/users/{{ user.id }}/{{ user.real_name }}/">{{user.real_name}}</a><br>{% get_score_badge user %}
                             
                             </div>
                         </div>
