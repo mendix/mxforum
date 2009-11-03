@@ -24,10 +24,10 @@ class RssLastestQuestionsFeed(Feed):
         return self.link + '%s/' % item.id + item.title
 
     def item_author_name(self, item):
-        return item.author.username
+        return item.author.real_name
 
     def item_author_link(self, item):
-        return item.author.get_profile_url()
+        return '/users/' + item.author.id + '/' + item.author.real_name
 
     def item_pubdate(self, item):
         return item.added_at
