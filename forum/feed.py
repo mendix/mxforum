@@ -15,7 +15,7 @@ from models import Question
 class RssLastestQuestionsFeed(Feed):
     title = u"Mendix Forum"
     link = u"https://mxforum.mendix.com/questions/"
-    description = u"The place where modelers and developers meet to discess, ask and answer Mendix related questions and topics."
+    description = u"The place where modelers and developers meet to discuss, ask and answer Mendix related questions and topics."
     #ttl = 10
     #copyright = u'Copyright(c)2009.CNPROG.COM'
     copyright = u'Copyright(c)2009.MENDIX.COM'
