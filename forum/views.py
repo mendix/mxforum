@@ -1653,8 +1653,8 @@ def __generate_comments_json(obj, type, user):
             "object_id" : obj.id,
             "add_date" : comment.added_at.strftime('%Y-%m-%d'),
             "text" : comment.comment,
-            "user_display_name" : comment_user.username,
-            "user_url" : "/users/%s/%s" % (comment_user.id, comment_user.username),
+            "user_display_name" : comment_user.real_name,
+            "user_url" : "/users/%s/%s" % (comment_user.id, comment_user.real_name),
             "delete_url" : delete_url
         })
 
