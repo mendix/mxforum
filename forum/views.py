@@ -1324,7 +1324,7 @@ def user_responses(request, user_id, user_view):
             self.title = title
             self.titlelink = u'/questions/%s/%s#%s' % (question_id, title, answer_id)
             self.time = time
-            self.userlink = u'/users/%s/%s/' % (user_id, username)
+            self.userlink = u'/users/%s/' % (user_id)
             self.username = username
             self.content = u'%s ...' % strip_tags(content)[:300]
 
