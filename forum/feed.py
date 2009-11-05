@@ -27,7 +27,7 @@ class RssLastestQuestionsFeed(Feed):
         return item.author.real_name
 
     def item_author_link(self, item):
-        return '/users/' + item.author.id + '/' + item.author.real_name
+        return '/users/%s/%s' % (item.author.id, item.author.real_name)
 
     def item_pubdate(self, item):
         return item.added_at
