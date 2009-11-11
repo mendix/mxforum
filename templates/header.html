@@ -17,7 +17,7 @@
 						<li><a href="https://mxdn.mendix.com/">Partner Portal</a></li>
 					</ul>
 			</div>
-			<div class="MendixheadText" id="mxid_topbar" mxidsrc="http://mxid.kantoor.mendix.nl/mxid/appbar" bartype="appsaccount">
+			<div class="MendixheadText" id="mxid_topbar" mxidsrc="{{ mxid_url }}mxid/appbar" bartype="appsaccount">
         			<a href="%LOCATION%" class="%CLASS%" title="%DESCRIPTION%">%CAPTION%</a> |
       			</div>
 			<div class="MendixfakeDiv"> </div>
@@ -39,7 +39,7 @@
                                                         <a href="/accounts/login/">sign in</a>
 														{% with request.META.REMOTE_ADDR|slice:":6" as ip  %}
 															{% ifequal ip  "10.140" %}
-																 or <a href="http://mxid.kantoor.mendix.nl/mxid/login?a=forum">sign in with MXID</a>
+															or <a href="{{ mxid_url }}mxid/login?a=forum">sign in with MXID</a>
 															{% endifequal %}
 														{% endwith %}
 													{% endif %}
