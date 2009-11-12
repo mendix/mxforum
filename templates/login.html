@@ -21,20 +21,18 @@
 		<form method="post" action="/accounts/login/">
 		<table style="margin: 2px;">
 		<tr>
-				<td width="100px" style="padding: 2px;" class="label">{{ form.username.label_tag }}:</td>
+				<td width="100px" style="padding: 2px;">{{ form.username.label_tag }}:</td>
 				<td style="padding: 2px;">{{ form.username }}</td>
 		</tr>
 		<tr>
-				<td style="padding: 2px;" class="label">{{ form.password.label_tag }}:</td>
+				<td style="padding: 2px;">{{ form.password.label_tag }}:</td>
 				<td style="padding: 2px;">{{ form.password }}</td>
 		</tr>
 		
 
 		<tr>
 			<td></td>
-			<td style="padding: 2px;">
-				<input type="submit" value="login" class="login" />
-			</td>
+			<td style="padding: 2px;"><input type="submit" value="login" /></td>
 		</tr>
 		</table>
 		<input type="hidden" name="next" value="{{ next }}" />

@@ -140,12 +140,12 @@
             <a class="post-tag" rel="tag" title="View of the '{{ tag.name }}'" style="font-size:{% tag_font_size max min tag.used_count %}px;" href="{% url forum.views.tag tag.name|urlencode %}">{{ tag.name }}</a><span class="gray small" >({{ tag.used_count|intcomma }})</span>
         {% endfor %}
         <br>
-        <a href="/tags/" style="float:right;position:relative;" class="link">Popular tags »</a>
+        <a href="/tags/" style="float:right;position:relative">Popular tags »</a>
          <br>
     </div>
 </div>
-<h3 class="outside">Latest Badges</h3>
-<div class="gray-box gray-box-bg">
+<div class="gray-box">
+    <h3>Latest Badges</h3>
     {% for award in awards %}
     <div style="clear:both;line-height:35px">
         <a href="/badges/{{award.badge_id}}/{{award.badge_name}}" title="{{ award.badge_description }}" class="badge">
@@ -153,14 +153,14 @@
 		<a href="/users/{{award.user_id}}/{{award.real_name}}">{{ award.real_name }}</a>
     </div>
     {% endfor %}
-    <a href="{% url badges %}" style="float:right;position:relative" class="link">Badges »</a>
+    <a href="{% url badges %}" style="float:right;position:relative">Badges</a>
     <br>
 </div>
 {% endblock %}
 {% block tail %}
 <div>
     <h3>Looking for more? Browse the <a href="/questions/">complete list of questions</a>,
-    or <a href="/tags/">popular tags</a>.<br><br>Help us answer <a href="/questions/unanswered">unanswered questions</a>.
+    or <a href="/tags/">popular tags</a>. Help us<br> answer <a href="/questions/unanswered">unanswered questions</a>.
     </h3>
 </div>
 <div style="float:right">

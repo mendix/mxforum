@@ -2,7 +2,7 @@
 {% load extra_filters %}
 {% load humanize %}
 <div id="subheader">
-    <h1 class="outside">{{view_user.real_name}}</h1>
+    <h1>{{view_user.real_name}}</h1>
     
 </div>
 
@@ -39,35 +39,35 @@
                 </tr>
                 {% if view_user.real_name %}
                 <tr>
-                    <td >Name:</td>
+                    <td >Name</td>
                     <td ><b>{{view_user.real_name}}</b></td>
                 </tr>
                 {% endif %}
                 <tr>
-                    <td>Member for:</td>
+                    <td>Member for</td>
                     <td>{{ view_user.date_joined|timesince }}</td>
                 </tr>
                 {% if view_user.last_seen %}
                 <tr>
-                    <td>Last activity:</td>
+                    <td>Last activity</td>
                     <td><span class="relativetime" title="{{ view_user.last_seen }}">{{ view_user.last_seen|timesince }} ago</span></td>
                 </tr>
                 {% endif %}
                 {% if view_user.website %}
                 <tr>
-                    <td>Personal Website:</td>
+                    <td>Personal Website</td>
                     <td><a rel="nofollow" target="_blank" href="{{view_user.website}}">{{view_user.website}}</a></td>
                 </tr>
                 {% endif  %}
                 {% if view_user.location %}
                 <tr>
-                    <td>City:</td>
+                    <td>City</td>
                     <td>{{view_user.location}}</td>
                 </tr>
                 {% endif %}
                 {% if votes_today_left %}
                 <tr>
-                    <td>Votes left today:</td>
+                    <td>Votes left today</td>
                     <td><span class="big darkred">{{ votes_today_left }}</span> Votes</td>
                 </tr>
                 {% endif %}
