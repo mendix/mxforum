@@ -218,7 +218,7 @@
             </table>
             {% if question.closed %}
             <div class="question-status" style="margin-bottom:15px">
-            <h3>The issue of “{{ question.get_close_reason_display }}” was the reason <a href="{{ question.closed_by.get_profile_url }}">{{ question.closed_by.real_name }}</a> in{% diff_date question.closed_at %}<font class="darkred">Close</font></h3>
+				<h3><a href="{{ question.closed_by.get_profile_url }}">{{ question.closed_by.real_name }}</a> closed this question at {% diff_date question.closed_at %} for the following reason: “{{ question.get_close_reason_display }}” </h3>
             </div>
             {% endif %}
             
