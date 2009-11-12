@@ -24,27 +24,47 @@
 		</div>
 	</div>
 				
-				<table border="0" class="header-table">
-                    <tbody>
-                        <tr>
-                            <td style="vertical-align:top">
-                                <table border="0" style="width:100%;height:100%">
-                                    <tbody>
-                                        <tr style="height:50px">
-                                            <td style="width:500px; vertical-align:top;text-align:left">
-                                                <div id="header-links">
-                                                    {% if request.user.is_authenticated %}
-                                                        <a href="/users/{{ request.user.id }}/{{ request.user.real_name|slugify }}/">{{ request.user.real_name }}</a> {% get_score_badge request.user %} <span class="link-separator">|</span><a href="/accounts/logout/">logout</a>
-                                                    {% else %}
-                                                        <a href="/accounts/login/">sign in</a>
-														{% with request.META.REMOTE_ADDR|slice:":6" as ip  %}
-															{% ifequal ip  "10.140" %}
-															or <a href="{{ mxid_url }}mxid/login?a=forum">sign in with MXID</a>
-															{% endifequal %}
-														{% endwith %}
-													{% endif %}
-
-                                                </div>
+	<div id="header-bg">
+		<div class="highlight">
+			<div id="header-links">
+				{% if request.user.is_authenticated %}
+					<a href="/users/{{ request.user.id }}/{{ request.user.real_name|slugify }}/">{{ request.user.real_name }}</a> {% get_score_badge request.user %} <span class="link-separator">|</span><a href="/accounts/logout/">logout</a>
+				{% else %}
+						<a href="/accounts/login/">sign in</a>
+					{% with request.META.REMOTE_ADDR|slice:":6" as ip  %}
+						{% ifequal ip  "10.140" %}
+							or <a href="{{ mxid_url }}mxid/login?a=forum">sign in with MXID</a>
+						{% endifequal %}
+					{% endwith %}
+				{% endif %}
+	    	 </div>
+	     
+		     <form id="search_field" method="post" action="/search/">
+		         <input id="ipSearchTag" name="ipSearchTag" size="20" />
+		         <input type="submit" value="Search" class="submit"  />
+		     </form>
+		</div>
+	</div>	
+	
+	<div id="navigation-menu">
+		<div class="nav">
+			<UL>
+				<LI class="" id="nav_home"><A href="/">Home</A></LI>
+	            <LI class="" id="nav_questions"><A href="/questions/">Questions</A></LI>
+	            <LI class="" id="nav_tags"><A href="/tags/">Tags</A></LI>
+	            <LI class="" id="nav_users"><A href="/users/">Users</A></LI>
+	            <LI class="" id="nav_badges"><A href="/badges/">Badges</A></LI>
+				<LI class="" id="nav_unanswered"><A href="/questions/unanswered/">Unanswered</A></LI>
+	        </UL>
+		</div>
+	
+		<div class="nav" style="float:right;margin-right:-5px">
+			<UL class="mainnav">
+				<LI class="" id="nav_ask"><A href="/questions/ask/">Ask a question</A></LI>
+				<LI class="" id="nav_faq"><A href="/faq/">FAQ</A></LI>
+			</UL>
+		</div>
+	</div>
                                                 
 
 
