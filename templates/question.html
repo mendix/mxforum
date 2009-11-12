@@ -93,7 +93,7 @@
                                 {% endfor %}
                             </div>
                             <div id="question-controls" style="clear:both;">
-                                <table width="585px">
+                                <table width="650px">
                                     <tr>
                                         <td width="200px" style="vertical-align:top">
                                             
@@ -117,7 +117,7 @@
                                             {% endif %}
                                             {% endif %}
                                             
-                                            <span id="question-offensive-flag-{{ question.id }}" class="offensive-flag" title="Report as spam"><a>Spam?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if question.offensive_flag_count %}({{ question.offensive_flag_count }}){% endif %}{% endif %}</span>
+                                            <span id="question-offensive-flag-{{ question.id }}" class="offensive-flag" title="Report as spam"><a>Mark as spam?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if question.offensive_flag_count %}({{ question.offensive_flag_count }}){% endif %}{% endif %}</span>
                                                              
                                             </span>
                                             
@@ -206,8 +206,8 @@
                             
                             <div class="post-comments" style="margin-bottom:20px">
                                 <input id="can-post-comments-question-{{question.id}}" type="hidden" value="{{ request.user|can_add_comments }}"/>
-                                <a id="comments-link-question-{{question.id}}" class="comments-link">{% if question.comment_count %} Comments<strong>({{question.comment_count}})</strong>{% else %} Add a comment {% endif %}</a>
-                                <div id="comments-question-{{question.id}}" class="comments-container">
+                                <a id="comments-link-question-{{question.id}}" class="comments-link comments-link-add">{% if question.comment_count %} Comments<strong>({{question.comment_count}})</strong>{% else %} Add a comment &#187; {% endif %}</a>
+                                <div id="comments-question-{{question.id}}" class="comments-container comments-container-add">
                                 <div class="comments"/></div>
                             </div>
                             
@@ -259,7 +259,7 @@
                                             {{ answer.html|safe }}
                                         </div>
                                         <div class="answer-controls" style="clear:both;">
-                                            <table width="585px">
+                                            <table width="650px">
                         	                    <tr>
                                                     <td width="200px" style="vertical-align:top">
                                                         {% if request.user|can_edit_post:answer %}
@@ -383,7 +383,7 @@
             {% if not question.closed %}
             {% if request.user.is_authenticated %}
             <div style="padding:10px 0 0 0;">
-                <h3>Your answer </h3>
+                <h3 class="outside">Your answer: </h3>
             </div>
 
             <div id="description" class="" >
@@ -403,26 +403,23 @@
                 {{ answer.text.errors }}
                 
             </div>
-            <input type="submit" value="Post Your Answer" class="submit" style="width: 160px;"><span class="form-error"></span>
+            <input type="submit" value="Post Your Answer &#187;" class="submit" style=""><span class="form-error"></span>
             {% else %}
             <h3><input id="btLogin" type="button" value="Log in and answer the question"></h3>
             {% endif %}
             {% endif %}
             
             <br><br>
-						<div><h3>Not the answer you're looking for? Browse other questions tagged
-                {% for tag in question.tagname_list %}
-                     <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="View of the '{{ tag }}' of the problem" rel="tag">{{ tag }}</a><br>
-                {% endfor %} or <a href="{% url ask %}">ask your own questions</a>.</h3></div>
+						
         </form>
     </div>
 </div>
 {% endblock %}
 
 {% block sidebar %}
-<div class="gray-box">
+<div class="gray-box gray-box-bg">
     <div class="paragraph">
-        This question has the following tags:
+        <span class="subject">This question has the following tags:</span>
     </div>
     <div class="paragraph-extra">
         {% for tag in tags %}
@@ -430,18 +427,17 @@
         {% endfor %}
     </div>
     <div class="paragraph">
-        Asked <div class="big" title="{{ question.added_at }}">{{ question.added_at|timesince }} ago</div>
+        <span class="subject">Asked:</span> <div class="big" title="{{ question.added_at }}">{{ question.added_at|timesince }} ago</div>
     </div>
     <div class="paragraph"> 
-     Viewed <div class="big">{{ question.view_count|intcomma }} views</div>
+     <span class="subject">Viewed:</span> <div class="big">{{ question.view_count|intcomma }} views</div>
     </div>
     <div class="paragraph"> 
-        Latest activity : <div class="big" title="{{ question.last_activity_at }}">{{ question.last_activity_at|timesince }} ago</div>
+        <span class="subject">Latest activity:</span><div class="big" title="{{ question.last_activity_at }}">{{ question.last_activity_at|timesince }} ago</div>
     </div>
 </div>
-
-<div class="gray-box">
-    <h3>Similar questions : </h3>
+<h3 class="outside">Similar questions: </h3>
+<div class="gray-box gray-box-bg"> 
     <div id="" class="">
         <ul class="list-item">
         {% for question in similar_questions %}
@@ -456,4 +452,9 @@
 
 {% block endjs %}
 {% endblock %}
-
+{% block tail %}
+<div><h3>Not the answer you're looking for? Browse other questions tagged<br><br>
+                {% for tag in question.tagname_list %}
+                     <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="View of the '{{ tag }}' of the problem" rel="tag">{{ tag }}</a>
+                {% endfor %} or <a href="{% url ask %}">ask your own questions</a>.</h3></div>
+{% endblock %}

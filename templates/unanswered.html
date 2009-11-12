@@ -104,7 +104,7 @@
 {% endblock %}
 
 {% block sidebar %}
-<div class="gray-box">
+<div class="gray-box gray-box-bg">
 	<div>
 		<center>
         You are viewing <br><div class="questions-count">{{ questions_count|intcomma }}</div>
@@ -115,8 +115,8 @@
 
     </div>
 </div>
-<div class="gray-box">
-    <h3>Related tags</h3>
+<h3 class="outside">Related tags</h3>
+<div class="gray-box gray-box-bg">
     <div id="related-tags">
         {% for tag in tags %}
             <a class="post-tag" rel="tag" title="See related '{{ tag.name }}' of the problem"  href="{% url forum.views.tag tag.name|urlencode %}">{{ tag.name }}</a>

@@ -10,7 +10,7 @@
                     <div style="text-align: right;" class="summarysubcount">{{questions|length}}</div>
                 </td>
                 <td style="vertical-align: bottom; padding-left: 10px;">
-                    <h2>Questions</h2>
+                    <h2 class="outside">Questions</h2>
                 </td>
             </tr>
         </table>
@@ -23,7 +23,7 @@
                     <div style="text-align: right;" class="summarysubcount">{{answered_questions|length}}</div>
                 </td>
                 <td style="vertical-align: bottom; padding-left: 10px;">
-                    <h2>Answers</h2>
+                    <h2 class="outside">Answers</h2>
                 </td>
             </tr>
         </table>
@@ -47,7 +47,7 @@
                     <div style="text-align: right;" class="summarysubcount">{{total_votes}}</div>
                 </td>
                 <td style="vertical-align: bottom; padding-left: 10px;">
-                    <h2>Votes</h2>                    
+                    <h2 class="outside">Votes</h2>                    
                 </td>
             </tr>
         </table>
@@ -79,7 +79,7 @@
                     <div style="text-align: right;" class="summarysubcount">{{tags|length}}</div>
                 </td>
                 <td style="vertical-align: bottom; padding-left: 10px;">
-                    <h2>Labels</h2>
+                    <h2 class="outside">Labels</h2>
                 </td>
             </tr>
         </table>
@@ -106,19 +106,19 @@
                     <div style="text-align: right;" class="summarysubcount">{{total_awards}}</div>
                 </td>
                 <td style="vertical-align: bottom; padding-left: 10px;">
-                    <h2>Badges</h2>
+                    <h2 class="outside">Badges</h2>
                 </td>
             </tr>
         </table>
         <div class="user-stats-table">
             <table>
                 <tr>
-                    <td width="180" style="line-height:35px">
+                    <td width="250" style="line-height:35px">
                         {% for award in awards %}
                             <a href="/badges/{{award.id}}/{{award.name}}" title="{{ award.description }}" class="badge"><span class="badge{{ award.type }}">&#9679;</span>&nbsp;{{ award.name }}</a><span class="tag-number">&nbsp;x&nbsp;{{ award.count|intcomma }}</span><br>
                             {% if forloop.counter|divisibleby:"6" %}
                                 </td>
-                                <td width="180" style="line-height:35px">
+                                <td width="250" style="line-height:35px">
                             {% endif %}
                         {% endfor %}
                     </td>

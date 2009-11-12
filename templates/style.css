@@ -1,5 +1,9 @@
-			/*-- header --*/
-
+			/*-- container --*/
+			#container {
+				width: 980px;
+			}
+			
+			/*-- header --*/			
 			.mendixLogo {
 				float:left;
 				position:relative;
@@ -10,7 +14,7 @@
 			.Mendixhead {
 				margin:auto;
 				position:relative;
-				width:960px;
+				width:980px;
 			}
 
 			.MendixheadNavigation {	
