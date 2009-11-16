@@ -1619,10 +1619,18 @@ def user_preferences(request, user_id, user_view):
 def question_comments(request, id):
     question = get_object_or_404(Question, id=id)
     user = request.user
+    if request.method == "POST":
+        question.last_activity_at =  datetime.datetime.now()
+        question.last_activity_by = request.user
+        question.save()
     return __comments(request, question, 'question', user)
 
 def answer_comments(request, id):
     answer = get_object_or_404(Answer, id=id)
+    if request.method == "POST":
+        answer.question.last_activity_at =  datetime.datetime.now()
+        answer.question.last_activity_by = request.user
+        answer.question.save() 
     user = request.user
     return __comments(request, answer, 'answer', user)
 
