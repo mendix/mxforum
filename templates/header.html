@@ -2,22 +2,16 @@
                 
 	<div class="MendixContainer">
 		<div class="Mendixhead">
-		<div class="toplinks" name="mxid_topbar" id="mxid_topbar" mxidsrc="{{ mxid_url }}mxid/appbar" bartype="appsaccount">
-      <a href="%LOCATION%" class="%CLASS%" title="%DESCRIPTION%">%CAPTION%</a> |
-    </div>
+			<div class="toplinks" name="mxid_topbar" id="mxid_topbar" mxidsrc="{{ mxid_url }}mxid/appbar" bartype="account" style="display: none">
+				<a href="%LOCATION%" class=" %CLASS% " title=" %DESCRIPTION% " id=" %NAME% ">%CAPTION%</a> |
+			</div>
     	<div class="mendixLogo">
 				<a class="sitelogo" href="/" title="Go to homepage">Mendix Forum</a>
 			</div>
 
 			<div class="MendixheadNavigation">
-				<ul>
-					<li><a href="https://world.mendix.com/index.html">Home</a></li>
-					<li><a href="https://world.mendix.com/display/learnmendix/Learn+Mendix">Learn</a></li>
-					<li><a href="https://world.mendix.com/display/wiki/Wiki">Wiki</a></li>
-					<li class="active"><a href="https://mxforum.mendix.com/">Forum</a></li>
-					<li><a href="#">App Store</a></li>
-					<li><a href="https://world.mendix.com/blogs/">Blogs</a></li>
-					<li><a href="https://mxdn.mendix.com/">Partner Portal</a></li>
+				<ul name="mxid_topbar" bartype="apps" style="display: none">
+					<li><a id=" %NAME% " href="%LOCATION%" class=" %CLASS% " target="_top" title=" %DESCRIPTION% ">%CAPTION%</a></li>
 				</ul>
 			</div>
 			<div class="MendixfakeDiv"> </div>
