@@ -235,3 +235,8 @@ class FrankAuthenticationForm(forms.Form):
     def get_user(self):
         return self.user_cache
 
+from django.forms import ModelForm
+from models import Subscription
+class SubscriptionForm(ModelForm):
+    class Meta:
+        model = Subscription
