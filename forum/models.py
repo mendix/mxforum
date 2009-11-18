@@ -375,6 +375,16 @@ class Activity(models.Model):
     class Meta:
         db_table = u'activity'
 
+class Subscription(models.Model):
+    user = models.ForeignKey(User)
+    question = models.ForeignKey(Question)
+    TIMESPAN_CHOICES = (
+        (15, "Every 15 minutes"),
+        (60*24, "Daily"),
+        (60*24*7, "Weekly")
+    )
+    timespan = models.IntegerField(choices=TIMESPAN_CHOICES)
+
 # User extend properties
 QUESTIONS_PER_PAGE_CHOICES = (
    (10, u'10'),

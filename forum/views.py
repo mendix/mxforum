@@ -304,6 +304,8 @@ def question(request, id):
     page_objects = objects_list.page(page)
     # update view count
     Question.objects.update_view_count(question)
+    
+    subscriptionform = SubscriptionForm(initial={"question" : question.id})
     return render_to_response('question.html', {
         "question" : question,
         "question_vote" : question_vote,
@@ -315,6 +317,7 @@ def question(request, id):
         "tab_id" : view_id,
         "favorited" : favorited,
         "similar_questions" : Question.objects.get_similar_questions(question),
+        "subscriptionform" : subscriptionform,
         "context" : {
             'is_paginated' : True,
             'pages': objects_list.num_pages,
@@ -1616,6 +1619,18 @@ def user_preferences(request, user_id, user_view):
         "view_user" : user,
     }, context_instance=RequestContext(request))
 
+def user_subscriptions(request, user_id, user_view):
+    """
+    user_view is provided as legacy param to work with old b0rked cnprog code
+    """
+    user = get_object_or_404(User, id=user_id)
+    return render_to_response('user_subscriptions.html',{
+        "tab_name" : "subscriptions",
+        "tab_description" : "Manage your subscriptions",
+        "page_title" : "Subscriptions",
+        "view_user" : user,
+    }, context_instance = RequestContext(request))
+
 def question_comments(request, id):
     question = get_object_or_404(Question, id=id)
     user = request.user
@@ -1690,12 +1705,6 @@ def delete_answer_comment(request, answer_id, comment_id):
         answer.save()
         user = request.user
         return __generate_comments_json(answer, 'answer', user)
-
-def logout(request):
-    url = request.GET.get('next')
-    return render_to_response('logout.html', {
-        'next' : '/',
-    }, context_instance=RequestContext(request))
 
 def profile(request):
     return render_to_response('profile.html', {
@@ -1822,6 +1831,16 @@ def search(request):
         "awards" : awards[:INDEX_AWARD_SIZE],
         }, context_instance=RequestContext(request))
 
+def add_subscription(request):
+    if request.method=="POST":
+        form = SubscriptionForm(request.POST)
+        #form.data['user'] = request.user.id
+        subscription = form.save(commit=False)
+        subscription.user = request.user
+        subscription.save()
+        return HttpResponseRedirect(subscription.question.get_absolute_url())
+    else:
+        pass
 #
 # WSDL fun
 # 
