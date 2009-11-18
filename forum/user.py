@@ -70,5 +70,13 @@ USER_TEMPLATE_VIEWS = (
         page_title = u'Settings - User Profile',
         view_name = 'user_preferences',
         template_file = 'user_preferences.html'
-    )
+    ),
+    UserView(
+        id = 'subscriptions',
+        tab_title = u'Subscriptions',
+        tab_description = u'User subscriptions',
+        page_title = u'Subscriptions',
+        view_name = 'user_subscriptions',
+        template_file = 'user_subscriptions.html'
+    ),
 )

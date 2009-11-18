@@ -1,0 +1,11 @@
+{% extends "user.html" %}
+{% load extra_tags %}
+{% load humanize %}
+
+{% block usercontent %}
+	<div class='subscriptions'>
+		{% for sub in subscriptions %}
+			<div class="subscription">{{ sub.question.title }} {{ sub.get_timespan_display }}</div>
+		{% endfor %}
+	</div>
+{% endblock %}

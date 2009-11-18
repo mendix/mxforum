@@ -1624,11 +1624,13 @@ def user_subscriptions(request, user_id, user_view):
     user_view is provided as legacy param to work with old b0rked cnprog code
     """
     user = get_object_or_404(User, id=user_id)
+    subscriptions = Subscription.objects.filter(user=user)
     return render_to_response('user_subscriptions.html',{
         "tab_name" : "subscriptions",
         "tab_description" : "Manage your subscriptions",
         "page_title" : "Subscriptions",
         "view_user" : user,
+        "subscriptions" : subscriptions,
     }, context_instance = RequestContext(request))
 
 def question_comments(request, id):
