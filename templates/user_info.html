@@ -26,11 +26,6 @@
         </td>
         <!--cell-->
         <td width="350" style="vertical-align: top;">
-            <div style="float: right; margin-top: 19px; margin-right: 10px;">
-                {% if request.user|can_view_user_edit:view_user %}
-                <a href="/users/{{ view_user.id }}/edit/">Update my information</a>
-                {% endif %}
-            </div>
             <h2 style="margin-top: 20px;">Registered user</h2>
             <table class="user-details">
                 <tr>
