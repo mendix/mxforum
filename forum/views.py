@@ -1818,6 +1818,15 @@ def add_subscription(request):
         return HttpResponseRedirect(subscription.question.get_absolute_url())
     else:
         pass
+
+@login_required 
+def delete_subscription(request, id):
+    subscription = Subscription.objects.get(id=id) 
+    if subscription.user.id != request.user.id: 
+        raise Exception("Can't delete a subscription that doesn't belong to you") 
+    subscription.delete() 
+    return HttpResponseRedirect("/users/%s/%s?sort=subscriptions" % (request.user.id, request.user.username))
+
 #
 # WSDL fun
 # 

@@ -59,4 +59,5 @@ urlpatterns = patterns('',
     (r'^user_import/', 'forum.views.user_import_service'),
     (r'^user_import/service.wsdl', 'forum.views.user_import_service'),
     (r'^addsubscription/$', 'forum.views.add_subscription'),
+    (r'^deletesubscription/(?P<id>\d+)/$', 'forum.views.delete_subscription'),
 )

@@ -5,7 +5,12 @@
 {% block usercontent %}
 	<div class='subscriptions'>
 		{% for sub in subscriptions %}
-			<div class="subscription">{{ sub.question.title }} {{ sub.get_timespan_display }}</div>
+
+		<div class="subscription">
+			<a href="{{ sub.question.get_absolute_url }}">{{ sub.question.title }}</a> every  {{ sub.get_timespan_display }} 
+			{% ifequal request.user  sub.user %} 
+				<a href="/deletesubscription/{{ sub.id }}/">X</a></div>
+			{% endifequal %}
 		{% endfor %}
 	</div>
 {% endblock %}
