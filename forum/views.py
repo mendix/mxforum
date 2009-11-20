@@ -1828,6 +1828,7 @@ from soaplib.serializers import primitive as soap_types
 
 from django.http import HttpResponse
 
+import sys
 class DjangoSoapApp(SimpleWSGISoapApp):
 
     def __call__(self, request):
@@ -1837,8 +1838,13 @@ class DjangoSoapApp(SimpleWSGISoapApp):
             django_response.status_code = int(status)
             for header, value in headers:
                 django_response[header] = value
-        request.META['HTTP_HOST'] = 'mxforum.mendix.com'
+        #request.META['HTTP_HOST'] = 'mxforum.mendix.com'
+        from settings import MY_HOST
+        request.META['HTTP_HOST'] = MY_HOST
+
         response = super(SimpleWSGISoapApp, self).__call__(request.META, start_response)
+        sys.stderr.write("going to send response %s" % response)
+        sys.stderr.flush()
         django_response.content = "\n".join(response)
 
         return django_response
@@ -1849,28 +1855,20 @@ class UserImportService(DjangoSoapApp):
 
     __tns__ = 'http://www.mendix-ns.org/soap/'
 
-    @soapmethod(soap_types.String, soap_types.String, soap_types.String, _returns=soap_types.Integer)
-    def user_import(self, name, email, password):
-        u = User()
-        u.email      = email
-        u.username   = email
-        u.real_name  = name
-        u.first_name = name
-        u.set_password(password)
-        u.save()
-        return 1
 
     @soapmethod(soap_types.String, soap_types.String, soap_types.String, _returns=soap_types.Boolean)
     def set_user(self, _email, _name, _password):
-        users = User.objects.filter(email=_email)
-
-        if len(users) != 0:
-            u = users[0]
-        else:
-            u = User()
+        from settings import DEBUG
+        u, created = User.objects.get_or_create(username=_email)
+        if DEBUG==True:
+            sys.stderr.write("MXforum WEBSERVICES set_user called with params email: %s, name: %s, password %s" % (_email, _name, _password))
+            if created:
+                sys.stderr.write("Created user %s" % u)
+            else:
+                sys.stderr.write("Found user %s" % u)
+            sys.stderr.flush()
 
         u.username   = _email
-        u.email      = _email
         u.real_name  = _name
         u.set_password(_password)
         u.save()
