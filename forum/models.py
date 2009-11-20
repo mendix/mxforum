@@ -435,10 +435,10 @@ User.add_to_class('get_messages', get_messages)
 User.add_to_class('delete_messages', delete_messages)
 
 def calculate_gravatar_hash(instance, **kwargs):
-    """Calculates a User's gravatar hash from their email address."""
+    """Calculates a User's gravatar hash from their username address."""
     if kwargs.get('raw', False):
         return
-    instance.gravatar = hashlib.md5(instance.email).hexdigest()
+    instance.gravatar = hashlib.md5(instance.username).hexdigest()
 
 def record_ask_event(instance, created, **kwargs):
     if created:
