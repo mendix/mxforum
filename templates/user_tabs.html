@@ -9,6 +9,8 @@
         <a id="votes" {% ifequal tab_name "votes" %}class="youarehere"{% endifequal %} href="/users/{{view_user.id}}/{{view_user.real_name}}?sort=votes">Votes</a>
         {% endif %}
         <a id="favorites" {% ifequal tab_name "favorites" %}class="youarehere"{% endifequal %} href="/users/{{view_user.id}}/{{view_user.real_name}}?sort=favorites">Favorites</a>
+		{% ifequal request.user view_user %}
         <a id="subscriptions" {% ifequal tab_name "subscriptions" %}class="youarehere"{% endifequal %} href="/users/{{view_user.id}}/{{view_user.real_name}}?sort=subscriptions">Email notifications</a>
+		{% endifequal %}
     </div>
 </div>
