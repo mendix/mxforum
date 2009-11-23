@@ -1834,7 +1834,7 @@ def questions_feed(request, amount):
         for k in o.iterkeys():
             o[k] = str(o[k])
         o['last_activity_at'] = str(o['last_activity_at'])
-    return HttpResponse( "%s(%s);" % (funcname, str(objects)))
+    return HttpResponse( "%s(%s);" % (funcname, str(objects)), mimetype="text/plain")
 
 def users_feed(request, amount):
     funcname =  request.GET.get('callback', "forum.get_users")	
@@ -1842,7 +1842,7 @@ def users_feed(request, amount):
     for o in objects:
         for k in o.iterkeys():
             o[k] = str(o[k])
-    return HttpResponse("%s(%s);" % (funcname, str(objects)))
+    return HttpResponse("%s(%s);" % (funcname, str(objects)), mimetype="text/json")
 
 #
 # WSDL fun
