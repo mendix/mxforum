@@ -1827,6 +1827,23 @@ def delete_subscription(request, id):
     subscription.delete() 
     return HttpResponseRedirect("/users/%s/%s?sort=subscriptions" % (request.user.id, request.user.username))
 
+def questions_feed(request, amount):
+    funcname =  request.GET.get('callback', "forum.get_questions")
+    objects = Question.objects.filter(deleted=False).order_by("-last_activity_at").values('id', 'title', 'last_activity_at')[:amount]
+    for o in objects:
+        for k in o.iterkeys():
+            o[k] = str(o[k])
+        o['last_activity_at'] = str(o['last_activity_at'])
+    return HttpResponse( "%s(%s);" % (funcname, str(objects)))
+
+def users_feed(request, amount):
+    funcname =  request.GET.get('callback', "forum.get_users")	
+    objects = User.objects.all().order_by("-reputation").values('id', 'real_name', 'gravatar', 'about', 'reputation', 'gold', 'silver', 'bronze')[:amount]
+    for o in objects:
+        for k in o.iterkeys():
+            o[k] = str(o[k])
+    return HttpResponse("%s(%s);" % (funcname, str(objects)))
+
 #
 # WSDL fun
 # 

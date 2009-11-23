@@ -60,4 +60,6 @@ urlpatterns = patterns('',
     (r'^user_import/service.wsdl', 'forum.views.user_import_service'),
     (r'^addsubscription/$', 'forum.views.add_subscription'),
     (r'^deletesubscription/(?P<id>\d+)/$', 'forum.views.delete_subscription'),
+    (r'^questions_feed/([0-9]+)/$', 'forum.views.questions_feed'),
+    (r'^users_feed/([0-9]+)/$', 'forum.views.users_feed'),
 )
