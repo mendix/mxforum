@@ -1919,14 +1919,20 @@ td.label {
 	text-align:right;
 	color: #727272;
 }
-.Mendixhead .toplinks a.first {
+.toplinks a:first-child {
 	font-weight:bold;
 }
 .Mendixhead .toplinks a {
+	padding:0 8px 0 2px;
 	color:#727272;
 	font-family:verdana;
 	font-size:11px;
 	text-decoration:none;
+	border-right:1px solid #AAAAAA;
+}
+.toplinks a:last-child {
+	border:0 none;
+	padding-right:0;
 }
 .Mendixhead .toplinks a:hover,
 .Mendixhead .toplinks a:focus {
