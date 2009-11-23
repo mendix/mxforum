@@ -1461,15 +1461,36 @@ table.user-details td {
     width:960px;
 }
 #mainbar-full .subscription {
+	overflow: hidden;
 	border-bottom:1px dotted #D8D2A9;
 	padding: 10px 0;
 }
-#mainbar-full .subscription a {
+#mainbar-full .subscription div.comments_top {
 	height: 46px;
-	width: 200px;
+	padding-left: 16px;
+	background: url(../images/comments_left.png) no-repeat left;
+}
+#mainbar-full .subscription a.comments {
+	float: left;
+	color: #212121;
+	padding: 10px 16px 0 0;
+	height: 26px;
 	display: block;
-	background: url(../images/comments.png) no-repeat;
+	background: url(../images/comments.png) no-repeat right;
+}
+#mainbar-full .subscription a.delete {
+	display: block;
 }	
+#mainbar-full .subscription a:hover,
+#mainbar-full .subscription a:focus,
+#mainbar-full .subscription a:visited {
+	color: #AEAEAE;
+}
+#mainbar-full .subscription span {
+	display: block;
+	padding: 5px 0;
+	font-weight: bold;
+}
 #subheader {
     border-bottom:1px solid #CACACA;
     clear:both;

@@ -7,9 +7,12 @@
 		{% for sub in subscriptions %}
 
 		<div class="subscription">
-			<a class="comments" href="{{ sub.question.get_absolute_url }}">{{ sub.question.title }}</a> every  {{ sub.get_timespan_display }} 
+			<div class="comments_top">
+				<a class="comments" href="{{ sub.question.get_absolute_url }}">{{ sub.question.title }}</a>
+			</div>
+			<span>every  {{ sub.get_timespan_display }}</span>
 			{% ifequal request.user  sub.user %} 
-				<a class="delete" href="/deletesubscription/{{ sub.id }}/">X</a></div>
+				<a class="delete" href="/deletesubscription/{{ sub.id }}/">Click here to unsubscribe</a></div>
 			{% endifequal %}
 		{% endfor %}
 	</div>
