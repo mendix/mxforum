@@ -394,6 +394,42 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 #tail a:focus {
 	color: #84755C;	
 }
+#tail h4 {
+	margin-top:10px;
+	padding:5px 0;
+	border-top:1px solid #DFDDD5;
+	font-size:1.75em;
+	letter-spacing:-0.02em;
+	color:#27221F;
+	font-family:Helvetica,Arial,sans-serif;
+	line-height:1.05em;
+	padding: 10px 0;
+}
+#tail .add_subscription select#id_timespan {
+	width:150px;
+	height: 22px;
+	padding-top: 2px;
+	border:1px solid #BBBBBB;
+	font-size: 11px;
+	color: #555555;
+	font-family: verdana;
+}
+#tail .add_subscription select#id_timespan option {
+	font-size: 11px;
+	color: #555555;
+	font-family: verdana;
+}
+#tail .add_subscription input {
+	cursor: pointer;
+	font-size: 0.8em;
+	letter-spacing:-0.05em;
+	text-align:center;
+	border:1px solid #BBBBBB;
+	font-family:Verdana,Arial,Helvetica,sans-serif;
+	color: #468175;
+	text-transform: uppercase;
+	background:#FDFDFD url(../images/button_bg.png) repeat-x scroll 0 100%;
+}
 #pre-collapse {
 	color: #555;
 	display:inline-block;
@@ -1424,6 +1460,16 @@ table.user-details td {
 #mainbar-full {
     width:960px;
 }
+#mainbar-full .subscription {
+	border-bottom:1px dotted #D8D2A9;
+	padding: 10px 0;
+}
+#mainbar-full .subscription a {
+	height: 46px;
+	width: 200px;
+	display: block;
+	background: url(../images/comments.png) no-repeat;
+}	
 #subheader {
     border-bottom:1px solid #CACACA;
     clear:both;

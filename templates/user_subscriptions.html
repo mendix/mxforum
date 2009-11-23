@@ -7,9 +7,9 @@
 		{% for sub in subscriptions %}
 
 		<div class="subscription">
-			<a href="{{ sub.question.get_absolute_url }}">{{ sub.question.title }}</a> every  {{ sub.get_timespan_display }} 
+			<a class="comments" href="{{ sub.question.get_absolute_url }}">{{ sub.question.title }}</a> every  {{ sub.get_timespan_display }} 
 			{% ifequal request.user  sub.user %} 
-				<a href="/deletesubscription/{{ sub.id }}/">X</a></div>
+				<a class="delete" href="/deletesubscription/{{ sub.id }}/">X</a></div>
 			{% endifequal %}
 		{% endfor %}
 	</div>
