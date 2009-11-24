@@ -1987,7 +1987,7 @@ td.label {
 .MendixheadNavigation li.active a:hover {
 	color: #aeaeae !important;
 }
-.MendixheadNavigation li.current_item  { background-position:right -23px; }
+.MendixheadNavigation li.current_item  a { background-position:right -23px; }
 .MendixheadNavigation li.current_item:first-child { background-position:-1px -23px; }
 .MendixfakeDiv {
 	height:120px;
