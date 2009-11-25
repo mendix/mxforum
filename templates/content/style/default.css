@@ -1911,6 +1911,13 @@ td.label {
 	position:relative;
 	width:980px;
 }
+span.fakeDiv {
+	height: 138px;
+	padding: 0;
+	margin: 0;
+	width: auto;
+	text-align: left;
+}
 .Mendixhead .toplinks {
 	float:right;
 	width:100%;
