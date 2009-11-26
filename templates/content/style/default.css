@@ -1941,8 +1941,12 @@ div.fakeDiv {
 	text-decoration:none;
 	border-right:1px solid #AAAAAA;
 }
-.toplinks a.logon  {
+.toplinks a.logon,
+.toplinks #username {
 	font-weight: bold;
+}
+.toplinks #logoff { 
+	font-weight: normal; 
 }
 .toplinks a:last-child {
 	border:0 none;
