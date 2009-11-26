@@ -1926,6 +1926,10 @@ div.fakeDiv {
 	text-align:right;
 	color: #727272;
 }
+.toplinks #Visit_Mendix_com {
+	border-right: none;
+	padding-right: 0;
+}
 .toplinks a:first-child {
 	font-weight:bold;
 }
@@ -1936,6 +1940,9 @@ div.fakeDiv {
 	font-size:11px;
 	text-decoration:none;
 	border-right:1px solid #AAAAAA;
+}
+.toplinks a.logon  {
+	font-weight: bold;
 }
 .toplinks a:last-child {
 	border:0 none;
