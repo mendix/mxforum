@@ -2,10 +2,13 @@ import os.path
 from django.conf.urls.defaults import *
 from django.contrib import admin
 from django.contrib.auth import *
-from django.contrib.auth.views import logout,login
+from django.contrib.auth.views import logout
 from forum.views import index
 from forum import views as app
 from forum.feed import RssLastestQuestionsFeed
+from django.views.generic.simple import redirect_to
+from settings import MXID_URL
+from forum.login_views import login_redirect
 
 admin.autodiscover()
 feeds = {
@@ -15,7 +18,7 @@ feeds = {
 APP_PATH = os.path.dirname(__file__)
 urlpatterns = patterns('',
     (r'^$', index),
-    (r'^alternative/([-a-z0-9]+)/([a-z0-9@\.]+)/$', 'forum.login_views.mxid_login'),
+    (r'^sso/([-a-z0-9]+)/([a-z0-9@\.]+)/(.*)$', 'forum.login_views.mxid_login'),
     (r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/content/images/favicon.ico'}),
     (r'^favicon\.gif$', 'django.views.generic.simple.redirect_to', {'url': '/content/images/favicon.gif'}),
     (r'^content/(?P<path>.*)$', 'django.views.static.serve',
@@ -24,7 +27,7 @@ urlpatterns = patterns('',
     (r'^upfiles/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': os.path.join(APP_PATH, 'templates/upfiles').replace('\\','/')}
     ),
-    (r'^accounts/login/$',  login, {'template_name': 'login.html', 'redirect_field_name' : '/'}),
+	(r'^accounts/login/$', login_redirect),
     (r'^accounts/logout/$',  logout, {'template_name': 'logout.html'}),
     (r'^accounts/profile/$',  app.profile),
     url(r'^faq/$', app.faq, name='faq'),

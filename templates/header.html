@@ -27,11 +27,6 @@
 					<a href="/users/{{ request.user.id }}/{{ request.user.real_name|slugify }}/">{{ request.user.real_name }}</a> {% get_score_badge request.user %} <span class="link-separator">|</span><a href="/accounts/logout/">logout</a>
 				{% else %}
 					<a href="/accounts/login/">sign in</a>
-					{% with request.META.REMOTE_ADDR|slice:":6" as ip  %}
-						{% ifequal ip  "10.140" %}
-							or <a href="{{ mxid_url }}mxid/login?a=forum">sign in with MXID</a>
-						{% endifequal %}
-					{% endwith %}
 				{% endif %}
 	    	 </div>
 	     
