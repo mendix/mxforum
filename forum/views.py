@@ -1839,7 +1839,14 @@ def questions_feed(request, amount):
 def users_feed(request, amount):
     funcname =  request.GET.get('callback', "forum.get_users")	
     objects = User.objects.all().order_by("-last_seen").values('id', 'real_name', 'gravatar', 'about', 'reputation', 'gold', 'silver', 'bronze')[:amount]
+    from django.core.exceptions import ObjectDoesNotExist
     for o in objects:
+        try:
+            myquestion = Question.objects.get(last_activity_by=int(o['id']))
+            o['last_question_id'] = myquestion.id
+            o['last_question_title'] = myquestion.title
+        except ObjectDoesNotExist:
+            pass # question not found, do nothing
         for k in o.iterkeys():
             o[k] = str(o[k])
     return HttpResponse("%s(%s);" % (funcname, str(objects)), mimetype="text/json")
