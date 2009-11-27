@@ -1838,7 +1838,7 @@ def questions_feed(request, amount):
 
 def users_feed(request, amount):
     funcname =  request.GET.get('callback', "forum.get_users")	
-    objects = User.objects.all().order_by("-reputation").values('id', 'real_name', 'gravatar', 'about', 'reputation', 'gold', 'silver', 'bronze')[:amount]
+    objects = User.objects.all().order_by("-last_seen").values('id', 'real_name', 'gravatar', 'about', 'reputation', 'gold', 'silver', 'bronze')[:amount]
     for o in objects:
         for k in o.iterkeys():
             o[k] = str(o[k])
