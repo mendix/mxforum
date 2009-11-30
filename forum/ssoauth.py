@@ -11,18 +11,12 @@ class SSOModelBackend(object):
 
     def authenticate_token(self, request, token):
         original = "%s%s" % (request.META['REMOTE_ADDR'],  request.META['HTTP_USER_AGENT'])
-        sys.stderr.write("sysdtr original %s " % original)
-        sys.stderr.flush()
-        logging.error("original %s " % original)
         hashed = b64encode(sha256(original).digest())
         requestdata = urllib.urlencode([('token', token), ('a', 'forum'), ('client', hashed)])
-        sys.stderr.write("going to send requestdata %s " % requestdata)
-        logging.error("going to send requestdata %s " % requestdata)
         u = urllib.urlopen("%s/mxid/validatetoken" % settings.MXID_URL, requestdata)
 
         response = simplejson.decode(u.read())
-        sys.stderr.write("called, decoded and closed stream. result %s" % response)
-        logging.error("called, decoded and closed stream. result %s" % response)
+        u.close()
         if (response["valid"] == True):
             return response["username"]
         return None
