@@ -1808,6 +1808,7 @@ def search(request):
         "awards" : awards[:INDEX_AWARD_SIZE],
         }, context_instance=RequestContext(request))
 
+@login_required
 def add_subscription(request):
     if request.method=="POST":
         form = SubscriptionForm(request.POST)
