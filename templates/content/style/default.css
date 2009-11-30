@@ -683,9 +683,9 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 .answer-body IMG{ max-width:600px; }
 .answer-controls { 
 	clear: both;
+	padding-top: 5px;
 	border-top: 1px dotted #ccc;
 	font-size: 12px; 
-	
 }
 .answer-controls a { color: #0285FF; }
 .answer-controls a:hover,
