@@ -1453,8 +1453,11 @@ background-color: #97ff97;
     line-height:17px;
 }
 table.user-details td {
-    color:Black;
+    color: #000;
     padding:4px 0;
+}
+table.user-details td.dark {
+	color: #555;
 }
 .user-info .user-gravatar32 {
     float:left;
