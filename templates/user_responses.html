@@ -5,13 +5,13 @@
 {% block usercontent %}
         <div style="padding-top:5px;">
         {% for response in responses %}
-            <div style="clear:both;line-height:18px">
+            <div class="repsonses_column">
                 <div style="width:150px;float:left">{% diff_date response.time 3 %}</div>
                 <div style="width:100px;float:left"><a href="{{ response.userlink }}">{{ response.real_name }}</a></div>
                 <div style="float:left;overflow:hidden;width:680px">
                     <strong {% ifequal response.type "Answer questions"%}class="user-action-2"{% endifequal %}{% ifequal response.type "Best answer"%}class="user-action-8"{% endifequal %}>{{ response.type }}</strong>：
                     <a href="{{ response.titlelink }}">{{ response.title }}</a><br>
-                    {{ response.content|safe }}
+                    <p>{{ response.content|safe }}</p>
                     <div style="height:10px"></div>
                 </div>
 

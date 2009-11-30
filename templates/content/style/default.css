@@ -1494,6 +1494,17 @@ table.user-details td {
 	padding: 5px 0;
 	font-weight: bold;
 }
+#mainbar-full .repsonses_column {
+	clear:both;
+	overflow: hidden;
+	color: #555;
+	margin-bottom: 5px;
+	line-height: 18px;
+	border-bottom: 1px dotted #ccc;
+}
+#mainbar-full .repsonses_column p {
+	margin: 5px 0 0 0;
+}
 #subheader {
     border-bottom:1px solid #CACACA;
     clear:both;
