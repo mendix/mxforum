@@ -4,7 +4,6 @@ from base64 import b64encode
 import urllib
 from hashlib import sha256
 import simplejson as json
-import logging
  
 class SSOModelBackend(object):
 
@@ -30,10 +29,8 @@ class SSOModelBackend(object):
         if username is not None:
             try:
                 user = User.objects.get(username=username)
-                logging.debug("User %s authenticated via SSO with MXID %s" % (username, settings.MXID_URL))
                 return user
             except User.DoesNotExist:
-                logging.debug("User %s authenticated via MXID, but no corresponding user found" % username)
                 return None
         else:
             return None

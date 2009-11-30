@@ -1,7 +1,6 @@
 ﻿# encoding:utf-8
 import os.path
 import time, datetime, calendar, random
-import logging
 
 import shlex
 
