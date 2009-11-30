@@ -458,11 +458,12 @@
                      <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="View of the '{{ tag }}' of the problem" rel="tag">{{ tag }}</a>
                 {% endfor %} or <a href="{% url ask %}">ask your own questions</a>.</h3></div>
 			
-		<h4 class="subscribe">Subscribe</h4>
+		<h4 class="subscribe">Subscribe to receive email notifications</h4>
 		<div class="add_subscription">
 			<form action="/addsubscription/" method="POST">
 				<input type="hidden" name="question" id="id_question" value="{{ question.id }}"></input>
 				<input type="hidden" name="user" id="id_user" value="{{ request.user.id }}"></input>
+				every 
 				{{ subscriptionform.timespan }}
 
 				<input type="submit" value="subscribe to this question"/>
