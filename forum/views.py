@@ -1853,6 +1853,11 @@ def users_feed(request, amount):
             o[k] = str(o[k])
     return HttpResponse("%s(%s);" % (funcname, str(objects)), mimetype="text/json")
 
+def error(request):
+    return render_to_response("error.html", {
+	"error_message" : request.GET.get('error', "An unknown error occurred"),
+     }, context_instance=RequestContext(request))
+
 #
 # WSDL fun
 # 

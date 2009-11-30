@@ -1,0 +1,23 @@
+{% extends "base_content.html" %}
+{% load extra_tags %}
+{% load humanize %}
+{% block title %}{% spaceless %}FAQ{% endspaceless %}{% endblock %}
+{% block forejs %}
+{% endblock %}
+{% block content %}
+<div id="main-bar" class="">
+    <h3>
+        Error
+    </h3>
+</div>
+<div id="main-body" style="width:100%">
+    <div id="" class="paragraph">
+        {{ error_message }}
+	</div>
+    
+    <br><br>
+</div>
+{% endblock %}
+
+
+

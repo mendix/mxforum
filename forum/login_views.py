@@ -10,9 +10,9 @@ def mxid_login(request, token, email, redirect):
             print "login ok, redirecting to %s" % redirect
             return HttpResponseRedirect(redirect)
         else:
-            return HttpResponseRedirect("%s/argh" % settings.MXID_URL)
+            return HttpResponseRedirect("/error")
     else:
-        return HttpResponseRedirect("%s/argh" % settings.MXID_URL)
+        return HttpResponseRedirect("/error")
 
 def login_redirect(request):
 	if 'next' in request.GET:
