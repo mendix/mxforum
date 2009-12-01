@@ -904,14 +904,16 @@ def users(request):
 
     if suser == "":
         if sortby == "newest":
-            objects_list = Paginator(User.objects.all().order_by('-date_joined'), USERS_PAGE_SIZE)
+	    objects_list = Paginator(User.objects.all().order_by('-date_joined')[:70], USERS_PAGE_SIZE)
         elif sortby == "last":
-            objects_list = Paginator(User.objects.all().order_by('date_joined'), USERS_PAGE_SIZE)
+	    objects_list = Paginator(User.objects.all().order_by('date_joined')[:70], USERS_PAGE_SIZE)
         elif sortby == "user":
-            objects_list = Paginator(User.objects.all().order_by('username'), USERS_PAGE_SIZE)
+	    objects_list = Paginator(User.objects.all().order_by('username')[:70], USERS_PAGE_SIZE)
+	elif sortby == "all":
+	    objects_list = Paginator(User.objects.all().order_by('-reputation'), USERS_PAGE_SIZE)
         # default
         else:
-            objects_list = Paginator(User.objects.all().order_by('-reputation'), USERS_PAGE_SIZE)
+	    objects_list = Paginator(User.objects.all().order_by('-reputation')[:70], USERS_PAGE_SIZE)
         base_url = '/users/?sort=%s&' % sortby
     else:
         sortby = "reputation"
