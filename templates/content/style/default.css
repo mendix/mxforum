@@ -621,6 +621,7 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 .question-body {
     min-height:100px;
     color: #555;
+	font-family: verdana;
 }
 .question-body IMG{ max-width:600px; }
 .questions-mark{
