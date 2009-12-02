@@ -219,6 +219,14 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
     padding:5px 0 0 3px;
     color: #000;
 }
+#main-bar h3.search {
+	width: auto;
+}
+#main-bar h3.search span {
+	color: #555;
+	font-size: 14px;
+	font-weight: bold;
+}
 #question-title {
     float:left;
     border-bottom: 1px solid #cacaca;
