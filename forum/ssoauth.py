@@ -3,9 +3,7 @@ from django.contrib.auth.models import User
 from base64 import b64encode
 import urllib
 from hashlib import sha256
-import logging
 from django.utils import simplejson
-import sys
  
 class SSOModelBackend(object):
 
@@ -15,7 +13,7 @@ class SSOModelBackend(object):
         requestdata = urllib.urlencode([('token', token), ('a', 'forum'), ('client', hashed)])
         u = urllib.urlopen("%s/mxid/validatetoken" % settings.MXID_URL, requestdata)
 
-        response = simplejson.decode(u.read())
+        response = simplejson.load(u)
         u.close()
         if (response["valid"] == True):
             return response["username"]
