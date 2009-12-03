@@ -1807,6 +1807,7 @@ def search(request):
         "max" : ma,
         "min" : mi,
         "awards" : awards[:INDEX_AWARD_SIZE],
+        "searchterms" : request.POST.get("ipSearchTag"),
         }, context_instance=RequestContext(request))
 
 @login_required
