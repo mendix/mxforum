@@ -8,8 +8,8 @@ def mxid_login(request, token, email, redirect=settings.LOGIN_REDIRECT_URL):
         if user.is_active:
             login(request, user)
 	    if not redirect[:1] == "/":
-		redirect = "/%s" % redirect
-            return HttpResponseRedirect(redirect)
+		    redirect = "/%s" % redirect
+            return HttpResponseRedirect("%s%s" % (settings.MY_URL, redirect))
         else:
             return HttpResponseRedirect("/error?error=User%20isnt%20active")
     else:
