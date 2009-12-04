@@ -183,7 +183,6 @@ class Command(BaseCommand):
     def answer_self_question_be_voted_up_3(self):
         """
         (17, 'Self-taught', 3, 'Self-taught', 'Answer their own problems and there is more than three in favor of', 1, 0),
-        """
         query = "SELECT act.id, act.user_id, act.object_id FROM \
                     activity act, answer an WHERE act.activity_type = %s AND\
                     act.object_id = an.id AND\
@@ -191,7 +190,18 @@ class Command(BaseCommand):
                     act.user_id = (SELECT user_id FROM question q WHERE q.id = an.question_id) AND\
                     act.object_id NOT IN \
                         (SELECT object_id FROM award WHERE award.badge_id = %s)" % (TYPE_ACTIVITY_ANSWER, 17)
-        self.__process_activities_badge(query, 17, Question, False)
+        print query
+        """
+        from forum.models import Answer, Award
+        answers_list = Answer.objects.filter(score__gte=3)
+        content_type = ContentType.objects.get_for_model(Question)
+        badge = get_object_or_404(Badge, id=17)
+        awards_list = Award.objects.filter(badge=badge).filter(content_type=content_type).values_list("object_id")
+
+        awards = map(lambda x: x[0], awards_list)
+        answers = filter(lambda x: not x.id in awards, answers_list)
+        answers = filter(lambda x: x.author == x.question.author, answers)
+        map(lambda a:  Award(user=a.author, badge=badge, content_type=content_type, object_id=a.id).save(), answers)
     
     def answer_be_voted_up_100(self):
         """
