@@ -42,7 +42,7 @@ DEFAULT_PAGE_SIZE = 65
 # used in questions
 QUESTIONS_PAGE_SIZE = 10
 # used in users
-USERS_PAGE_SIZE = 35
+USERS_PAGE_SIZE = 50
 # used in answers
 ANSWERS_PAGE_SIZE = 10
 markdowner = Markdown(html4tags=True)
@@ -930,7 +930,7 @@ def users(request):
         "suser" : suser,
         "tab_id" : sortby,
         "context" : {
-            'is_paginated' : is_paginated,
+            'is_paginated' : False,
             'pages': objects_list.num_pages,
             'page': page,
             'has_previous': users.has_previous(),

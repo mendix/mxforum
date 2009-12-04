@@ -17,7 +17,11 @@
 {% block content %}
 <div id="main-bar" class="">
     <h3>
-        Top Users
+		{% ifequal suser "" %}
+			Top 50 Users
+		{% else %}
+			User search
+		{% endifequal %}
     </h3>
     <div id="tab" class="">
         <a id="sort_reputation" href="?sort=reputation">Reputation</a>
@@ -59,7 +63,7 @@
                             </div>
                         </div>
                         
-                {% if forloop.counter|divisibleby:"7" %}
+                {% if forloop.counter|divisibleby:"10" %}
                     </td>
                     <td>
                 {% endif %}
