@@ -1898,12 +1898,12 @@ class UserImportService(DjangoSoapApp):
     __tns__ = 'http://www.mendix-ns.org/soap/'
 
 
-    @soapmethod(soap_types.String, soap_types.String, soap_types.String, _returns=soap_types.Boolean)
-    def set_user(self, _email, _name, _password):
+    @soapmethod(soap_types.String, soap_types.String, soap_types.String, soap_types.String, _returns=soap_types.Boolean)
+    def set_user(self, _email, _name, _about, _website):
         from settings import DEBUG
         u, created = User.objects.get_or_create(username=_email)
         if DEBUG==True:
-            sys.stderr.write("MXforum WEBSERVICES set_user called with params email: %s, name: %s, password %s" % (_email, _name, _password))
+            sys.stderr.write("MXforum WEBSERVICES set_user called with params email: %s, name: %s, about %s, website %s" % (_email, _name, _about, _website))
             if created:
                 sys.stderr.write("Created user %s" % u)
             else:
@@ -1912,7 +1912,9 @@ class UserImportService(DjangoSoapApp):
 
         u.username   = _email
         u.real_name  = _name
-        u.set_password(_password)
+        u.about = _about
+        u.website = _website	
+        u.set_password("sapperdeflap")
         u.save()
         return 1
 
