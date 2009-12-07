@@ -10,7 +10,7 @@
 			<div class="comments_top">
 				<a class="comments" href="{{ sub.question.get_absolute_url }}">{{ sub.question.title }}</a>
 			</div>
-			<span>Updates will be emailed to you {{ sub.get_timespan_display }}</span>
+			<span>Updates will be emailed to you {{ sub.get_timespan_display|lower }}</span>
 			{% ifequal request.user  sub.user %} 
 				<a class="delete" href="/deletesubscription/{{ sub.id }}/">Click here to unsubscribe</a></div>
 			{% endifequal %}
