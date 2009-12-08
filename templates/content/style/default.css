@@ -1488,6 +1488,10 @@ div.comments {
     line-height:150%;
     padding:10px 0;
 }
+div.comments div {
+	padding: 4px 0;
+	border-bottom: 1px dotted #555;
+}
 div.post-comments{ width: 585px; }
 form.post-comments textarea {
     height:6em;
