@@ -2,7 +2,7 @@ from django.contrib.auth import login, authenticate
 from django.http import HttpResponseRedirect, HttpResponse
 import settings
 
-def mxid_login(request, token, email, redirect=settings.LOGIN_REDIRECT_URL):
+def mxid_login(request, token, redirect=settings.LOGIN_REDIRECT_URL):
     user = authenticate(request=request, token=token)
     if user is not None:
         if user.is_active:
