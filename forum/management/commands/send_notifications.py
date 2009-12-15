@@ -33,7 +33,7 @@ class Command(LabelCommand):
                 q = s.question
                 message += "%s\n%s%s last activity by %s at %s\n\n" % (q.title, settings.MY_URL, q.get_absolute_url(), q.last_activity_by.real_name, q.last_activity_at)
             message += original_footer % (settings.MY_URL, user.id)
-            send_mail('MxForum updates digest', message, 'mxforum@mendix.com', ['achiel.van.der.mandele@mendix.com'], fail_silently=False)
+            send_mail('MxForum updates digest', message, 'mxforum@mendix.com', [user.username], fail_silently=False)
             print message
 
 
