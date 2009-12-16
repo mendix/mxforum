@@ -96,31 +96,6 @@
                 </div>
             </div>
             <br>
-            {% if not request.user.is_authenticated %}
-            <table id="login-box">
-                <tr>
-                    <td style="vertical-align:middle;">
-                    <strong>Use <a href="http://openid.net/" title="Learn more about OpenID information">OpenID</a> Login:</strong><br>
-                        {{ form.openid }}
-                        <div class="title-desc">
-                            Access to your own <a href="https://www.myopenid.com/" target=="_blank">OpenID</a>。
-                        </div>
-                    </td>
-                    <td style="vertical-align:middle; padding: 0px 40px 0px 40px">
-                        <div style="position: absolute; margin-top:40px; background-color:white; margin-left:-10px; padding:5px;">or</div>
-                        <div style="width:1px; border-left:solid 1px #999; height:8em; margin:auto;"></div>
-                    </td>
-                    <td style="vertical-align:middle;">
-                        <strong>Your name:</strong><br>
-                        {{ form.user }}
-                        <p>
-                        <strong>E-mail: (will not be publicly displayed)</strong><br>
-                        {{ form.email }}
-                        </p>
-                    </td>
-                </tr>
-            </table>
-            {% endif %}
             <input type="submit" value="Ask Your Question &#187;" class="submit" style="width: 170px;"/>
         </form>
     </div>
