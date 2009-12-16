@@ -2,6 +2,9 @@ from django.http import HttpResponseRedirect
 import settings
 from forum.login_views import mxid_login
 from forum.login_views import login_redirect
+from forum.views import users_feed
+from forum.views import questions_feed
+
 
 class CheckMxIdCookie():
 
@@ -11,6 +14,12 @@ class CheckMxIdCookie():
 			return None
 
 		if view_func == login_redirect:
+			return None
+		
+		if view_func == users_feed:
+			return None
+
+		if view_func == questions_feed:
 			return None
 
 		if has_cookie(request): 
