@@ -1189,13 +1189,14 @@ ins .post-tag{ background-color: #97ff97; } */
 	font-weight:bold;
 }
 .paginator .page a:hover,
-.paginator .curr a:hover,
-.paginator .prev a:hover,
-.paginator .next a:hover {
+.paginator .curr a:hover {
 	color:#fff;
-	background-color:#777;
 	border:1px solid #777;
     text-decoration:none;
+}
+.paginator .prev a:hover,
+.paginator .next a:hover {
+	border-style: none;
 }
 .paginator .text{
     color:#777;
