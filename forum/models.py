@@ -12,6 +12,8 @@ from django.template.defaultfilters import slugify
 from django.db.models.signals import post_delete, post_save, pre_save
 import django.dispatch
 import re
+from base64 import b64encode
+from hashlib import sha256
 
 from forum.managers import *
 from const import *
@@ -438,7 +440,7 @@ def calculate_gravatar_hash(instance, **kwargs):
     """Calculates a User's gravatar hash from their username address."""
     if kwargs.get('raw', False):
         return
-    instance.gravatar = hashlib.md5(instance.username).hexdigest()
+    instance.gravatar = b64encode(sha256(instance.username).digest())
 
 def record_ask_event(instance, created, **kwargs):
     if created:

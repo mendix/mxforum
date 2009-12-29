@@ -8,12 +8,14 @@ from django.utils.encoding import smart_unicode
 from django.utils.safestring import mark_safe
 from django.utils.timesince import timesince
 from forum.const import *
+from base64 import b64encode
+from hashlib import sha256
 
 register = template.Library()
 
 GRAVATAR_TEMPLATE = ('<img width="%(size)s" height="%(size)s" '
-                     'src="https://secure.gravatar.com/avatar/%(gravatar_hash)s'
-                     '?s=%(size)s&d=identicon&r=PG">')
+		'src="https://mxid.mendix.com/mxid/avatar?hash=%(gravatar_hash)s'
+                     '&thumb=%(thumbnail)s&d=identicon&r=PG">')
 
 @register.simple_tag
 def gravatar(user, size):
@@ -23,13 +25,15 @@ def gravatar(user, size):
     This tag can accept a User object, or a dict containing the
     appropriate values.
     """
-    try:
-        gravatar = user['gravatar']
-    except (TypeError, AttributeError, KeyError):
-        gravatar = user.gravatar
+    gravatar = b64encode(sha256(user.username).digest())
+    if size<129:
+      thumbnail = "true"
+    else:
+      thumbnail = "false"
     return mark_safe(GRAVATAR_TEMPLATE % {
-        'size': size,
         'gravatar_hash': gravatar,
+	'thumbnail' : thumbnail,
+	'size' : size,
     })
 
 MAX_FONTSIZE = 18
