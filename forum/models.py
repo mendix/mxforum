@@ -436,12 +436,6 @@ User.add_to_class('get_profile_url', get_profile_url)
 User.add_to_class('get_messages', get_messages)
 User.add_to_class('delete_messages', delete_messages)
 
-def calculate_gravatar_hash(instance, **kwargs):
-    """Calculates a User's gravatar hash from their username address."""
-    if kwargs.get('raw', False):
-        return
-    instance.gravatar = b64encode(sha256(instance.username).digest())
-
 def record_ask_event(instance, created, **kwargs):
     if created:
         activity = Activity(user=instance.author, active_at=instance.added_at, content_object=instance, activity_type=TYPE_ACTIVITY_ASK_QUESTION)
@@ -573,7 +567,6 @@ def record_user_full_updated(instance, **kwargs):
     activity.save()
 
 #signal for User modle save changes
-pre_save.connect(calculate_gravatar_hash, sender=User)
 post_save.connect(record_ask_event, sender=Question)
 post_save.connect(record_answer_event, sender=Answer)
 post_save.connect(record_comment_event, sender=Comment)

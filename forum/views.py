@@ -1912,8 +1912,10 @@ class UserImportService(DjangoSoapApp):
 
         u.username   = _email
         u.real_name  = _name
-        u.about = _about
-        u.website = _website	
+        if _about is not None:
+            u.about = _about
+        if _website is not None:
+            u.website = _website	
         u.set_password("sapperdeflap")
         u.save()
         return 1
