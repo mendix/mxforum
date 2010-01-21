@@ -6,11 +6,11 @@
         {% if question.favourite_count %}
             {% if question.favorited_myself %}
                 <div class="favorites-count">
-                    <img width="32" height="31" title="This question was {{question.favourite_count}} favorite users" alt="star" src="/content/images/vote-favorite-on.png"/><br/><b>{{question.favourite_count|intcomma}}</b>
+                    <img width="32" height="31" title="This question was favorited by {{question.favourite_count}} users" alt="star" src="/content/images/vote-favorite-on.png"/><br/><b>{{question.favourite_count|intcomma}}</b>
                 </div>
             {% else %}
                 <div class="favorites-count-off">
-                    <img width="32" height="31" title="This question was {{question.favourite_count}} favorite users" alt="star" src="/content/images/vote-favorite-off.png"/><br/><b>{{question.favourite_count|intcomma}}</b>
+                    <img width="32" height="31" title="This question favorited by {{question.favourite_count}} users" alt="star" src="/content/images/vote-favorite-off.png"/><br/><b>{{question.favourite_count|intcomma}}</b>
                 </div>
             {% endif %}
         {% else %}
