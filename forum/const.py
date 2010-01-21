@@ -4,14 +4,14 @@ All constants could be used in other modules
 For reasons that models, views can't have unicode text in this project, all unicode text go here.
 """
 CLOSE_REASONS = (
-    (1, u'The problem of repeat'),
+    (1, u'The problem is a duplicate of another problem'),
     (2, u'Technical issues rather than programming'),
-    (3, u'Too subjective, the question arising from a quarrel'),
+    (3, u'Too subjective, the question arose from a dispute'),
     (4, u'Is not an answer to the "problem"'),
     (5, u'Accepted answer has been provided'),
-    (6, u'Is outdated and can not reproduce the problem'),
-    (7, u'Too local, the question of the localization'),
-    (8, u'Malicious remarks'),
+    (6, u'Is outdated and problem can not be reproduced'),
+    (7, u'Too specific, the question has no general application'),
+    (8, u'Malicious remark'),
     (9, u'Spam ads'),
 )
 
