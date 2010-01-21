@@ -32,6 +32,9 @@ from forum.auth import *
 from forum.const import *
 from forum.user import *
 from forum import auth
+from base64 import b64encode
+from hashlib import sha256
+from settings import MXID_URL
 
 # used in index page
 INDEX_PAGE_SIZE = 30
@@ -1841,7 +1844,7 @@ def questions_feed(request, amount):
 
 def users_feed(request, amount):
     funcname =  request.GET.get('callback', "forum.get_users")	
-    objects = User.objects.all().order_by("-last_seen").values('id', 'real_name', 'gravatar', 'about', 'reputation', 'gold', 'silver', 'bronze')[0:amount]
+    objects = User.objects.all().order_by("-last_seen").values('id', 'real_name', 'about', 'reputation', 'gold', 'silver', 'bronze', 'username')[0:amount]
     from django.core.exceptions import ObjectDoesNotExist
     for o in objects:
         questions = Question.objects.filter(last_activity_by=int(o['id'])).order_by("-last_activity_at")
@@ -1851,6 +1854,8 @@ def users_feed(request, amount):
             o['last_question_title'] = myquestion.title
             o['last_activity_at'] = myquestion.last_activity_at
 
+        o['gravatar'] = "%s/mxid/avatar?hash=%s&thumb=true" % (MXID_URL, b64encode(sha256(o['username']).digest()))
+        del o['username']
         for k in o.iterkeys():
             o[k] = str(o[k])
     return HttpResponse("%s(%s);" % (funcname, str(objects)), mimetype="text/json")
