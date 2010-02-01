@@ -12,9 +12,11 @@
 #-------------------------------------------------------------------------------
 from django.contrib.syndication.feeds import Feed, FeedDoesNotExist
 from models import Question
+from settings import MY_HOST
+
 class RssLastestQuestionsFeed(Feed):
     title = u"Mendix Forum"
-    link = u"https://mxforum.mendix.com/questions/"
+    link = u"%s/questions/" % MY_HOST
     description = u"The place where modelers and developers meet to discuss, ask and answer Mendix related questions and topics."
     #ttl = 10
     #copyright = u'Copyright(c)2009.CNPROG.COM'
