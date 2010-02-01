@@ -1885,7 +1885,6 @@ class DjangoSoapApp(SimpleWSGISoapApp):
             django_response.status_code = int(status)
             for header, value in headers:
                 django_response[header] = value
-        #request.META['HTTP_HOST'] = 'mxforum.mendix.com'
         from settings import MY_HOST
         request.META['HTTP_HOST'] = MY_HOST
 

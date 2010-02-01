@@ -10,11 +10,12 @@ from django.utils.timesince import timesince
 from forum.const import *
 from base64 import b64encode
 from hashlib import sha256
+from settings import MXID_URL
 
 register = template.Library()
 
 GRAVATAR_TEMPLATE = ('<img width="%(size)s" height="%(size)s" '
-		'src="https://mxid.mendix.com/mxid/avatar?hash=%(gravatar_hash)s'
+		'src="%(mxid_url)s/mxid/avatar?hash=%(gravatar_hash)s'
                      '&thumb=%(thumbnail)s&d=identicon&r=PG">')
 
 @register.simple_tag
@@ -34,6 +35,7 @@ def gravatar(user, size):
         'gravatar_hash': gravatar,
 	'thumbnail' : thumbnail,
 	'size' : size,
+	'mxid_url' : MXID_URL
     })
 
 MAX_FONTSIZE = 18
