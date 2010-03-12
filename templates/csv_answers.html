@@ -1,0 +1,5 @@
+votes_up;votes_down;question_views;author
+{% for a in answers %}
+{{ a.vote_up_count }};{{ a.vote_down_count }};{{ a.question.view_count }};{{ a.author.real_name }}
+{% endfor %}
+

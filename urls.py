@@ -66,4 +66,7 @@ urlpatterns = patterns('',
     (r'^deletesubscription/(?P<id>\d+)/$', 'forum.views.delete_subscription'),
     (r'^questions_feed/([0-9]+)/$', 'forum.views.questions_feed'),
     (r'^users_feed/([0-9]+)/$', 'forum.views.users_feed'),
+    (r'^users_csv/$', 'forum.views.csv_users'),
+    (r'^questions_csv/$', 'forum.views.csv_questions'),
+    (r'^answers_csv/$', 'forum.views.csv_answers'),
 )

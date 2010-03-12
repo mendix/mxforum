@@ -1865,6 +1865,24 @@ def error(request):
 	"error_message" : request.GET.get('error', "An unknown error occurred"),
      }, context_instance=RequestContext(request))
 
+@login_required
+def csv_users(request):
+    users = User.objects.all()
+    return render_to_response("csv_users.html", {"users" : users, }, context_instance=RequestContext(request))
+
+@login_required
+def csv_questions(request):
+    lastmonth = (datetime.datetime.now() - datetime.timedelta(weeks=4))
+    questions = Question.objects.all().filter(deleted=False).filter(added_at__gte=lastmonth)
+    return render_to_response("csv_questions.html", {"questions" : questions, }, context_instance=RequestContext(request))
+
+@login_required
+def csv_answers(request):
+    lastmonth = (datetime.datetime.now() - datetime.timedelta(weeks=4))
+    answers = Answer.objects.all().filter(deleted=False).select_related('question').filter(added_at__gte=lastmonth)
+    return render_to_response("csv_answers.html", {"answers" : answers, }, context_instance=RequestContext(request))
+    
+
 #
 # WSDL fun
 # 

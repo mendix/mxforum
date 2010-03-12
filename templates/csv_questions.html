@@ -1,0 +1,4 @@
+title;author;votes_up;votes_down;views
+{% for q in questions %}
+{{ q.title }};{{ q.author.real_name }};{{ q.vote_up_count }};{{ q.vote_down_count }};{{ q.view_count }}
+{% endfor %}
