@@ -1872,13 +1872,19 @@ def csv_users(request):
 
 @login_required
 def csv_questions(request):
-    lastmonth = (datetime.datetime.now() - datetime.timedelta(weeks=4))
+    timespan = 4
+    if 'weeks' in request.GET:
+        timespan = int(request.GET['weeks'])
+    lastmonth = (datetime.datetime.now() - datetime.timedelta(weeks=timespan))
     questions = Question.objects.all().filter(deleted=False).filter(added_at__gte=lastmonth)
     return render_to_response("csv_questions.html", {"questions" : questions, }, context_instance=RequestContext(request))
 
 @login_required
 def csv_answers(request):
-    lastmonth = (datetime.datetime.now() - datetime.timedelta(weeks=4))
+    timespan = 4
+    if 'weeks' in request.GET:
+        timespan = int(request.GET['weeks'])
+    lastmonth = (datetime.datetime.now() - datetime.timedelta(weeks=timespan))
     answers = Answer.objects.all().filter(deleted=False).select_related('question').filter(added_at__gte=lastmonth)
     return render_to_response("csv_answers.html", {"answers" : answers, }, context_instance=RequestContext(request))
     
