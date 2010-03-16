@@ -12,18 +12,18 @@
 #-------------------------------------------------------------------------------
 from django.contrib.syndication.feeds import Feed, FeedDoesNotExist
 from models import Question
-from settings import MY_HOST
+from django.template.defaultfilters import slugify
 
 class RssLastestQuestionsFeed(Feed):
     title = u"Mendix Forum"
-    link = u"%s/questions/" % MY_HOST
+    link = u"/questions/"
     description = u"The place where modelers and developers meet to discuss, ask and answer Mendix related questions and topics."
     #ttl = 10
     #copyright = u'Copyright(c)2009.CNPROG.COM'
     copyright = u'Copyright(c)2009.MENDIX.COM'
 
     def item_link(self, item):
-        return self.link + '%s/' % item.id + item.title
+		return self.link + '%s/' % item.id + slugify(item.title)
 
     def item_author_name(self, item):
         return item.author.real_name
