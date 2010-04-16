@@ -48,7 +48,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div class="box-unit">Votes</div>
+										<div class="box-unit">Vote{% ifnotequal question.score 1 %}s{% endifnotequal %}</div>
                                     </td>
                                 </tr>
                             </table>
@@ -64,7 +64,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div class="box-unit">Answers</div>
+										<div class="box-unit">Answer{% ifnotequal question.answer_count 1 %}s{% endifnotequal %}</div>
                                     </td>
                                 </tr>
                             </table>
