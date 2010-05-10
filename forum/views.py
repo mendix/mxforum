@@ -1867,25 +1867,56 @@ def error(request):
 
 @login_required
 def csv_users(request):
-    users = User.objects.all()
-    return render_to_response("csv_users.html", {"users" : users, }, context_instance=RequestContext(request))
+	if 'till' not in request.GET:
+		raise Exception("you must provide a 'till' param in the format 'YYYY-mm-dd'")
+	if 'from' not in request.GET:
+		raise Exception("you must provide a 'from' in the format 'YYYY-mm-dd'")
+	from_string = request.GET['from']
+	till_string = request.GET['till']
+	till_date = datetime.datetime.strptime(till_string, "%Y-%m-%d")
+	from_date = datetime.datetime.strptime(from_string, "%Y-%m-%d")
+	users = User.objects.all().extra(select={
+			'answer_upvotes' : 'SELECT COUNT(*) from vote where content_type_id=2 and object_id in \
+				(SELECT id from answer where author_id=auth_user.id and vote=1 AND voted_at between \'%s\' and \'%s\')' % (from_string, till_string), 
+			'answer_downvotes' : 'SELECT COUNT(*) from vote where content_type_id=2 and object_id in \
+				(SELECT id from answer where author_id=auth_user.id and vote<0 AND voted_at between \'%s\' and \'%s\')' % (from_string, till_string), 
+			'question_upvotes' : 'SELECT COUNT(*) from vote where content_type_id=1 and object_id in \
+				(SELECT id from question where author_id=auth_user.id and vote=1)', 
+			'question_downvotes' : 'SELECT COUNT(*) from vote where content_type_id=1 and object_id in \
+				(SELECT id from question where author_id=auth_user.id and vote<0 AND voted_at between \'%s\' and \'%s\')' % (from_string, till_string),
+			'accepted' : 'SELECT COUNT(*) from answer where accepted_at between \'%s\' and \'%s\' and author_id=auth_user.id' % (from_string, till_string),
+			'questions_that_i_accepted' : 'SELECT COUNT(*) from answer where accepted_at between \'%s\' and \'%s\' and question_id in (select id from question where author_id=auth_user.id)' % (from_string, till_string),
+			'new_gold' : 'SELECT COUNT(*) from award where awarded_at between \'%s\' and \'%s\' and user_id=auth_user.id and badge_id in (select id from badge where type=1)' % (from_string, till_string),
+			'new_silver' : 'SELECT COUNT(*) from award where awarded_at between \'%s\' and \'%s\' and user_id=auth_user.id and badge_id in (select id from badge where type=2)' % (from_string, till_string),
+			'new_bronze' : 'SELECT COUNT(*) from award where awarded_at between \'%s\' and \'%s\' and user_id=auth_user.id and badge_id in (select id from badge where type=3)' % (from_string, till_string)
+		})
+			
+	return render_to_response("csv_users.html", {"users" : users, }, context_instance=RequestContext(request))
 
 @login_required
 def csv_questions(request):
-    timespan = 4
-    if 'weeks' in request.GET:
-        timespan = int(request.GET['weeks'])
-    lastmonth = (datetime.datetime.now() - datetime.timedelta(weeks=timespan))
-    questions = Question.objects.all().filter(deleted=False).filter(added_at__gte=lastmonth)
+    if 'till' not in request.GET:
+        raise Exception("you must provide a 'till' param in the format 'YYYY-mm-dd'")
+    if 'from' not in request.GET:
+        raise Exception("you must provide a 'from' in the format 'YYYY-mm-dd'")
+    from_string = request.GET['from']
+    till_string = request.GET['till']
+    till_date = datetime.datetime.strptime(till_string, "%Y-%m-%d")
+    from_date = datetime.datetime.strptime(from_string, "%Y-%m-%d")
+    questions = Question.objects.all().filter(deleted=False).filter(added_at__gte=from_date).filter(added_at__lte=till_date)
     return render_to_response("csv_questions.html", {"questions" : questions, }, context_instance=RequestContext(request))
 
 @login_required
 def csv_answers(request):
-    timespan = 4
-    if 'weeks' in request.GET:
-        timespan = int(request.GET['weeks'])
-    lastmonth = (datetime.datetime.now() - datetime.timedelta(weeks=timespan))
-    answers = Answer.objects.all().filter(deleted=False).select_related('question').filter(added_at__gte=lastmonth)
+    if 'till' not in request.GET:
+        raise Exception("you must provide a 'till' param in the format 'YYYY-mm-dd'")
+    if 'from' not in request.GET:
+        raise Exception("you must provide a 'from' in the format 'YYYY-mm-dd'")
+    from_string = request.GET['from']
+    till_string = request.GET['till']
+    till_date = datetime.datetime.strptime(till_string, "%Y-%m-%d")
+    from_date = datetime.datetime.strptime(from_string, "%Y-%m-%d")
+    answers = Answer.objects.all().filter(deleted=False).select_related('question').filter(added_at__gte=from_date).filter(added_at__lte=till_date)
     return render_to_response("csv_answers.html", {"answers" : answers, }, context_instance=RequestContext(request))
     
 
