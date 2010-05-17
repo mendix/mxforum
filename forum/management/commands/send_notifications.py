@@ -13,18 +13,14 @@ class Command(LabelCommand):
         f = (datetime.now() - timedelta(minutes=int(timespan)))
         questions = Question.objects.filter(last_activity_at__gte=f)
 
-        subscriptions = filter( (lambda x: x.question in questions), all_subscriptions)
-        print "subs after filter %s " % subscriptions
+        subscriptions = filter( (lambda s: s.question in questions and str(s.question.last_activity_by) !=  str(s.user.username)), all_subscriptions)
         ordered_subs = {}
         for s in subscriptions:
             if s.user not in ordered_subs:
                 ordered_subs[s.user] = []
            
             ordered_subs[s.user].append(s)
-        print "found %s subs" % len(subscriptions)
-        print "found %s orderedsubs " % len(ordered_subs)
 		
-        print ordered_subs
         original_header = "Dear %s,\n\nYou are receiving this message because you have subscribed to receive mail whenever any of your questions have activity. The following questions have seen activity since the last mail digest that you have received from us:\n\n"
         original_footer = "You can unsubscribe to any of these questions by updating your profile at %s/users/%s?sort=subscriptions\n\nKind regards,\nthe MxForum Team"
         for user in ordered_subs.iterkeys():
