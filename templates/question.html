@@ -463,10 +463,9 @@
 			<form action="/addsubscription/" method="POST">
 				<input type="hidden" name="question" id="id_question" value="{{ question.id }}"></input>
 				<input type="hidden" name="user" id="id_user" value="{{ request.user.id }}"></input>
-				Frequency: 
-				{{ subscriptionform.timespan }}
+			    <input type="hidden" name="timespan" id="id_timespan" value="15"/>	
 
-				<input type="submit" value="subscribe to this question"/>
+				<input type="submit" value="click me!"/>
 			</form>
 		</div>
 		{% endif %}
