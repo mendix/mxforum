@@ -20,6 +20,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import *
 from django.contrib.sites.models import Site
 
+from django.core.exceptions import PermissionDenied
+
 from django.db.models import Q
 
 from utils.html import sanitize_html
@@ -1867,6 +1869,8 @@ def error(request):
 
 @login_required
 def csv_users(request):
+	if not request.user.is_superuser:
+		raise PermissionDenied
 	if 'till' not in request.GET:
 		raise Exception("you must provide a 'till' param in the format 'YYYY-mm-dd'")
 	if 'from' not in request.GET:
@@ -1895,6 +1899,8 @@ def csv_users(request):
 
 @login_required
 def csv_questions(request):
+    if not request.user.is_superuser:
+        raise PermissionDenied
     if 'till' not in request.GET:
         raise Exception("you must provide a 'till' param in the format 'YYYY-mm-dd'")
     if 'from' not in request.GET:
@@ -1908,6 +1914,8 @@ def csv_questions(request):
 
 @login_required
 def csv_answers(request):
+    if not request.user.is_superuser:
+        raise PermissionDenied
     if 'till' not in request.GET:
         raise Exception("you must provide a 'till' param in the format 'YYYY-mm-dd'")
     if 'from' not in request.GET:
