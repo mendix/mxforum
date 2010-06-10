@@ -17,14 +17,14 @@ from settings import MY_URL
 
 class RssLastestQuestionsFeed(Feed):
     title = u"Mendix Forum"
-    link = u"%s/questions/" % MY_URL
+    link = u"%s/" % MY_URL
     description = u"The place where modelers and developers meet to discuss, ask and answer Mendix related questions and topics."
     #ttl = 10
     #copyright = u'Copyright(c)2009.CNPROG.COM'
     copyright = u'Copyright(c)2009.MENDIX.COM'
 
     def item_link(self, item):
-		return "%s/%s/%s/" % (self.link, item.id, slugify(item.title))
+		return "%squestions/%s/%s/" % (self.link, item.id, slugify(item.title))
 
     def item_author_name(self, item):
         return item.author.real_name
