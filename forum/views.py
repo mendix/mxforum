@@ -1939,6 +1939,8 @@ from soaplib.serializers import primitive as soap_types
 from django.http import HttpResponse
 
 import sys
+from settings import WEBSERVICE_PASSWORD as ws_password
+
 class DjangoSoapApp(SimpleWSGISoapApp):
 
     def __call__(self, request):
@@ -1965,9 +1967,13 @@ class UserImportService(DjangoSoapApp):
     __tns__ = 'http://www.mendix-ns.org/soap/'
 
 
-    @soapmethod(soap_types.String, soap_types.String, soap_types.String, soap_types.String, _returns=soap_types.Boolean)
-    def set_user(self, _email, _name, _about, _website):
+    @soapmethod(soap_types.String, soap_types.String, soap_types.String, soap_types.String, soap_types.String, _returns=soap_types.Boolean)
+    def set_user(self, _service_password, _email, _name, _about, _website):
         from settings import DEBUG
+		# check authentication:
+        if not _service_password == ws_password:
+            return 0
+
         u, created = User.objects.get_or_create(username=_email)
         if DEBUG==True:
             sys.stderr.write("MXforum WEBSERVICES set_user called with params email: %s, name: %s, about %s, website %s" % (_email, _name, _about, _website))
