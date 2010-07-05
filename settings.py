@@ -4,7 +4,7 @@ import os.path
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-SITE_SRC_ROOT = '/opt/mxforum/'
+SITE_SRC_ROOT = '/opt/salesforum/'
 #David Cramer debug toolbar
 INTERNAL_IPS = ('127.0.0.1',)
 DEBUG_TOOLBAR_PANELS = (
@@ -15,10 +15,6 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 
 #for logging
-import logging
-LOG_FILENAME = '/opt/mxforum/log/mxforum.django.app.log'
-logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG,)
-
 #for OpenID auth
 ugettext = lambda s: s
 LOGIN_URL = '/%s%s' % (ugettext('accounts/'), ugettext('login/'))
@@ -34,8 +30,8 @@ DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysq
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
-DATABASE_NAME = 'mxforum'             # Or path to database file if using sqlite3.
-DATABASE_USER = 'mxforum'             # Not used with sqlite3.
+DATABASE_NAME = 'salesforum'             # Or path to database file if using sqlite3.
+DATABASE_USER = 'salesforum'             # Not used with sqlite3.
 DATABASE_PASSWORD = '1'         # Not used with sqlite3.
 
 SECRET_KEY = 'nottellingyou' # change in local_settings
