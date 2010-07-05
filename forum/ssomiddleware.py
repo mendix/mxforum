@@ -24,7 +24,7 @@ class CheckMxIdCookie():
 
 		if has_cookie(request): 
 			if not request.user.is_authenticated():
-				return HttpResponseRedirect("%s/mxid/login?a=forum&cont=%s" % (settings.MXID_URL, request.get_full_path()))
+				return HttpResponseRedirect("%s/mxid/login?a=salesforum&cont=%s" % (settings.MXID_URL, request.get_full_path()))
 		return None
 
 def has_cookie(request):

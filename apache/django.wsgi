@@ -1,5 +1,5 @@
 import os, sys
-sys.path.append('/opt/mxforum')
+sys.path.append('/opt/salesforum')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
 import django.core.handlers.wsgi
