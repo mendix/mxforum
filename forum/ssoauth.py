@@ -10,7 +10,7 @@ class SSOModelBackend(object):
     def authenticate_token(self, request, token):
         original = "%s%s" % (request.META['REMOTE_ADDR'],  request.META['HTTP_USER_AGENT'])
         hashed = b64encode(sha256(original).digest())
-        requestdata = urllib.urlencode([('token', token), ('a', 'forum'), ('client', hashed)])
+        requestdata = urllib.urlencode([('token', token), ('a', 'salesforum'), ('client', hashed)])
         u = urllib.urlopen("%s/mxid/validatetoken" % settings.MXID_URL, requestdata)
 
         response = simplejson.load(u)

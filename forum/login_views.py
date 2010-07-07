@@ -17,6 +17,6 @@ def mxid_login(request, token, redirect=settings.LOGIN_REDIRECT_URL):
 
 def login_redirect(request):
 	if 'next' in request.GET:
-		return HttpResponseRedirect("%s/mxid/login?a=forum&cont=%s" % (settings.MXID_URL, request.GET['next']))
+		return HttpResponseRedirect("%s/mxid/login?a=salesforum&cont=%s" % (settings.MXID_URL, request.GET['next']))
         
-	return HttpResponseRedirect("%s/mxid/login?a=forum" % settings.MXID_URL)
+	return HttpResponseRedirect("%s/mxid/login?a=salesforum" % settings.MXID_URL)
