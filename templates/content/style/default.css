@@ -129,6 +129,57 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
     display:block;
     text-align: left;
 }
+.mendixLogo {
+	float:left;
+	position:relative;
+}
+.mendixLogo .sitelogo {
+	height: 62px;
+	width: 228px;
+	text-indent: -9999px;
+	display:block;
+	background:transparent url(../images/mendix.png) no-repeat scroll;
+}
+.Mendixhead {
+	margin:auto;
+	position:relative;
+	width:980px;
+}
+.toplinks {
+	float: right;
+	height: 18px;
+	width: 100%;
+	padding: 5px 0 0 0;
+	text-align: right;
+}
+.toplinks ul {
+	float: right;
+	list-style-type:none;
+}
+.toplinks ul li {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+.toplinks ul li.join_last {
+	margin-right: 80px;
+}
+.toplinks ul li.join a {
+	padding-left:5px;
+	padding-right:0;
+}
+.toplinks a {
+	padding: 0 8px 0 4px;
+	font-size: 12px;
+	color: #000;
+	border-right: 1px solid #000;
+}
+.toplinks a:last-child { 
+	border-right: none;
+ }
+.toplinks #logoff { 
+	font-weight: normal; 
+}
 #header {
     width:100%;
     padding:0px 0 10px 0;
@@ -190,6 +241,35 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 	width:980px;
 	margin:0 auto;	
 	padding-top: 20px;
+}
+.MendixContainer .menu {
+	float: right;
+	margin: 13px 0 0 0;
+}
+.MendixContainer .menu ul {
+	list-style-type:none;
+}
+.MendixContainer .menu ul li {
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+.MendixContainer .menu ul li a {
+	display: block;
+	padding: 25px 0 11px 40px;
+	color: #000;
+	font-weight: bold;
+	font-size: 16px;
+	font-family: 'century gothic',arial;
+}
+.MendixContainer .menu ul li a:hover,
+.MendixContainer .menu ul li a:focus {
+	color: #00AEF4;
+	text-decoration: none;
+}
+.MendixContainer .menu li.current_page_item a,
+.MendixContainer .menu li.current_page_parent a {
+	color: #00AEF4;
 }
 #content{
 	width: 980px;
@@ -1650,104 +1730,6 @@ td.label {
 	color: #555;
 	font-family: verdana;	
 }
-/* header */
-.mendixLogo {
-	float:left;
-	position:relative;
-}
-.mendixLogo .sitelogo {
-	height: 39px;
-	width: 293px;
-	margin-left: 7px;
-	text-indent: -9999px;
-	display:block;
-	background:transparent url(../images/logo_mendix_cp.png) no-repeat scroll;
-}
-.Mendixhead {
-	margin:auto;
-	position:relative;
-	width:980px;
-}
-div.fakeDiv {
-	height: 20px;
-	padding: 0;
-	margin: 0;
-	width: auto;
-	text-align: left;
-}
-.Mendixhead .toplinks {
-	float:right;
-	width:100%;
-	font-size:11px;
-	padding:6px 8px 17px 0;
-	text-align:right;
-	color: #727272;
-}
-.toplinks #Visit_Mendix_com {
-	border-right: none;
-	padding-right: 0;
-}
-.toplinks a:first-child { font-weight:bold; }
-.Mendixhead .toplinks a {
-	padding:0 8px 0 2px;
-	color:#727272;
-	font-family:verdana;
-	font-size:11px;
-	text-decoration:none;
-	border-right:1px solid #AAAAAA;
-}
-.toplinks a.logon,
-.toplinks #username { font-weight: bold; }
-.toplinks #logoff { 	font-weight: normal; }
-.toplinks a:last-child {
-	border:0 none;
-	padding-right:0;
-}
-.Mendixhead .toplinks a:hover,
-.Mendixhead .toplinks a:focus {
-    text-decoration: underline;	
-}
-.MendixheadNavigation {
-	position:relative;	
-	float:right;
-	z-index:101;
-	padding:11px 0 0 12px;
-	background:transparent url(../images/tab_background.png) repeat-x scroll left bottom;
-}
-.MendixheadNavigation ul {
-	margin: 0px;
-	padding: 0px;
-	list-style-type: none;
-}
-.MendixheadNavigation li {
-	position:relative;
-	float: left;
-	height: 23px;
-	background:transparent url(../images/tab_background_large.png) no-repeat scroll left top;
-}
-.MendixheadNavigation li:first-child { background-position:-1px 0; }
-.MendixheadNavigation ul li.current_item { background-position:0 -23px; }
-.MendixheadNavigation ul li a,
-.MendixheadNavigation ul li a:visited {
-	height:23px;
-	color:#212121 !important;
-	display:block;
-	font-family:Trebuchet MS,Verdana;
-	font-size:12px !important;
-	line-height:22px;
-	padding:0 14px 0 12px;
-	text-decoration:none;
-	background:transparent url(../images/tab_background_small.png) no-repeat scroll right top;
-}
-.MendixheadNavigation ul li a:hover {
-	color: #aeaeae !important;
-	text-decoration: none;
-}
-.MendixheadNavigation li.active { background-position: 0 -23px; }
-.MendixheadNavigation li.active a { background-position: right -23px !important; }
-.MendixheadNavigation li.active a:hover { color: #aeaeae !important; }
-.MendixheadNavigation ul li.current_item  a { background-position:right -23px; }
-.MendixheadNavigation ul li.current_item:first-child { background-position:-1px -23px; }
 .MendixfakeDiv {	height:120px; }
 .MendixheadText {
 	position: relative;
@@ -1761,9 +1743,8 @@ div.fakeDiv {
 }
 .MendixheadText a:hover { text-decoration: underline; }
 .MendixContainer {
-	height:83px;
-	font-family:Helvetica,Arial,sans-serif;
-	line-height:1.4; 
+	height: 100px;
+	line-height: normal; 
 }
 /*
 ##############
