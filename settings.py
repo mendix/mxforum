@@ -140,6 +140,8 @@ AUTHENTICATION_BACKENDS = (
 LOGIN_REDIRECT_URL = '/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 
+mysecret
+
 
 try:
     from local_settings import *
