@@ -29,16 +29,18 @@
 				{% endif %}
 	    	 </div>
 			 
-			 <h1>Forum</h1>
+			 <div class="header_bottom">
+				<h1>Forum</h1>
 	     
-		     <form id="search_field" method="post" action="/search/">
-				 <input id="ipSearchTag" name="ipSearchTag" size="20" value="{{ searchterms }}"/>
-		         <input type="image" class="submit" src="/../content/images/search_button.png" />
-		     </form>
-			 
-			 <ul class="submenu" name="mxid_topbar" bartype="apps" style="display: none">
-				<li class=" %CLASS% "><a id=" %NAME% " href="%LOCATION%" target="_top" title=" %DESCRIPTION% ">%CAPTION%</a></li>
-			</ul>
+				 <form id="search_field" method="post" action="/search/">
+					 <input id="ipSearchTag" name="ipSearchTag" size="20" value="{{ searchterms }}"/>
+					 <input type="image" class="submit" src="/../content/images/search_button.png" />
+				 </form>
+				 
+				 <ul class="submenu" name="mxid_topbar" bartype="apps" style="display: none">
+					<li class=" %CLASS% "><a id=" %NAME% " href="%LOCATION%" target="_top" title=" %DESCRIPTION% ">%CAPTION%</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>	
 	

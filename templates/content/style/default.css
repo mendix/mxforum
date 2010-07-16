@@ -181,7 +181,7 @@ h4 {display:block;font-size:90%;}
 #header-links {
 	float: left;
 	width: 100%; 	
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 #header-links a {
     color: #FFF;
@@ -201,12 +201,11 @@ h4 {display:block;font-size:90%;}
 }
 .subNav {
 	clear: both;	
-	margin-top: 2px;
 	background: #00aef4;
 }
 .subNav .subNav_menu {
 	width: 980px;
-	height:39px;
+	height: 89px;
 	margin: auto;
 	overflow: hidden;
 	background: url(../images/header_subnav_bg.png) no-repeat;
@@ -214,6 +213,7 @@ h4 {display:block;font-size:90%;}
 .subNav h1 {
 	float: left;
 	margin: 0;
+	padding-top:3px;	
 	font-size: 24px;	
 	font-family: 'century gothic',arial;
 	font-weight: bold;
@@ -225,10 +225,13 @@ h4 {display:block;font-size:90%;}
 .submenu {
 	float:right;
 	padding-top: 8px;
+	margin: 0;
 	list-style-type:none;
 }
 .submenu li {
 	float: left;
+	margin: 0 0 0 16px;
+	padding: 0 10px 0 0;
 }
 .submenu li a {
 	font-size: 14px;
@@ -239,6 +242,7 @@ h4 {display:block;font-size:90%;}
 #search_field {
 	float:left;
 	width:270px;
+	margin-left: 10px;
 }
 #search_field input#ipSearchTag {
 	width:256px;
