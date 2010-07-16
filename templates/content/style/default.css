@@ -22,7 +22,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 body{
     font-family:arial,Tahoma,Verdana,Arial,sans-serif;
-    font-size: 80%;
+    font-size: 12px;
     margin:0;
     padding:0;
     text-align:center;
@@ -41,7 +41,6 @@ table {
 input, select, button, textarea {
 	border: 1px solid #999;
 	font-size:100%;
-    font-family:Helvetica,Tahoma,Verdana,Arial,sans-serif;
 }
 input {
 	padding:3px;
@@ -53,7 +52,6 @@ input#name {
 }
 input#ipSearchTag { padding:5px; }
 pre {
-	font-family: Consolas, Monaco, Liberation Mono, Lucida Console, Monospace;
     font-size:100%;
 	margin-bottom: 10px;
 	overflow: auto;
@@ -64,7 +62,6 @@ pre {
 	padding-bottom: 20px !ie7;
 }
 code {
-    font-family: Consolas, Monaco, Liberation Mono, Lucida Console, Monospace;
     font-size:100%;
 }
 blockquote {
@@ -105,19 +102,16 @@ a:focus {
 }
 a.active { text-decoration: none; }
 h1 {
-    font-family:Trebuchet MS,Helvetica,sans-serif;
     font-size: 160%;
 }
 h2 {
-    font-family: arial, verdana;
-    font-family:verdana;
 	font-size:16px;
     font-weight:bold;
     margin-bottom:7px;
     line-height:25px;
 }
-h3 {display:block;font-size:120%;font-family:Helvetica,Tahoma,Verdana,Arial,sans-serif;font-weight:bold;}
-h4 {display:block;font-size:90%; font-family:Verdana;}
+h3 {display:block;font-size:120%;}
+h4 {display:block;font-size:90%;}
 #top{
     width:100%;
     border-bottom:solid 3px #ccc;
@@ -192,7 +186,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 #header-links a {
     color: #000;
 	font-size: 12px;
-	font-family: verdana;
     letter-spacing:1px;
 }
 #header-links a:hover { text-decoration:underline; }
@@ -293,7 +286,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
     height:18px;
     width:200px;
 	font-size: 16px;
-    font-family: Verdana;
 	font-weight: normal;
 	margin-top:8px;
     padding:5px 0 0 3px;
@@ -323,7 +315,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 #question-title a {
     color:#333;
     font-size: 16px;
-    font-family: verdana;
 }
 #question-title a:hover,
 #question-title a:focus {
@@ -357,7 +348,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 	border-width:1px 1px medium;
 	color:#212121 !important;
 	display: block;
-	font-family:Trebuchet MS,Verdana;
 	font-size:12px !important;
 	height: 23px;
 	line-height: 22px;
@@ -387,63 +377,100 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 .outside {
 	border-bottom:1px dotted #CCCCCC;
 	color:#000000;
-	font-family:Verdana;
 	font-size:16px;
 	font-weight:normal;
 	margin:0 0 10px;
 	padding:10px 0;	
 }
 #footer {
-	clear: both;
-	text-align: left;
-	margin-top: 35px;
-	padding: 26px 0 12px 0;
-	border-top: 1px solid #b1adab;
-	background-color: #dfdfdf;
+	clear:both;
+	overflow: hidden;
+	padding: 26px 0 12px;
+	background: #222 url(../images/footer_bg.png) repeat-x top;
 }
-#footer #footercontent {
+#footer #footer_inside {
 	width: 980px;
 	margin: 0 auto;
+	font-size: 12px;
+	color: #FFF;
 	line-height: 18px;
-	font-family: Verdana;
-	font-size: 11px;
-	color: #737373;
+}
+#footer #footercontent {
+	float: left;
+	background: url(../images/footer_border.png) repeat-y right;
 }
 #footer .sitemap {
 	float: left;
-	padding: 0 0 25px 42px;
+	padding: 0 40px 25px 0;
 }
-#footer #footercontent h2 {
-	margin: 0 0 3px 0;
-	font-size: 11px;
+#footer h2 {
+	margin: 0 0 11px 0;
+	font-size: 14px;
 	font-weight: bold;
-	color: #505050;
+	color: #FFF;
 }
 #footer #footercontent a {
 	display: block;
-	color: #737373;
+	color: #FFF;
+	font-size: 12px;
 	text-decoration: none;
 }
-#footer #footercontent a:hover { text-decoration: underline; }
+#footer #footercontent a:hover,
+#footer #footercontent a:focus {
+	text-decoration: underline;
+}
+#footer .footer_contact {
+	float: left;
+	padding: 0 0 0 20px;
+}
+#footer .footer_contact h2 {
+	color: #7F7F7F;
+}
+#footer .footer_contact dl {
+	float: left;
+	padding-right: 50px;
+}
+#footer .footer_contact dl.right {
+	padding-right: 0;
+}
+#footer .footer_contact dl dt {
+	font-weight: bold;
+	color: #7F7F7F;
+}
+#footer .footer_contact dl dd p {
+	margin-bottom: 0;
+}
+#footer .footer_contact dl dd a {
+	color: #7F7F7F;
+	text-decoration: underline;
+}
+#footer .footer_contact dl dd a:hover,
+#footer .footer_contact dl dd a:focus {
+	text-decoration: none;
+}
 #footer .copyright {
-	clear: both;
-	font-family: Verdana;
+	clear:both;
 	font-size: 11px;
-	color: #6b6b6c;
-	text-align: right;
+	color: #CCC;
+}
+#footer .copyright a {
+	color: #CCC;
+	text-decoration: none;
+}
+#footer .copyright a:hover,
+#footer .copyright a:focus {
+	text-decoration: underline;
 }
 #tail { 
 	margin-bottom: 20px;
 	padding-top:20px;
 }
 #tail h3 {
-	font-family: verdana;
 	font-weight: normal;
 	font-size: 11px;
 	color: #555;	
 }
 #tail a {
-	font-family: verdana;
 	font-size: 11px;
 	color: #0285FF;	
 }
@@ -456,7 +483,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 	font-size:1.75em;
 	letter-spacing:-0.02em;
 	color:#27221F;
-	font-family:Helvetica,Arial,sans-serif;
 	line-height:1.05em;
 	padding: 10px 0;
 }
@@ -467,12 +493,10 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 	border:1px solid #BBBBBB;
 	font-size: 11px;
 	color: #555555;
-	font-family: verdana;
 }
 #tail .add_subscription select#id_timespan option {
 	font-size: 11px;
 	color: #555555;
-	font-family: verdana;
 }
 #tail .add_subscription input {
 	cursor: pointer;
@@ -480,7 +504,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 	letter-spacing:-0.05em;
 	text-align:center;
 	border:1px solid #BBBBBB;
-	font-family:Verdana,Arial,Helvetica,sans-serif;
 	color: #468175;
 	text-transform: uppercase;
 	background:#FDFDFD url(../images/button_bg.png) repeat-x scroll 0 100%;
@@ -591,7 +614,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 	display: block;
 	font-weight: bold;
 	font-size: 12px;
-	font-family: verdana;
 	padding: 6px 15px 6px 15px;
 	text-decoration: none;
 }
@@ -604,7 +626,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 .highlight-box {
     border: 1px solid #CCCCCC;
     color: #555555;
-    font-family:Verdana;
 	font-size:12px;
 	line-height:18px;
 	margin:12px 0;
@@ -623,7 +644,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 	color:#000000;
 	margin:0 0 10px;
 	padding:10px 0;
-	font-family:Verdana;
 	font-size:16px;
 	font-weight:normal;
 }
@@ -634,14 +654,12 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 	color:#000000;
 	margin:0 0 10px;
 	padding:10px 0;
-	font-family:Verdana;
 	font-size:16px;
 	font-weight:normal;
 }
 .gray-box #recent-tags {
 	border: 1px solid #CCCCCC;
     color: #555555;
-    font-family:Verdana;
 	font-size:12px;
 	line-height:18px;
 	margin:12px 0;
@@ -651,13 +669,11 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 .gray-box a.link {
     color: #0285FF;
     font-size: 12px;
-    font-family: verdana;
 }
 .gray-box a.link:hover { color: #84755C; }
 .gray-box-bg {
 	padding:10px;
 	color:#555555;
-	font-family:Verdana;
 	font-size:12px;
 	line-height:18px;
 	margin:8px 0;
@@ -696,12 +712,10 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 .questions-vote-number{
     font-size:200%;
     font-weight:bold;
-    font-family:Arial;
 }
 .questions-answer-number{
     font-size:140%;
     font-weight:bold;
-    font-family:Arial;
 }
 .questions-answerbox { padding:5px; }
 .questions-votebox { padding:5px; }
@@ -713,7 +727,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 .question-body {
     min-height:100px;
     color: #555;
-	font-family: verdana;
 }
 .question-body IMG{ max-width:600px; }
 .questions-mark{
@@ -731,7 +744,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
     vertical-align:top;
 }
 .questions-count{
-    font-family:arial;
     font-size:350%;
     font-weight:bolder;
     margin:15px 0 15px 0;
@@ -743,7 +755,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
     width:500px;
 }
 .summary h3 {
-	font-family:verdana;
 	font-size:10pt;
 	font-weight:bold;	
 }
@@ -758,7 +769,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 .box-number{
     font-size:160%;
     font-weight:bold;
-    font-family:Arial;
 }
 .box-unit{
     padding:3px;
@@ -770,7 +780,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
     padding-top:20px;
     width: 100%;
     margin-bottom:10px;
-    font-family: verdana;
 }
 .answer-body{ min-height:80px; }
 .answer-body IMG{ max-width:600px; }
@@ -813,16 +822,9 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
     margin-bottom:5px;
 }
 .qustion-title h3 a {
-	font-family:verdana;
 	font-size:10pt;
 	font-weight:bold;		
 }
-/*
-.qustion-title h3 a:visited,
-.qustion-title h3 a:hover,
-.qustion-title h3 a:focus { 
-	color: #84755C;	
-}*/
 .question-tag {
     float:left;
     padding-bottom:3px;
@@ -837,7 +839,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 	padding: 2px 4px 2px 4px;
 	text-decoration: none;
     height:20px;
-    font-family:Tahoma;
 	font-size: 90%;
 	line-height: 2.2;
 	white-space:nowrap;
@@ -869,7 +870,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 }
 .question-started span.big a {
 	font-size: 12px;
-	font-family: verdana;
 	color: #0285FF;	
 }
 .question-started span.big a:hover,
@@ -879,7 +879,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 .updatedtime {
     font-weight:normal;
     font-size: 11px;
-    font-family: tahoma,arial,verdana,san-serif;
     color:#999;
     padding: 1px 0 0 20px;
     background: url(../images/clock.png) no-repeat left;
@@ -921,7 +920,6 @@ h4 {display:block;font-size:90%; font-family:Verdana;}
 }
 .badgecount { color: #808185; }
 .reputation-score {
-    font-family:verdana;
     font-weight: bold;
 	color: #333;
 	font-size: 12px;
@@ -1010,7 +1008,6 @@ div.grippie {
     background:url(/content/images/openid.gif) no-repeat 0% 50%;
     padding:5px 5px 5px 15px;
     cursor:pointer;
-    font-family:Trebuchet MS;
     font-weight:300;
     font-size:150%;
     width:500px;
@@ -1022,8 +1019,8 @@ div.grippie {
     font-size:120%;
     background-color:#D4D0C8;
 }
-.openid-samples .list, .list li{
-    font-family:Helvetica,Tahoma,Verdana,Arial,sans-serif;
+.openid-samples .list, 
+.list li {
     list-style:none !important;
     margin-left:-30px !important;
     line-height:20px !important;
@@ -1053,7 +1050,6 @@ div.grippie {
 	border-top: 1px dotted #cacaca;	
 }
 .vote-number{
-    font-family:Arial;
     padding:0px 0 3px 0;
     font-size:220%;
     font-weight:bold;
@@ -1061,7 +1057,6 @@ div.grippie {
 }
 .favorite-number{
     font-size:100%;
-    font-family:Arial;
     margin-top:-8px;
     font-weight:bold;
     color:#808185
@@ -1069,7 +1064,6 @@ div.grippie {
 .my-favorite-number{ color:#D4A849; }
 .tag-number{
     font-size:120%;
-    font-family:Arial;
     font-weight:bold;
 }
 #question-tags{ margin:5px 0 5px 0; }
@@ -1217,7 +1211,6 @@ form .errorlist li{ color: red; }
 .revision-number{
     font-size:300%;
     font-weight:bold;
-    font-family:arial;
 }
 .revision .body{
     padding-left:10px;
@@ -1376,14 +1369,12 @@ table.user-details td.dark { color: #555; }
     text-align:center;
 }
 .summarycount {
-    font-family:arial;
     color:#808185;
     font-size:350%;
     font-weight:bold;
     text-align:center;
 }
 .summarysubcount {
-    font-family:arial;
     color:#808185;
     font-size:250%;
     font-weight:bold;
@@ -1394,7 +1385,6 @@ table.user-details td.dark { color: #555; }
     width:90%;
     line-height:20px;
     color:#555555;
-	font-family:Verdana;
 	font-size:12px;
     margin:10px;
     overflow:auto;
@@ -1601,7 +1591,6 @@ div.comments-container-add input {
 	border:1px solid #D5D2CF;
 	color:#212121 !important;
 	cursor:pointer;
-	font-family:Trebuchet MS,Verdana;
 	font-size:12px !important;
 	margin-bottom:10px;
 	padding:3px 6px;
@@ -1626,7 +1615,6 @@ a.comments-link {
     padding:0 3px 2px;
     font-size:90%;
     border:1px solid #CCCCCC;
-    font-family: verdana;
 }
 a.comments-link, 
 a.comments-link-accepted, 
@@ -1646,7 +1634,6 @@ a.comments-link-deleted {
 	border:1px solid #D5D2CF;
 	color:#212121 !important;
 	cursor:pointer;
-	font-family:Trebuchet MS,Verdana;
 	font-size:12px !important;
 	margin-bottom:10px;
 	padding:3px 6px;	
@@ -1721,14 +1708,12 @@ input#btSearchTag {
 	cursor: pointer;
 	border: 1px solid #D5D2CF;
 	color:#212121 !important;
-	font-family:Trebuchet MS,Verdana;
 	font-size:12px !important;
 	padding: 3px 6px;
 	background: #EBEBEB url(../images/tabs_bg.gif) repeat-x scroll;
 }
 td.label {
 	color: #555;
-	font-family: verdana;	
 }
 .MendixfakeDiv {	height:120px; }
 .MendixheadText {
