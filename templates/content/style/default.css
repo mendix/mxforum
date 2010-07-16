@@ -199,28 +199,55 @@ h4 {display:block;font-size:90%;}
 	padding-right: 20px;
 	background: url(../images/user_logout.png) no-repeat right;		
 }
-#header-bg {
+.subNav {
+	clear: both;	
+	margin-top: 2px;
+	background: #00aef4;
+}
+.subNav .subNav_menu {
+	width: 980px;
+	height:39px;
+	margin: auto;
+	padding: 50px 0 0 0;
 	overflow: hidden;
-	border-top:medium none !important;
-	background: #E9F4FF url(../images/bg.png) no-repeat scroll;
+	background: url(../img/header_subnav_bg.png) no-repeat;
 }
-#header-bg .highlight {
-	position:relative;
-	width:980px;
-	margin:0 auto 35px;
-	padding: 11px 0 8px 0;
+.subNav h1 {
+	float: left;
+	margin: 0;
+	font-size: 24px;	
+	font-family: 'century gothic',arial;
+	font-weight: bold;
+	color: #FFF;
 }
-#header-bg .highlight #search_field {
+.subNav h1 a {
+	color: #FFF;
+}
+.submenu {
+	float:right;
+	padding-top: 8px;
+	list-style-type:none;
+}
+.submenu li {
+	float: left;
+}
+.submenu li a {
+	font-size: 14px;
+	color: #FFF;
+	font-family: 'century gothic',arial;
+	font-weight: bold;
+}
+#search_field {
 	float:right;
 	width:270px;
 }
-#header-bg .highlight #search_field input#ipSearchTag {
+#search_field input#ipSearchTag {
 	width:256px;
 	border:medium none;
 	padding:10px 0 9px 15px;
 	background:transparent url(../images/search_bg.png) no-repeat scroll 0 0;
 }
-#header-bg .highlight #search_field input.submit {
+#search_field input.submit {
 	position:absolute;
 	top: 20px;
 	right: 11px;
@@ -385,6 +412,7 @@ h4 {display:block;font-size:90%;}
 #footer {
 	clear:both;
 	overflow: hidden;
+	text-align: left;
 	padding: 26px 0 12px;
 	background: #222 url(../images/footer_bg.png) repeat-x top;
 }
@@ -608,7 +636,7 @@ h4 {display:block;font-size:90%;}
 	float: left;
     margin-right: 7px;
 }
-.nav li.youarehere { background: #399ad6; }
+.nav li.youarehere { background: #00AEF4; }
 .nav a {
 	color: #fff;
 	display: block;
@@ -617,8 +645,13 @@ h4 {display:block;font-size:90%;}
 	padding: 6px 15px 6px 15px;
 	text-decoration: none;
 }
-.nav li.youarehere a { color: white; }
-.nav li:hover { background-color:#399ad6; }
+.nav li.youarehere a { 
+	color: white; 
+}
+.nav li:hover,
+.nav li:focus { 
+	background-color: #00AEF4; 
+}
 .header-notification{
     font-size:85%;
     color:red;
