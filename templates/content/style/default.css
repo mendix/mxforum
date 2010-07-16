@@ -180,11 +180,11 @@ h4 {display:block;font-size:90%;}
 }
 #header-links {
 	float: left;
-	width: 500px; 	
-	padding-top:9px;
+	width: 100%; 	
+	margin-bottom: 10px;
 }
 #header-links a {
-    color: #000;
+    color: #FFF;
 	font-size: 12px;
     letter-spacing:1px;
 }
@@ -208,9 +208,8 @@ h4 {display:block;font-size:90%;}
 	width: 980px;
 	height:39px;
 	margin: auto;
-	padding: 50px 0 0 0;
 	overflow: hidden;
-	background: url(../img/header_subnav_bg.png) no-repeat;
+	background: url(../images/header_subnav_bg.png) no-repeat;
 }
 .subNav h1 {
 	float: left;
@@ -238,7 +237,7 @@ h4 {display:block;font-size:90%;}
 	font-weight: bold;
 }
 #search_field {
-	float:right;
+	float:left;
 	width:270px;
 }
 #search_field input#ipSearchTag {
@@ -248,9 +247,9 @@ h4 {display:block;font-size:90%;}
 	background:transparent url(../images/search_bg.png) no-repeat scroll 0 0;
 }
 #search_field input.submit {
-	position:absolute;
-	top: 20px;
-	right: 11px;
+	position: relative;
+	top: -25px;
+	right: -243px;
 	width: 17px;
 	height: 17pxpx;
 	border: none;
@@ -951,10 +950,10 @@ h4 {display:block;font-size:90%;}
 	font-size: 120%;
 	color: #CC9966;
 }
-.badgecount { color: #808185; }
+.badgecount { color: #FFF; }
 .reputation-score {
     font-weight: bold;
-	color: #333;
+	color: #FFF;
 	font-size: 12px;
 	margin-right:2px;
 }
