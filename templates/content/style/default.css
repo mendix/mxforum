@@ -180,8 +180,8 @@ h4 {display:block;font-size:90%;}
 }
 #header-links {
 	float: left;
+	padding-top: 18px;
 	width: 100%; 	
-	margin-bottom: 20px;
 }
 #header-links a {
     color: #FFF;
@@ -198,6 +198,9 @@ h4 {display:block;font-size:90%;}
 	padding-top: 1px;
 	padding-right: 20px;
 	background: url(../images/user_logout.png) no-repeat right;		
+}
+#header_bottom {
+	margin-top: 51px;
 }
 .subNav {
 	clear: both;	
