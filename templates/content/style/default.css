@@ -179,7 +179,9 @@ h4 {display:block;font-size:90%;}
     padding:0px 0 10px 0;
 }
 #header-links {
-		
+	float:left;
+	padding-left:10px;
+	padding-top:10px;
 }
 #header-links a {
     color: #FFF;
@@ -241,7 +243,7 @@ h4 {display:block;font-size:90%;}
 #search_field {
 	float:left;
 	width: 100%;
-	margin-bottom: 15px;
+	margin-bottom: 17px;
 }
 #search_field input#ipSearchTag {
 	width: 200px;
@@ -250,6 +252,7 @@ h4 {display:block;font-size:90%;}
 	color: #666;
 	font-size: 10pt;
 	line-height:1.3;
+	font-family:arial;
 	background: #FFF;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
