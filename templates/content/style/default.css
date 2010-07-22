@@ -730,10 +730,10 @@ h4 {display:block;font-size:90%;}
 }
 .gray-box-bg a.real_name { font-size:11px; }
 .gray-box-bg .paragraph span.subject { color: #000; }
-.question-item{
+.question-item {
     width:100%;
     float:left;
-    margin:5px 0 10px 0;
+    margin: 10px 0;
     border-bottom:1px dotted #D8D2A9;
 }
 .boxes{
@@ -870,13 +870,13 @@ h4 {display:block;font-size:90%;}
     margin-bottom:5px;
 }
 .qustion-title h3 a {
-	font-size: 13pt;
+	font-size: 13px;
 	font-weight:bold;		
 }
 .question-tag {
     float:left;
     padding-bottom:3px;
-    width:250px;
+    width: 400px;
 }
 .post-tag {
 	color: #3E6D8E;
@@ -1091,9 +1091,10 @@ div.grippie {
 .vote-buttons img{ cursor:pointer; }
 .item-right{
     float:left;
-	width: 597px;
+	width: 640px;
 }
 #question-controls {
+	width: 640px;
 	padding-top: 5px;
 	border-top: 1px dotted #cacaca;	
 }
