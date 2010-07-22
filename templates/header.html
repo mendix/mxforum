@@ -23,12 +23,6 @@
 				
 	<div class="subNav">
 		<div class="subNav_menu">
-			<div id="header-links">
-				{% if request.user.is_authenticated %}
-					<a href="/users/{{ request.user.id }}/{{ request.user.real_name|slugify }}/">{{ request.user.real_name }}</a> {% get_score_badge request.user %} 
-				{% endif %}
-	    	 </div>
-			 
 			 <div class="header_bottom">
 				 <form id="search_field" method="post" action="/search/">
 					 <input id="ipSearchTag" name="ipSearchTag" size="20" value="{{ searchterms }}"/>
@@ -36,6 +30,12 @@
 				 </form>
 				 
 				 <h1>Forum</h1>
+				 
+				 <div id="header-links">
+					{% if request.user.is_authenticated %}
+						<a href="/users/{{ request.user.id }}/{{ request.user.real_name|slugify }}/">{{ request.user.real_name }}</a> {% get_score_badge request.user %} 
+					{% endif %}
+				 </div>
 				 
 				 <ul class="submenu" name="mxid_topbar" bartype="apps" style="display: none">
 					<li class=" %CLASS% "><a id=" %NAME% " href="%LOCATION%" target="_top" title=" %DESCRIPTION% ">%CAPTION%</a></li>

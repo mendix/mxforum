@@ -179,9 +179,7 @@ h4 {display:block;font-size:90%;}
     padding:0px 0 10px 0;
 }
 #header-links {
-	float: left;
-	padding-top: 18px;
-	width: 100%; 	
+		
 }
 #header-links a {
     color: #FFF;
@@ -256,12 +254,12 @@ h4 {display:block;font-size:90%;}
 }
 #search_field input.submit {
 	position: relative;
-	top: -25px;
-	right: -243px;
+	right: 26px;
+	top: 3px;
+	margin:0;
+	padding:0;
+	border:medium none;
 	width: 17px;
-	height: 17pxpx;
-	border: none;
-	padding: 0; margin: 0;
 }
 #navigation-menu {
 	position:relative;
