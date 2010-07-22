@@ -16,7 +16,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
+	font-size: 12px;
 	vertical-align: baseline;
 	background: transparent;
 }
@@ -182,6 +182,10 @@ h4 {display:block;font-size:90%;}
 	float:left;
 	padding-left:10px;
 	padding-top:10px;
+}
+#header-links .reputation-score,
+#header-links .badgecount {
+	color: #FFF;
 }
 #header-links a {
     color: #FFF;
@@ -810,15 +814,15 @@ h4 {display:block;font-size:90%;}
 	color:#84755C;
 }*/
 .vote { background-color:#eee; }
-.box-number{
-    font-size:160%;
-    font-weight:bold;
+.box-number {
+    font-size: 22px;
+    font-weight: bold;
 }
-.box-unit{
-    padding:3px;
-    font-size:90%;
+.box-unit {
+    padding: 3px;
+    font-size: 12px;
 }
-.answer{
+.answer {
     border-bottom:1px dotted #666666;
     padding-bottom:20px;
     padding-top:20px;
@@ -862,11 +866,11 @@ h4 {display:block;font-size:90%;}
 .qustion-title {
     font-size:100%;
     padding:0px;
-    line-height:20px;
+    line-height: 18px;
     margin-bottom:5px;
 }
 .qustion-title h3 a {
-	font-size:10pt;
+	font-size: 13pt;
 	font-weight:bold;		
 }
 .question-tag {
@@ -962,10 +966,10 @@ h4 {display:block;font-size:90%;}
 	font-size: 120%;
 	color: #CC9966;
 }
-.badgecount { color: #FFF; }
+.badgecount { color: #999; }
 .reputation-score {
     font-weight: bold;
-	color: #FFF;
+	color: #999;
 	font-size: 12px;
 	margin-right:2px;
 }
@@ -1141,17 +1145,17 @@ div.grippie {
 }
 .answer-mark {
     text-align:left;
-    font-size:90%;
+    font-size:12px;
     padding: 0 5px 5px 5px;
 }
 .wiki-category{
     margin-left:5px;
     color:#999;
-    font-size:90%;
+    font-size:12px;
 }
 .offensive-flag a{
     color:#777;
-    font-size:90%;
+    font-size:12px;
     padding:3px;
     cursor:pointer;
 }
@@ -1162,7 +1166,7 @@ div.grippie {
 }
 .linksopt a{
     color:#777;
-    font-size:90%;
+    font-size:12px;
     padding:3px;
     cursor:pointer;
 }
@@ -1173,7 +1177,7 @@ div.grippie {
 }
 .action-link a{
     color:#777;
-    font-size:90%;
+    font-size:12px;
     padding:3px;
     cursor:pointer;
 }
