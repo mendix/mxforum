@@ -199,17 +199,15 @@ h4 {display:block;font-size:90%;}
 	padding-right: 20px;
 	background: url(../images/user_logout.png) no-repeat right;		
 }
-.header_bottom {
-	margin-top: 51px;
-}
 .subNav {
 	clear: both;	
 	background: #00aef4;
 }
 .subNav .subNav_menu {
 	width: 980px;
-	height: 89px;
+	height: 81px;
 	margin: auto;
+	padding: 8px 0 0 0;
 	overflow: hidden;
 	background: url(../images/header_subnav_bg.png) no-repeat;
 }
@@ -244,14 +242,17 @@ h4 {display:block;font-size:90%;}
 }
 #search_field {
 	float:left;
-	width:270px;
-	margin-left: 10px;
+	width: 100%;
+	margin-bottom: 15px;
 }
 #search_field input#ipSearchTag {
-	width:256px;
+	width: 200px;
 	border:medium none;
-	padding:10px 0 9px 15px;
-	background:transparent url(../images/search_bg.png) no-repeat scroll 0 0;
+	padding: 5px 0 5px 10px;
+	background: #FFF;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 }
 #search_field input.submit {
 	position: relative;
