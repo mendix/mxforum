@@ -244,6 +244,9 @@ h4 {display:block;font-size:90%;}
 	font-family: 'century gothic',arial;
 	font-weight: bold;
 }
+.submenu li.current_page_item a {
+	color: #000;
+}
 #search_field {
 	float:left;
 	width: 100%;
