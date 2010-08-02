@@ -2,39 +2,53 @@
                 
 	<div class="MendixContainer">
 		<div class="Mendixhead">
-			<div class="fakeDiv">
-				<div class="toplinks" name="mxid_topbar" id="mxid_topbar" mxidsrc="{{ mxid_url }}/mxid/appbar" bartype="account" style="display: none" appname="forum">
-					<a href="%LOCATION%" class=" %CLASS% " title=" %DESCRIPTION% " id="%NAME%">%CAPTION%</a>
-				</div>
-				
-				<div class="mendixLogo">
-					<a class="sitelogo" href="/" title="Go to homepage">Mendix Forum</a>
-				</div>
+			<div class="toplinks" name="mxid_topbar" id="mxid_topbar" mxidsrc="{{ mxid_url }}/mxid/appbar" bartype="account" style="display: none" appname="forum">
+				<a href="%LOCATION%" class=" %CLASS% " title=" %DESCRIPTION% " id="%NAME%">%CAPTION%</a>
+			</div>
+			
+			<div class="mendixLogo">
+				<a class="sitelogo" href="/" title="Go to homepage">Mendix Forum</a>
+			</div>
 
-				<div class="MendixheadNavigation">
-					<ul name="mxid_topbar" bartype="apps" style="display: none">
-						<li class=" %CLASS% "><a id=" %NAME% " href="%LOCATION%" target="_top" title=" %DESCRIPTION% ">%CAPTION%</a></li>
-					</ul>
-				</div>
+			<div class="menu">
+				<ul>
+					<li><a href="http://www.mendix.com/page/products">Product</a></li>
+					<li><a href="http://appstore.kantoor.mendix.nl">Apps &#38; add-ons</a></li>
+					<li><a href="http://www.mendix.com/page/customers">Customers</a></li>
+					<li class="current_page_item"><a href="http://world.mendix.kantoor.nl">Community</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
 				
-	<div id="header-bg">
-		<div class="highlight">
-			<div id="header-links">
-				{% if request.user.is_authenticated %}
-					<a href="/users/{{ request.user.id }}/{{ request.user.real_name|slugify }}/">{{ request.user.real_name }}</a> {% get_score_badge request.user %} 
-				{% endif %}
-	    	 </div>
-	     
-		     <form id="search_field" method="post" action="/search/">
-				 <input id="ipSearchTag" name="ipSearchTag" size="20" value="{{ searchterms }}"/>
-		         <input type="image" class="submit" src="/../content/images/search_button.png" />
-		     </form>
+	<div class="subNav">
+		<div class="subNav_menu">
+			 <div class="header_bottom">
+				 <form id="search_field" method="post" action="/search/">
+					 <input id="ipSearchTag" name="ipSearchTag" size="20" value="{{ searchterms }}"/>
+					 <input type="image" class="submit" src="/../content/images/search_button.png" />
+				 </form>
+				 
+				 <h1>Forum</h1>
+				 
+				 <div id="header-links">
+					{% if request.user.is_authenticated %}
+						<a href="/users/{{ request.user.id }}/{{ request.user.real_name|slugify }}/">{{ request.user.real_name }}</a> {% get_score_badge request.user %} 
+					{% endif %}
+				 </div>
+				 
+				 <ul class="submenu">
+					<li><a href="index3.html">Overview</a></li>
+					<li><a href="http://partnerportal.kantoor.mendix.nl/link/myaccount">My Account</a></li>	
+					<li><a href="http://tauge.kantoor.mendix.nl:7778">Community Forum</a></li>
+					<li><a href="http://mxdn.kantoor.mendix.nl">Ticketing</a></li>
+					<li class="current_page_item"><a href="http://partnerportal.kantoor.mendix.nl/link/sales">Sales Collateral</a></li>
+					<li><a href="https://salesforum.mendix.com/">Sales FAQ</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>	
-	
+
 	<div id="navigation-menu">
 		<div class="nav">
 			<UL>
