@@ -134,6 +134,9 @@ h4 {display:block;font-size:90%;}
 	display:block;
 	background:transparent url(../images/mendix.png) no-repeat scroll;
 }
+.mxid_wrapper {
+	height: 23px; /* Height because toplinks get display none first */
+}
 .Mendixhead {
 	margin:auto;
 	position:relative;
