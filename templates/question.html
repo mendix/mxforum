@@ -442,6 +442,7 @@
 	</div>
     <br>  
 </div>
+{% if request.user.is_authenticated %}
 	<h3 class="outside">Subscribe to Question</h3>
 	<div class="gray-box gray-box-bg">
 		<form action="/addsubscription/" method="POST">
@@ -451,7 +452,7 @@
             <a href="#">Click here</a> to have updates to this question sent to: {{ request.user.username }}
         </form>	
 	</div>
-
+{% endif %}
 {% endblock %}
 
 {% block endjs %}
