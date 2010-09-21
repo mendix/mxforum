@@ -226,11 +226,6 @@
                 <div id="main-bar" class="">
                     <a name="sort-top"></a>
                     <h3>{{ question.answer_count }} Answers </h3>
-                    <div id="tab" class="">
-                        <a id="votes" href="?sort=votes#sort-top" title="Highest number of votes appear in the top">Votes</a>
-                        <a id="oldest" href="?sort=oldest#sort-top" title="The first answer to appear in the top">Oldest</a>
-                        <a id="latest" href="?sort=latest#sort-top" title="Answer is displayed in the top of the latest">Newest</a>
-                    </div>
                 </div>
                 {% cnprog_paginator context %}
   
@@ -444,29 +439,20 @@
             <li><a href="/questions/{{question.id}}/{{ question.get_question_title }}">{{ question.get_question_title }}</a><span class="small" title="{{ question.last_activity_at }}"> ({% diff_date question.last_activity_at %})</span></li>
         {% endfor %}
         </ul>
-    </div>
+	</div>
     <br>  
 </div>
+	<h3 class="outside">Subscribe to Question</h3>
+	<div class="gray-box gray-box-bg">
+		<form action="/addsubscription/" method="POST">
+        	<input type="hidden" name="question" id="id_question" value="{{ question.id }}"></input>
+            <input type="hidden" name="user" id="id_user" value="{{ request.user.id }}"></input>
+            <input type="hidden" name="timespan" id="id_timespan" value="15"/>
+            <a href="#">Click here</a> to have updates to this question sent to: {{ request.user.username }}
+        </form>	
+	</div>
 
 {% endblock %}
 
 {% block endjs %}
-{% endblock %}
-{% block tail %}
-<div><h3>Not the answer you're looking for? Browse other questions tagged<br><br>
-                {% for tag in question.tagname_list %}
-                     <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="View of the '{{ tag }}' of the problem" rel="tag">{{ tag }}</a>
-                {% endfor %} or <a href="{% url ask %}">ask your own questions</a>.</h3></div>
-		{% if request.user.is_authenticated %}	
-		<h4 class="subscribe">Subscribe to receive email notifications for this question</h4>
-		<div class="add_subscription">
-			<form action="/addsubscription/" method="POST">
-				<input type="hidden" name="question" id="id_question" value="{{ question.id }}"></input>
-				<input type="hidden" name="user" id="id_user" value="{{ request.user.id }}"></input>
-			    <input type="hidden" name="timespan" id="id_timespan" value="15"/>	
-
-				<input type="submit" value="click me!"/>
-			</form>
-		</div>
-		{% endif %}
 {% endblock %}

@@ -251,14 +251,11 @@ h4 {display:block;font-size:90%;}
 	color: #000;
 }
 #search_field {
-	float:left;
-	width: 100%;
-	margin-bottom: 17px;
+	float:right;
 }
 #search_field input#ipSearchTag {
 	width: 200px;
 	padding: 5px 0 5px 10px;
-	border: medium none;
 	color: #666;
 	font-size: 10pt;
 	line-height:1.3;

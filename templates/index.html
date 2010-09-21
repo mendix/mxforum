@@ -24,11 +24,12 @@
     <h3>
         Recent&nbsp;Questions
     </h3>
-    <div id="tab" class="">
-        <a id="latest" href="?sort=latest" title="Latest questions">Latest</a>
-        <a href="/questions/unanswered/" title="Unanswered questions">Unanswered</a>
-    </div>
-
+	<div style="float:right;margin-top:15px;">
+		<span>
+			<a title="RSS feeds Mendix Community"  href="/feeds/rss/"><img src="/content/images/feed-icon-small.png" style="vertical-align:bottom"
+				title="RSS feed Mendix Community" height="14" width="14" border="0"></a>
+		 </span>
+	 </div>
 </div>
 <div id="main-body" class="">
     {% for question in questions %}
@@ -158,11 +159,5 @@
 {% endblock %}
 {% block tail %}
 <div>
-</div>
-<div style="float:right">
-<span>
-<img src="/content/images/feed-icon-small.png" style="vertical-align:bottom"
-     title="RSS feed Mendix Community" height="14" width="14" border="0">
-<a href="/feeds/rss/" title="RSS feeds Mendix Community">RSS Feed</a></span>
 </div>
 {% endblock %}

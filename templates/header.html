@@ -26,10 +26,6 @@
 	<div class="subNav">
 		<div class="subNav_menu">
 			 <div class="header_bottom">
-				 <form id="search_field" method="post" action="/search/">
-					 <input id="ipSearchTag" name="ipSearchTag" size="20" value="{{ searchterms }}"/>
-					 <input type="image" class="submit" src="/../content/images/search_button.png" />
-				 </form>
 				 
 				 <h1>Forum</h1>
 				 
@@ -50,19 +46,12 @@
 		<div class="nav">
 			<UL>
 				<LI class="" id="nav_home"><A href="/">Home</A></LI>
-	            <LI class="" id="nav_questions"><A href="/questions/">Questions</A></LI>
-	            <LI class="" id="nav_tags"><A href="/tags/">Tags</A></LI>
 	            <LI class="" id="nav_users"><A href="/users/">Users</A></LI>
-	            <LI class="" id="nav_badges"><A href="/badges/">Badges</A></LI>
-				<LI class="" id="nav_unanswered"><A href="/questions/unanswered/">Unanswered</A></LI>
+				<LI class="" id="nav_ask"><A href="/questions/ask/">Ask a question</A></LI>
 	        </UL>
 		</div>
-	
-		<div class="nav" style="float:right;margin-right:-5px">
-			<UL class="mainnav">
-				<LI class="" id="nav_ask"><A href="/questions/ask/">Ask a question</A></LI>
-				<LI class="" id="nav_faq"><A href="/faq/">FAQ</A></LI>
-				<LI class=""><A href="/feeds/rss/">RSS</A></LI>
-			</UL>
-		</div>
+		 <form id="search_field" method="post" action="/search/">
+			 <input id="ipSearchTag" name="ipSearchTag" size="20" value="{{ searchterms }}"/>
+			 <input type="image" class="submit" src="/../content/images/search_button.png" />
+		 </form>
 	</div>
