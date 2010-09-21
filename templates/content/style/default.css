@@ -168,7 +168,7 @@ h4 {display:block;font-size:90%;}
 .toplinks a {
 	padding: 0 8px 0 4px;
 	font-size: 12px;
-	color: #000;
+	color: #232323;
 	border-right: 1px solid #000;
 }
 .toplinks a:last-child { 
@@ -282,6 +282,7 @@ h4 {display:block;font-size:90%;}
 	width:980px;
 	margin:0 auto;	
 	padding-top: 20px;
+	overflow: hidden;
 }
 .MendixContainer .menu {
 	float: right;
@@ -298,7 +299,7 @@ h4 {display:block;font-size:90%;}
 .MendixContainer .menu ul li a {
 	display: block;
 	padding: 25px 0 11px 40px;
-	color: #000;
+	color: #232323;
 	font-weight: bold;
 	font-size: 16px;
 	font-family: 'century gothic',arial;
@@ -315,7 +316,7 @@ h4 {display:block;font-size:90%;}
 #content{
 	width: 980px;
 	margin: 0 auto;
-    padding-top: 27px;
+    /*padding-top: 27px;*/
 }
 #main {
     float:left;
@@ -337,7 +338,7 @@ h4 {display:block;font-size:90%;}
 	font-weight: normal;
 	margin-top:8px;
     padding:5px 0 0 3px;
-    color: #000;
+    color: #232323;
 }
 #main-bar h3.search {
 	width: auto;
@@ -424,7 +425,7 @@ h4 {display:block;font-size:90%;}
 }
 .outside {
 	border-bottom:1px dotted #CCCCCC;
-	color:#000000;
+	color: #232323;
 	font-size:16px;
 	font-weight:normal;
 	margin:0 0 10px;
@@ -695,7 +696,7 @@ h4 {display:block;font-size:90%;}
 .yellow-box ul { margin-left:0px; }
 .yellow-box h3 {
 	border-bottom:1px dotted #CCCCCC;
-	color:#000000;
+	color: #232323;
 	margin:0 0 10px;
 	padding:10px 0;
 	font-size:16px;
@@ -705,7 +706,7 @@ h4 {display:block;font-size:90%;}
 .gray-box ul { margin-left:0px; }
 .gray-box h3 {
   	border-bottom:1px dotted #CCCCCC;
-	color:#000000;
+	color:#232323;
 	margin:0 0 10px;
 	padding:10px 0;
 	font-size:16px;
@@ -735,7 +736,7 @@ h4 {display:block;font-size:90%;}
 	background-color:#F1F1F1;
 }
 .gray-box-bg a.real_name { font-size:11px; }
-.gray-box-bg .paragraph span.subject { color: #000; }
+.gray-box-bg .paragraph span.subject { color: #232323; }
 .question-item {
     width:100%;
     float:left;
@@ -1361,7 +1362,7 @@ ins .post-tag{ background-color: #97ff97; } */
     line-height:17px;
 }
 table.user-details td {
-    color: #000;
+    color: #232323;
     padding:4px 0;
 }
 table.user-details td.dark { color: #555; }
