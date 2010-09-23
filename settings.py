@@ -106,6 +106,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.auth',
     'forum.context_processors.mxid_url',
+	'forum.context_processors.mxappstore_url',
+	'forum.context_processors.mxwww_url',
 )
 
 ROOT_URLCONF = 'urls'
