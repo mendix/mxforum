@@ -1781,7 +1781,7 @@ def upload(request):
 
 def search(request):
     search = shlex.split(request.POST.get("ipSearchTag").strip().__str__())
-    query = Question.objects.all()
+    query = Question.objects.all().filter(deleted=False).order_by('-last_activity_at')
     for s in search:
         query = query.filter(Q(tagnames__icontains=s) | Q(html__icontains=s) | Q(title__icontains=s))
 
