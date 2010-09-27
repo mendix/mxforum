@@ -102,8 +102,6 @@ def index(request):
         end = max(sorted_tags)
     mi = MIN if begin < MIN else begin
     ma = MAX if end > MAX else end
-    #print datetime.datetime.now()
-    print len(questions)
     awards = Award.objects.extra(
         select={'badge_id': 'badge.id', 'badge_name':'badge.name',
                       'badge_description': 'badge.description', 'badge_type': 'badge.type',
@@ -954,6 +952,11 @@ def user(request, id):
 
 def user_stats(request, user_id, user_view):
     user = get_object_or_404(User, id=user_id)
+
+    offset = 0
+    if request.GET.has_key('page'):
+        offset = 100*int(request.GET['page'])
+
     questions = Question.objects.extra(
         select={
             'vote_count' : 'question.score',
@@ -1017,7 +1020,9 @@ def user_stats(request, user_id, user_view):
                         'accepted',
                         'answer_count',
                         'vote_up_count',
-                        'vote_down_count')[:100]
+                        'vote_down_count')[offset:(offset+100)]
+
+    answered_questions_count = Answer.objects.filter(deleted=False, author=user_id).count()
     up_votes = Vote.objects.get_up_vote_count_from_user(user)
     down_votes = Vote.objects.get_down_vote_count_from_user(user)
     votes_today = Vote.objects.get_votes_count_today_from_user(user)
@@ -1048,6 +1053,8 @@ def user_stats(request, user_id, user_view):
         "tags" : tags,
         "awards": awards,
         "total_awards" : total_awards,
+        "answered_questions_count" : answered_questions_count,
+        "next_page" : offset/100+1,
     }, context_instance=RequestContext(request))
 
 def user_recent(request, user_id, user_view):
