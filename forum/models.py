@@ -92,6 +92,12 @@ class FlaggedItem(models.Model):
     def __unicode__(self):
         return '[%s] flagged at %s' %(self.user, self.flagged_at)
 
+class ModelerVersion(models.Model):
+    name = models.CharField(max_length=20, blank=True, null=False, unique=True)
+
+    def __unicode__(self):
+        return self.name
+
 class Question(models.Model):
     title    = models.CharField(max_length=300)
     author   = models.ForeignKey(User, related_name='questions')
@@ -125,6 +131,7 @@ class Question(models.Model):
     last_activity_at     = models.DateTimeField(default=datetime.datetime.now)
     last_activity_by     = models.ForeignKey(User, related_name='last_active_in_questions')
     tagnames             = models.CharField(max_length=125)
+    modeler_version      = models.ForeignKey(ModelerVersion)
     summary              = models.CharField(max_length=180)
     html                 = models.TextField()
     comments             = generic.GenericRelation(Comment)
@@ -386,6 +393,8 @@ class Subscription(models.Model):
         (60*24*7, "Weekly")
     )
     timespan = models.IntegerField(choices=TIMESPAN_CHOICES)
+
+
 
 # User extend properties
 QUESTIONS_PER_PAGE_CHOICES = (

@@ -92,6 +92,9 @@
                                     <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="See related '{{ tag }}' the problem of" rel="tag">{{ tag }}</a>
                                 {% endfor %}
                             </div>
+                            <div id="question-modeler-version" class="question-body-item">
+                                {{ question.modeler_version }}
+                            </div>
                             <div id="question-controls" style="clear:both;">
                                 <table width="640px">
                                     <tr>

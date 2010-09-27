@@ -94,6 +94,11 @@
                 <div class="title-desc">
                     {{ form.tags.help_text }}
                 </div>
+                <br/>
+            </div>
+            <div class="form-item">
+                <strong>Modeler version:</strong> <span class="form-error"></span><br/>
+                {{ form.modeler_version }}<span class="form-error"> {{ form.modeler_version.errors }}</span>
             </div>
             <br>
             <input type="submit" value="Ask Your Question &#187;" class="submit" style="width: 170px;"/>

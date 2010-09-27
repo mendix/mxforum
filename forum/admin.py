@@ -27,6 +27,9 @@ class FavoriteQuestionAdmin(admin.ModelAdmin):
     
 class BadgeAdmin(admin.ModelAdmin):
     """  admin class"""  
+
+class ModelerVersionAdmin(admin.ModelAdmin):
+    """ admin class """
     
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Tag, TagAdmin)
@@ -36,3 +39,4 @@ admin.site.register(Vote, VoteAdmin)
 admin.site.register(FlaggedItem, FlaggedItemAdmin)
 admin.site.register(FavoriteQuestion, FavoriteQuestionAdmin)
 admin.site.register(Badge, BadgeAdmin)
+admin.site.register(ModelerVersion, ModelerVersionAdmin)

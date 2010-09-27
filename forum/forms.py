@@ -91,6 +91,7 @@ class AskForm(forms.Form):
     title  = TitleField()
     text   = EditorField()
     tags   = TagNamesField()
+    modeler_version = forms.ModelChoiceField(ModelerVersion.objects.all())
     wiki = WikiField()
 
     openid = forms.CharField(required=False, max_length=255, widget=forms.TextInput(attrs={'size' : 40, 'class':'openid-input'}))

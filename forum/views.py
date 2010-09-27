@@ -90,13 +90,9 @@ def index(request):
         questions = Question.objects.filter(deleted=False, author__id__in=[28,29]).order_by(orderby)[:INDEX_PAGE_SIZE]
     else:
         questions = Question.objects.filter(deleted=False).order_by(orderby)[:INDEX_PAGE_SIZE]
-    # RISK - inner join queries
-    questions = questions.select_related();
-    #for q in questions:
-    #    if q.view_count>999:
-    #        q.view_count = "%s%s" % (str(q.view_count/1000), "k")
+
+    questions = questions.select_related('votes', 'flagged_items', 'last_edited_at', 'last_activity_by', 'last_edited_by', 'locked_by', 'author');
     tags = Tag.objects.all().order_by("-id")[:INDEX_TAGS_SIZE]
-    #print datetime.datetime.now()
     MIN = 1
     MAX = 100
     begin = end = 0
@@ -107,7 +103,7 @@ def index(request):
     mi = MIN if begin < MIN else begin
     ma = MAX if end > MAX else end
     #print datetime.datetime.now()
-
+    print len(questions)
     awards = Award.objects.extra(
         select={'badge_id': 'badge.id', 'badge_name':'badge.name',
                       'badge_description': 'badge.description', 'badge_type': 'badge.type',
@@ -235,7 +231,8 @@ def ask(request):
                 wiki             = form.cleaned_data['wiki'],
                 tagnames         = form.cleaned_data['tags'].strip(),
                 html             = html,
-                summary          = strip_tags(html)[:120]
+                summary          = strip_tags(html)[:120],
+                modeler_version  = form.cleaned_data['modeler_version']
             )
             if question.wiki:
                 question.last_edited_by = question.author
@@ -262,6 +259,7 @@ def ask(request):
         form = AskForm()
 
     tags = _get_tags_cache_json()
+	
     return render_to_response('ask.html', {
         'form' : form,
         'tags' : tags,
