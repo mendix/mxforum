@@ -16,7 +16,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 12px;
+	font-size: 13px;
 	vertical-align: baseline;
 	background: transparent;
 }
@@ -83,6 +83,7 @@ p
 {
 	clear: both;
 	margin-bottom: 1em;
+    font-size: 13px;
 }
 ol
 {
@@ -212,16 +213,15 @@ h4 {display:block;font-size:90%;}
 }
 .subNav .subNav_menu {
 	width: 980px;
-	height: 81px;
+	height: 39px;
 	margin: auto;
-	padding: 8px 0 0 0;
+	padding: 50px 0 0 0;
 	overflow: hidden;
 	background: url(../images/header_subnav_bg.png) no-repeat;
 }
 .subNav h1 {
 	float: left;
 	margin: 0;
-	padding-top:3px;	
 	font-size: 24px;	
 	font-family: 'century gothic',arial;
 	font-weight: bold;
@@ -232,7 +232,7 @@ h4 {display:block;font-size:90%;}
 }
 .submenu {
 	float:right;
-	padding-top: 8px;
+	padding-top: 9px;
 	margin: 0;
 	list-style-type:none;
 }
@@ -660,7 +660,7 @@ h4 {display:block;font-size:90%;}
 	color: #fff;
 	display: block;
 	font-weight: bold;
-	font-size: 12px;
+	font-size: 13px;
 	padding: 6px 15px 6px 15px;
 	text-decoration: none;
 }
@@ -778,7 +778,7 @@ h4 {display:block;font-size:90%;}
 }
 .question-body {
     min-height:100px;
-    color: #555;
+    color: #444;
 }
 .question-body IMG{ max-width:600px; }
 .questions-mark{
@@ -841,7 +841,10 @@ h4 {display:block;font-size:90%;}
 	border-top: 1px dotted #ccc;
 	font-size: 12px; 
 }
-.answer-controls a { color: #0285FF; }
+.answer-controls a { 
+	color: #0285FF; 
+	font-size: 12px;
+}
 .answer-controls a:hover,
 .answer-controls a:focus { color: #84755C; }
 .accepted-answer{
@@ -970,7 +973,10 @@ h4 {display:block;font-size:90%;}
 	font-size: 120%;
 	color: #CC9966;
 }
-.badgecount { color: #999; }
+.badgecount { 
+	color: #999; 
+	font-size: 12px;
+}
 .reputation-score {
     font-weight: bold;
 	color: #999;
@@ -1134,13 +1140,24 @@ div.grippie {
     border: 1px solid #ccc;
     background-color:#F1F1F1;
 }
-.question-mark a { color: #0285FF; }
+.question-mark td,
+.question-mark strong {
+	font-size: 12px;
+}
+.question-mark a { 
+	color: #0285FF; 
+	font-size: 12px;
+}
 .question-mark a:hover,
 .question-mark a:focus { color: #84755C;	} 
 .question-edit{
     text-align:left;
     font-size:90%;
     overflow:hidden;
+}
+.question-edit td,
+.question-edit strong {
+	font-size: 12px;
 }
 .question-status{
     margin-top:10px;
@@ -1156,6 +1173,10 @@ div.grippie {
     text-align:left;
     font-size:12px;
     padding: 0 5px 5px 5px;
+}
+.answer-mark td,
+.answer-mark strong {
+	font-size: 12px;
 }
 .wiki-category{
     margin-left:5px;
@@ -1670,7 +1691,7 @@ a.comments-link {
 .post-comments a {
     color:#888888;
     padding:0 3px 2px;
-    font-size:90%;
+    font-size: 12px ;
     border:1px solid #CCCCCC;
 }
 a.comments-link, 
