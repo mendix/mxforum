@@ -93,7 +93,7 @@
                                 {% endfor %}
                             </div>
                             <div id="question-modeler-version" class="question-body-item">
-                                {{ question.modeler_version }}
+                                Modeler version: {{ question.modeler_version }}
                             </div>
                             <div id="question-controls" style="clear:both;">
                                 <table width="640px">
@@ -423,6 +423,9 @@
         {% for tag in tags %}
         <a href="{% url forum.views.tag tag.name|urlencode %}" class="post-tag" title="See related '{{ tag.name }}' the problem of" rel="tag">{{ tag.name }}</a> <span class="tag-number">× {{ tag.used_count|intcomma }}</span><br>
         {% endfor %}
+    </div>
+    <div class="paragraph">
+        <span class="subject">Modeler version: </span><div class="big">{{ question.modeler_version }}</div>
     </div>
     <div class="paragraph">
         <span class="subject">Asked:</span> <div class="big" title="{{ question.added_at }}">{{ question.added_at|timesince }} ago</div>

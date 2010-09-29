@@ -1148,6 +1148,10 @@ div.grippie {
     background-color:#eee;
     text-align:center;
 }
+
+#question-modeler-version {
+    color: #555555;
+}
 .answer-mark {
     text-align:left;
     font-size:12px;
