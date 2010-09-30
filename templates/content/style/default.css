@@ -185,7 +185,7 @@ h4 {display:block;font-size:90%;}
 #header-links {
 	float:left;
 	padding-left:10px;
-	padding-top:10px;
+	padding-top:6px;
 }
 #header-links .reputation-score,
 #header-links .badgecount {
