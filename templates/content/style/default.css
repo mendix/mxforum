@@ -141,7 +141,8 @@ h4 {display:block;font-size:90%;}
 .Mendixhead {
 	margin:auto;
 	position:relative;
-	width:980px;
+	width:960px;
+    padding: 0 10px;
 }
 .toplinks {
 	float: right;
@@ -212,10 +213,10 @@ h4 {display:block;font-size:90%;}
 	background: #00aef4;
 }
 .subNav .subNav_menu {
-	width: 980px;
+	width: 960px;
 	height: 39px;
 	margin: auto;
-	padding: 50px 0 0 0;
+	padding: 50px 10px 0 10px;
 	overflow: hidden;
 	background: url(../images/header_subnav_bg.png) no-repeat;
 }
@@ -276,9 +277,9 @@ h4 {display:block;font-size:90%;}
 }
 #navigation-menu {
 	position:relative;
-	width:980px;
+	width:960px;
 	margin:0 auto;	
-	padding-top: 20px;
+	padding: 20px 10px 0 10px;
 	overflow: hidden;
 }
 .MendixContainer .menu {
@@ -311,13 +312,14 @@ h4 {display:block;font-size:90%;}
 	color: #00AEF4;
 }
 #content{
-	width: 980px;
+	width: 960px;
+    padding: 0 10px;
 	margin: 0 auto;
     /*padding-top: 27px;*/
 }
 #main {
     float:left;
-    width:700px;
+    width: 690px;
 }
 #container{ width:960px; }
 #main-bar{
@@ -418,7 +420,7 @@ h4 {display:block;font-size:90%;}
 }
 #sidebar {
     float:right;
-    width:260px;
+    width:250px;
 }
 .outside {
 	border-bottom:1px dotted #CCCCCC;
@@ -436,7 +438,8 @@ h4 {display:block;font-size:90%;}
 	background: #222 url(../images/footer_bg.png) repeat-x top;
 }
 #footer #footer_inside {
-	width: 980px;
+	width: 960px;
+    padding: 0 10px;
 	margin: 0 auto;
 	font-size: 12px;
 	color: #FFF;
