@@ -305,7 +305,6 @@ def question(request, id):
     # update view count
     Question.objects.update_view_count(question)
     
-    subscriptionform = SubscriptionForm(initial={"user" : request.user, "timespan" : 15})
     return render_to_response('question.html', {
         "question" : question,
         "question_vote" : question_vote,
@@ -317,7 +316,6 @@ def question(request, id):
         "tab_id" : view_id,
         "favorited" : favorited,
         "similar_questions" : Question.objects.get_similar_questions(question),
-        "subscriptionform" : subscriptionform,
         "context" : {
             'is_paginated' : True,
             'pages': objects_list.num_pages,
