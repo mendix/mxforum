@@ -451,12 +451,7 @@
 {% if request.user.is_authenticated %}
 	<h3 class="outside">Subscribe to Question</h3>
 	<div class="gray-box gray-box-bg">
-		<form action="/addsubscription/" method="POST">
-        	<input type="hidden" name="question" id="id_question" value="{{ question.id }}"></input>
-            <input type="hidden" name="user" id="id_user" value="{{ request.user.id }}"></input>
-            <input type="hidden" name="timespan" id="id_timespan" value="15"/>
-            <a href="#">Click here</a> to have updates to this question sent to: {{ request.user.username }}
-        </form>	
+        <a href="/addsubscription?question={{ question.id }}">Click here</a> to have updates to this question sent to: {{ request.user.username }}
 	</div>
 {% endif %}
 {% endblock %}

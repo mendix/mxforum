@@ -305,7 +305,7 @@ def question(request, id):
     # update view count
     Question.objects.update_view_count(question)
     
-    subscriptionform = SubscriptionForm(initial={"question" : question.id})
+    subscriptionform = SubscriptionForm(initial={"user" : request.user, "timespan" : 15})
     return render_to_response('question.html', {
         "question" : question,
         "question_vote" : question_vote,
@@ -1822,15 +1822,12 @@ def search(request):
 
 @login_required
 def add_subscription(request):
-    if request.method=="POST":
-        form = SubscriptionForm(request.POST)
-        #form.data['user'] = request.user.id
-        subscription = form.save(commit=False)
-        subscription.user = request.user
+    if 'question' in request.GET:
+        question = Question.objects.get(id=request.GET['question'])
+        subscription = Subscription(user=request.user, timespan = 15, question = question)
         subscription.save()
         return HttpResponseRedirect(subscription.question.get_absolute_url())
-    else:
-        pass
+    return HttpResponseRedirect("/")
 
 @login_required 
 def delete_subscription(request, id):
@@ -1977,6 +1974,9 @@ class UserImportService(DjangoSoapApp):
         from settings import DEBUG
 		# check authentication:
         if not _service_password == ws_password:
+            if DEBUG==True:
+                sys.stderr.write("wrong password")
+                sys.stderr.flush()
             return 0
 
         u, created = User.objects.get_or_create(username=_email)
