@@ -1,7 +1,7 @@
 # Django settings for lanai project.
 import os.path
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 SITE_SRC_ROOT = '/opt/mxforum/'
@@ -108,6 +108,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'forum.context_processors.mxid_url',
 	'forum.context_processors.mxappstore_url',
 	'forum.context_processors.mxwww_url',
+	'forum.context_processors.footer_json_mxwww_url',
 )
 
 ROOT_URLCONF = 'urls'
