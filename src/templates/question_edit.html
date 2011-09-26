@@ -29,17 +29,17 @@
             
             //Tags autocomplete action
             var tags = {{ tags|safe }};
-        	$("#id_tags").autocomplete(tags, {
-        		matchContains: true,
+          $("#id_tags").autocomplete(tags, {
+            matchContains: true,
                 max: 20,
                 multiple: true,
                 multipleSeparator: " ",
                 highlightItem: true,
                 scroll: true,
                 scrollHeight: 300,
-        		formatItem: function(row, i, max) {
-        			return row.n + " ("+ row.c +")";
-        		},
+            formatItem: function(row, i, max) {
+              return row.n + " ("+ row.c +")";
+            },
                 formatResult: function(row, i, max){
                     return row.n;
                 }
@@ -128,7 +128,7 @@
         <li>link </ b>: a [example] (http://url.com/ "title")</li>
         <li>picture </ b>:! [alt text] (/ path / img.jpg "title")</li>
         <li>List 1.  Item 1 2.  Item 2</li>
-		<li>Basic HTML tags are also supported.</li>
+    <li>Basic HTML tags are also supported.</li>
     </ul>
     <a class="link" href="http://en.wikipedia.org/wiki/Markdown" target="_blank">More details on markdown »</a>
     <br>  

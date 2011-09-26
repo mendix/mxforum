@@ -5,7 +5,7 @@
 {% block title %}{% spaceless %}All questions{% endspaceless %}{% endblock %}
 {% block forejs %}
 
-	<script type="text/javascript">
+  <script type="text/javascript">
         $().ready(function(){
             $("#ipSearchTag").focus();
 
@@ -38,12 +38,12 @@
                         <div class="vote" style="text-align:center">
                             <div class="questions-votebox">
                                  <span class="questions-vote-number">{{ question.score|intcomma }}</span><br>
-								 <span class="box-unit">Vote{% ifnotequal question.score 1 %}s{% endifnotequal %}</span>
+                 <span class="box-unit">Vote{% ifnotequal question.score 1 %}s{% endifnotequal %}</span>
                             </div>
                             <div class="questions-answerbox">
                                 <div {% if question.answer_accepted %}class="answered-accepted"{% else %}{% ifequal question.answer_count 0 %}class="unanswered"{% else %}class="answered"{% endifequal %}{% endif %} id="questions-answerbox-cell">
                                     <span class="questions-answer-number">{{ question.answer_count|intcomma }}</span><br>
-									<span class="box-unit">Answer{% ifnotequal question.answer_count 1 %}s{% endifnotequal %}</span>
+                  <span class="box-unit">Answer{% ifnotequal question.answer_count 1 %}s{% endifnotequal %}</span>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                 <img src="/content/images/box-arrow.gif">
                 </td>
             </tr>
-	        
+          
         </table>
         
         <div class="questions-summary-container">
@@ -137,19 +137,19 @@
 
 {% block sidebar %}
 <div class="gray-box gray-box-bg">
-	<div>
-		<center>
+  <div>
+    <center>
     You are browsing <br><div class="questions-count">{{ questions_count|intcomma }}</div>
         <div class="paragraph"> Questions
             {% if searchtag %}
                 marked as
                 <span class="post-tag">
                     {{ searchtag }}
-									</span><!-- of -->
+                  </span><!-- of -->
             {% endif %}
-					</div>
-				</center>
-				<!--
+          </div>
+        </center>
+        <!--
         {% ifequal tab_id "latest" %}
         <div class="paragraph">questions<strong> question time by </strong>show the sort. New questions will be shown first.</div>
         {% endifequal %}
@@ -164,8 +164,8 @@
 
         {% ifequal tab_id "mostvoted" %}
             <div class="paragraph"> questions <strong>vote by the number of</strong> show the sort. The most votes will be displayed on the main page.</div>
-						{% endifequal %}
-						-->
+            {% endifequal %}
+            -->
 
         <div class="paragraph">You can also use <a href="/tags/" title="View all tags"><strong>tags</strong></a> and <a href="#" title="Search problems"><strong>searchs</strong></a> to find questions.</div>
 

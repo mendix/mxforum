@@ -17,11 +17,11 @@
 {% block content %}
 <div id="main-bar" class="">
     <h3>
-		{% ifequal suser "" %}
-			Top 50 Users
-		{% else %}
-			User search
-		{% endifequal %}
+    {% ifequal suser "" %}
+      Top 50 Users
+    {% else %}
+      User search
+    {% endifequal %}
     </h3>
     <div id="tab" class="">
         <a id="sort_reputation" href="?sort=reputation">Reputation</a>
@@ -34,12 +34,12 @@
     <div class="paragraph" style="padding-left:5px;">
         <form action="/users/" method="post">
             <table>
-    	        <tr>
-    	        	<td>Find user: </td>
-    	        	<td width="310px" style="vertical-align:top;"><input id="name" name="name" autocomplete="off" size="40"></td>
+              <tr>
+                <td>Find user: </td>
+                <td width="310px" style="vertical-align:top;"><input id="name" name="name" autocomplete="off" size="40"></td>
                   <td> <input id="btSearchTag" type="submit" class="submit" value="Go! &#187;" /></td>
-    	        </tr>
-    	        
+              </tr>
+              
             </table>
         </form>
         {% if suser %}
@@ -49,16 +49,16 @@
     {% if not users.object_list %}
         <span >No matching users found</span>
     {% endif %}
-		<div id="user-list">
-        	<table class="list-table">
-    	        <tr>    
-    	            <td class="list-td">
-    	            	{% for user in users.object_list %}
+    <div id="user-list">
+          <table class="list-table">
+              <tr>    
+                  <td class="list-td">
+                    {% for user in users.object_list %}
                         
                         <div class="user-info">
-							<div class="user-gravatar32"><a href="/users/{{ user.id }}/{{ user.real_name }}/">{% gravatar user 32 %}</a></div>
+              <div class="user-gravatar32"><a href="/users/{{ user.id }}/{{ user.real_name }}/">{% gravatar user 32 %}</a></div>
                             <div class="user-details">
-								<a href="/users/{{ user.id }}/{{ user.real_name }}/">{{user.real_name}}</a><br>{% get_score_badge user %}
+                <a href="/users/{{ user.id }}/{{ user.real_name }}/">{{user.real_name}}</a><br>{% get_score_badge user %}
                             
                             </div>
                         </div>
@@ -68,11 +68,11 @@
                     <td>
                 {% endif %}
 
-    		            {% endfor %}
-    	            </td>
-    	        </tr>   
-    	    </table>
-		</div>
+                    {% endfor %}
+                  </td>
+              </tr>   
+          </table>
+    </div>
     <div class="paginator-container">
         {% cnprog_paginator context %}
     </div>

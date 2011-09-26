@@ -12,7 +12,7 @@
         <script type='text/javascript' src='/content/js/com.cnprog.utils.js'></script>
         <script src="https://www.google.com/jsapi"></script>
         <script type="text/javascript" src="{{ mxid_url }}/navigation/mxid/mxidtopbar.js"></script>
-		<script type="text/javascript" src="{{ mxid_url}}/navigation/mxid/jsonloader.js"></script>
+    <script type="text/javascript" src="{{ mxid_url}}/navigation/mxid/jsonloader.js"></script>
         <script>google.load("jquery", "1.2.6");</script>
         {% if request.user.is_anonymous and not request.session.message_silent %}
         <script type="text/javascript">
@@ -38,16 +38,16 @@
         {% endblock %}
     </head>
     <body>
-			{% if request.user.get_messages %}
-			<div class="notify" style="display:none">
-				<span>
-					Congratulations, you, the community presented a medal to you：{% for message in request.user.get_messages %}
-					<font class="darkred">{{ message }}</font>, {% endfor %}View
-					<a href="{{ request.user.get_profile_url }}">Personal Data</a></span>
+      {% if request.user.get_messages %}
+      <div class="notify" style="display:none">
+        <span>
+          Congratulations, you, the community presented a medal to you：{% for message in request.user.get_messages %}
+          <font class="darkred">{{ message }}</font>, {% endfor %}View
+          <a href="{{ request.user.get_profile_url }}">Personal Data</a></span>
 
-				<a class="close-notify" onclick="notify.close(true)">&times;</a>
-			</div>
-			{% endif %}
+        <a class="close-notify" onclick="notify.close(true)">&times;</a>
+      </div>
+      {% endif %}
 
         <div id="container">
              <div id="header">

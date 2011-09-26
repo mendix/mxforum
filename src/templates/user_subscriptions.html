@@ -3,17 +3,17 @@
 {% load humanize %}
 
 {% block usercontent %}
-	<div class='subscriptions'>
-		{% for sub in subscriptions %}
+  <div class='subscriptions'>
+    {% for sub in subscriptions %}
 
-		<div class="subscription">
-			<div class="comments_top">
-				<a class="comments" href="{{ sub.question.get_absolute_url }}">{{ sub.question.title }}</a>
-			</div>
-			<span>Updates will be emailed to you {{ sub.get_timespan_display|lower }}</span>
-			{% ifequal request.user  sub.user %} 
-				<a class="delete" href="/deletesubscription/{{ sub.id }}/">Click here to unsubscribe</a></div>
-			{% endifequal %}
-		{% endfor %}
-	</div>
+    <div class="subscription">
+      <div class="comments_top">
+        <a class="comments" href="{{ sub.question.get_absolute_url }}">{{ sub.question.title }}</a>
+      </div>
+      <span>Updates will be emailed to you {{ sub.get_timespan_display|lower }}</span>
+      {% ifequal request.user  sub.user %} 
+        <a class="delete" href="/deletesubscription/{{ sub.id }}/">Click here to unsubscribe</a></div>
+      {% endifequal %}
+    {% endfor %}
+  </div>
 {% endblock %}

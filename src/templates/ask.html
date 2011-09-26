@@ -30,15 +30,15 @@
 
             //Tags autocomplete action
             var tags = {{ tags|safe }};
-        	$("#id_tags").autocomplete(tags, {
+          $("#id_tags").autocomplete(tags, {
                 minChars: 1,
-        		matchContains: true,
+            matchContains: true,
                 max: 20,
                 multiple: true,
                 multipleSeparator: " ",
-        		formatItem: function(row, i, max) {
-        			return row.n + " ("+ row.c +")";
-        		},
+            formatItem: function(row, i, max) {
+              return row.n + " ("+ row.c +")";
+            },
                 formatResult: function(row, i, max){
                     return row.n;
                 }

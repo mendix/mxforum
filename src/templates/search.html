@@ -22,7 +22,7 @@
 {% block content %}
 <div id="main-bar" class="">
     <h3 class="search">
-		Search&nbsp;results for <span class="searchterms">"{{ searchterms }}"</span>
+    Search&nbsp;results for <span class="searchterms">"{{ searchterms }}"</span>
     </h3>
 
 </div>
@@ -103,7 +103,7 @@
                     {% if question.wiki %}
                     <span class="gray">Community Wiki</span>
                     {% else %}
-					<span class="updatedtime" title="{{ question.last_activity_at }}"><strong>{% diff_date question.last_activity_at %}</strong></span> <span class="big"><a href="/users/{{ question.last_activity_by.id }}/{{ question.last_activity_by.real_name }}/">{{ question.last_activity_by.real_name }}</a></span>&nbsp;{% get_score_badge question.last_activity_by %}
+          <span class="updatedtime" title="{{ question.last_activity_at }}"><strong>{% diff_date question.last_activity_at %}</strong></span> <span class="big"><a href="/users/{{ question.last_activity_by.id }}/{{ question.last_activity_by.real_name }}/">{{ question.last_activity_by.real_name }}</a></span>&nbsp;{% get_score_badge question.last_activity_by %}
                     {% endif %}
             </div>
 
@@ -148,8 +148,8 @@
     {% for award in awards %}
     <div style="clear:both;line-height:35px">
         <a href="/badges/{{award.badge_id}}/{{award.badge_name}}" title="{{ award.badge_description }}" class="badge">
-			<span class="badge{{ award.badge_type }}">&#9679;</span>&nbsp;{{ award.badge_name }}</a>
-		<a href="/users/{{award.user_id}}/{{award.award_real_name}}">{{ award.award_real_name }}</a>
+      <span class="badge{{ award.badge_type }}">&#9679;</span>&nbsp;{{ award.badge_name }}</a>
+    <a href="/users/{{award.user_id}}/{{award.award_real_name}}">{{ award.award_real_name }}</a>
     </div>
     {% endfor %}
     <a href="{% url badges %}" style="float:right;position:relative">Badges</a>

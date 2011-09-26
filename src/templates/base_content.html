@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" href="/content/images/favicon.ico" >
         <link href="/content/style/default.css" rel="stylesheet" type="text/css" />
-		 {% spaceless %}
+     {% spaceless %}
         {% block forestyle %}{% endblock %}
         {% endspaceless %}
         <script type='text/javascript' src='/content/js/com.cnprog.utils.js'></script>
@@ -36,16 +36,16 @@
         {% endblock %}
     </head>
     <body>
-			{% if request.user.get_messages %}
-			<div class="notify" style="display:none">
-				<span>
-					Congratulations, you, the community presented a medal to you：{% for message in request.user.get_messages %}
-					<font class="darkred">{{ message }}</font>, {% endfor %}View
-					<a href="{{ request.user.get_profile_url }}">Personal Data</a></span>
+      {% if request.user.get_messages %}
+      <div class="notify" style="display:none">
+        <span>
+          Congratulations, you, the community presented a medal to you：{% for message in request.user.get_messages %}
+          <font class="darkred">{{ message }}</font>, {% endfor %}View
+          <a href="{{ request.user.get_profile_url }}">Personal Data</a></span>
 
-				<a class="close-notify" onclick="notify.close(true)">&times;</a>
-			</div>
-			{% endif %}
+        <a class="close-notify" onclick="notify.close(true)">&times;</a>
+      </div>
+      {% endif %}
 
         <div id="container">
             <div id="header">
@@ -63,6 +63,6 @@
         </div>
         {% block endjs %}
         {% endblock %}
-	{% include 'footer.html' %}
+  {% include 'footer.html' %}
     </body>
 </html>
