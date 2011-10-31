@@ -1,58 +1,59 @@
 {% load extra_tags %}
                 
-	<div class="MendixContainer">
-		<div class="Mendixhead">
-			<div class="mxid_wrapper">
-				<div class="toplinks" name="mxid_topbar" id="mxid_topbar" mxidsrc="{{ mxid_url }}/mxid/appbar" bartype="account" style="display: none" appname="forum">
-					<a href="%LOCATION%" class=" %CLASS% " title=" %DESCRIPTION% " id="%NAME%">%CAPTION%</a>
-				</div>
-			</div>
-			
-			<div class="mendixLogo">
-				<a class="sitelogo" href="{{ mxwww_url }}" title="Go to homepage">Mendix Forum</a>
-			</div>
-			
-			<div class="menu">
-				<ul>
-					<li><a href="{{ mxwww_url }}/product/">Product</a></li>
-					<li><a href="{{ mxappstore_url }}">Apps &#38; add-ons</a></li>
-					<li><a href="{{ mxwww_url }}/customers/">Customers</a></li>
-					<li class="current_page_item"><a href="{{ mxwww_url }}/community">Community</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-				
-	<div class="subNav">
-		<div class="subNav_menu">
-			 <div class="header_bottom">
-				 
-				 <h1>Forum</h1>
-				 
-				 <div id="header-links">
-					{% if request.user.is_authenticated %}
-						<a href="/users/{{ request.user.id }}/{{ request.user.real_name|slugify }}/">{{ request.user.real_name }}</a> {% get_score_badge request.user %} 
-					{% endif %}
-				 </div>
-				 
-				 <ul class="submenu" name="mxid_topbar" bartype="apps" style="display: none">
-					<li class=" %CLASS% "><a id=" %NAME% " href="%LOCATION%" target="_top" title=" %DESCRIPTION% ">%CAPTION%</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>	
-	
-	<div id="navigation-menu">
-		<div class="nav">
-			<UL>
-				<LI class="" id="nav_home"><A href="/">Home</A></LI>
-	            <LI class="" id="nav_users"><A href="/users/">Users</A></LI>
-	            <LI class="" id="nav_faq"><A href="/faq/">FAQ</A></LI>
-				<LI class="" id="nav_ask"><A href="/questions/ask/">Ask a question</A></LI>
-	        </UL>
-		</div>
-		 <form id="search_field" method="post" action="/search/">
-			 <input id="ipSearchTag" name="ipSearchTag" size="20" value="{{ searchterms }}"/>
-			 <input type="image" class="submit" src="/../content/images/search_button.png" />
-		 </form>
-	</div>
+  <div class="MendixContainer">
+    <div class="Mendixhead">
+      <div class="mxid_wrapper">
+        <div class="toplinks" name="mxid_topbar" id="mxid_topbar" mxidsrc="{{ mxid_url }}/mxid/appbar" bartype="account" style="display: none" appname="forum">
+          <a href="%LOCATION%" class=" %CLASS% " title=" %DESCRIPTION% " id="%NAME%">%CAPTION%</a>
+        </div>
+      </div>
+      
+      <div class="mendixLogo">
+        <a class="sitelogo" href="{{ mxwww_url }}" title="Go to homepage">Mendix Forum</a>
+      </div>
+      
+      <div class="menu">
+        <ul>
+          <li><a href="{{ mxwww_url }}/product/">Product</a></li>
+          <li><a href="{{ mxwww_url }}/customers/">Success Stories</a></li>
+          <li><a href="{{ mxwww_url }}/partners/">Partners</a></li>
+          <li class="current_page_item"><a href="{{ mxwww_url }}/community">Community</a></li>
+          <li><a href="{{ mxwww_url }}/company/">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+        
+  <div class="subNav">
+    <div class="subNav_menu">
+       <div class="header_bottom">
+         
+         <h1>Forum</h1>
+         
+         <div id="header-links">
+          {% if request.user.is_authenticated %}
+            <a href="/users/{{ request.user.id }}/{{ request.user.real_name|slugify }}/">{{ request.user.real_name }}</a> {% get_score_badge request.user %} 
+          {% endif %}
+         </div>
+         
+         <ul class="submenu" name="mxid_topbar" bartype="apps" style="display: none">
+          <li class=" %CLASS% "><a id=" %NAME% " href="%LOCATION%" target="_top" title=" %DESCRIPTION% ">%CAPTION%</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>  
+  
+  <div id="navigation-menu">
+    <div class="nav">
+      <UL>
+        <LI class="" id="nav_home"><A href="/">Home</A></LI>
+              <LI class="" id="nav_users"><A href="/users/">Users</A></LI>
+              <LI class="" id="nav_faq"><A href="/faq/">FAQ</A></LI>
+        <LI class="" id="nav_ask"><A href="/questions/ask/">Ask a question</A></LI>
+          </UL>
+    </div>
+     <form id="search_field" method="post" action="/search/">
+       <input id="ipSearchTag" name="ipSearchTag" size="20" value="{{ searchterms }}"/>
+       <input type="image" class="submit" src="/../content/images/search_button.png" />
+     </form>
+  </div>
