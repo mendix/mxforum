@@ -22,7 +22,7 @@
             {% if not question.closed and request.user.is_authenticated %}initEditor();{% endif %}
             
             lanai.highlightSyntax();
-			$('#btLogin').bind('click', function(){window.location.href='/accounts/login/?next=/questions/{{ question.id }}/{{ question.title|slugify }}'; } )
+      $('#btLogin').bind('click', function(){window.location.href='/accounts/login/?next=/questions/{{ question.id }}/{{ question.title|slugify }}'; } )
         });
         
         function initEditor(){
@@ -105,7 +105,7 @@
                                             <span class="action-link-separator">|</span>
                                             {% endif %}
                                             {% if request.user|can_delete_post:question %}
-																						<span class="action-link"><a id="question-delete-link-{{question.id}}">Delete</a></span>
+                                            <span class="action-link"><a id="question-delete-link-{{question.id}}">Delete</a></span>
                                             <span class="action-link-separator">|</span>
                                             {% endif %}
                                             {% if question.closed %}
@@ -180,7 +180,7 @@
                                                 <table width="100%">
                                                     <tr>
                                                         <td colspan="2"> 
-                                                        Asked <strong title="{{ question.added_at }}">{% diff_date question.added_at %}</strong>
+                                                            <strong title="{{ question.added_at }}">{% diff_date question.added_at %}</strong>
                                                         </td>
                                                         
                                                     </tr>
@@ -221,7 +221,7 @@
             </table>
             {% if question.closed %}
             <div class="question-status" style="margin-bottom:15px">
-				<h3><a href="{{ question.closed_by.get_profile_url }}">{{ question.closed_by.real_name }}</a> closed this question {% diff_date question.closed_at %} for the following reason: “{{ question.get_close_reason_display }}” </h3>
+        <h3><a href="{{ question.closed_by.get_profile_url }}">{{ question.closed_by.real_name }}</a> closed this question {% diff_date question.closed_at %} for the following reason: “{{ question.get_close_reason_display }}” </h3>
             </div>
             {% endif %}
             
@@ -239,7 +239,7 @@
                             <tr>
                                 <td style="width:50px;vertical-align:top">
                                     <div class="vote-buttons">
-										<img id="answer-img-upvote-{{ answer.id }}" class="answer-img-upvote" src="/content/images/vote-arrow-up{% get_user_vote_image user_answer_votes answer.id 1 %}.png" title="Vote up" >
+                    <img id="answer-img-upvote-{{ answer.id }}" class="answer-img-upvote" src="/content/images/vote-arrow-up{% get_user_vote_image user_answer_votes answer.id 1 %}.png" title="Vote up" >
                                         <div id="answer-vote-number-{{ answer.id }}" class="vote-number">{{ answer.score }}</div>
                                         <img id="answer-img-downvote-{{ answer.id }}" class="answer-img-downvote" src="/content/images/vote-arrow-down{% get_user_vote_image user_answer_votes answer.id -1 %}.png" title="Vote down" >
                                         {% ifequal request.user question.author  %}
@@ -258,7 +258,7 @@
                                         </div>
                                         <div class="answer-controls">
                                             <table width="650px">
-                        	                    <tr>
+                                              <tr>
                                                     <td width="200px" style="vertical-align:top">
                                                         {% if request.user|can_edit_post:answer %}
                                                         <span class="action-link"><a href="{% url edit_answer answer.id %}">Edit</a></span>
@@ -276,7 +276,7 @@
                                                         <span class="action-link-separator">|</span>
                                                         <span id="answer-offensive-flag-{{ answer.id }}" class="offensive-flag" title="Report as spam"><a>Mark as spam / offensive?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if answer.offensive_flag_count %}({{ answer.offensive_flag_count }}){% endif %}{% endif %}</span></span>
                                                     </td>
-                        	                    	<td width="200px" style="vertical-align:top">
+                                                <td width="200px" style="vertical-align:top">
                                                     {% if answer.last_edited_by %}
                                                     <div class="question-edit" >
                                                         <table width="100%" >
@@ -328,13 +328,13 @@
                                                     {% else %}
                                                     <div  class="answer-mark">
                                                         <table width="100%">
-                            	                            <tr>
-                                	                            	<td colspan="2"> 
+                                                          <tr>
+                                                                <td colspan="2"> 
                                                                 Added <strong title="{{answer.added_at}}">{% diff_date answer.added_at %}</strong>
                                                                 </td>
-                            	                            	
-                            	                            </tr>
-                            	                            <tr>
+                                                            
+                                                          </tr>
+                                                          <tr>
                                                                 <td width="40px" style="vertical-align:bottom">
                                                                 {% gravatar answer.author 32 %}
                                                                 </td>
@@ -344,14 +344,14 @@
                                                                     {% get_score_badge answer.author %}
                                                                     </div>
                                                                 </td>
-                            	                            </tr>
+                                                          </tr>
                                                         </table>
                                                     </div>
                                                     {% endif %}
                                                     
                                                  </td>
-                        	                    </tr>
-                        	                    
+                                              </tr>
+                                              
                                             </table>
                                             
                                         </div>
@@ -408,7 +408,7 @@
             {% endif %}
             
             <br><br>
-						
+            
         </form>
     </div>
 </div>
@@ -445,14 +445,14 @@
             <li><a href="/questions/{{question.id}}/{{ question.get_question_title }}">{{ question.get_question_title }}</a><span class="small" title="{{ question.last_activity_at }}"> ({% diff_date question.last_activity_at %})</span></li>
         {% endfor %}
         </ul>
-	</div>
+  </div>
     <br>  
 </div>
 {% if request.user.is_authenticated %}
-	<h3 class="outside">Subscribe to Question</h3>
-	<div class="gray-box gray-box-bg">
+  <h3 class="outside">Subscribe to Question</h3>
+  <div class="gray-box gray-box-bg">
         <a href="/addsubscription?question={{ question.id }}">Click here</a> to have updates to this question sent to: {{ request.user.username }}
-	</div>
+  </div>
 {% endif %}
 {% endblock %}
 

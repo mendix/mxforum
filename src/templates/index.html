@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_homepage.html" %}
 {% load extra_tags %}
 {% load extra_filters %}
 {% load humanize %}
@@ -24,12 +24,12 @@
     <h3>
         Recent&nbsp;Questions
     </h3>
-	<div style="float:right;margin-top:15px;">
-		<span>
-			<a title="RSS feeds Mendix Community"  href="/feeds/rss/"><img src="/content/images/feed-icon-small.png" style="vertical-align:bottom"
-				title="RSS feed Mendix Community" height="14" width="14" border="0"></a>
-		 </span>
-	 </div>
+    <div style="float:right;margin-top:15px;">
+        <span>
+            <a title="RSS feeds Mendix Community"  href="/feeds/rss/"><img src="/content/images/feed-icon-small.png" style="vertical-align:bottom"
+                title="RSS feed Mendix Community" height="14" width="14" border="0"></a>
+         </span>
+     </div>
 </div>
 <div id="main-body" class="">
     {% for question in questions %}
@@ -48,7 +48,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-										<div class="box-unit">Vote{% ifnotequal question.score 1 %}s{% endifnotequal %}</div>
+                    <div class="box-unit">Vote{% ifnotequal question.score 1 %}s{% endifnotequal %}</div>
                                     </td>
                                 </tr>
                             </table>
@@ -64,7 +64,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-										<div class="box-unit">Answer{% ifnotequal question.answer_count 1 %}s{% endifnotequal %}</div>
+                    <div class="box-unit">Answer{% ifnotequal question.answer_count 1 %}s{% endifnotequal %}</div>
                                     </td>
                                 </tr>
                             </table>
@@ -108,7 +108,7 @@
                     {% if question.wiki %}
                     <span class="gray">Community Wiki</span>
                     {% else %}
-					<span class="updatedtime" title="{{ question.last_activity_at }}"><strong>{% diff_date question.last_activity_at %}</strong></span> <span class="big"><a href="/users/{{ question.last_activity_by.id }}/{{ question.last_activity_by.real_name }}/">{{ question.last_activity_by.real_name }}</a></span>&nbsp;{% get_score_badge question.last_activity_by %}
+          <span class="updatedtime" title="{{ question.last_activity_at }}"><strong>{% diff_date question.last_activity_at %}</strong></span> <span class="big"><a href="/users/{{ question.last_activity_by.id }}/{{ question.last_activity_by.real_name }}/">{{ question.last_activity_by.real_name }}</a></span>&nbsp;{% get_score_badge question.last_activity_by %}
                     {% endif %}
             </div>
 
@@ -118,45 +118,6 @@
 </div>
 {% endblock %}
 
-{% block sidebar %}
-{% if not request.user.is_authenticated %}
-<div class="yellow-box" style="display:none;">
-    <h3 class="darkred">Mendix Forum</h3>
-    <div class="highlight-box">
-      <p>
-      Welcome to our interactive community forum. This is the place where modelers and developers meet to discuss, ask and answer Mendix-related questions and topics. Check out the <a href="/faq/">FAQ</a> to see how it works. Enjoy!
-        </p>
-        <div style="text-align:right">
-            <a href="/faq/">FAQ »</a>
-            <br>
-        </div>
-    </div>
-</div>
-{% endif %}
-<div class="gray-box">
-    <h3>Latest tags</h3>
-    <div id="recent-tags">
-        {% for tag in tags %}
-            <a class="post-tag" rel="tag" title="View of the '{{ tag.name }}'" style="font-size:{% tag_font_size max min tag.used_count %}px;" href="{% url forum.views.tag tag.name|urlencode %}">{{ tag.name }}</a><span class="gray small" >({{ tag.used_count|intcomma }})</span>
-        {% endfor %}
-        <br>
-        <a href="/tags/" style="float:right;position:relative;" class="link">Popular tags »</a>
-         <br>
-    </div>
-</div>
-<h3 class="outside">Latest Badges</h3>
-<div class="gray-box gray-box-bg">
-    {% for award in awards %}
-    <div style="clear:both;line-height:35px">
-        <a href="/badges/{{award.badge_id}}/{{award.badge_name}}" title="{{ award.badge_description }}" class="badge">
-			<span class="badge{{ award.badge_type }}">&#9679;</span>&nbsp;{{ award.badge_name }}</a>
-		<a href="/users/{{award.user_id}}/{{award.real_name}}" class="real_name">{{ award.real_name }}</a>
-    </div>
-    {% endfor %}
-    <a href="{% url badges %}" style="float:right;position:relative" class="link">Badges »</a>
-    <br>
-</div>
-{% endblock %}
 {% block tail %}
 <div>
 </div>
