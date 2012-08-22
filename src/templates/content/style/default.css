@@ -130,6 +130,7 @@ h4 {display:block;font-size:90%;}
 	position: relative;
 }
 .mendixLogo .sitelogo {
+	position: absolute;
 	height: 56px;
     width: 212px;
     margin-top: 24px;
