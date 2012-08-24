@@ -957,7 +957,6 @@ def user_stats(request, user_id, user_view):
 
     questions = Question.objects.extra(
         select={
-            'vote_count' : 'question.score',
             'favorited_myself' : 'SELECT count(*) FROM favorite_question f WHERE f.user_id = %s AND f.question_id = question.id',
             'la_user_id' : 'auth_user.id',
             'la_username' : 'auth_user.username',
@@ -971,9 +970,7 @@ def user_stats(request, user_id, user_view):
         tables=['question', 'auth_user'],
         where=['question.deleted = 0 AND question.author_id=%s AND question.last_activity_by_id = auth_user.id'],
         params=[user_id],
-        order_by=['-vote_count', '-last_activity_at']
-    ).values('vote_count',
-             'favorited_myself',
+    ).values('favorited_myself',
              'id',
              'title',
              'author_id',
@@ -996,19 +993,21 @@ def user_stats(request, user_id, user_view):
              'la_user_reputation',
              'la_real_name')[:100]
 
+    for question in questions:
+        question['vote_count'] = question['vote_up_count'] - question['vote_down_count']
+    questions = sorted(questions, key = lambda k : k['vote_count'], reverse=True)
+
     answered_questions = Question.objects.extra(
         select={
             'vote_up_count' : 'answer.vote_up_count',
             'vote_down_count' : 'answer.vote_down_count',
             'answer_id' : 'answer.id',
             'accepted' : 'answer.accepted',
-            'vote_count' : 'answer.score',
             'comment_count' : 'answer.comment_count'
             },
         tables=['question', 'answer'],
         where=['answer.deleted=0 AND answer.author_id=%s AND answer.question_id=question.id'],
         params=[user_id],
-        order_by=['-vote_count', '-answer_id'],
         select_params=[user_id]
     ).distinct().values('comment_count',
                         'id',
@@ -1019,6 +1018,10 @@ def user_stats(request, user_id, user_view):
                         'answer_count',
                         'vote_up_count',
                         'vote_down_count')[offset:(offset+100)]
+
+    for answered_question in answered_questions:
+        answered_question['vote_count'] = answered_question['vote_up_count'] - answered_question['vote_down_count']
+    answered_questions = sorted(answered_questions, key = lambda k : k['vote_count'], reverse=True)
 
     answered_questions_count = Answer.objects.filter(deleted=False, author=user_id).count()
     up_votes = Vote.objects.get_up_vote_count_from_user(user)
@@ -1547,7 +1550,6 @@ def user_favorites(request, user_id, user_view):
     user = get_object_or_404(User, id=user_id)
     questions = Question.objects.extra(
         select={
-            'vote_count' : 'question.vote_up_count + question.vote_down_count',
             'favorited_myself' : 'SELECT count(*) FROM favorite_question f WHERE f.user_id = %s AND f.question_id = question.id',
             'la_user_id' : 'auth_user.id',
             'la_username' : 'auth_user.username',
@@ -1561,9 +1563,8 @@ def user_favorites(request, user_id, user_view):
         tables=['question', 'auth_user', 'favorite_question'],
         where=['question.deleted = 0 AND question.last_activity_by_id = auth_user.id AND favorite_question.question_id = question.id AND favorite_question.user_id = %s'],
         params=[user_id],
-        order_by=['-vote_count', '-question.id']
-    ).values('vote_count',
-             'favorited_myself',
+        order_by=['-question.id']
+    ).values('favorited_myself',
              'id',
              'title',
              'author_id',
