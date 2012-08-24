@@ -1839,6 +1839,16 @@ form.post-comments input {
     margin-top:1px;
     vertical-align:top;
     width:100px;
+    color: #222;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #FFF;
+    border: 1px solid #cdcdcd;
+    background: #ebebec url(../images/comments_bg.png) repeat-x top;
+    -webkit-border-radius: 3px;
+	border-radius: 3px; 
+	-moz-border-radius: 3px;
 }
 span.text-counter { margin-right:20px; }
 span.form-error {
