@@ -1,57 +1,32 @@
 ﻿{% load extra_tags %}
 
     <div id="footer">
-      <div id="footer_inside">
-        <div id="footercontent">
+      <div id="footer-wrapper"> 
+        <div id="supplementary">
+         <div id="second">
           <div name="jsonloader" id="jsonfooter" jsonsrc="{{ footer_json_mxwww_url }}" style="display:none">
-            <div class="sitemap">
-              <h2>%CATEGORY%</h2>
-                %LINKS%
-            </div>
+            <div class="footer_menu">
+              <span>%CATEGORY%</span>
+              %LINKS%
+              </div>
+            </div> <!-- #jsonfooter -->
+          </div> <!-- #second -->
+        </div> <!-- #supplementary -->
+
+        <div id="third"> 
+          <div class="socialmedia">
+            <ul class="socialmedia">
+              <li class="facebook"><a href="https://www.facebook.com/mendixsoftware" target="_blank">Facebook</a></li>
+              <li class="twitter"><a href="https://twitter.com/#!/mendixsocial" target="_blank">Twitter</a></li>
+              <li class="rss"><a href="http://www.mendix.com/?feed=atom" target="_blank">RSS Feed</a></li>
+              <li class="youtube"><a href="http://www.youtube.com/MendixOnline" target="_blank">Youtube</a></li>
+            </ul>
           </div>
-        </div>
-        <div class="footer_contact">
-          <h2>Contact Us</h2>
-          <dl>
-            <dt>Americas</dt>
-            <dd>
-              <p>Mendix Inc. USA</p>
-              <p>374 Congress St</p>
-              <p>Suite 306</p>
-              <p>Boston, MA 02210</p>
-              <p>phone: +1 (617) 428-0831</p>
-              <a href="http://goo.gl/maps/VIZB" rel="external">Google Maps</a>
-            </dd>
-          </dl>
-          <dl class="right">
-            <dt>The Netherlands</dt>
-            <dd>
-              <p>Mendix Technology BV</p>
-              <p>Westzeedijk 487</p>
-              <p>3024EL Rotterdam</p>
-              <p>The Netherlands</p>
-              <p>phone: +31 10 276 0434</p>
-              <a href="http://goo.gl/maps/EdlM" rel="external">Google Maps</a>
-            </dd>
-          </dl>
-        </div>
-        <div class="copyright">
-            <p>Copyright &copy; 2011 | Mendix. All rights reserved | <a href="http://www.mendix.com/terms-of-use"> Terms of Use</a> | <a href="http://www.mendix.com/privacy-policy">Privacy Policy</a></p>
-        </div>
-      </div>
-    </div>
+          <p>Mendix is the app platform company for the enterprise. We enable companies to build, integrate and deploy web and mobile applications faster and with better results, effectively driving ROI in days not months.</p>
+          <img src="/../content/images/mx-footer-slogan.png" alt="agile.social.mobile.now">
+        </div> <!-- #third -->
 
-		<script type="text/javascript">
+        <p>Copyright &copy; 2012 | Mendix. All rights reserved | <a href="http://www.mendix.com/terms-of-use"> Terms of Use</a> | <a href="http://www.mendix.com/privacy-policy">Privacy Policy</a></p>
 
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-163813-1']);
-		  _gaq.push(['_setDomainName', '.mendix.com']);
-		  _gaq.push(['_trackPageview']);
-
-		  (function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-
-		</script>
+      </div> <!-- #footer-wrapper -->
+    </div> <!-- #footer -->

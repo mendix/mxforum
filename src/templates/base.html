@@ -12,8 +12,23 @@
         <script type='text/javascript' src='/content/js/com.cnprog.utils.js'></script>
         <script src="https://www.google.com/jsapi"></script>
         <script type="text/javascript" src="{{ mxid_url }}/navigation/mxid/mxidtopbar.js"></script>
-		<script type="text/javascript" src="{{ mxid_url}}/navigation/mxid/jsonloader.js"></script>
+        <script type="text/javascript" src="{{ mxid_url}}/navigation/mxid/jsonloader.js"></script>
+        <script type="text/javascript" src="https://use.typekit.com/ytc8qtv.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
         <script>google.load("jquery", "1.2.6");</script>
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-163813-1']);
+          _gaq.push(['_setDomainName', 'mendix.com']);
+          _gaq.push(['_addIgnoredRef', 'mendix.com']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
         {% if request.user.is_anonymous and not request.session.message_silent %}
         <script type="text/javascript">
             $().ready(function() {
@@ -38,16 +53,16 @@
         {% endblock %}
     </head>
     <body>
-			{% if request.user.get_messages %}
-			<div class="notify" style="display:none">
-				<span>
-					Congratulations, you, the community presented a medal to you：{% for message in request.user.get_messages %}
-					<font class="darkred">{{ message }}</font>, {% endfor %}View
-					<a href="{{ request.user.get_profile_url }}">Personal Data</a></span>
+      {% if request.user.get_messages %}
+      <div class="notify" style="display:none">
+        <span>
+          Congratulations, you, the community presented a medal to you：{% for message in request.user.get_messages %}
+          <font class="darkred">{{ message }}</font>, {% endfor %}View
+          <a href="{{ request.user.get_profile_url }}">Personal Data</a></span>
 
-				<a class="close-notify" onclick="notify.close(true)">&times;</a>
-			</div>
-			{% endif %}
+        <a class="close-notify" onclick="notify.close(true)">&times;</a>
+      </div>
+      {% endif %}
 
         <div id="container">
              <div id="header">
