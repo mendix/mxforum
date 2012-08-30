@@ -14,10 +14,6 @@ DEBUG_TOOLBAR_CONFIG = {
     "INTERCEPT_REDIRECTS":False
 }
 
-#for logging
-import logging
-LOG_FILENAME = '/opt/mxforum/log/mxforum.django.app.log'
-logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG,)
 
 #for OpenID auth
 ugettext = lambda s: s
