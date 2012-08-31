@@ -1715,6 +1715,11 @@ div.votebox span {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
+
+.user-stats-table .answered-accepted {
+	min-width: 20px;
+	background: #60AC39;
+}
 .status {
     margin-top:-3px;
     padding:4px 0;
