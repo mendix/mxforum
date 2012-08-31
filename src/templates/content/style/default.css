@@ -524,6 +524,7 @@ input[type=text] {
     color: #596573;
     font-size: 18px;
     font-weight: bold;
+    text-transform: capitalize;
 }
 #footer #second .footer_menu a {
     color: #596573;
