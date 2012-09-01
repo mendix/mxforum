@@ -9,6 +9,7 @@ from django.conf import settings
 from django.core.files.storage import default_storage
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import AnonymousUser
 from django.http import HttpResponseRedirect, HttpResponse,Http404
 from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.template import RequestContext
@@ -284,18 +285,22 @@ def question(request, id):
     answers = answers.select_related(depth=1)
 
     favorited = question.has_favorite_by_user(request.user)
-    question_vote = question.votes.select_related().filter(user=request.user)
+    question_vote = question.votes.select_related()
+    if not isinstance(request.user, AnonymousUser):
+        question_vote = question_vote.filter(user=request.user)
+
     if question_vote is not None and question_vote.count() > 0:
         question_vote = question_vote[0]
 
     user_answer_votes = {}
-    for answer in answers:
-        vote = answer.get_user_vote(request.user)
-        if vote is not None and not user_answer_votes.has_key(answer.id):
-            vote_value = -1
-            if vote.is_upvote():
-                vote_value = 1
-            user_answer_votes[answer.id] = vote_value
+    if not isinstance(request.user, AnonymousUser):
+        for answer in answers:
+            vote = answer.get_user_vote(request.user)
+            if vote is not None and not user_answer_votes.has_key(answer.id):
+                vote_value = -1
+                if vote.is_upvote():
+                    vote_value = 1
+                user_answer_votes[answer.id] = vote_value
 
 
     if answers is not None:

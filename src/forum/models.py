@@ -5,7 +5,7 @@ from urllib import quote_plus, urlencode
 from django.db import models
 from django.utils.html import strip_tags
 from django.core.urlresolvers import reverse
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AnonymousUser
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.template.defaultfilters import slugify
@@ -249,7 +249,9 @@ class Answer(models.Model):
     objects = AnswerManager()
 
     def get_user_vote(self, user):
-        votes = self.votes.filter(user=user)
+        votes = self.votes
+        if not isinstance(user, AnonymousUser):
+            votes = votes.filter(user=user)
         if votes.count() > 0:
             return votes[0]
         else:
