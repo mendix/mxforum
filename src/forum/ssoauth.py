@@ -12,7 +12,6 @@ class SSOModelBackend(object):
                                    request.META['HTTP_ACCEPT_CHARSET'],
                                    request.META['HTTP_ACCEPT_ENCODING'],
                                    request.META['HTTP_ACCEPT_LANGUAGE'])
-        print user_agent
         hashed = b64encode(sha256(user_agent).digest())
         requestdata = urllib.urlencode([('token', token), ('a', 'forum'), ('client', hashed)])
         u = urllib.urlopen("%s/mxid/validatetoken" % settings.MXID_URL, requestdata)
