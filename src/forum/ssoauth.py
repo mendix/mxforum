@@ -8,10 +8,15 @@ from django.utils import simplejson
 class SSOModelBackend(object):
 
     def authenticate_token(self, request, token):
-        user_agent = "%s%s%s%s" % (request.META['HTTP_USER_AGENT'],
-                                   request.META['HTTP_ACCEPT_CHARSET'],
-                                   request.META['HTTP_ACCEPT_ENCODING'],
-                                   request.META['HTTP_ACCEPT_LANGUAGE'])
+        header_keys = ['HTTP_USER_AGENT', 'HTTP_ACCEPT_CHARSET', 'HTTP_ACCEPT_ENCODING', 'HTTP_ACCEPT_LANGUAGE']
+        user_agent_tokens = []
+        for header_key in header_keys:
+            if header_key in request.META:
+                user_agent_tokens.append(request.META[header_key])
+            else:
+                user_agent_tokens.append('null')
+        
+        user_agent = "".join(user_agent_tokens)
         hashed = b64encode(sha256(user_agent).digest())
         requestdata = urllib.urlencode([('token', token), ('a', 'forum'), ('client', hashed)])
         u = urllib.urlopen("%s/mxid/validatetoken" % settings.MXID_URL, requestdata)
