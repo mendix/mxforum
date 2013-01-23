@@ -4,17 +4,6 @@
 {% load humanize %}
 {% block title %}{% spaceless %}All questions{% endspaceless %}{% endblock %}
 {% block forejs %}
-
-	<script type="text/javascript">
-        $().ready(function(){
-            $("#ipSearchTag").focus();
-
-            var tab_id = "{{ tab_id }}";
-            $("#"+tab_id).attr('className',"youarehere");
-           $("#nav_questions").attr('className',"youarehere");
-        });
-         
-        </script>
 {% endblock %}
 {% block content %}
 <div id="main-bar" class="">

@@ -3,9 +3,12 @@
   <div class="MendixContainer">
     <div class="Mendixhead">
       <div class="mxid_wrapper">
-        <form id="search_field" method="post" action="/search/">
-          <input placeholder="Search forum.." id="ipSearchTag" name="ipSearchTag" size="20" value="{{ searchterms }}"/>
-          <input type="image" class="submit" src="/../content/images/search_button.png" />
+        <form id="cse-search-box" action="/search/">
+          <input type="hidden" name="cx" value="008041280038911820596:be3ercf_tlo" />
+          <input type="hidden" name="ie" value="UTF-8" />
+          <label for="q" class="assistive-text">Search</label>
+          <input type="text" class="field" name="q" id="q" placeholder="Search" />
+          <input type="submit" class="submit" name="sa" id="searchsubmit" value="Search" />
         </form>
         <div class="toplinks" name="mxid_topbar" id="mxid_topbar" mxidsrc="{{ mxid_url }}/mxid/appbar" bartype="account" style="display: none" appname="forum">
           <a href="%LOCATION%" class=" %CLASS% " title=" %DESCRIPTION% " id="%NAME%">%CAPTION%</a>

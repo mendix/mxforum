@@ -131,16 +131,16 @@ h4 {display:block;font-size:90%;}
 }
 .mendixLogo .sitelogo {
 	position: absolute;
+	top: -6px;
 	height: 56px;
     width: 212px;
-    margin-top: 24px;
 	text-indent: -9999px;
 	display: block;
 	background: transparent url(../images/mendix.png) no-repeat;
 }
 .mxid_wrapper {
 	/*height: 42px; /* Height because toplinks get display none first */
-	padding: 12px 165px 0 0;
+	
 }
 .Mendixhead {
 	position: relative;
@@ -148,8 +148,10 @@ h4 {display:block;font-size:90%;}
 	width: 960px;
 }
 .toplinks {
+	width: 100%;
 	float: right;
-	padding-top: 3px;
+	padding: 15px 417px 1px 0;
+	text-align: right;
 }
 .toplinks a {
 	text-transform: uppercase;
@@ -2036,4 +2038,33 @@ td.label {
 ------------------------------------------------*/
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
 	.MendixContainer .menu {margin-bottom: 4px;}
+}
+#cse-search-box {
+	position: absolute;
+	margin: 12px 0 0 549px;
+}
+#cse-search-box label {
+	display: none;
+}
+#cse-search-box #q {
+	float: right;
+	width: 218px;
+	font-size: 12px;
+	line-height: 1.2em;
+	text-transform: uppercase;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #878686 #878686 #B7B6B6 #878686;
+	padding: 8px 0 5px 27px;
+	box-shadow: none;
+	border-radius: 5px;
+}
+#cse-search-box input#searchsubmit {
+	position: absolute;
+	width: 15px;
+	top: 0 !important;
+	left: 8px;
+	border-style: none;
+	text-indent: -9999px;
+	background: url(../images/search-icon.png) no-repeat left;
 }

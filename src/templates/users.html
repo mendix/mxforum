@@ -3,16 +3,6 @@
 {% load humanize %}
 {% block title %}{% spaceless %}Users{% endspaceless %}{% endblock %}
 {% block forejs %}
-       <script type="text/javascript">
-        $().ready(function(){
-            $("#nav_users").attr('className',"youarehere");
-            $("#ipSearchUser").focus();
-            
-            var orderby = "{{ tab_id }}";
-            $("#sort_" + orderby).attr('className',"youarehere");
-        });
-         
-        </script>
 {% endblock %}
 {% block content %}
 <div id="main-bar" class="">
