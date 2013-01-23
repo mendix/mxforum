@@ -1779,44 +1779,7 @@ def upload(request):
     return HttpResponse(result, mimetype="application/xml")
 
 def search(request):
-    search = shlex.split(request.POST.get("ipSearchTag").strip().__str__())
-    query = Question.objects.all().filter(deleted=False).order_by('-last_activity_at')
-    for s in search:
-        query = query.filter(Q(tagnames__icontains=s) | Q(html__icontains=s) | Q(title__icontains=s))
-
-    questions = query
-
-    # RISK - inner join queries
-    #questions = questions.select_related();
-    tags = Tag.objects.all().order_by("-id")[:INDEX_TAGS_SIZE]
-
-    MIN = 1
-    MAX = 100
-    begin = end = 0
-    if len(tags) > 0:
-        sorted_tags = list(tag.used_count for tag in tags)
-        begin = min(sorted_tags)
-        end = max(sorted_tags)
-    mi = MIN if begin < MIN else begin
-    ma = MAX if end > MAX else end
-
-    awards = Award.objects.extra(
-        select={'badge_id': 'badge.id', 'badge_name':'badge.name',
-                      'badge_description': 'badge.description', 'badge_type': 'badge.type',
-					  'user_id': 'auth_user.id', 'user_name': 'auth_user.username', 'award_real_name' : 'auth_user.real_name'
-                      },
-        tables=['award', 'badge', 'auth_user'],
-        order_by=['-awarded_at'],
-        where=['auth_user.id=award.user_id AND badge_id=badge.id'],
-    ).values('badge_id', 'badge_name', 'badge_description', 'badge_type', 'user_id', 'user_name', 'award_real_name')
-
     return render_to_response('search.html', {
-        "questions" : questions,
-        "tags" : tags,
-        "max" : ma,
-        "min" : mi,
-        "awards" : awards[:INDEX_AWARD_SIZE],
-        "searchterms" : request.POST.get("ipSearchTag"),
         }, context_instance=RequestContext(request))
 
 @login_required
