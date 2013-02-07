@@ -14,12 +14,25 @@
         </div> <!-- #supplementary -->
 
         <div id="third"> 
+          <div class="rssFeedMenu" id="footerBlogRSS">
+            <h1>Choose Your RSS Feed:</h1>
+            <div class="rssReedLeftColumn">
+              <a href="http://feeds.feedburner.com/MendixBlog" target="_blank">Platform Blog</a>
+              <a href="http://feeds.feedburner.com/MendixTechBlog" target="_blank">Tech Talk</a>
+            </div>
+            <div class="rssReedRightColumn">
+              <a href="http://feeds.feedburner.com/mendix-think-tank" target="_blank">Think Tank</a>
+              <a href="http://feeds.feedburner.com/mendix-combined" target="_blank">All Blogs</a>
+            </div>
+            <a href="#" onclick="closeBlogRSSMenu(this.parentNode); return false;" class="closeBlogRSSMenu">x</a>
+          </div>
           <div class="socialmedia">
             <ul class="socialmedia">
               <li class="facebook"><a href="https://www.facebook.com/mendixsoftware" target="_blank">Facebook</a></li>
               <li class="twitter"><a href="https://twitter.com/#!/mendixsocial" target="_blank">Twitter</a></li>
-              <li class="rss"><a href="http://www.mendix.com/?feed=atom" target="_blank">RSS Feed</a></li>
+              <li class="rss"><a href="#" onclick="showRSSMenu('footerBlogRSS'); return false;">RSS Feed</a></li>
               <li class="youtube"><a href="http://www.youtube.com/MendixOnline" target="_blank">Youtube</a></li>
+              <li class="linkedin"><a href="http://www.linkedin.com/company/mendix" target="_blank">LinkedIn</a></li>
             </ul>
           </div>
           <p>Mendix is the app platform company for the enterprise. We enable companies to build, integrate and deploy web and mobile applications faster and with better results, effectively driving ROI in days not months.</p>
@@ -30,3 +43,15 @@
 
       </div> <!-- #footer-wrapper -->
     </div> <!-- #footer -->
+    
+    <!-- Script for showing RSS Menu -->
+    <script type="text/javascript">
+    function showRSSMenu(theMenu)
+      {
+        jQuery("#" + theMenu).css({display: 'block'});
+      }
+      function closeBlogRSSMenu(theMenu)
+      {
+        jQuery(theMenu).css({display: 'none'});
+      }
+    </script>
