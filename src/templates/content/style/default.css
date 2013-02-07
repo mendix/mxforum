@@ -131,7 +131,7 @@ h4 {display:block;font-size:90%;}
 }
 .mendixLogo .sitelogo {
 	position: absolute;
-	top: -6px;
+	top: 36px;
 	height: 56px;
     width: 212px;
 	text-indent: -9999px;
@@ -504,6 +504,7 @@ input[type=text] {
     background: #C2E5F2 url(../images/mx_colophon_bg.png) repeat-x center top;
 }
 #footer-wrapper {
+	position: relative;
 	margin: auto;
     width: 960px;
     color: #596573;
@@ -588,7 +589,56 @@ input[type=text] {
 #footer div.socialmedia ul.socialmedia .twitter a:hover { background-position: -46px -46px; }
 #footer div.socialmedia ul.socialmedia .rss a:hover { background-position: -92px -46px; }
 #footer div.socialmedia ul.socialmedia .youtube a:hover { background-position: -138px -46px; }
+#footer div.socialmedia ul.socialmedia .linkedin a { background-position: -184px 0; }
+#footer div.socialmedia ul.socialmedia .linkedin a:hover { background-position: -184px -46px; }
 
+/* Dropdown RSS */
+.rssFeedMenu {
+	display: none;
+	z-index: 100;
+	padding: 18px 0 0 0;
+	width: 198px;
+	height: 93px;
+	line-height: 1 !important;
+	background: transparent url(../images/bg-rss-feed-menu.png) top left no-repeat;
+}
+#footer .rssFeedMenu {
+	position: absolute;
+	top: -78px;
+	right: 95px;
+}
+.rssFeedMenu h1 {
+	margin-bottom: 5px;
+	font-size: 14px;
+	color: #464646;
+	text-align: center;
+}
+.rssFeedMenu a {
+	line-height: 25px;
+	border-bottom: 1px solid #d4e7f3;
+	font-size: 12px;
+	color: #0192cc !important;
+}
+.rssFeedMenu a.closeBlogRSSMenu {
+	position: absolute;
+	top: -2px;
+	right: 7px;
+	color: #464646;
+	border: none;
+	font-weight: 600;
+	font-size: 14px;
+}
+.rssFeedMenu .rssReedLeftColumn {
+	float: left;
+	margin: 0 10px 0 19px;
+	width: 80px;
+	text-align: center;
+}
+.rssFeedMenu .rssReedRightColumn {
+	float: left;
+	width: 65px;
+	text-align: center;
+}
 
 #tail { 
 	margin-bottom: 20px;
@@ -2038,6 +2088,7 @@ td.label {
 ------------------------------------------------*/
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
 	.MendixContainer .menu {margin-bottom: 4px;}
+	.mendixLogo .sitelogo { top: -6px; }
 }
 #cse-search-box {
 	position: absolute;
