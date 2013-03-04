@@ -2119,3 +2119,14 @@ td.label {
 	text-indent: -9999px;
 	background: url(../images/search-icon.png) no-repeat left;
 }
+.gsc-search-box .gsc-input-box input {
+	line-height: normal;
+	border-style: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.gsc-search-box table.gsc-search-box td {
+	vertical-align: top;
+}
