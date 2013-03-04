@@ -19,6 +19,7 @@
           _gaq.push(['_setDomainName', 'mendix.com']);
           _gaq.push(['_addIgnoredRef', 'mendix.com']);
           _gaq.push(['_trackPageview']);
+          setTimeout("_gaq.push(['_trackEvent', 'NoBounce', 'Over 10 seconds'])",10000);
 
           (function() {
             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
