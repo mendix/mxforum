@@ -3,7 +3,6 @@
 {% load humanize %}
 <div id="subheader">
     <h1 class="outside">{{view_user.real_name}}</h1>
-    
 </div>
 
 <table width="950">
@@ -19,14 +18,14 @@
                 <tr>
                     <td class="summaryinfo">
                         <div class="summarycount">{{view_user.reputation|intcomma}}</div>
-                        <div style="margin-top: 5px; font-weight: bold;">Points</div>
+                        <div style="summarypoints"><strong>Points</strong></div>
                     </td>
                 </tr>
             </table>
         </td>
         <!--cell-->
         <td width="350" style="vertical-align: top;">
-            <h2 style="margin-top: 13px;">Registered user</h2>
+            <p class="reg-user">Registered user</p>
             <table class="user-details">
                 <tr>
                     <th width="120" ></th>
@@ -34,8 +33,8 @@
                 </tr>
                 {% if view_user.real_name %}
                 <tr>
-                    <td >Name:</td>
-                    <td class="dark"><b>{{view_user.real_name}}</b></td>
+                    <td>Name:</td>
+                    <td class="dark">{{view_user.real_name}}</td>
                 </tr>
                 {% endif %}
                 <tr>
@@ -45,7 +44,7 @@
                 {% if view_user.last_seen %}
                 <tr>
                     <td>Last activity:</td>
-                    <td class="dark""><span class="relativetime" title="{{ view_user.last_seen }}">{{ view_user.last_seen|timesince }} ago</span></td>
+                    <td class="dark"><span class="relativetime" title="{{ view_user.last_seen }}">{{ view_user.last_seen|timesince }} ago</span></td>
                 </tr>
                 {% endif %}
                 {% if view_user.website %}
