@@ -54,363 +54,277 @@
     </h3>
     
 </div>
+
 <div id="main-body" class="">
     <div id="askform">
         <form id="fmanswer" action="{% url answer question.id %}" method="post">
-            <table style="width:100%;" id="question-table" {% if question.deleted %}class="deleted"{%endif%}>
-                <tr>
-                    <td style="width:50px;vertical-align:top">
-                        <div class="vote-buttons">
-                            {% if question_vote %}
-                            <img id="question-img-upvote-{{ question.id }}" class="question-img-upvote" src="/content/images/vote-arrow-up{% if question_vote.is_upvote %}-on{% endif %}.png" title="Vote up" >
-                            <div id="question-vote-number-{{ question.id }}" class="vote-number">{{ question.score }}</div>
-                            <img id="question-img-downvote-{{ question.id }}" class="question-img-downvote" src="/content/images/vote-arrow-down{% if question_vote.is_downvote %}-on{% endif %}.png" title="Vote down" >
-                            {% else %}
-                            <img id="question-img-upvote-{{ question.id }}" class="question-img-upvote" src="/content/images/vote-arrow-up.png" title="Vote up" >
-                            <div id="question-vote-number-{{ question.id }}" class="vote-number">{{ question.score }}</div>
-                            <img id="question-img-downvote-{{ question.id }}" class="question-img-downvote" src="/content/images/vote-arrow-down.png" title="Vote down" >    
-                            {% endif %}
-                            {% if favorited %}
-                            <img class="question-img-favorite" src="/content/images/vote-favorite-on.png" title="Remove from favorites" >
-                            <div id="favorite-number" class="favorite-number my-favorite-number">{{ question.favourite_count }}</div>
-                            {% else %}
-                            <img class="question-img-favorite" src="/content/images/vote-favorite-off.png" title="Add to favorites" >   
-                                
-                            <div id="favorite-number" class="favorite-number">{% ifnotequal question.favourite_count 0 %}{{ question.favourite_count }}{% endifnotequal %}</div>
-                        
-                            {% endif %}
-                            
-                        </div>
-                    </td>
-                    <td>
-                        <div id="item-right">
-                            <div class="question-body">
-                                {{ question.html|safe }}
-                            </div>
-                            <div id="question-tags" class="question-tag-extra" >
-                                {% for tag in question.tagname_list %}
-                                    <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="See related '{{ tag }}' the problem of" rel="tag">{{ tag }}</a>
-                                {% endfor %}
-                            </div>
-                            <div id="question-modeler-version" class="question-body-item">
-                                Modeler version: {{ question.modeler_version }}
-                            </div>
-                            <div id="question-controls" style="clear:both;">
-                                <table width="640px">
-                                    <tr>
-                                        <td width="200px" style="vertical-align:top">
-                                            
-                                            {% if request.user|can_edit_post:question %}
-                                            <span class="action-link"><a href="{% url edit_question question.id %}">Edit</a></span>
-                                            <span class="action-link-separator">|</span>
-                                            {% endif %}
-                                            {% if request.user|can_delete_post:question %}
-                                            <span class="action-link"><a id="question-delete-link-{{question.id}}">Delete</a></span>
-                                            <span class="action-link-separator">|</span>
-                                            {% endif %}
-                                            {% if question.closed %}
-                                            {% if request.user|can_reopen_question:question %}
-                                            <span class="action-link"><a href="{% url reopen question.id %}">Re-open</a></span>
-                                            <span class="action-link-separator">|</span>
-                                            {% endif %}
-                                            {% else %}
-                                            {% if request.user|can_close_question:question %}
-                                            <span class="action-link"><a href="{% url close question.id %}">Close</a></span>
-                                            <span class="action-link-separator">|</span>
-                                            {% endif %}
-                                            {% endif %}
-                                            
-                                            <span id="question-offensive-flag-{{ question.id }}" class="offensive-flag" title="Report as spam"><a>Mark as spam?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if question.offensive_flag_count %}({{ question.offensive_flag_count }}){% endif %}{% endif %}</span>
-                                                             
-                                            </span>
-                                            
-                                        </td>
-                                        <td width="200px" style="vertical-align:top">
-                                            {% if question.last_edited_by %}
-                                            <div class="question-edit" >
-                                                <table width="100%" >
-                                                    <tr>
-                                                        <td colspan="2"> 
-                                                        Updated <a href="{% url question_revisions question.id %}"><strong title="{{question.last_edited_at }}">{% diff_date question.last_edited_at  %}</strong></a>
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    {% if question.wiki %}
-                                                    <tr>
-                                                        <td style="width:40px;vertical-align:bottom">
-                                                        {% gravatar question.last_edited_by 32 %}
-                                                        </td>
-                                                        <td style="width:160px; vertical-align:top">
-                                                            <a href="/users/{{ question.last_edited_by.id }}/{{ question.last_edited_by.real_name }}">{{ question.last_edited_by.real_name }}</a>
-                                                        </td>
-                                                    </tr>
-                                                    {% else %}
-                                                    {% ifequal question.last_edited_by question.author %}
-                                                    <tr>
-                                                        <td> </td>
-                                                        <td> </td>
-                                                    </tr>
-                                                    {% else %}
-                                                    <tr>
-                                                        <td style="width:40px;vertical-align:bottom">
-                                                        {% gravatar question.last_edited_by 32 %}
-                                                        </td>
-                                                        <td style="width:120px; vertical-align:top">
-                                                            <div><a href="/users/{{ question.last_edited_by.id }}/{{ question.last_edited_by.real_name }}">{{ question.last_edited_by.real_name }}</a></div>
-                                
-                                                            <div>
-                                                            {% get_score_badge question.last_edited_by %}
-                                                            </div>
-                                                          
-                                                        </td>
-                                                    </tr>
-                                                    {% endifequal %}
-                                                    {% endif %}
-                                                </table>
-                                            </div>
-                                            {% endif %}
-                                            
-                                        </td>
-                                        <td style="vertical-align:top">
-                                            {% if question.wiki %}
-                                            <span class="wiki-category">Community Wiki</span>
-                                            <div style="margin-bottom:10px"></div>
-                                            {% else %}
-                                            <div  class="question-mark">
-                                                <table width="100%">
-                                                    <tr>
-                                                        <td colspan="2"> 
-                                                            <strong title="{{ question.added_at }}">{% diff_date question.added_at %}</strong>
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                    
-                                                    <tr>
-                                                        <td style="width:40px; vertical-align:bottom">
-                                                        {% gravatar question.author 32 %}
-                                                        </td>
-                                                        <td style="width:120px; vertical-align:top">
-                                                            <div><a href="/users/{{ question.author.id }}/{{ question.author.real_name }}">{{ question.author.real_name }}</a></div>
-                                                            <div>
-                                                            {% get_score_badge question.author %}
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                </table>
-                                            </div>
-                                            {% endif %}
-                                        
-                                        </td>
-                                    </tr>
-                                </table>
-                                
-                            </div>
-                            
-                            <div class="post-comments" style="margin-bottom:20px">
-                                <input id="can-post-comments-question-{{question.id}}" type="hidden" value="{{ request.user|can_add_comments }}"/>
-                                <a id="comments-link-question-{{question.id}}" class="comments-link comments-link-add">{% if question.comment_count %} Comments<strong>({{question.comment_count}})</strong>{% else %} Add a comment &#187; {% endif %}</a>
-                                <div id="comments-question-{{question.id}}" class="comments-container comments-container-add">
-                                <div class="comments"/></div>
-                            </div>
-                            
-                        </div>
-                        
-                    </td>
-                </tr>
-            </table>
-            {% if question.closed %}
-            <div class="question-status" style="margin-bottom:15px">
-        <h3><a href="{{ question.closed_by.get_profile_url }}">{{ question.closed_by.real_name }}</a> closed this question {% diff_date question.closed_at %} for the following reason: “{{ question.get_close_reason_display }}” </h3>
-            </div>
-            {% endif %}
-            
-            {% ifnotequal question.answer_count 0 %}
-                <div id="main-bar" class="">
-                    <a name="sort-top"></a>
-                    <h3>{{ question.answer_count }} Answers </h3>
-                </div>
-                {% cnprog_paginator context %}
-  
-                {% for answer in answers %}
-                    <a name="{{ answer.id }}"></a>
-                    <div id="answer-container-{{ answer.id }}" class="answer {% if answer.accepted %}accepted-answer{% endif %}{% if answer.deleted %}deleted{% endif %} {% ifequal answer.author_id question.author_id %} answered-by-owner{% endifequal %}">
-                        <table style="width:100%;">
-                            <tr>
-                                <td style="width:50px;vertical-align:top">
-                                    <div class="vote-buttons">
-                    <img id="answer-img-upvote-{{ answer.id }}" class="answer-img-upvote" src="/content/images/vote-arrow-up{% get_user_vote_image user_answer_votes answer.id 1 %}.png" title="Vote up" >
-                                        <div id="answer-vote-number-{{ answer.id }}" class="vote-number">{{ answer.score }}</div>
-                                        <img id="answer-img-downvote-{{ answer.id }}" class="answer-img-downvote" src="/content/images/vote-arrow-down{% get_user_vote_image user_answer_votes answer.id -1 %}.png" title="Vote down" >
-                                        {% ifequal request.user question.author  %}
-                                        <img id="answer-img-accept-{{ answer.id }}" class="answer-img-accept" src="/content/images/vote-accepted{% if answer.accepted %}-on{% endif %}.png" title="The best answer (once again click cancel)" >
-                                        {% else %}
-                                            {% if answer.accepted %}
-                                            <img id="answer-img-accept-{{ answer.id }}" class="answer-img-accept" src="/content/images/vote-accepted{% if answer.accepted %}-on{% endif %}.png" title="The authors question the answer has been marked as best answer" >
-                                            {% endif %}
-                                        {% endifequal %}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="item-right">
-                                        <div class="answer-body">
-                                            {{ answer.html|safe }}
-                                        </div>
-                                        <div class="answer-controls">
-                                            <table width="650px">
-                                              <tr>
-                                                    <td width="200px" style="vertical-align:top">
-                                                        {% if request.user|can_edit_post:answer %}
-                                                        <span class="action-link"><a href="{% url edit_answer answer.id %}">Edit</a></span>
-                                                        <span class="action-link-separator">|</span>
-                                                        {% endif %}
-                                                        {% if request.user|can_delete_post:answer %}
-                                                        <span class="action-link"><a id="answer-delete-link-{{answer.id}}">Remove</a></span>
-                                                        <span class="action-link-separator">|</span>
-                                                        {% endif %}
-                                                        <span class="linksopt">
-                                                            <a href="#{{ answer.id }}" title="Link to specific answer">
-                                                            Link
-                                                            </a>
-                                                        </span>
-                                                        <span class="action-link-separator">|</span>
-                                                        <span id="answer-offensive-flag-{{ answer.id }}" class="offensive-flag" title="Report as spam"><a>Mark as spam / offensive?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if answer.offensive_flag_count %}({{ answer.offensive_flag_count }}){% endif %}{% endif %}</span></span>
-                                                    </td>
-                                                <td width="200px" style="vertical-align:top">
-                                                    {% if answer.last_edited_by %}
-                                                    <div class="question-edit" >
-                                                        <table width="100%" >
-                                                            <tr>
-                                                                <td colspan="2"> 
-                                                                 Updated <a href="{% url answer_revisions answer.id %}"><strong title="{{answer.last_edited_at }}">{% diff_date answer.last_edited_at  %}</strong></a>
-                                                                </td>
-                                                                
-                                                            </tr>
-                                                            {% if answer.wiki %}
-                                                            <tr>
-                                                                <td width="40px" style="vertical-align:bottom">
-                                                                {% gravatar answer.last_edited_by 32 %}
-                                                                </td>
-                                                                <td style="width:160px; vertical-align:top">
-                                                                    <div><a href="/users/{{ answer.last_edited_by.id }}/{{ answer.last_edited_by.real_name }}">{{ answer.last_edited_by.real_name }}</a></div>
-                                                               
-                                                                </td>
-                                                            </tr>
-                                                            {% else %}
-                                                            {% ifequal answer.last_edited_by answer.author %}
-                                                            <tr>
-                                                                <td> </td>
-                                                                <td> </td>
-                                                            </tr>
-                                                            {% else %}
-                                                            <tr>
-                                                                <td width="40px" style="vertical-align:bottom">
-                                                                {% gravatar answer.last_edited_by 32 %}
-                                                                </td>
-                                                                <td style="width:120px; vertical-align:top">
-                                                                    <div><a href="/users/{{ answer.last_edited_by.id }}/{{ answer.last_edited_by.real_name }}">{{ answer.last_edited_by.real_name }}</a></div>
-                                                                    <div>
-                                                                    {% get_score_badge answer.last_edited_by %}
-                                                                    </div>
-                                                                </td>
-                                                            </tr>
-                                                            {% endifequal %}
-                                                            {% endif %}
-                                                        </table>
-                                                    </div>
-                                                    {% endif %}
-                                                    
-                                                </td>
-                                                 <td style="vertical-align:top">
-                                                    {% if answer.wiki %}
-                                                    <span class="wiki-category">Community wiki</span>
-                                                    <div style="margin-bottom:10px"></div>
-                                                    {% else %}
-                                                    <div  class="answer-mark">
-                                                        <table width="100%">
-                                                          <tr>
-                                                                <td colspan="2"> 
-                                                                Added <strong title="{{answer.added_at}}">{% diff_date answer.added_at %}</strong>
-                                                                </td>
-                                                            
-                                                          </tr>
-                                                          <tr>
-                                                                <td width="40px" style="vertical-align:bottom">
-                                                                {% gravatar answer.author 32 %}
-                                                                </td>
-                                                                <td style="width:120px; vertical-align:top">
-                                                                    <div><a href="/users/{{ answer.author.id }}/{{ answer.author.real_name }}">{{ answer.author.real_name }}</a></div>
-                                                                    <div>
-                                                                    {% get_score_badge answer.author %}
-                                                                    </div>
-                                                                </td>
-                                                          </tr>
-                                                        </table>
-                                                    </div>
-                                                    {% endif %}
-                                                    
-                                                 </td>
-                                              </tr>
-                                              
-                                            </table>
-                                            
-                                        </div>
-                                        <div id="comment-{{ answer.id }}" class="post-comments" >
-                                            <input id="can-post-comments-answer-{{answer.id}}" type="hidden" value="{{ request.user|can_add_comments }}"/>
-                                            <a id="comments-link-answer-{{answer.id}}" class="comments-link">{% if answer.comment_count %}Comments <strong>({{answer.comment_count}})</strong>{% else %}Add a comment{% endif %}</a>
-                                            <div id="comments-answer-{{answer.id}}" class="comments-container">
-                                            <div class="comments"/></div>
-                                        </div>
-                                        
-                                    </div>
-                                    
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                {% endfor %}
-                <div class="paginator-container-left">
-                    {% cnprog_paginator context %}
-                </div>
-            {% else %}
-                <div class="line"></div>
-            {% endifnotequal %}
-            <div style="clear:both">
-            </div>
-            
-            {% if not question.closed %}
-            {% if request.user.is_authenticated %}
-            <div style="padding:10px 0 0 0;">
-                <h3 class="outside">Your answer: </h3>
-            </div>
 
-            <div id="description" class="" >
-                <div id="wmd-button-bar" class="wmd-panel"></div>
-                {{ answer.text }}
-                <div class="preview-toggle">
-                    <table width="100%">
-                        <tr>
-                            <td>
-                                <span id="pre-collapse" title="Open or close the real-time editor Markdown preview">Preview</span>
-                            </td>
-                        </tr>
-                    
-                    </table>  
-                </div>
-                <div id="previewer" class="wmd-preview"></div>
-                {{ answer.text.errors }}
+            <div id="question-table" {% if question.deleted %}class="deleted"{%endif%}>
+                <div class="vote-buttons">
+                    {% if question_vote %}
+                    <img alt="Vote up" id="question-img-upvote-{{ question.id }}" class="question-img-upvote" src="/content/images/vote-arrow-up{% if question_vote.is_upvote %}-on{% endif %}.png" title="Vote up" />
+                    <div id="question-vote-number-{{ question.id }}" class="vote-number">{{ question.score }}</div>
+                    <img alt="Vote down" id="question-img-downvote-{{ question.id }}" class="question-img-downvote" src="/content/images/vote-arrow-down{% if question_vote.is_downvote %}-on{% endif %}.png" title="Vote down" />
+                    {% else %}
+                    <img alt="Vote up" id="question-img-upvote-{{ question.id }}" class="question-img-upvote" src="/content/images/vote-arrow-up.png" title="Vote up" />
+                    <div id="question-vote-number-{{ question.id }}" class="vote-number">{{ question.score }}</div>
+                    <img alt="Vote down" id="question-img-downvote-{{ question.id }}" class="question-img-downvote" src="/content/images/vote-arrow-down.png" title="Vote down" />    
+                    {% endif %}
+                    {% if favorited %}
+                    <img alt="Remove from favorites" class="question-img-favorite" src="/content/images/vote-favorite-on.png" title="Remove from favorites" />
+                    <div id="favorite-number" class="favorite-number my-favorite-number">{{ question.favourite_count }}</div>
+                    {% else %}
+                    <img alt="Add to favorites" class="question-img-favorite" src="/content/images/vote-favorite-off.png" title="Add to favorites" />   
+                        
+                    <div id="favorite-number" class="favorite-number">{% ifnotequal question.favourite_count 0 %}{{ question.favourite_count }}{% endifnotequal %}</div>
                 
+                    {% endif %}
+                </div>
+                <!-- .vote-buttons -->
+
+                <div id="item-right">
+                    <div class="question-body">
+                        {{ question.html|safe }}
+                    </div>
+                    <div id="question-tags" class="question-tag-extra" >
+                        {% for tag in question.tagname_list %}
+                            <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="See related '{{ tag }}' the problem of" rel="tag">{{ tag }}</a>
+                        {% endfor %}
+                    </div>
+                    <div id="question-modeler-version" class="question-body-item">
+                        Modeler version: {{ question.modeler_version }}
+                    </div>
+                    <div id="question-controls" style="clear:both;">
+                        <div class="question-controls-links">             
+                            {% if request.user|can_edit_post:question %}
+                            <span class="action-link"><a href="{% url edit_question question.id %}">Edit</a></span>
+                            <span class="action-link-separator">|</span>
+                            {% endif %}
+                            {% if request.user|can_delete_post:question %}
+                            <span class="action-link"><a id="question-delete-link-{{question.id}}">Delete</a></span>
+                            <span class="action-link-separator">|</span>
+                            {% endif %}
+                            {% if question.closed %}
+                            {% if request.user|can_reopen_question:question %}
+                            <span class="action-link"><a href="{% url reopen question.id %}">Re-open</a></span>
+                            <span class="action-link-separator">|</span>
+                            {% endif %}
+                            {% else %}
+                            {% if request.user|can_close_question:question %}
+                            <span class="action-link"><a href="{% url close question.id %}">Close</a></span>
+                            <span class="action-link-separator">|</span>
+                            {% endif %}
+                            {% endif %}
+                            
+                            <span id="question-offensive-flag-{{ question.id }}" class="offensive-flag" title="Report as spam"><a>Mark as spam?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if question.offensive_flag_count %}({{ question.offensive_flag_count }}){% endif %}{% endif %}</span></span>
+                        </div>
+                        <!-- .question-controls-links -->
+
+                        {% if question.last_edited_by %}
+                        <div class="question-edit">
+                            Updated <a href="{% url question_revisions question.id %}"><strong title="{{question.last_edited_at }}">{% diff_date question.last_edited_at  %}</strong></a>
+                                {% if question.wiki %}
+                                    {% gravatar question.last_edited_by 32 %}
+                                    <a href="/users/{{ question.last_edited_by.id }}/{{ question.last_edited_by.real_name }}">{{ question.last_edited_by.real_name }}</a>
+                                {% else %}
+                                {% ifequal question.last_edited_by question.author %}
+                                {% else %}
+                                    {% gravatar question.last_edited_by 32 %}
+                                    <div><a href="/users/{{ question.last_edited_by.id }}/{{ question.last_edited_by.real_name }}">{{ question.last_edited_by.real_name }}</a></div>
+                                    <div>
+                                        {% get_score_badge question.last_edited_by %}
+                                    </div>
+                                {% endifequal %}
+                                {% endif %}
+                        </div>
+                        <!-- .question-edit -->
+                        {% endif %}
+                                    
+                    </div>
+                    <!-- #question-controls -->
+
+                    {% if question.wiki %}
+                        <span class="wiki-category">Community Wiki</span>
+                        <div style="margin-bottom:10px"></div>
+                        {% else %}
+                        <div class="question-mark">
+                            <span class="posted-on">Posted on&nbsp;</span><strong title="{{ question.added_at }}">{% diff_date question.added_at %}</strong>
+                            {% gravatar question.author 32 %}
+                                 <a href="/users/{{ question.author.id }}/{{ question.author.real_name }}">{{ question.author.real_name }} </a>
+                                {% get_score_badge question.author %}&nbsp;
+                        </div>
+                        {% endif %}
+                    <!-- .question-mark  -->
+                    
+                    <div class="post-comments">
+                        <input id="can-post-comments-question-{{question.id}}" type="hidden" value="{{ request.user|can_add_comments }}"/>
+                        <a id="comments-link-question-{{question.id}}" class="comments-link comments-link-add">{% if question.comment_count %} Comments<strong>({{question.comment_count}})</strong>{% else %} Add a comment &#187; {% endif %}</a>
+                        <div id="comments-question-{{question.id}}" class="comments-container comments-container-add">
+                        <div class="comments"></div>
+                    </div>
+                    <!-- .post-comments -->
+                </div>
+                <!-- .item-right -->
             </div>
-            <input type="submit" value="Post Your Answer &#187;" class="submit" style=""><span class="form-error"></span>
-            {% else %}
-            <h3><input class="btLogin" id="btLogin" type="button" value="Log in and answer the question"></h3>
-            {% endif %}
-            {% endif %}
+        </div>
+        <!-- #question-table -->
+
+
+
+
+
+
+        {% if question.closed %}
+        <div class="question-status" style="margin-bottom:15px">
+            <h3><a href="{{ question.closed_by.get_profile_url }}">{{ question.closed_by.real_name }}</a> closed this question {% diff_date question.closed_at %} for the following reason: “{{ question.get_close_reason_display }}” </h3>
+        </div>
+        {% endif %}
             
-            <br><br>
+        {% ifnotequal question.answer_count 0 %}
+        <div id="main-bar" class="">
+            <a name="sort-top"></a>
+            <h3>{{ question.answer_count }} Answers </h3>
+        </div>
+        {% cnprog_paginator context %}
+  
+        {% for answer in answers %}
+        <a name="{{ answer.id }}"></a>
+        <div id="answer-container-{{ answer.id }}" class="answer {% if answer.accepted %}accepted-answer{% endif %}{% if answer.deleted %}deleted{% endif %} {% ifequal answer.author_id question.author_id %} answered-by-owner{% endifequal %}">
+                
+            <div class="vote-buttons">
+                <img alt="Vote up" id="answer-img-upvote-{{ answer.id }}" class="answer-img-upvote" src="/content/images/vote-arrow-up{% get_user_vote_image user_answer_votes answer.id 1 %}.png" title="Vote up" />
+                <div id="answer-vote-number-{{ answer.id }}" class="vote-number">{{ answer.score }}</div>
+                <img alt="Vote down" id="answer-img-downvote-{{ answer.id }}" class="answer-img-downvote" src="/content/images/vote-arrow-down{% get_user_vote_image user_answer_votes answer.id -1 %}.png" title="Vote down" >
+                {% ifequal request.user question.author  %}
+                <img alt="The best answer (once again click cancel)" id="answer-img-accept-{{ answer.id }}" class="answer-img-accept" src="/content/images/vote-accepted{% if answer.accepted %}-on{% endif %}.png" title="The best answer (once again click cancel)" >
+                {% else %}
+                    {% if answer.accepted %}
+                    <img alt="The authors question the answer has been marked as best answer" id="answer-img-accept-{{ answer.id }}" class="answer-img-accept" src="/content/images/vote-accepted{% if answer.accepted %}-on{% endif %}.png" title="The authors question the answer has been marked as best answer" >
+                    {% endif %}
+                {% endifequal %}
+            </div>
+            <!-- .vote-buttons -->
+
+            <div class="item-right">
+                <div class="answer-body">
+                    {{ answer.html|safe }}
+                </div>
+                <!--.answer-body -->
+                                        
+                <div class="answer-controls" style="clear:both;">
+                    <div class="question-controls-links"> 
+                        {% if request.user|can_edit_post:answer %}
+                        <span class="action-link"><a href="{% url edit_answer answer.id %}">Edit</a></span>
+                        <span class="action-link-separator">|</span>
+                        {% endif %}
+                        {% if request.user|can_delete_post:answer %}
+                        <span class="action-link"><a id="answer-delete-link-{{answer.id}}">Remove</a></span>
+                        <span class="action-link-separator">|</span>
+                        {% endif %}
+                        <span class="linksopt">
+                            <a href="#{{ answer.id }}" title="Link to specific answer">
+                            Link
+                            </a>
+                        </span>
+                        <span class="action-link-separator">|</span>
+                        <span id="answer-offensive-flag-{{ answer.id }}" class="offensive-flag" title="Report as spam"><a>Mark as spam / offensive?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if answer.offensive_flag_count %}({{ answer.offensive_flag_count }}){% endif %}{% endif %}</span></span>
+                    </div>
+                    <!-- .question-controls-links -->
+
+                    {% if answer.last_edited_by %}
+                    <div class="question-edit">
+                    Updated <a href="{% url answer_revisions answer.id %}"><strong title="{{answer.last_edited_at }}">{% diff_date answer.last_edited_at %}</strong></a>
+                                                                
+                    {% if answer.wiki %}
+
+                        {% gravatar answer.last_edited_by 32 %}
+                        <a href="/users/{{ answer.last_edited_by.id }}/{{ answer.last_edited_by.real_name }}">{{ answer.last_edited_by.real_name }}</a>
+                                                               
+                        {% else %}
+                            {% ifequal answer.last_edited_by answer.author %}
+                        {% else %}
+
+                        {% gravatar answer.last_edited_by 32 %}
+                        <a href="/users/{{ answer.last_edited_by.id }}/{{ answer.last_edited_by.real_name }}">{{ answer.last_edited_by.real_name }}</a>
+                        {% get_score_badge answer.last_edited_by %}
+   
+                        {% endifequal %}
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                    <!-- .question-edit -->
+                                                    
+                    {% if answer.wiki %}
+                    <span class="wiki-category">Community wiki</span>
+                    <div style="margin-bottom:10px"></div>
+                    {% else %}
+                    <div  class="answer-mark"> 
+                        <span class="posted-on">Added on &nbsp;</span><strong title="{{answer.added_at}}">{% diff_date answer.added_at %}</strong>
+                        {% gravatar answer.author 32 %}
+                        <a href="/users/{{ answer.author.id }}/{{ answer.author.real_name }}">{{ answer.author.real_name }}</a>
+                        {% get_score_badge answer.author %}&nsp;
+                    </div>
+                    <!-- .answer-mark -->
+                    {% endif %}
+                </div>
+                <!-- .answer-controls -->
+                                        
+                <div id="comment-{{ answer.id }}" class="post-comments">
+                    <input id="can-post-comments-answer-{{answer.id}}" type="hidden" value="{{ request.user|can_add_comments }}"/>
+                    <a id="comments-link-answer-{{answer.id}}" class="comments-link">{% if answer.comment_count %}Comments <strong>({{answer.comment_count}})</strong>{% else %}Add a comment{% endif %}</a>
+                    <div id="comments-answer-{{answer.id}}" class="comments-container">
+                    <div class="comments"></div>
+                </div>
+                <!-- .post-comments -->
+                                        
+            </div>
+            <!-- .item-right -->
+        </div>
+        <!-- .answer -->
+    </div>
+        {% endfor %}
+        
+        <div class="paginator-container-left">
+            {% cnprog_paginator context %}
+        </div>
+        {% else %}
+        <div class="line"></div>
+        {% endifnotequal %}
+        <div style="clear:both"></div>
             
+        {% if not question.closed %}
+        {% if request.user.is_authenticated %}
+        <div style="padding:10px 0 0 0;">
+            <h3 class="outside">Your answer: </h3>
+        </div>
+
+        <div id="description" class="">
+            <div id="wmd-button-bar" class="wmd-panel"></div>
+            {{ answer.text }}
+            <div class="preview-toggle">
+                <table>
+                    <tr>
+                        <td>
+                            <span id="pre-collapse" title="Open or close the real-time editor Markdown preview">Preview</span>
+                        </td>
+                    </tr>
+                </table>  
+            </div>
+            <div id="previewer" class="wmd-preview"></div>
+            {{ answer.text.errors }}
+        </div>
+        <!-- #description -->
+        
+        <input type="submit" value="Post Your Answer &#187;" class="submit" style=""><span class="form-error"></span>
+        {% else %}
+        <input class="btLogin" id="btLogin" type="button" value="Log in and answer the question">
+        {% endif %}
+        {% endif %}
+        <br><br>   
         </form>
     </div>
+    <!-- #askform -->
+</div>
 </div>
 {% endblock %}
 
@@ -439,7 +353,7 @@
 </div>
 <h3 class="outside">Similar questions: </h3>
 <div class="gray-box gray-box-bg"> 
-    <div id="" class="">
+    <div  class="">
         <ul class="list-item">
         {% for question in similar_questions %}
             <li><a href="/questions/{{question.id}}/{{ question.get_question_title }}">{{ question.get_question_title }}</a><span class="small" title="{{ question.last_activity_at }}"> ({% diff_date question.last_activity_at %})</span></li>
