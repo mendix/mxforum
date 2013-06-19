@@ -1,20 +1,15 @@
 ﻿{% load extra_tags %}
-
+  <div class="MxClient_bottomPane">
     <div id="footer">
-      <div id="footer-wrapper"> 
-        <div id="supplementary">
-         <div id="second">
-          <div name="jsonloader" id="jsonfooter" jsonsrc="{{ footer_json_mxwww_url }}" style="display:none">
-            <div class="footer_menu">
-              <span>%CATEGORY%</span>
-              %LINKS%
-              </div>
-            </div> <!-- #jsonfooter -->
-          </div> <!-- #second -->
-        </div> <!-- #supplementary -->
+      <div name="jsonloader" id="jsonfooter" jsonsrc="{{ footer_json_mxwww_url }}" style="display:none">
+        <div class="footerMenu">
+          <span>%CATEGORY%</span>
+          %LINKS%
+          </div>
+        </div> 
+        <!-- #jsonfooter -->
 
-        <div id="third"> 
-          <div class="rssFeedMenu" id="footerBlogRSS">
+        <div class="rssFeedMenu" id="footerBlogRSS">
             <h1>Choose Your RSS Feed:</h1>
             <div class="rssReedLeftColumn">
               <a href="http://feeds.feedburner.com/MendixBlog" target="_blank">Platform Blog</a>
@@ -25,24 +20,29 @@
               <a href="http://feeds.feedburner.com/mendix-combined" target="_blank">All Blogs</a>
             </div>
             <a href="#" onclick="closeBlogRSSMenu(this.parentNode); return false;" class="closeBlogRSSMenu">x</a>
-          </div>
-          <div class="socialmedia">
-            <ul class="socialmedia">
-              <li class="facebook"><a href="https://www.facebook.com/mendixsoftware" target="_blank">Facebook</a></li>
-              <li class="twitter"><a href="https://twitter.com/#!/mendixsocial" target="_blank">Twitter</a></li>
-              <li class="rss"><a href="#" onclick="showRSSMenu('footerBlogRSS'); return false;">RSS Feed</a></li>
+        </div>
+        <!-- rssFeedMenu -->
+
+        <ul class="socialmedia">
+          <li class="facebook"><a href="https://www.facebook.com/mendixsoftware" target="_blank">Facebook</a></li>
+          <li class="twitter"><a href="https://twitter.com/#!/mendixsocial" target="_blank">Twitter</a></li>
+          <li class="rss"><a href="#" onclick="showRSSMenu('footerBlogRSS'); return false;">RSS Feed</a></li>
               <li class="youtube"><a href="http://www.youtube.com/MendixOnline" target="_blank">Youtube</a></li>
-              <li class="linkedin"><a href="http://www.linkedin.com/company/mendix" target="_blank">LinkedIn</a></li>
-            </ul>
-          </div>
-          <p>Mendix is the app platform company for the enterprise. We enable companies to build, integrate and deploy web and mobile applications faster and with better results, effectively driving ROI in days not months.</p>
-          <img src="/../content/images/mx-footer-slogan.png" alt="agile.social.mobile.now">
-        </div> <!-- #third -->
+          <li class="linkedin"><a href="http://www.linkedin.com/company/mendix" target="_blank">LinkedIn</a></li>
+          <li class="googlePlus"><a href="https://plus.google.com/118138681832263999246/" target="_blank">Google+</a></li>  
+        </ul>
+        <!-- socialmedia -->
 
-        <p>Copyright &copy; 2013 | Mendix. All rights reserved | <a href="http://www.mendix.com/terms-of-use"> Terms of Use</a> | <a href="http://www.mendix.com/privacy-policy">Privacy Policy</a></p>
+        <p id="footerDescription">Mendix is the app platform company for the enterprise. We enable companies to build, integrate and deploy web and mobile applications faster and with better results, effectively driving ROI in days not months.</p>
 
-      </div> <!-- #footer-wrapper -->
-    </div> <!-- #footer -->
+        <p id="footerCopyright">Copyright &copy; 2013 | Mendix. All rights reserved | <a href="http://www.mendix.com/terms-of-use/"> Terms of Use</a> | <a href="http://www.mendix.com/privacy-policy/">Privacy Policy</a></p>
+
+        <div id="footerCTAs">
+          <a href="http://www.mendix.com/try-now/" class="theButtons greenBtn largeBtn">Try Now for Free</a>
+        </div>
+    </div> 
+    <!-- #footer -->
+  </div> 
     
     <!-- Script for showing RSS Menu -->
     <script type="text/javascript">
@@ -55,3 +55,5 @@
         jQuery(theMenu).css({display: 'none'});
       }
     </script>
+
+    <script type="text/javascript" src="/content/js/retina.js"></script>

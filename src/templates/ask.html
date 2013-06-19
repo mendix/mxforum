@@ -59,11 +59,11 @@
     </h3>
 
 </div>
-<div id="main-body" class="">
+<div id="main-body" class="form-ask-question">
     <div id="askform">
         <form id="fmask" action="{% url forum.views.ask %}" method="post" >
             <div class="form-item">
-                <label for="id_title" ><strong>{{ form.title.label_tag }}:</strong></label> <span class="form-error"></span><br>
+                <div class="ask-input">{{ form.title.label_tag }}: <span class="form-error"></span></div>
                 {{ form.title }} {{ form.title.errors }}
                 <div class="title-desc">
                     {{ form.title.help_text }}
@@ -89,7 +89,7 @@
                 <br>
             </div>
             <div class="form-item">
-                <strong>{{ form.tags.label_tag }}:</strong> <span class="form-error"></span><br>
+                <div class="ask-input">{{ form.tags.label_tag }}: <span class="form-error"></span></div>
                 {{ form.tags }}  {{ form.tags.errors }}
                 <div class="title-desc">
                     {{ form.tags.help_text }}
@@ -97,11 +97,11 @@
                 <br/>
             </div>
             <div class="form-item">
-                <strong>Modeler version:</strong> <span class="form-error"></span><br/>
+                <div class="ask-input">Modeler version: <span class="form-error"></span></div>
                 {{ form.modeler_version }}<span class="form-error"> {{ form.modeler_version.errors }}</span>
             </div>
             <br>
-            <input type="submit" value="Ask Your Question &#187;" class="submit" style="width: 170px;"/>
+            <input type="submit" value="Ask Your Question &#187;" class="submit" />
         </form>
     </div>
 </div>

@@ -3,13 +3,17 @@
 {% load humanize %}
 {% block title %}{% spaceless %}FAQ{% endspaceless %}{% endblock %}
 {% block forejs %}
+        <script type="text/javascript">
+            $().ready(function(){
+                $("#nav_faq").attr('className',"youarehere");
+
+            });     
+        </script>
+        {% block userjs %}
+        {% endblock %}
 {% endblock %}
+
 {% block content %}
-<div id="main-bar" class="">
-    <h3>
-        Frequently&nbsp;Asked&nbsp;Questions(FAQ)
-    </h3>
-</div>
 <div id="main-body" style="width:100%">
     <div id="" class="paragraph">
         <h3 class="subtitle">Why does this site look so different, compared to other forums?</h3>
@@ -28,7 +32,7 @@
 	</div>
     
     <div id="" class="paragraph">
-        <table style="font-family:arial;" cellspacing="8" cellpadding="3">
+        <table cellspacing="8" cellpadding="3">
             <tr>
                 <th width="40px" style="text-align:right"></th>
                 <th width="300px"></th>
