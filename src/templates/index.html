@@ -8,18 +8,21 @@
   <meta name="description" content="Mendix Community questions, discussions and items of interest" />
 {% endblock %}
 {% block forejs %}
+        <script type="text/javascript">
+            $().ready(function(){
+                $("#nav_home").attr('className',"youarehere");
+
+            });     
+        </script>
+        {% block userjs %}
+        {% endblock %}
 {% endblock %}
+
 {% block content %}
 <div id="main-bar" class="">
     <h3>
         Recent&nbsp;Questions
     </h3>
-    <div style="float:right;margin-top:0;">
-        <span>
-            <a title="RSS feeds Mendix Community"  href="/feeds/rss/"><img src="/content/images/feed-icon-small.png" style="vertical-align:bottom"
-                title="RSS feed Mendix Community" height="14" width="14" border="0"></a>
-         </span>
-     </div>
 </div>
 <div id="main-body" class="">
     {% for question in questions %}
@@ -81,12 +84,11 @@
         </div>
         <div class="summary">
             <div class="qustion-title">
-                <h3>
+                <h4>
                     <a href="{{ question.get_absolute_url|urlencode }}" title="{{ question.summary }}...">
                         {{ question.get_question_title }}
                     </a>
-                </h3>
-
+                </h4>
             </div>
 
             <div class="question-tag">
@@ -98,7 +100,7 @@
                     {% if question.wiki %}
                     <span class="gray">Community Wiki</span>
                     {% else %}
-          <span class="updatedtime" title="{{ question.last_activity_at }}"><strong>{% diff_date question.last_activity_at %}</strong></span> <span class="big"><a href="/users/{{ question.last_activity_by.id }}/{{ question.last_activity_by.real_name }}/">{{ question.last_activity_by.real_name }}</a></span>&nbsp;{% get_score_badge question.last_activity_by %}
+          <span class="updatedtime" title="{{ question.last_activity_at }}">{% diff_date question.last_activity_at %}</span> <span class="big"><a href="/users/{{ question.last_activity_by.id }}/{{ question.last_activity_by.real_name }}/">{{ question.last_activity_by.real_name }}</a></span>&nbsp;{% get_score_badge question.last_activity_by %}
                     {% endif %}
             </div>
 

@@ -1,65 +1,65 @@
 {% load extra_tags %}
-                
-  <div class="MendixContainer">
-    <div class="Mendixhead">
-      <div class="mxid_wrapper">
-        <form id="cse-search-box" action="/search/">
-          <input type="hidden" name="cx" value="008041280038911820596:be3ercf_tlo" />
-          <input type="hidden" name="ie" value="UTF-8" />
-          <label for="q" class="assistive-text">Search</label>
-          <input type="text" class="field" name="q" id="q" placeholder="Search" />
-          <input type="submit" class="submit" name="sa" id="searchsubmit" value="Search" />
-        </form>
-        <div class="toplinks" name="mxid_topbar" id="mxid_topbar" mxidsrc="{{ mxid_url }}/mxid/appbar" bartype="account" style="display: none" appname="forum">
-          <a href="%LOCATION%" class=" %CLASS% " title=" %DESCRIPTION% " id="%NAME%">%CAPTION%</a>
-        </div>
-      </div>
-      
-      <div class="mendixLogo">
-        <a class="sitelogo" href="{{ mxwww_url }}" title="Go to homepage">Mendix App Platform</a>
-      </div>
+  <div class="MxClient_topPane">
+    <div id="headerWrapper"> 
+          <div id="headerTop">
+            <script src="https://home.mendix.com/topbar/mxid_topbar.min.js"></script>
 
-      <div id="mx-ribbon">
-        <a href="http://www.mendix.com/signup">
-          <span>Sign up<br> for free!</span>
-          Start building <i>your</i><br> new app
-        </a>
-      </div>
-      
-     <div class="menu">
-        <ul>
-          <li><a href="{{ mxwww_url }}/application-platform-as-a-service/">Product</a></li>
-          <li><a href="{{ mxwww_url }}/customers/">Customers</a></li>
-          <li><a href="{{ mxwww_url }}/partners/">Partners</a></li>
-          <li class="current_page_item"><a href="{{ mxwww_url }}/community">Community</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-        
-  <div class="subNav">
-    <div class="subNav_menu">
-       <div class="header_bottom">
-         <ul class="submenu" name="mxid_topbar" bartype="apps" style="display: none">
-          <li class=" %CLASS% "><a id=" %NAME% " href="%LOCATION%" target="_top" title=" %DESCRIPTION% ">%CAPTION%</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>  
+            <div id="logo"><a href="{{ mxwww_url }}"><img src="/content/images/logo.png" width="206" height="61" alt="Mendix" /></a></div>
+
+            <ul id="mainNav">
+              <li><a id="exploreBtn" href="{{ mxwww_url }}/application-platform-as-a-service/">Explore Mendix</a></li>
+              <li><a id="customersBtn" href="{{ mxwww_url }}/customers/">Customers</a></li>
+              <li><a id="aboutBtn" href="{{ mxwww_url }}/company/">About</a></li>
+              <li class="mainNavSelected"><a id="communityBtn" href="{{ mxwww_url }}/community/">Community</a></li>
+            </ul>
+
+            <a href="{{ mxwww_url }}/try-now/" class="theButtons greenBtn smallBtn">Try Now</a>
+
+          </div>
+        </div> 
+        <!-- Header Top -->
+
+        <div id="subNavigationWrapper">
+          <div id="subNavigation">
+            <ul>
+              <li class="subNavHeader"><a href="http://www.mendix.com/community/how-to/">Community</a></li>
+              <li><a href="{{ mxwww_url }}/community/how-to/">How To</a></li>
+              <li><a href="{{ mxwww_url }}/community/training/">Training</a></li>
+              <li><a href="{{ mxwww_url }}/community/getting-started/">Getting Started</a></li>
+              <li><a href="{{ mxwww_url }}/community/documentation/">Documentation</a></li>
+              <li class="subNavSelected"><a href="/">Forum</a></li>
+              <li><a href="{{ mxwww_url }}/community/apps-add-ons/">App Store</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- subNavigationWrapper -->
+    </div> 
   
   <div id="navigation-menu">
     <div class="nav">
-      <UL>
-        <LI class="" id="nav_home"><A href="/">Home</A></LI>
-        <LI class="" id="nav_users"><A href="/users/">Users</A></LI>
-        <LI class="" id="nav_faq"><A href="/faq/">FAQ</A></LI>
-        <LI class="" id="nav_ask"><A href="/questions/ask/">Ask a question</A></LI>
-      </UL>
+      <ul>
+        <li class="" id="nav_home"><a href="/">Home</a></li>
+        <li class="" id="nav_users"><a href="/users/">Users</a></li>
+        <li class="" id="nav_faq"><a href="/faq/">FAQ</a></li>
+        <li class="" id="nav_ask"><a href="/questions/ask/">Ask a question</a></li>
+      </ul>
     </div>
+
+    <form id="cse-search-box" action="/search/">
+      <input type="hidden" name="cx" value="008041280038911820596:be3ercf_tlo" />
+      <input type="hidden" name="ie" value="UTF-8" />
+      <label for="q" class="assistive-text">Search</label>
+      <input type="text" class="field" name="q" id="q" placeholder="Search" />
+      <input type="submit" class="submit" name="sa" id="searchsubmit" value="Search" />
+    </form>
     
     <div id="header-links">
       {% if request.user.is_authenticated %}
         <a href="/users/{{ request.user.id }}/{{ request.user.real_name|slugify }}/">{{ request.user.real_name }}</a> {% get_score_badge request.user %} 
       {% endif %}
+    </div>
+
+    <div class="nav-rss">
+      <a title="RSS Feed Mendix Forum" href="/feeds/rss/">RSS Feed</a>
     </div>
   </div>

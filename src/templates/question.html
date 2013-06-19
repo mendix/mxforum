@@ -262,7 +262,7 @@
                         <span class="posted-on">Added on &nbsp;</span><strong title="{{answer.added_at}}">{% diff_date answer.added_at %}</strong>
                         {% gravatar answer.author 32 %}
                         <a href="/users/{{ answer.author.id }}/{{ answer.author.real_name }}">{{ answer.author.real_name }}</a>
-                        {% get_score_badge answer.author %}&nsp;
+                        {% get_score_badge answer.author %}&nbsp;
                     </div>
                     <!-- .answer-mark -->
                     {% endif %}
