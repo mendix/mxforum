@@ -93,6 +93,7 @@ ul
 }
 p
 {
+	word-break: break-all;
 	clear: both;
 	margin-bottom: 1em;
     font-size: 0.813em;
@@ -1545,6 +1546,9 @@ div.grippie {
 .question-edit,
 .user-content {
 	font-size: 0.750em;
+}
+.question-edit div {
+	display: inline-block;
 }
 .question-status {
     margin-top: 10px;
