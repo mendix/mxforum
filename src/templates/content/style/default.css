@@ -1547,6 +1547,9 @@ div.grippie {
 .user-content {
 	font-size: 0.750em;
 }
+.question-edit div {
+	display: inline-block;
+}
 .question-status {
     margin-top: 10px;
     padding: 20px;
