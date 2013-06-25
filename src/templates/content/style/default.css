@@ -1430,6 +1430,7 @@ div.grippie {
 	width: 640px;*/
 	display: table-cell;
 	min-width: 599px;
+	margin-right: 10px;
 }
 #question-controls {
 	/*width: 640px;*/
