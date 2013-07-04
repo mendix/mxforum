@@ -95,7 +95,6 @@ p
 {
 	clear: both;
 	margin-bottom: 1em;
-    font-size: 0.813em;
 }
 ol
 {
@@ -732,6 +731,7 @@ input[type=text] {
 }
 #askform {
     padding: 5px 0;
+    font-size: 0.813em;
 }
 #askform .title-desc {
     color: #999;
@@ -776,9 +776,6 @@ input[type=text] {
 	background-repeat: repeat-x;
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e6e6e6', endColorstr='#FFFFFF', GradientType=0);
   	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-}
-#askform {
-	font-size: 0.813em;
 }
 .ask-input {
 	padding: 5px 0;
@@ -1329,10 +1326,9 @@ input[type=text] {
     margin-bottom:10px;
 }
 #editor {
-	width:592px;
-	padding: 4px;
-    font-size:100%;
-    min-height:200px;
+	width: 580px;
+	padding: 10px;
+    min-height: 200px;
     line-height: 18px;
 }
 .wmd-preview {
@@ -1476,7 +1472,6 @@ div.grippie {
     overflow: hidden;
     padding: 5px;
     color: #455868;
-    font-size: 0.75em;
     border: 1px solid #B5BDC2;
     background-color: #F8FAFB;
     border-radius: 3px;
@@ -1543,12 +1538,6 @@ div.grippie {
 .question-edit {
 	color: #777;
 	display: inline-block;
-    /* text-align: left;
-    overflow: hidden; */
-}
-.question-edit,
-.user-content {
-	font-size: 0.750em;
 }
 .question-edit div {
 	display: inline-block;
@@ -1561,7 +1550,6 @@ div.grippie {
 }
 #question-modeler-version {
     color: #555555;
-    font-size: 0.750em;
 }
 .wiki-category {
     margin-left: 5px;
@@ -1570,7 +1558,6 @@ div.grippie {
 }
 .offensive-flag a {
     color: #777;
-    font-size: 0.750em;
     padding: 3px;
     cursor:pointer;
 }
@@ -1581,7 +1568,6 @@ div.grippie {
 }
 .linksopt a {
     color: #777;
-    font-size: 0.750em;
     padding: 3px;
     cursor: pointer;
 }
@@ -2163,7 +2149,6 @@ div.comments-container-deleted {
     display:none;
     margin-top:-1px;
     padding:0 5px 5px;
-    font-size: 0.750em;
 }
 div.comments-container, 
 a.comments-link {
@@ -2185,7 +2170,6 @@ div.comments-container {
 #main .submit {
     color: #333;
     padding: 5px;
-    font-size: 0.750em;
     font-weight: bold;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
     border: 1px solid #BBB;
