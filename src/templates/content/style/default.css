@@ -740,7 +740,7 @@ input[type=text] {
 #askform #description { 
 	padding: 5px 0 10px 0; 
 }
-#askform .btLogin {
+/*#askform .btLogin {
 	cursor: pointer;
 	color: #333;
     font-weight: bold;
@@ -763,8 +763,8 @@ input[type=text] {
 	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
     moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-#askform .btLogin:hover,
+}*/
+/*#askform .btLogin:hover,*/
 #container .comments-link:hover {
 	background-color: #f5f5f5;
 	*background-color: #e6e6e6;
@@ -815,12 +815,29 @@ input[type=text] {
   outline: thin dotted \9;
   /* IE6-9 */
 
-  -webkit-box-shadow: 0 0 8px rgba(82, 168, 236, 0.6);
-          box-shadow: 0 0 8px rgba(82, 168, 236, 0.6);
+	-webkit-box-shadow: 0 0 8px rgba(82, 168, 236, 0.6);
+	box-shadow: 0 0 8px rgba(82, 168, 236, 0.6);
 }
 .form-ask-question input.submit,
-#main input.submit {
-	font-size: 1em;
+#main input.submit,
+#askform .btLogin {
+	cursor: pointer;
+	border-style: none;
+	color: #FFF;
+	font-weight: bold;
+	text-shadow: none;
+	padding: 10px 15px;
+	display: block;
+	background: #2ecc71;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.form-ask-question input.submit:hover,
+#main input.submit:hover,
+#askform .btLogin:hover,
+.nav #nav_ask a:hover {
+	border-color: #58d68d;
+	background: #58d68d;
 }
 .notify {
 	position: fixed;
@@ -2166,8 +2183,7 @@ div.comments-container {
 .post-comments a {
     padding: 0 3px 2px;
 }
-#container .comments-link,
-#main .submit {
+#container .comments-link {
     color: #333;
     padding: 5px;
     font-weight: bold;
@@ -2198,19 +2214,6 @@ a.comments-link-deleted {
     padding: 5px;
     cursor: pointer;
 }
-/*.post-comments a.comments-link-add {
-	background:#EBEBEB url(../images/tabs_bg.gif) repeat-x scroll 0 0;
-	border:1px solid #D5D2CF;
-	color:#212121 !important;
-	cursor:pointer;
-	font-size: 0.750em !important;
-	margin-bottom:10px;
-	padding:3px 6px;	
-}
-.post-comments a.comments-link-add:hover {
-	color: #84755C !important;
-	text-decoration: underline;
-}*/
 a.comment-user, 
 a.comment-user:hover {
     padding: 0;
