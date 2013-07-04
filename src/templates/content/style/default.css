@@ -1237,6 +1237,7 @@ input[type=text] {
 	background: #3E6D8E;
 }
 #sidebar .post-tag {
+	font-size: 0.85em;
 	background: #DDD;
 }
 #sidebar .post-tag:hover {
@@ -1245,6 +1246,7 @@ input[type=text] {
 }
 #sidebar .paragraph .post-tag {
 	display: block;
+	font-size: 0.85em;
 }
 #sidebar .paragraph .post-tag:hover {
 	color: #8C99A4;
@@ -2370,19 +2372,33 @@ td.label {
 	vertical-align: top;
 }
 
-	@media only screen and (max-width: 500px) {
+	@media only screen and (max-width: 840px) {
 		body { background: none; }
 		p { word-break: break-all; }
 		#container { padding: 0 10px; }
 		.menu, #footer, .nav-rss, #Community_Portal, #Visit_Mendix_com, .line, #subNavigationWrapper, #mainNav, #headerTop .theButtons, #header-links { display: none; }
 		
+		#navigation-menu {
+			height: 67px;
+			overflow: visible; 
+			padding: 0;
+		}
+		#cse-search-box {
+			display: inline-block;
+			left: 0;
+		    top: 40px;
+		    width: 282px;
+		}
+		#cse-search-box #q {
+			float:none;
+			width: 254px;
+			padding: 6px 0 4px 27px;
+		}
+
 		/* Header */
-		#navigation-menu { overflow: visible; padding: 0;}
 		.mendixLogo { clear: both; float: none; }
 		.mendixLogo .sitelogo { margin: auto; position: relative; top: 10px; }
 		.nav a { padding: 5px 10px; }
-		#cse-search-box { width: 100px; display: inline-block; left: 292px;  }
-		#cse-search-box #q { float:none; width: 100px; padding: 6px 0 4px 27px; }
 		.toplinks { width: auto; display: inline-block !important; float: none; padding: 0; text-align: left; }
 		.toplinks #Sign_up { background: none; }
 		
