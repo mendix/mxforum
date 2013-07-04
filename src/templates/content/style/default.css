@@ -64,7 +64,6 @@ input#name {
 }
 input#ipSearchTag { padding:5px; }
 pre {
-    font-size: 0.750em;
 	margin-bottom: 10px;
 	overflow: auto;
 	width: 580px;
@@ -1263,6 +1262,9 @@ input[type=text] {
     text-decoration: none;
     font-size: 90%;
 }
+.list-table-tags .post-tag {
+	font-size: 0.85em;
+}
 .question-started {
 	clear: both;
     font-size: 0.750em;
@@ -1558,6 +1560,9 @@ div.grippie {
 }
 .question-edit div {
 	display: inline-block;
+}
+.user-content {
+	font-size: 0.750em;
 }
 .question-status {
     margin-top: 10px;
