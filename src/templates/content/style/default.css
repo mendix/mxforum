@@ -777,6 +777,9 @@ input[type=text] {
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e6e6e6', endColorstr='#FFFFFF', GradientType=0);
   	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
+#askform {
+	font-size: 0.813em;
+}
 .ask-input {
 	padding: 5px 0;
 	font-weight: bold;
