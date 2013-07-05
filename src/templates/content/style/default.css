@@ -64,7 +64,6 @@ input#name {
 }
 input#ipSearchTag { padding:5px; }
 pre {
-    font-size: 0.750em;
 	margin-bottom: 10px;
 	overflow: auto;
 	width: 580px;
@@ -95,7 +94,6 @@ p
 {
 	clear: both;
 	margin-bottom: 1em;
-    font-size: 0.813em;
 }
 ol
 {
@@ -732,6 +730,7 @@ input[type=text] {
 }
 #askform {
     padding: 5px 0;
+    font-size: 0.813em;
 }
 #askform .title-desc {
     color: #999;
@@ -740,7 +739,7 @@ input[type=text] {
 #askform #description { 
 	padding: 5px 0 10px 0; 
 }
-#askform .btLogin {
+/*#askform .btLogin {
 	cursor: pointer;
 	color: #333;
     font-weight: bold;
@@ -763,8 +762,8 @@ input[type=text] {
 	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
     moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-#askform .btLogin:hover,
+}*/
+/*#askform .btLogin:hover,*/
 #container .comments-link:hover {
 	background-color: #f5f5f5;
 	*background-color: #e6e6e6;
@@ -815,12 +814,29 @@ input[type=text] {
   outline: thin dotted \9;
   /* IE6-9 */
 
-  -webkit-box-shadow: 0 0 8px rgba(82, 168, 236, 0.6);
-          box-shadow: 0 0 8px rgba(82, 168, 236, 0.6);
+	-webkit-box-shadow: 0 0 8px rgba(82, 168, 236, 0.6);
+	box-shadow: 0 0 8px rgba(82, 168, 236, 0.6);
 }
 .form-ask-question input.submit,
-#main input.submit {
-	font-size: 1em;
+#main input.submit,
+#askform .btLogin {
+	cursor: pointer;
+	border-style: none;
+	color: #FFF;
+	font-weight: bold;
+	text-shadow: none;
+	padding: 10px 15px;
+	display: block;
+	background: #2ecc71;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+.form-ask-question input.submit:hover,
+#main input.submit:hover,
+#askform .btLogin:hover,
+.nav #nav_ask a:hover {
+	border-color: #58d68d;
+	background: #58d68d;
 }
 .notify {
 	position: fixed;
@@ -1221,6 +1237,7 @@ input[type=text] {
 	background: #3E6D8E;
 }
 #sidebar .post-tag {
+	font-size: 0.85em;
 	background: #DDD;
 }
 #sidebar .post-tag:hover {
@@ -1229,6 +1246,7 @@ input[type=text] {
 }
 #sidebar .paragraph .post-tag {
 	display: block;
+	font-size: 0.85em;
 }
 #sidebar .paragraph .post-tag:hover {
 	color: #8C99A4;
@@ -1245,6 +1263,9 @@ input[type=text] {
     padding: 3px 4px 3px 4px;
     text-decoration: none;
     font-size: 90%;
+}
+.list-table-tags .post-tag {
+	font-size: 0.85em;
 }
 .question-started {
 	clear: both;
@@ -1326,10 +1347,9 @@ input[type=text] {
     margin-bottom:10px;
 }
 #editor {
-	width:592px;
-	padding: 4px;
-    font-size:100%;
-    min-height:200px;
+	width: 580px;
+	padding: 10px;
+    min-height: 200px;
     line-height: 18px;
 }
 .wmd-preview {
@@ -1430,6 +1450,7 @@ div.grippie {
 	width: 640px;*/
 	display: table-cell;
 	min-width: 599px;
+	margin-right: 10px;
 }
 #question-controls {
 	/*width: 640px;*/
@@ -1472,7 +1493,6 @@ div.grippie {
     overflow: hidden;
     padding: 5px;
     color: #455868;
-    font-size: 0.75em;
     border: 1px solid #B5BDC2;
     background-color: #F8FAFB;
     border-radius: 3px;
@@ -1539,15 +1559,12 @@ div.grippie {
 .question-edit {
 	color: #777;
 	display: inline-block;
-    /* text-align: left;
-    overflow: hidden; */
-}
-.question-edit,
-.user-content {
-	font-size: 0.750em;
 }
 .question-edit div {
 	display: inline-block;
+}
+.user-content {
+	font-size: 0.750em;
 }
 .question-status {
     margin-top: 10px;
@@ -1557,7 +1574,6 @@ div.grippie {
 }
 #question-modeler-version {
     color: #555555;
-    font-size: 0.750em;
 }
 .wiki-category {
     margin-left: 5px;
@@ -1566,7 +1582,6 @@ div.grippie {
 }
 .offensive-flag a {
     color: #777;
-    font-size: 0.750em;
     padding: 3px;
     cursor:pointer;
 }
@@ -1577,7 +1592,6 @@ div.grippie {
 }
 .linksopt a {
     color: #777;
-    font-size: 0.750em;
     padding: 3px;
     cursor: pointer;
 }
@@ -2159,7 +2173,6 @@ div.comments-container-deleted {
     display:none;
     margin-top:-1px;
     padding:0 5px 5px;
-    font-size: 0.750em;
 }
 div.comments-container, 
 a.comments-link {
@@ -2177,11 +2190,9 @@ div.comments-container {
 .post-comments a {
     padding: 0 3px 2px;
 }
-#container .comments-link,
-#main .submit {
+#container .comments-link {
     color: #333;
     padding: 5px;
-    font-size: 0.750em;
     font-weight: bold;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
     border: 1px solid #BBB;
@@ -2210,19 +2221,6 @@ a.comments-link-deleted {
     padding: 5px;
     cursor: pointer;
 }
-/*.post-comments a.comments-link-add {
-	background:#EBEBEB url(../images/tabs_bg.gif) repeat-x scroll 0 0;
-	border:1px solid #D5D2CF;
-	color:#212121 !important;
-	cursor:pointer;
-	font-size: 0.750em !important;
-	margin-bottom:10px;
-	padding:3px 6px;	
-}
-.post-comments a.comments-link-add:hover {
-	color: #84755C !important;
-	text-decoration: underline;
-}*/
 a.comment-user, 
 a.comment-user:hover {
     padding: 0;
@@ -2374,19 +2372,33 @@ td.label {
 	vertical-align: top;
 }
 
-	@media only screen and (max-width: 500px) {
+	@media only screen and (max-width: 840px) {
 		body { background: none; }
 		p { word-break: break-all; }
 		#container { padding: 0 10px; }
 		.menu, #footer, .nav-rss, #Community_Portal, #Visit_Mendix_com, .line, #subNavigationWrapper, #mainNav, #headerTop .theButtons, #header-links { display: none; }
 		
+		#navigation-menu {
+			height: 67px;
+			overflow: visible; 
+			padding: 0;
+		}
+		#cse-search-box {
+			display: inline-block;
+			left: 0;
+		    top: 40px;
+		    width: 282px;
+		}
+		#cse-search-box #q {
+			float:none;
+			width: 254px;
+			padding: 6px 0 4px 27px;
+		}
+
 		/* Header */
-		#navigation-menu { overflow: visible; padding: 0;}
 		.mendixLogo { clear: both; float: none; }
 		.mendixLogo .sitelogo { margin: auto; position: relative; top: 10px; }
 		.nav a { padding: 5px 10px; }
-		#cse-search-box { width: 100px; display: inline-block; left: 292px;  }
-		#cse-search-box #q { float:none; width: 100px; padding: 6px 0 4px 27px; }
 		.toplinks { width: auto; display: inline-block !important; float: none; padding: 0; text-align: left; }
 		.toplinks #Sign_up { background: none; }
 		

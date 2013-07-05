@@ -9,30 +9,24 @@
     <h3>
        Tags
     </h3>
+</div>
+<div id="subheader" class="user-content">
     <div id="tab" class="">
-	<a id="sort_used" href="?sort=used" title="Sort by usage">Popular</a>
-        <a id="sort_name" href="?sort=name" title="Sort by name">Name</a>
+        <a id="sort_used" {% ifequal tab_id "popular" %}class="youarehere"{% endifequal %} href="?sort=used" title="Sort by usage">Popular</a>
+        <a id="sort_name" {% ifequal tab_id "name" %}class="youarehere"{% endifequal %} href="?sort=name" title="Sort by name">Name</a>
     </div>
 </div>
-<div id="main-body" style="width:100%">
+<div id="main-body" style="width:100%" class="user-content">
     <div class="paragraph">
-        <form action="/tags/" method="post">
-            <table>
-		
-			<p>Questions are grouped by tags. Using the right tags makes it easier for others to find and answer your question.</p>
-		
-    	        <tr>
-    	        	<td style="padding-right: 10px;">Type and press search to find tags:</td>
-    	        	<td width="310px" style="vertical-align:top;">
-						<input id="ipSearchTag" name="ipSearchTag" autocomplete="off" size="40" >
-					</td>
-					<td>
-						<input id="btSearchTag" type="submit" class="submit" value="Search &#187;" />
-					</td>
-    	        </tr>
-    	        
-            </table>
-        </form>
+        <p>Questions are grouped by tags. Using the right tags makes it easier for others to find and answer your question.</p>
+        
+        <div class="paragraph users-paragraph">
+            <form action="/tags/" method="post">
+            	<label>Type and press search to find tags:</label>
+    			<input id="ipSearchTag" name="ipSearchTag" autocomplete="off" size="40" >
+    			<input id="btSearchTag" type="submit" class="submit" value="Go!" />
+            </form>
+        </div>
         {% if stag %}
             All tags matching '<span class="darkred"><strong>{{ stag }}</strong></span>' : 
         {% endif %}
@@ -40,7 +34,7 @@
     {% if not tags.object_list %}
         <span >No relevant data found</span>
     {% endif %}
-    <table class="list-table">
+    <table class="list-table list-table-tags">
         <tr>    
             <td class="taglist-td">
             {% for tag in tags.object_list %}
