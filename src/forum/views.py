@@ -1786,7 +1786,7 @@ def search(request):
 def add_subscription(request):
     if 'question' in request.GET:
         question = Question.objects.get(id=request.GET['question'])
-        subscription = Subscription(user=request.user, timespan = 15, question = question)
+        (subscription, created) = Subscription.objects.get_or_create(user=request.user, timespan = 15, question = question)
         subscription.save()
         return HttpResponseRedirect(subscription.question.get_absolute_url())
     return HttpResponseRedirect("/")
