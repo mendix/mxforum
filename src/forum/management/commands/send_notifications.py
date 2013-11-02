@@ -1,6 +1,4 @@
 import os, sys
-os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
-sys.path.append('/srv/www/mxforum-test.mendix.com/src/')
 import smtplib
 from email.mime.text import MIMEText
 
