@@ -16,11 +16,15 @@ def activity_by_other_person(s):
 if __name__ == '__main__':
     smtp = smtplib.SMTP('smtp.mendix.nl')
     all_subscriptions = Subscription.objects.filter().order_by('user')
+    filtered_subscriptions = {}
+    for s in all_subscriptions:
+        if (s.question.id, s.user.id) not in filtered_subscriptions:
+            filtered_subscriptions[(s.question.id, s.user.id)] = s
     f = (datetime.now() - timedelta(days=1))
     questions = Question.objects.filter(last_activity_at__gte=f)
 
 
-    subscriptions = filter(activity_by_other_person, all_subscriptions)
+    subscriptions = filter(activity_by_other_person, filtered_subscriptions.values())
     subscriptions = filter(lambda s : s.question in questions, subscriptions)
     ordered_subs = defaultdict(set)
     for s in subscriptions:
