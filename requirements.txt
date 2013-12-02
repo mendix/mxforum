@@ -1,0 +1,16 @@
+Django==1.0.4
+MySQL-python==1.2.4
+distribute==0.7.3
+## FIXME: could not find svn URL in dependency_links for this package:
+flup==1.0.3.dev-20110405
+html5lib==0.90
+lxml==2.2.8
+markdown2==2.0.1
+medusa==0.5.4
+meld3==0.6.5
+pyOpenSSL==0.10
+pytz==2010b
+soaplib==0.8.1
+supervisor==3.0a8
+virtualenv==1.4.9
+wsgiref==0.1.2
