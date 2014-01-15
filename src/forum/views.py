@@ -67,7 +67,7 @@ def _get_tags_cache_json():
     tags = Tag.objects.all()
     tags_list = []
     for tag in tags:
-        dic = {'n': tag.name, 'c': tag.used_count }
+        dic = {'n': sanitize_html(tag.name), 'c': tag.used_count }
         tags_list.append(dic)
     tags = simplejson.dumps(tags_list)
     return tags
@@ -1662,10 +1662,10 @@ def __generate_comments_json(obj, type, user):
         json_comments.append({"id" : comment.id,
             "object_id" : obj.id,
             "add_date" : comment.added_at.strftime('%Y-%m-%d'),
-            "text" : comment.comment,
-            "user_display_name" : comment_user.real_name,
-            "user_url" : "/users/%s/%s" % (comment_user.id, comment_user.real_name),
-            "delete_url" : delete_url
+            "text" : sanitize_html(comment.comment),
+            "user_display_name" : sanitize_html(comment_user.real_name),
+            "user_url" : sanitize_html("/users/%s/%s" % (comment_user.id, comment_user.real_name)),
+            "delete_url" : sanitize_html(delete_url)
         })
 
     data = simplejson.dumps(json_comments)
