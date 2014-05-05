@@ -196,174 +196,117 @@ input[type=text] {
 }
 #headerWrapper {
 	position: relative;
-	height: 97px;
-	background: url(../images/bg-header-top-home.png) top left repeat-x;
-}
-#headerTop {
-	position: relative;
-	margin: 0 auto;
-	max-width: 970px;
-}
-#headerTop #logo {
-	padding-top: 16px;
-}
-#headerTop #mainNav {
-	position: absolute;
-	top: 44px;
-	left: 277px;
-	margin: 0;
-	list-style: none;
-}
-#headerTop #mainNav li {
-	position: relative;
-	float: left;
-}
-#headerTop #mainNav li a {
-	float: left;
-	padding: 15px 0 6px 0;
-	font-size: 20px;
-	color: #000;
-	text-align: center;
-	font-weight: 400;
-}
-#headerTop #mainNav li a:hover,
-#headerTop #mainNav li a:focus {
-	color: #1c7bb7;
-	font-weight: 600;
-}
-#headerTop #mainNav li.mainNavSelected a {
-	color: #1c7bb7;
-	font-weight: 600;
-}
-#headerTop #mainNav li a#exploreBtn {
-	width: 171px;
-}
-#headerTop #mainNav li a#customersBtn {
-	width: 130px;
-}
-#headerTop #mainNav li a#aboutBtn {
-	width: 88px;
-}
-#headerTop #mainNav li a#communityBtn {
-	width: 133px;
-}
-#headerTop .theButtons {
-	position: absolute;
-	top: 47px;
-	left: 823px;
-	color: #FFF;
-}
-.mxid_topbar {
-	position: absolute;
-	top: 1px;
-	right: 28px;
-	z-index: 999;
-}
-.mxid_topbar a.mxid_topbar_login {
-	display: block;
-	padding: 8px 0 0 13px;
-	color: #0a568f;
-	font-size: 14px;
-	font-weight: 600;
-	line-height: 1;
-	background: transparent url(../images/bg-login-lock.png) 0 8px no-repeat;
-}
-.mxid_topbar a.mxid_topbar_login:hover {
-	color: #0d6db2;
-	background-position: 0 -41px;
-}
-.mxid_topbar .mxid_topbar_menuTrigger {
-	position: relative;
-	min-width: 194px;
-	max-width: 331px;
-	cursor: pointer;
-	font-size: 12px;
-	font-weight: 600;
-	text-align: right;
-}
-.mxid_topbar .mxid_topbar_menuTrigger img.mxid_topbar_avatar {
-	position: relative;
-	top: 5px;
-	right: 8px;
-	border: 1px solid #ccc;
-	width: 15px;
-	height: 15px;
-}
-.mxid_topbar .mxid_topbar_menuTrigger span {
-	color: #707070;
-	font-weight: normal;
-}
-.mxid_topbar .mxid_topbar_menuTrigger span.mxid_topbar_displayName {
-	padding: 0 25px 1px 0;
-	background: transparent url(../images/bg-logged-in.png) 100% 0 no-repeat;
-}
-.mxid_topbar .mxid_topbar_menuTrigger .mxid_topbar_menu {
-	display: none;
-	position: absolute;
-	top: 21px;
-	right: -18px;
-	text-align: left;
-}
-.mxid_topbar .mxid_topbar_menuTrigger:hover .mxid_topbar_menu {
-	display: block;
-	padding: 28px 0 0 20px;
-	width: 152px;
-	height: 87px;
-	background: transparent url(../images/bg-menu-logged-in.png) top left no-repeat;
-}
-.mxid_topbar .mxid_topbar_menuTrigger .mxid_topbar_menu a {
-	display: block;
-	margin-bottom: 10px;
-	font-size: 14px;
-	font-weight: normal;
-	color: #000;
-}
-.mxid_topbar .mxid_topbar_menuTrigger .mxid_topbar_menu a:hover,
-.mxid_topbar .mxid_topbar_menuTrigger .mxid_topbar_menu a:focus {
-	color: #000 !important;
-	text-decoration: underline;
-}
-
-#subNavigationWrapper {
-    height: 34px;
-    width: 100%;
-    background: url(../images/bg-sub-nav.png) repeat-x left top #16A2D7;
-}
-#subNavigation {
-	padding-top: 11px;
-	margin: 0 auto;
-	width: 970px;
-}
-#subNavigation ul {
-	margin: 0;
-	list-style: none;
-}
-#subNavigation ul li {
-    float: left;
-    margin-right: 38px;
-}
-#subNavigation li a {
-    color: #FFFFFF;
-    float: left;
-    font-size: 16px;
-}
-#subNavigation li a:hover,
-#subNavigation li a:focus,
-#subNavigation li.subNavSelected a {
-	color: #073f7a;
-}
-#subNavigation ul li.subNavHeader {
-	padding-right: 20px;
-	background: transparent url(../images/bg-sub-nav-header.png) 100% 2px no-repeat;
-}
-#subNavigation ul li.subNavHeader a {
-	color: #073f7a;
-	font-weight: 600;
-}
-
-
-
-
+	background: #fff;
+	-webkit-box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.15);
+	box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.15);
+	}
+	#headerTop {
+		position: relative;
+		margin: 0 auto;
+		max-width: 1232px;
+		}
+		#headerTop #logo {
+			padding-top: 21px;
+			padding-bottom: 20px;
+			width: 156px;
+		}
+		#headerTop #mainNav {
+			position: absolute;
+			top: 15px;
+			right: 0;
+			z-index: 5000;
+			list-style: none;
+			}
+			#headerTop #mainNav li {
+				float: left;
+				font-size: 14px;
+				}
+				#headerTop #mainNav li a {
+					float: left;
+					padding: 26px 19px 29px 19px;
+					color: #000;
+					text-transform: uppercase;
+					font-weight: 700;
+					}
+					#headerTop #mainNav li a:hover, #headerTop #mainNav li a:focus {
+						color: #fff !important;
+						background: #222;
+					}
+				#headerTop #mainNav li#aboutBtn {
+					padding-right: 22px;
+				}
+				#headerTop #mainNav li#startForFreeBtn {
+					position: relative;
+					top: -4px;
+					padding-right: 42px;
+					border-right: 1px solid #116e99;
+					margin-top: 21px;
+					}
+					#headerTop #mainNav li#startForFreeBtn a {
+						padding: 9px 0 0 11px;
+						width: 141px;
+						height: 22px;
+						background: transparent url(/content/images/btn-start-for-free.png) 100% 0 no-repeat;
+						color: #fff;
+					}
+				#mxid_topbar_attachpoint {
+					}
+					#headerTop #mainNav .mxid_topbar a.mxid_topbar_login {
+						display: block;
+						padding-left: 21px;
+						margin-left: 20px;
+					}
+					.mxid_topbar .mxid_topbar_menuTrigger {
+						position: relative;
+						cursor: pointer;
+						font-weight: 400;
+						}
+						.mxid_topbar .mxid_topbar_menuTrigger img.mxid_topbar_avatar {
+							display: none;
+						}
+						.mxid_topbar .mxid_topbar_menuTrigger span {
+							color: #000;
+							}
+							.mxid_topbar .mxid_topbar_menuTrigger span.mxid_topbar_greeting {
+								display: none;
+							}
+							.mxid_topbar .mxid_topbar_menuTrigger span.mxid_topbar_displayName {
+								display: block;
+								padding: 5px 25px 4px 41px;
+								margin-top: 21px;
+								height: 17px;
+								text-align: right;
+								background: transparent url(/content/images/bg-logged-in-name-inverse.png) 100% 2px no-repeat;
+								}
+								.mxid_topbar .mxid_topbar_menuTrigger span.mxid_topbar_displayName:hover {
+									background-position: 100% -22px;
+								}
+						.mxid_topbar .mxid_topbar_menuTrigger .mxid_topbar_menu {
+							display: none;
+							position: absolute;
+							top: 26px;
+							right: 0;
+							text-align: left;
+							padding: 20px;
+							width: 135px;
+							}
+							.mxid_topbar .mxid_topbar_menuTrigger:hover .mxid_topbar_menu {
+								display: block;
+								background: #222;
+							}
+							#headerTop #mainNav li .mxid_topbar .mxid_topbar_menuTrigger .mxid_topbar_menu a {
+								float: none;
+								display: block;
+								padding: 0;
+								margin-bottom: 10px;
+								font-weight: 400;
+								text-transform: capitalize;
+								color: #fff;
+								}
+								#headerTop #mainNav li .mxid_topbar .mxid_topbar_menuTrigger .mxid_topbar_menu a:last-child {
+									margin: 0;
+								}
 
 
 #search_field {
