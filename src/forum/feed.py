@@ -25,7 +25,7 @@ class RssLastestQuestionsFeed(Feed):
     copyright = u'Copyright(c)2009.MENDIX.COM'
 
     def item_link(self, item):
-        return "%squestions/%s/%s/" % (self.link, item.id, slugify(item.title))
+        return "%s/questions/%s/%s/" % (self.link, item.id, slugify(item.title))
 
     def item_author_name(self, item):
         return item.author.real_name
