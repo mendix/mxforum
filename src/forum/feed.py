@@ -10,10 +10,11 @@
 # Copyright:   (c) CNPROG.COM 2009
 # Licence:     GPL V2
 #-------------------------------------------------------------------------------
-from django.contrib.syndication.feeds import Feed, FeedDoesNotExist
+from django.contrib.syndication.feeds import Feed
 from models import Question
 from django.template.defaultfilters import slugify
 from settings import MY_URL
+
 
 class RssLastestQuestionsFeed(Feed):
     title = u"Mendix Forum"
@@ -24,7 +25,7 @@ class RssLastestQuestionsFeed(Feed):
     copyright = u'Copyright(c)2009.MENDIX.COM'
 
     def item_link(self, item):
-		return "%squestions/%s/%s/" % (self.link, item.id, slugify(item.title))
+        return "%squestions/%s/%s/" % (self.link, item.id, slugify(item.title))
 
     def item_author_name(self, item):
         return item.author.real_name
@@ -36,7 +37,8 @@ class RssLastestQuestionsFeed(Feed):
         return item.added_at
 
     def items(self, item):
-       return Question.objects.filter(deleted=False).order_by('-added_at')[:30]
+        return Question.objects.filter(deleted=False).order_by('-added_at')[:30]
+
 
 def main():
     pass
