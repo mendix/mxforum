@@ -8,7 +8,7 @@ def mxid_login(request, token, redirect=settings.LOGIN_REDIRECT_URL):
     if user is not None:
         if user.is_active:
             login(request, user)
-            if redirect[0] == "/":
+            if len(redirect) > 0 and redirect[0] == "/":
                 redirect = redirect[1:]
             return HttpResponseRedirect("%s/%s" % (settings.MY_URL, redirect))
         else:
