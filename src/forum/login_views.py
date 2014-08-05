@@ -1,6 +1,7 @@
 from django.contrib.auth import login, authenticate
 from django.http import HttpResponseRedirect
 import settings
+import urllib
 
 
 def mxid_login(request, token, redirect=settings.LOGIN_REDIRECT_URL):
@@ -8,6 +9,7 @@ def mxid_login(request, token, redirect=settings.LOGIN_REDIRECT_URL):
     if user is not None:
         if user.is_active:
             login(request, user)
+            redirect = urllib.unquote(redirect)
             if len(redirect) > 0 and redirect[0] == "/":
                 redirect = redirect[1:]
             return HttpResponseRedirect("%s/%s" % (settings.MY_URL, redirect))
