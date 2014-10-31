@@ -1,39 +1,20 @@
 {% load extra_tags %}
   <div class="MxClient_topPane">
     <div id="headerWrapper"> 
-          <div id="headerTop">
-            <script src="https://home.mendix.com/topbar/mxid_topbar.min.js"></script>
-
-            <div id="logo"><a href="{{ mxwww_url }}"><img src="/content/images/logo.png" width="206" height="61" alt="Mendix" /></a></div>
-
-            <ul id="mainNav">
-              <li><a id="exploreBtn" href="{{ mxwww_url }}/application-platform-as-a-service/">Explore Mendix</a></li>
-              <li><a id="customersBtn" href="{{ mxwww_url }}/customers/">Customers</a></li>
-              <li><a id="aboutBtn" href="{{ mxwww_url }}/company/">About</a></li>
-              <li class="mainNavSelected"><a id="communityBtn" href="{{ mxwww_url }}/community/">Community</a></li>
-            </ul>
-
-            <a href="{{ mxwww_url }}/try-now/" class="theButtons greenBtn smallBtn">Try Now</a>
-
-          </div>
-        </div> 
-        <!-- Header Top -->
-
-        <div id="subNavigationWrapper">
-          <div id="subNavigation">
-            <ul>
-              <li class="subNavHeader"><a href="http://www.mendix.com/community/how-to/">Community</a></li>
-              <li><a href="{{ mxwww_url }}/community/how-to/">How To</a></li>
-              <li><a href="{{ mxwww_url }}/community/training/">Training</a></li>
-              <li><a href="{{ mxwww_url }}/community/getting-started/">Getting Started</a></li>
-              <li><a href="{{ mxwww_url }}/community/documentation/">Documentation</a></li>
-              <li class="subNavSelected"><a href="/">Forum</a></li>
-              <li><a href="{{ mxappstore_url }}">App Store</a></li>
-            </ul>
-          </div>
+        <div id="headerTop">
+          <ul class="mainNav">
+			      <li id="howItWorksBtn"><a href="http://www.mendix.com/application-platform-as-a-service/">How It Works</a></li>
+			      <li id="learnBtn"><a href="http://www.mendix.com/learn/">Learn</a></li>
+			      <li id="aboutBtn"><a href="http://www.mendix.com/company/">About Us</a></li>
+			      <li id="startForFreeBtn"><a href="http://www.mendix.com/try-now/">Start for Free</a></li>
+			      <li id="loginBtn">
+				      <div id="mxid_topbar_attachpoint"><div class="mxid_topbar"><a class="mxid_topbar_login" href="https://home.mendix.com/mxid/login">Log in</a></div></div>
+			      </li>
+		      </ul>
+	      	<a href="http://www.mendix.com/" id="logo">Mendix</a>
         </div>
-        <!-- subNavigationWrapper -->
-    </div> 
+    </div>
+  </div> 
   
   <div id="navigation-menu">
     <div class="nav">
