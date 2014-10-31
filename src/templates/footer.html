@@ -1,59 +1,58 @@
 ﻿{% load extra_tags %}
   <div class="MxClient_bottomPane">
-    <div id="footer">
-      <div name="jsonloader" id="jsonfooter" jsonsrc="{{ footer_json_mxwww_url }}" style="display:none">
-        <div class="footerMenu">
-          <span>%CATEGORY%</span>
-          %LINKS%
-          </div>
-        </div> 
-        <!-- #jsonfooter -->
+    <div id="fishRow">
+	    <img src="/content/images/footer-fish.png" alt="" />
+    </div>
+  <div id="footerWrapper">
+	  <div id="footer">
+		  <div id="footerNavWrapper">
+			  <div class="footerNavBlock">
+				  <h2>How It Works</h2>
+				  <ul>
+					  <li><a href="http://www.mendix.com/application-platform-as-a-service/">Feature Overview</a></li>
+					  <li><a href="http://www.mendix.com/editions/">Editions &amp; Pricing</a></li>
+					  <li><a href="http://www.mendix.com/application-platform-as-a-service/resources/">Resources</a></li>
+				  </ul>
+			  </div>
+			  <div class="footerNavBlock">
+				  <h2>Learn</h2>
+				  <ul>
+					  <li><a href="https://mxforum.mendix.com/">Forum</a></li>
+					  <li><a href="https://appstore.mendix.com/">App Store</a></li>
+					  <li><a href="https://academy.mendix.com/">Training</a></li>
+					  <li><a href="https://support.mendixcloud.com/">Support</a></li>
+				  </ul>
+			  </div>
+			  <div class="footerNavBlock">
+				  <h2>About Us</h2>
+				  <ul>
+					  <li><a href="http://www.mendix.com/customers/">Our Customers</a></li>
+					  <li><a href="http://www.mendix.com/company/">Who We Are</a></li>
+					  <li><a href="http://www.mendix.com/partners/">Partners</a></li>
+					  <li><a href="http://www.mendix.com/company/join-our-team/">Careers</a></li>
+					  <li><a href="http://www.mendix.com/blogs/">Blog</a></li>
+				  </ul>
+			  </div>
+			  <div class="footerNavBlock" id="footerNavLastBlock">
+				  <h2>Stay Connected</h2>
+				  <ul>
+					  <li class="linkedin"><a href="http://www.linkedin.com/company/mendix" target="_blank">LinkedIn</a></li>
+					  <li class="googlePlus"><a href="https://plus.google.com/118138681832263999246/" target="_blank">Google+</a></li>	
+					  <li class="twitter"><a href="https://twitter.com/#!/mendix" target="_blank">Twitter</a></li>
+					  <li class="facebook"><a href="https://www.facebook.com/mendixsoftware" target="_blank">Facebook</a></li>
+					  <li class="rss"><a href="http://feeds.feedburner.com/mendix-combined">RSS Feeds</a></li>
+				  </ul>
+			  </div>
+		  </div>
+		  <p id="footerDescription">Mendix is the app platform company for the enterprise. We enable companies to build, integrate and deploy web and mobile applications faster and with better results, effectively driving ROI in days not months.</p>
+		  <p id="footerCopyright">Copyright &copy; <span id="theCopyright"></span> | Mendix. All rights reserved<br /><a href="http://www.mendix.com/terms-of-use/"> Terms of Use</a> | <a href="http://www.mendix.com/privacy-policy/">Privacy Policy</a></p>
+	  </div>
+  </div>
+</div> 
+ 
+<script type="text/javascript">
+    var newDate = new Date();
+    jQuery('#theCopyright').html(newDate.getFullYear());
+</script>
 
-        <div class="rssFeedMenu" id="footerBlogRSS">
-            <h1>Choose Your RSS Feed:</h1>
-            <div class="rssReedLeftColumn">
-              <a href="http://feeds.feedburner.com/MendixBlog" target="_blank">Platform Blog</a>
-              <a href="http://feeds.feedburner.com/MendixTechBlog" target="_blank">Tech Talk</a>
-            </div>
-            <div class="rssReedRightColumn">
-              <a href="http://feeds.feedburner.com/mendix-think-tank" target="_blank">Think Tank</a>
-              <a href="http://feeds.feedburner.com/mendix-combined" target="_blank">All Blogs</a>
-            </div>
-            <a href="#" onclick="closeBlogRSSMenu(this.parentNode); return false;" class="closeBlogRSSMenu">x</a>
-        </div>
-        <!-- rssFeedMenu -->
-
-        <ul class="socialmedia">
-          <li class="facebook"><a href="https://www.facebook.com/mendixsoftware" target="_blank">Facebook</a></li>
-          <li class="twitter"><a href="https://twitter.com/#!/mendixsocial" target="_blank">Twitter</a></li>
-          <li class="rss"><a href="#" onclick="showRSSMenu('footerBlogRSS'); return false;">RSS Feed</a></li>
-              <li class="youtube"><a href="http://www.youtube.com/MendixOnline" target="_blank">Youtube</a></li>
-          <li class="linkedin"><a href="http://www.linkedin.com/company/mendix" target="_blank">LinkedIn</a></li>
-          <li class="googlePlus"><a href="https://plus.google.com/118138681832263999246/" target="_blank">Google+</a></li>  
-        </ul>
-        <!-- socialmedia -->
-
-        <p id="footerDescription">Mendix is the app platform company for the enterprise. We enable companies to build, integrate and deploy web and mobile applications faster and with better results, effectively driving ROI in days not months.</p>
-
-        <p id="footerCopyright">Copyright &copy; 2013 | Mendix. All rights reserved | <a href="http://www.mendix.com/terms-of-use/"> Terms of Use</a> | <a href="http://www.mendix.com/privacy-policy/">Privacy Policy</a></p>
-
-        <div id="footerCTAs">
-          <a href="http://www.mendix.com/try-now/" class="theButtons greenBtn largeBtn">Try Now for Free</a>
-        </div>
-    </div> 
-    <!-- #footer -->
-  </div> 
-    
-    <!-- Script for showing RSS Menu -->
-    <script type="text/javascript">
-    function showRSSMenu(theMenu)
-      {
-        jQuery("#" + theMenu).css({display: 'block'});
-      }
-      function closeBlogRSSMenu(theMenu)
-      {
-        jQuery(theMenu).css({display: 'none'});
-      }
-    </script>
-
-    <script type="text/javascript" src="/content/js/retina.js"></script>
+<script type="text/javascript" src="/content/js/retina.js"></script>
