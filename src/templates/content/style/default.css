@@ -215,60 +215,55 @@ input[type=text] {
 	background: transparent url(../images/logo-new.png) 0 -79px no-repeat;
 	text-indent: -9999px;
 }
-		#headerTop .mainNav {
-			padding-top: 15px;
-			float: right;
-			}
-			#headerTop .mainNav li {
-				float: left;
-				font-size: 14px;
-				list-style-type: none;
-				}
-				#headerTop .mainNav li a {
-					float: left;
-					padding: 26px 19px 29px 19px;
-					color: #000;
-					text-transform: uppercase;
-					font-weight: 700;
-					}
-					#headerTop .mainNav li:hover a {
-						color: #fff !important;
-						background: #222;
-						}
-						#headerTop .mainNav li#loginBtn:hover a {
-							background: transparent;
-							color: #222 !important;
-							text-decoration: underline;
-						}
-				#headerTop .mainNav li#aboutBtn {
-					padding-right: 22px;
-				}
-				#headerTop .mainNav li#startForFreeBtn {
-					position: relative;
-					top: -4px;
-					padding-right: 42px;
-					border-right: 1px solid #116e99;
-					margin-top: 21px;
-					}
-					#headerTop .mainNav li#startForFreeBtn a {
-						padding: 9px 0 0 18px;
-						width: 151px;
-						height: 22px;
-						background: transparent url(../images/btn-start-for-free2.png) 100% 0 no-repeat;
-						color: #fff;
-					}
-				#mxid_topbar_attachpoint {
-					}
-					#headerTop .mainNav .mxid_topbar a.mxid_topbar_login {
-						display: block;
-						padding-left: 21px;
-						margin-left: 20px;
-						}
-						#headerTop .mainNav .mxid_topbar a.mxid_topbar_login:hover {
-							background: transparent;
-							color: #222 !important;
-						}
-
+#headerTop .mainNav {
+	padding-top: 15px;
+	float: right;
+}
+#headerTop .mainNav li {
+	float: left;
+	font-size: 14px;
+	list-style-type: none;
+}
+#headerTop .mainNav li a {
+	float: left;
+	padding: 26px 19px 29px 19px;
+	color: #000;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+#headerTop .mainNav li:hover a {
+	color: #fff !important;
+	background: #222;
+}
+#headerTop .mainNav li#loginBtn:hover a {
+	background: transparent;
+	color: #222 !important;
+	text-decoration: underline;
+}
+#headerTop .mainNav li#aboutBtn { padding-right: 22px; }
+#headerTop .mainNav li#startForFreeBtn {
+	position: relative;
+	top: -4px;
+	padding-right: 42px;
+	border-right: 1px solid #116e99;
+	margin-top: 21px;
+}
+#headerTop .mainNav li#startForFreeBtn a {
+	padding: 9px 0 0 18px;
+	width: 151px;
+	height: 22px;
+	background: transparent url(../images/btn-start-for-free2.png) 100% 0 no-repeat;
+	color: #fff;
+}
+#headerTop .mainNav .mxid_topbar a.mxid_topbar_login {
+	display: block;
+	padding-left: 21px;
+	margin-left: 20px;
+}
+#headerTop .mainNav .mxid_topbar a.mxid_topbar_login:hover {
+	background: transparent;
+	color: #222 !important;
+}
 #search_field {
 	float: right;
     margin: 0 0 0 15px;
@@ -430,15 +425,14 @@ input[type=text] {
 	height: 18px;
 	border-bottom: 1px solid #287ea6;
 	background: #00a2ec;
-	}
-	#fishRow img {
-		position: absolute;
-		top: -98px;
-		left: 50%;
-		display: block;
-		margin-left: -240px;
-	}
-
+}
+#fishRow img {
+	position: absolute;
+	top: -98px;
+	left: 50%;
+	display: block;
+	margin-left: -240px;
+}
 #footerWrapper {
 	clear: both;
 	padding-top: 20px;
@@ -447,99 +441,83 @@ input[type=text] {
 	background: #555;
 	color: #fff;
 	font-size: 14px;
-	}
-	#footer {
-		position: relative;
-		padding-left: 154px;
-		margin: 0 auto;
-		width: 1078px;
-		}
-		#footerNavWrapper {
-			padding-top: 19px;
-			border-bottom: 1px solid #666;
-			width: 917px;
-			height: 190px;
-			}
-			#footerNavWrapper .footerNavBlock {
-				float: left;
-				}
-				#footerNavWrapper .footerNavBlock h2 {
-					margin-bottom: 26px;
-					width: 216px;
-					color: #00a2ec;
-					text-transform: uppercase;
-					font-size: 16px;
-					font-weight: 400;
-				}
-				#footerNavWrapper .footerNavBlock ul {
-					margin-left: 0;
-					}
-					#footerNavWrapper .footerNavBlock ul li {
-						margin-bottom: 12px;
-						list-style-type: none;
-						}
-						#footerNavWrapper .footerNavBlock ul li a {
-							display: inline-block;
-							padding-left: 12px;
-							font-size: 14px;
-							color: #fff;
-							background: transparent url(../images/bg-footer-link.png) 0 2px no-repeat;
-							}
-							#footerNavWrapper .footerNavBlock ul li a:hover {
-								color: #fff !important;
-								background-position: 0 -27px;
-							}
-					#footerNavWrapper #footerNavLastBlock ul {
-						margin-left: 0;
-						width: 130px;
-						}
-						#footerNavWrapper #footerNavLastBlock ul li {
-							float: left;
-							margin: 0 6px 6px 0;
-							list-style-type: none;
-							}
-							#footerNavWrapper #footerNavLastBlock ul li a {
-								float: left;
-								padding: 0;
-								width: 36px;
-								height: 36px;
-								text-indent: -9999px;
-								background: transparent;
-								}
-								#footerNavWrapper #footerNavLastBlock ul li.linkedin a {
-									background: transparent url(../images/bg-social-linkedin.png) top left no-repeat;
-								}
-								#footerNavWrapper #footerNavLastBlock ul li.googlePlus a {
-									background: transparent url(../images/bg-social-google-plus.png) top left no-repeat;
-								}
-								#footerNavWrapper #footerNavLastBlock ul li.twitter a {
-									background: transparent url(../images/bg-social-twitter.png) top left no-repeat;
-								}
-								#footerNavWrapper #footerNavLastBlock ul li.facebook a {
-									background: transparent url(../images/bg-social-facebook.png) top left no-repeat;
-								}
-								#footerNavWrapper #footerNavLastBlock ul li.rss a {
-									background: transparent url(../images/bg-social-rss.png) top left no-repeat;
-								}
-		#footer p#footerDescription {
-			padding: 17px 0;
-			width: 600px;
-			line-height: 1.3em;
-			font-size: 14px;
-			color: #fff;
-		}
-		#footer p#footerCopyright {
-			position: absolute;
-			bottom: 28px;
-			left: 824px;
-			text-align: center;
-			color: #fff;
-			line-height: 1.3em;
-			font-size: 12px;
-			}
-			#footer p#footerCopyright a, #footer p#footerCopyright a:hover {
-				color: #fff !important;
-			}
+}
+#footer {
+	position: relative;
+	padding-left: 154px;
+	margin: 0 auto;
+	width: 1078px;
+}
+#footerNavWrapper {
+	padding-top: 19px;
+	border-bottom: 1px solid #666;
+	width: 917px;
+	height: 190px;
+}
+#footerNavWrapper .footerNavBlock { float: left; }
+#footerNavWrapper .footerNavBlock h2 {
+	margin-bottom: 26px;
+	width: 216px;
+	color: #00a2ec;
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: 400;
+}
+#footerNavWrapper .footerNavBlock ul { margin-left: 0; }
+#footerNavWrapper .footerNavBlock ul li {
+	margin-bottom: 12px;
+	list-style-type: none;
+}
+#footerNavWrapper .footerNavBlock ul li a {
+	display: inline-block;
+	padding-left: 12px;
+	font-size: 14px;
+	color: #fff;
+	background: transparent url(../images/bg-footer-link.png) 0 2px no-repeat;
+}
+#footerNavWrapper .footerNavBlock ul li a:hover {
+	color: #fff !important;
+	background-position: 0 -27px;
+}
+#footerNavWrapper #footerNavLastBlock ul {
+	margin-left: 0;
+	width: 130px;
+}
+#footerNavWrapper #footerNavLastBlock ul li {
+	float: left;
+	margin: 0 6px 6px 0;
+	list-style-type: none;
+}
+#footerNavWrapper #footerNavLastBlock ul li a {
+	float: left;
+	padding: 0;
+	width: 36px;
+	height: 36px;
+	text-indent: -9999px;
+	background: transparent;
+}
+#footerNavWrapper #footerNavLastBlock ul li.linkedin a { background: transparent url(../images/bg-social-linkedin.png) top left no-repeat; }
+#footerNavWrapper #footerNavLastBlock ul li.googlePlus a { background: transparent url(../images/bg-social-google-plus.png) top left no-repeat; }
+#footerNavWrapper #footerNavLastBlock ul li.twitter a { background: transparent url(../images/bg-social-twitter.png) top left no-repeat; }
+#footerNavWrapper #footerNavLastBlock ul li.facebook a { background: transparent url(../images/bg-social-facebook.png) top left no-repeat; }
+#footerNavWrapper #footerNavLastBlock ul li.rss a { background: transparent url(../images/bg-social-rss.png) top left no-repeat; }
+#footer p#footerDescription {
+	padding: 17px 0;
+	width: 600px;
+	line-height: 1.3em;
+	font-size: 14px;
+	color: #fff;
+}
+#footer p#footerCopyright {
+	position: absolute;
+	bottom: 28px;
+	left: 824px;
+	text-align: center;
+	color: #fff;
+	line-height: 1.3em;
+	font-size: 12px;
+}
+#footer p#footerCopyright a, #footer p#footerCopyright a:hover { color: #fff !important; }
 
 
 /* Tail
