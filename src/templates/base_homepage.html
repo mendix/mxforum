@@ -8,27 +8,16 @@
         {% endspaceless %}
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="shortcut icon" href="/content/images/favicon.ico" >
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,300,600,700" rel="stylesheet" type="text/css">
+		<link href="https://www.mendix.com/favicon.ico" rel="shortcut icon">
+		<script src="//use.typekit.net/ytc8qtv.js"></script>
+		<script>try{Typekit.load();}catch(e){}</script>
         <link href="/content/style/default.css" rel="stylesheet" type="text/css" />
         <script type='text/javascript' src='/content/js/com.cnprog.utils.js'></script>
         <script src="https://www.google.com/jsapi"></script>
         <script type="text/javascript" src="{{ mxid_url }}/navigation/mxid/mxidtopbar.js"></script>
         <script type="text/javascript" src="{{ mxid_url}}/navigation/mxid/jsonloader.js"></script>
         <script>google.load("jquery", "1.2.6");</script>
-        <script type="text/javascript">
-          var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-163813-1']);
-          _gaq.push(['_setDomainName', 'mendix.com']);
-          _gaq.push(['_addIgnoredRef', 'mendix.com']);
-          _gaq.push(['_trackPageview']);
-          setTimeout("_gaq.push(['_trackEvent', 'NoBounce', 'Over 10 seconds'])",10000);
-
-          (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-          })();
-        </script>
         {% if request.user.is_anonymous and not request.session.message_silent %}
         <script type="text/javascript">
             $().ready(function() {
@@ -53,6 +42,15 @@
         {% endblock %}
     </head>
     <body class="homepage">
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-QJG4" 
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-QJG4');</script>
+<!-- End Google Tag Manager -->
       {% if request.user.get_messages %}
       <div class="notify" style="display:none">
         <span>

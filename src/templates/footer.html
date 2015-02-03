@@ -1,59 +1,32 @@
-﻿{% load extra_tags %}
+{% load extra_tags %}
   <div class="MxClient_bottomPane">
-    <div id="footer">
-      <div name="jsonloader" id="jsonfooter" jsonsrc="{{ footer_json_mxwww_url }}" style="display:none">
-        <div class="footerMenu">
-          <span>%CATEGORY%</span>
-          %LINKS%
-          </div>
-        </div> 
-        <!-- #jsonfooter -->
-
-        <div class="rssFeedMenu" id="footerBlogRSS">
-            <h1>Choose Your RSS Feed:</h1>
-            <div class="rssReedLeftColumn">
-              <a href="http://feeds.feedburner.com/MendixBlog" target="_blank">Platform Blog</a>
-              <a href="http://feeds.feedburner.com/MendixTechBlog" target="_blank">Tech Talk</a>
-            </div>
-            <div class="rssReedRightColumn">
-              <a href="http://feeds.feedburner.com/mendix-think-tank" target="_blank">Think Tank</a>
-              <a href="http://feeds.feedburner.com/mendix-combined" target="_blank">All Blogs</a>
-            </div>
-            <a href="#" onclick="closeBlogRSSMenu(this.parentNode); return false;" class="closeBlogRSSMenu">x</a>
-        </div>
-        <!-- rssFeedMenu -->
-
-        <ul class="socialmedia">
-          <li class="facebook"><a href="https://www.facebook.com/mendixsoftware" target="_blank">Facebook</a></li>
-          <li class="twitter"><a href="https://twitter.com/#!/mendixsocial" target="_blank">Twitter</a></li>
-          <li class="rss"><a href="#" onclick="showRSSMenu('footerBlogRSS'); return false;">RSS Feed</a></li>
-              <li class="youtube"><a href="http://www.youtube.com/MendixOnline" target="_blank">Youtube</a></li>
-          <li class="linkedin"><a href="http://www.linkedin.com/company/mendix" target="_blank">LinkedIn</a></li>
-          <li class="googlePlus"><a href="https://plus.google.com/118138681832263999246/" target="_blank">Google+</a></li>  
-        </ul>
-        <!-- socialmedia -->
-
-        <p id="footerDescription">Mendix is the app platform company for the enterprise. We enable companies to build, integrate and deploy web and mobile applications faster and with better results, effectively driving ROI in days not months.</p>
-
-        <p id="footerCopyright">Copyright &copy; 2013 | Mendix. All rights reserved | <a href="http://www.mendix.com/terms-of-use/"> Terms of Use</a> | <a href="http://www.mendix.com/privacy-policy/">Privacy Policy</a></p>
-
-        <div id="footerCTAs">
-          <a href="http://www.mendix.com/try-now/" class="theButtons greenBtn largeBtn">Try Now for Free</a>
-        </div>
-    </div> 
-    <!-- #footer -->
+    <footer id="colophon" class="site-footer" role="contentinfo">
+		<div id="secondary" class="sidebar-container entry-content" role="complementary">
+			<div class="row footer-top">
+				<a href="http://ww2.mendix.com/Mendix-Demo-Webinar.w.html" class="footer-btn demo" target="_blank">Get a Demo</a>
+				<a href="http://www.mendix.com/try-now/" class="footer-btn start-free" target="_blank">Start for Free</a>
+				<a href="http://ww2.mendix.com/contact-us.html" class="footer-btn contact" target="_blank">Contact Us</a>
+			</div>
+			<div class="row clear">
+				<div class="col-md-6">
+					<p>Copyright &copy; <span id="theCopyright"></span> Mendix. All rights reserved.</p>
+					<p><a href="http://www.mendix.com/" target="_blank">Mendix.com</a> | <a href="http://www.mendix.com/terms-of-use/" target="_blank">Terms of Use</a> | <a href="http://www.mendix.com/privacy-policy/" target="_blank">Privacy Policy</a></p>
+					<p>Mendix is the app platform company for the enterprise. We enable companies to build, integrate and deploy web and mobile applications faster and with better results, effectively driving ROI in days not months.</p>
+				</div>
+				<div class="col-md-6 footer-social">
+					<a class="footer-social--facebook" href="https://www.facebook.com/mendixsoftware" target="_blank">Facebook</a>
+					<a class="footer-social--google" href="https://plus.google.com/+MendixSocial" target="_blank">Google</a>
+					<a class="footer-social--linkedin" href="https://www.linkedin.com/company/mendix" target="_blank">Linkedin</a>
+					<a class="footer-social--twitter" href="https://twitter.com/mendix" target="_blank">Twitter</a>
+					<a class="footer-social--github" href="https://github.com/mendix" target="_blank">Github</a>
+				</div>
+			</div>
+		</div>
+	</footer>
   </div> 
-    
-    <!-- Script for showing RSS Menu -->
-    <script type="text/javascript">
-    function showRSSMenu(theMenu)
-      {
-        jQuery("#" + theMenu).css({display: 'block'});
-      }
-      function closeBlogRSSMenu(theMenu)
-      {
-        jQuery(theMenu).css({display: 'none'});
-      }
-    </script>
 
-    <script type="text/javascript" src="/content/js/retina.js"></script>
+<script type="text/javascript" src="/content/js/retina.js"></script>
+<script type="text/javascript">
+    var newDate = new Date();
+    jQuery('#theCopyright').html(newDate.getFullYear());
+</script>
