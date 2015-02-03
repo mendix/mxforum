@@ -18,6 +18,13 @@ from hashlib import sha256
 from forum.managers import *
 from const import *
 
+def _embed_modelshares(html):
+    search_regex = (r'(?<!")(http(s?):\/\/(test\.|accp\.)?modelshare\.mendix\.com\/'
+	                 'models\/([a-z0-9-]+)\/[A-Za-z0-9._~-]+)')
+    replace_regex = r'<iframe width="100%" style="width:calc(100% - 20px);" \
+height="491px" frameborder="0" src="\1?embed=true" allowfullscreen></iframe>'
+    return re.sub(search_regex, replace_regex, html)
+
 class Tag(models.Model):
     name       = models.CharField(max_length=255, unique=True)
     created_by = models.ForeignKey(User, related_name='created_tags')
@@ -181,6 +188,9 @@ class Question(models.Model):
     def get_latest_revision(self):
         return self.revisions.all()[0]
 
+    def rendered_html(self):
+        return _embed_modelshares(self.html)
+
     def __unicode__(self):
         return self.title
 
@@ -263,6 +273,9 @@ class Answer(models.Model):
 
     def get_absolute_url(self):
         return '%s%s#%s' % (reverse('question', args=[self.question.id]), self.question.title, self.id)
+
+    def rendered_html(self):
+        return _embed_modelshares(self.html)
 
     class Meta:
         db_table = u'answer'

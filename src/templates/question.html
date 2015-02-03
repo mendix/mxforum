@@ -84,7 +84,7 @@
 
                 <div id="item-right">
                     <div class="question-body">
-                        {{ question.html|safe }}
+                        {{ question.rendered_html|safe }}
                     </div>
                     <div id="question-tags" class="question-tag-extra" >
                         {% for tag in question.tagname_list %}
@@ -207,7 +207,7 @@
 
             <div class="item-right">
                 <div class="answer-body">
-                    {{ answer.html|safe }}
+                    {{ answer.rendered_html|safe }}
                 </div>
                 <!--.answer-body -->
                                         
