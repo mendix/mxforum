@@ -26,7 +26,12 @@
   </div> 
 
 <script type="text/javascript" src="/content/js/retina.js"></script>
+<script src="https://home.mendix.com/topbar/mxid_topbar.v2.min.js"></script>
 <script type="text/javascript">
     var newDate = new Date();
     jQuery('#theCopyright').html(newDate.getFullYear());
+	jQuery(document).ready(function ($) {
+		$(".mxid_topbar_menu a:contains('My Profile')").attr("href", "https://sprintr.home.mendix.com/link/myprofile");
+		$("a.mxid_topbar_login").attr("href", "https://home.mendix.com/mxid/login?a=Forum");
+	});
 </script>

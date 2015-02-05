@@ -276,27 +276,6 @@ button:active, input[type="submit"]:active, input[type="button"]:active, input[t
 .btn-start-for-free:hover, .btn-start-for-free:focus {
 	background: #ff9e00;
 }
-.btn-success {
-	background-color: #76ca02;
-}
-.btn-success:hover, .btn-success:focus {
-	background-color: #65ae00;
-}
-.btn-login {
-	position: relative;
-	top: -1px;
-	padding: 5px 14px 5px 14px;
-	border: 2px solid #576571;
-	color: #fff;
-	font-size: 14px;
-	font-weight: 700;
-	background: transparent;
-	text-transform: capitalize;
-}
-.btn-login:hover {
-	color: #fff !important;
-	background: #576571;
-}
 .site-header {
 	position: relative;
 	height: 96px;
@@ -418,9 +397,87 @@ ul.nav-menu, div.nav-menu > ul {
 	position: absolute;
 	top: 30px;
 	right: 0;
+	width: 236px;
 }
-.header-buttons a {
-	margin-left: 7px;
+.header-buttons a.btn-start-for-free {
+	margin-right: 7px;
+}
+.header-buttons a.btn-start-for-free, #mxid_topbar_attachpoint {
+	float: left;
+}
+/*** LOGIN BUTTON & LOGGED IN STATE ***/
+#mxid_topbar_attachpoint {
+	position: relative;
+	top: -1px;
+	font-family: "proxima-nova",sans-serif;
+}
+a.mxid_topbar_login {
+	display: inline-block;
+	border: none;
+	border-radius: 20px;
+	margin: 0;
+	max-width: 100%;
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-ms-transition: all 0.2s ease;
+	-o-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+	text-decoration: none;
+	vertical-align: baseline;
+	line-height: normal;
+	cursor: pointer;
+	padding: 5px 14px 5px 14px;
+	border: 2px solid #576571;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 700;
+	background: transparent;
+	text-transform: capitalize;
+}
+a.mxid_topbar_login:hover {
+	color: #fff !important;
+	background: #576571;
+}
+.mxid_topbar_greeting, .mxid_topbar_displayName, .mxid_topbar_menu {
+	display: none;
+}
+.mxid_topbar .mxid_topbar_menuTrigger {
+	padding: 0 24px 32px 0;
+	min-height: 35px;
+	background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/bg-logged-in.png) 100% 11px no-repeat;
+}
+.mxid_topbar .mxid_topbar_menuTrigger img {
+	position: relative;
+	top: -1px;
+	width: 35px;
+	height: 35px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+.mxid_topbar .mxid_topbar_menuTrigger:hover {
+	cursor: pointer;
+}
+.mxid_topbar .mxid_topbar_menuTrigger:hover .mxid_topbar_menu {
+	display: block;
+	position: absolute;
+	top: 67px;
+	left: -40px;
+	z-index: 99999;
+	background: #f0f0ee;
+	padding: 28px 21px 12px 27px;
+	width: 170px;
+}
+.mxid_topbar .mxid_topbar_menuTrigger:hover .mxid_topbar_menu a {
+	display: block;
+	margin-bottom: 14px;
+	font-size: 15px;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: #1b82ba;
+}
+.mxid_topbar .mxid_topbar_menuTrigger:hover .mxid_topbar_menu a:hover {
+	color: #23a7e8 !important;
 }
 @media (max-width: 1000px) {
 	ul.nav-menu, div.nav-menu > ul {
