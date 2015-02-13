@@ -1,39 +1,62 @@
 {% load extra_tags %}
   <div class="MxClient_topPane">
-    <div id="headerWrapper"> 
-          <div id="headerTop">
-            <script src="https://home.mendix.com/topbar/mxid_topbar.min.js"></script>
-
-            <div id="logo"><a href="{{ mxwww_url }}"><img src="/content/images/logo.png" width="206" height="61" alt="Mendix" /></a></div>
-
-            <ul id="mainNav">
-              <li><a id="exploreBtn" href="{{ mxwww_url }}/application-platform-as-a-service/">Explore Mendix</a></li>
-              <li><a id="customersBtn" href="{{ mxwww_url }}/customers/">Customers</a></li>
-              <li><a id="aboutBtn" href="{{ mxwww_url }}/company/">About</a></li>
-              <li class="mainNavSelected"><a id="communityBtn" href="{{ mxwww_url }}/community/">Community</a></li>
-            </ul>
-
-            <a href="{{ mxwww_url }}/try-now/" class="theButtons greenBtn smallBtn">Try Now</a>
-
-          </div>
-        </div> 
-        <!-- Header Top -->
-
-        <div id="subNavigationWrapper">
-          <div id="subNavigation">
-            <ul>
-              <li class="subNavHeader"><a href="http://www.mendix.com/community/how-to/">Community</a></li>
-              <li><a href="{{ mxwww_url }}/community/how-to/">How To</a></li>
-              <li><a href="{{ mxwww_url }}/community/training/">Training</a></li>
-              <li><a href="{{ mxwww_url }}/community/getting-started/">Getting Started</a></li>
-              <li><a href="{{ mxwww_url }}/community/documentation/">Documentation</a></li>
-              <li class="subNavSelected"><a href="/">Forum</a></li>
-              <li><a href="{{ mxappstore_url }}">App Store</a></li>
-            </ul>
-          </div>
-        </div>
-        <!-- subNavigationWrapper -->
-    </div> 
+  
+	<header id="masthead" class="site-header site-header-page" role="banner">
+		<div class="entry-header">
+			<div class="nav-wrapper clear">
+				<a class="home-link" href="{{ mxdevsite_url }}/" rel="home"><img src="{{ mxdevsite_url }}/wp-content/themes/mendix/images/logo.png" alt="Mendix Developers" /></a>
+				<div class="navbar">
+					<nav id="site-navigation" class="navigation main-navigation" role="navigation">
+						<button class="menu-toggle">Menu</button>
+						<a class="screen-reader-text skip-link" href="#content" title="Skip to content">Skip to content</a>
+						<div class="menu-nav-container">
+							<ul id="menu-nav" class="nav-menu">
+								<li>
+									<a href="{{ mxdevsite_url }}/docs-and-api/">Docs &amp; API</a>
+									<ul class="sub-menu">
+										<li><a href="{{ mxdevsite_url }}/docs-and-api/faqs/" id="navFAQs">FAQs</a></li>
+										<li><a href="{{ mxconfl_url }}/display/howto50/Learn+Mendix+5" id="navHowTos">How To's</a></li>
+										<li><a href="{{ mxconfl_url }}/display/refguide5/Reference+Guide+5.0" id="navReferenceGuide">Reference Guide</a></li>
+										<li><a href="{{ mxdevsite_url }}/docs-and-api/apis/" id="navAPIs">APIs</a></li>
+										<li><a href="{{ mxconfl_url }}/display/ReleaseNotes/Release+Notes+Home" id="navReleaseNotes">Release Notes</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="{{ mxdevsite_url }}/training/">Training</a>
+									<ul class="sub-menu">
+										<li><a href="{{ mxdevsite_url }}/training/get-started/" id="navGetStarted">Get Started</a></li>
+										<li><a href="{{ mxdevsite_url }}/training/video-tutorials/" id="navVideoTutorials">Video Tutorials</a></li>
+										<li><a href="{{ mxacademy_url }}/link/courses" id="navClassroomCourses">Classroom Courses</a></li>
+										<li><a href="{{ mxdevsite_url }}/training/webinars/" id="navOnDemandWebinars">On-Demand Webinars</a></li>
+										<li><a href="{{ mxacademy_url }}/" id="navCertification">Certification</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="{{ mxdevsite_url }}/community/">Community</a>
+									<ul class="sub-menu">
+										<li><a href="{{ my_url }}" id="navForum">Forum</a></li>
+										<li><a href="{{ mxappstore_url }}/" target="_blank" id="navAppStore">App Store</a></li>
+										<li><a href="{{ mxwww_url }}/tag/developers/" id="navBlog">Blog</a></li>
+										<li><a href="{{ mxdevsite_url }}/community/events/" id="navEvents">Events</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="{{ mxdevsite_url }}/support/">Support</a>
+									<ul class="sub-menu">
+										<li><a href="{{ mxdevsite_url }}/support/" id="navSupportOverview">Support Overview</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</nav>
+					<div class="header-buttons">
+						<a class="btn-default btn-start-for-free" href="{{ mxwww_url }}/try-now/" target="_blank">Start For Free</a>
+						<div id="mxid_topbar_attachpoint"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
   
   <div id="navigation-menu">
     <div class="nav">

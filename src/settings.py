@@ -103,6 +103,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
     'forum.context_processors.mxid_url',
 	'forum.context_processors.mxappstore_url',
+	'forum.context_processors.mxsprintr_url',
+	'forum.context_processors.mxdevsite_url',
+	'forum.context_processors.mxconfl_url',
+	'forum.context_processors.mxacademy_url',
 	'forum.context_processors.mxwww_url',
 	'forum.context_processors.footer_json_mxwww_url',
 )
