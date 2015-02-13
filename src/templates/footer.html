@@ -4,13 +4,13 @@
 		<div id="secondary" class="sidebar-container entry-content" role="complementary">
 			<div class="row footer-top">
 				<a href="http://ww2.mendix.com/Mendix-Demo-Webinar.w.html" class="footer-btn demo" target="_blank">Get a Demo</a>
-				<a href="{{ MXWWW_URL }}/try-now/" class="footer-btn start-free" target="_blank">Start for Free</a>
+				<a href="{{ mxwww_url }}/try-now/" class="footer-btn start-free" target="_blank">Start for Free</a>
 				<a href="http://ww2.mendix.com/contact-us.html" class="footer-btn contact" target="_blank">Contact Us</a>
 			</div>
 			<div class="row clear">
 				<div class="col-md-6">
 					<p>Copyright &copy; <span id="theCopyright"></span> Mendix. All rights reserved.</p>
-					<p><a href="{{ MXWWW_URL }}/" target="_blank">Mendix.com</a> | <a href="{{ MXWWW_URL }}/terms-of-use/" target="_blank">Terms of Use</a> | <a href="{{ MXWWW_URL }}/privacy-policy/" target="_blank">Privacy Policy</a></p>
+					<p><a href="{{ mxwww_url }}/" target="_blank">Mendix.com</a> | <a href="{{ mxwww_url }}/terms-of-use/" target="_blank">Terms of Use</a> | <a href="{{ mxwww_url }}/privacy-policy/" target="_blank">Privacy Policy</a></p>
 					<p>Mendix is the app platform company for the enterprise. We enable companies to build, integrate and deploy web and mobile applications faster and with better results, effectively driving ROI in days not months.</p>
 				</div>
 				<div class="col-md-6 footer-social">
@@ -27,12 +27,12 @@
 
 <script type="text/javascript" src="/content/js/activate-responsive-header.js"></script>
 <script type="text/javascript" src="/content/js/retina.js"></script>
-<script src="{{ MXID_URL }}/topbar/mxid_topbar.v2.min.js"></script>
+<script src="{{ mxid_url }}/topbar/mxid_topbar.v2.min.js"></script>
 <script type="text/javascript">
 	var newDate = new Date();
 	jQuery('#theCopyright').html(newDate.getFullYear());
 	jQuery(document).ready(function ($) {
-		$(".mxid_topbar_menu a:contains('My Profile')").attr("href", "{{ MXSPRINTR_URL }}/link/myprofile");
-		$("a.mxid_topbar_login").attr("href", "{{ MXID_URL }}/mxid/login?a=Forum");
+		$(".mxid_topbar_menu a:contains('My Profile')").attr("href", "{{ mxsprintr_url }}/link/myprofile");
+		$("a.mxid_topbar_login").attr("href", "{{ mxid_url }}/mxid/login?a=Forum");
 	});
 </script>
