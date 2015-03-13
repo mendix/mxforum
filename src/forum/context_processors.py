@@ -22,3 +22,6 @@ def mxconfl_url(request):
 
 def mxacademy_url(request):
 	return {'mxacademy_url' : settings.MXACADEMY_URL}
+
+def modelshare_url(request):
+	return {'modelshare_url' : settings.MODELSHARE_URL}
