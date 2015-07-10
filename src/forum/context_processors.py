@@ -25,3 +25,6 @@ def mxacademy_url(request):
 
 def modelshare_url(request):
 	return {'modelshare_url' : settings.MODELSHARE_URL}
+
+def gettingstarted_url(request):
+	return {'gettingstarted_url' : settings.GETTINGSTARTED_URL}
