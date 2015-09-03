@@ -1,12 +1,3 @@
-/*
-Document   : default
-Created on : Dec 9, 2008, 8:48:40 PM
-Author     : Mike
-Description:
-Style sheet for cnprog.com
-All rights reserved. 2008 CNPROG.COM
-*/
-
 @import url(/content/style/jquery.autocomplete.css);
 @import url(/content/style/openid.css);
 @import url(/content/style/prettify.css);
@@ -493,11 +484,19 @@ a.mxid_topbar_login:hover {
 	}
 }
 @media (max-width: 700px) {
+	#content {
+		padding: 0 10px;
+	}
 	.navbar {
 		min-height: 61px;
 	}
+	.site-header .entry-header {
+		padding: 0 5px;
+	}
 	.site-header-page, .site-header-why {
 		height: auto;
+		min-height: auto;
+		margin-bottom: 10px;
 	}
 	.header-submenu ul li.current_page_item a {
 	    border-bottom: none;
@@ -590,73 +589,6 @@ a.mxid_topbar_login:hover {
 		color: #999;
 	}
 }
-
-#modelSharePromoWrapper {
-	border-bottom: 1px solid #d7d7d7;
-	height: 103px;
-	background: #f0f0ee;
-}
-#modelSharePromo {
-	position: relative;
-	margin: 0 auto;
-	max-width: 1100px;
-}
-#modelSharePromo h1 {
-	padding: 26px 0 0 53px;
-	margin: 0 0 3px 0;
-	background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/new.png) 0 30px no-repeat;
-	font-size: 30px;
-	font-weight: 700;
-	color: #393939;
-	line-height: 1em;
-}
-#modelSharePromo p {
-	padding-left: 53px;
-	margin: 0;
-	font-size: 16px;
-	color: #393939;
-	line-height: 1em;
-}
-#modelSharePromo a {
-	font-family: proxima-nova, sans-serif;
-	position: absolute;
-	top: 34px;
-	left: 557px;
-	display: inline-block;
-	padding: 5px 38px 5px 14px;
-	border-radius: 25px;
-	-moz-border-radius: 25px;
-	-webkit-border-radius: 25px;
-	border: solid 3px #76ca02;
-	color: #393939;
-	font-size: 18px;
-	font-weight: 700;
-	text-transform: uppercase;
-	background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/circle-arrow.png) 135px 3px no-repeat;
-	transition: all ease .5s;
-	-moz-transition: all ease .5s;
-	-webkit-transition: all ease .5s;
-}
-#modelSharePromo a:hover {
-	color: #fff !important;
-	background: #76ca02 url(https://developers.mendix.com/wp-content/themes/mendix/images/circle-arrow.png) 135px 3px no-repeat;
-}
-@media (max-width: 765px) {
-	#modelSharePromoWrapper {
-		height: auto;
-	}
-	#modelSharePromo {
-		padding-bottom: 26px;
-	}
-	#modelSharePromo p {
-		margin-bottom: 20px;
-	}
-	#modelSharePromo a {
-		position: static;
-		margin-left: 53px;
-	}
-}
-
 .entry-header {
 	margin: 0 auto;
 	margin-bottom: 30px;
@@ -802,7 +734,7 @@ a.mxid_topbar_login:hover {
 	font-size: 12px;
     left: 520px;
     position: absolute;
-    top: 39px;
+    top: 34px;
 }
 
 /* Footer  
@@ -2580,7 +2512,6 @@ td.label {
 #cse-search-box input#searchsubmit {
 	position: absolute;
 	width: 15px;
-	top: 5px !important;
 	left: 8px;
 	border-style: none;
 	text-indent: -9999px;
@@ -2600,7 +2531,6 @@ td.label {
 	@media only screen and (max-width: 840px) {
 		body { background: none; }
 		p { word-break: break-all; }
-		#container { padding: 0 10px; }
 		.menu, #footer, .nav-rss, #Community_Portal, #Visit_Mendix_com, .line, #subNavigationWrapper, #mainNav, #headerTop .theButtons, #header-links { display: none; }
 		
 		#navigation-menu {
