@@ -78,12 +78,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     {% endblock%}
 
                 </div>
-                {% block tail %}
-                    {% cnprog_paginator context %}
-                    <div class="paginator-container">
-                        {% cnprog_pagesize context %}
-                    </div>
-                {% endblock %}
+                <div id="tail" style="clear:both;">
+                    {% block tail %}
+                    {% endblock %}
+                </div>
             </div>
         </div>
         {% include "footer.html" %}
