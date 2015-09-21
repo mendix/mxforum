@@ -1983,8 +1983,9 @@ form .errorlist li{ color: red; }
 	font:bold 100% arial;
 }
 .paginator-container{
-    float:right;
-    padding:10px 0 10px 0;
+    float: right;
+    padding: 10px 0 10px 0;
+    margin-top: 40px;
 }
 .paginator-container-left{
     padding:5px 0 10px 0;
