@@ -250,6 +250,8 @@ def ask(request):
                 summary    = CONST['default_version'],
                 text       = form.cleaned_data['text']
             )
+            
+            register_event('QuestionPosted', request, request.user.username, question.id, '', '')
 
             return HttpResponseRedirect(question.get_absolute_url())
 
@@ -641,6 +643,8 @@ def answer(request, id):
                 summary    = CONST['default_version'],
                 text       = form.cleaned_data['text']
             )
+            
+            register_event('AnswerPosted', request, request.user.username, question.id, answer.id, '')
 
     return HttpResponseRedirect(question.get_absolute_url())
 
@@ -774,6 +778,9 @@ def vote(request, id):
                         #make sure retrieve data again after above author changes, they may have related data
                         answer = get_object_or_404(Answer, id=answer_id)
                         onAnswerAccept(answer, request.user)
+                        
+                        register_event('MarkedAnswerAsAccepted', request.user.username, question.id, answer.id, '')
+                        register_event('MarkAnswerAccepted', answer.author.username, question.id, answer.id, '')
                 else:
                     response_data['allowed'] = 0
                     response_data['success'] = 0
@@ -796,12 +803,16 @@ def vote(request, id):
                     new_item = FavoriteQuestion(question=question, user=request.user)
                     new_item.save()
                     response_data['count']  = FavoriteQuestion.objects.filter(question=question).count()
+                    register_event('LikedQuestion', request, request.user.username, question.id, '', '')
+                    register_event('ReceivedLike', request, question.author.username, question.id, '', '')
+                    
                 Question.objects.update_favorite_count(question)
 
             elif vote_type in ['1', '2', '5', '6']:
                 post_id = id
                 post = question
                 vote_score = 1
+                answer = None
                 if vote_type in ['5', '6']:
                     answer_id = request.POST.get('postId')
                     answer = get_object_or_404(Answer, id=answer_id)
@@ -824,11 +835,10 @@ def vote(request, id):
                         if voted > 0:
                             # cancel upvote
                             onUpVotedCanceled(vote, post, request.user)
-
                         else:
                             # cancel downvote
                             onDownVotedCanceled(vote, post, request.user)
-
+                            
                         response_data['status'] = 1
                         response_data['count'] = post.score
                 elif Vote.objects.get_votes_count_today_from_user(request.user) >= VOTE_RULES['scope_votes_per_user_per_day']:
@@ -837,10 +847,20 @@ def vote(request, id):
                     vote = Vote(user=request.user, content_object=post, vote=vote_score, voted_at=datetime.datetime.now())
                     if vote_score > 0:
                         # upvote
+                        answerid = ''
+                        if answer:
+                            answerid = answer.id
+                        
                         onUpVoted(vote, post, request.user)
+                        
+                        register_event('Upvoted', request, request.user.username, question.id, answerid, '')
+                        register_event('ReceivedUpvote', request, post.author.username, question.id, answerid, '')
                     else:
                         # downvote
                         onDownVoted(vote, post, request.user)
+                        
+                        register_event('DownVoted', request, request.user.username, post.id, '', '')
+                        register_event('ReceivedDownvote', request, post.author.username, post.id, '', '')
 
                     votes_left = VOTE_RULES['scope_votes_per_user_per_day'] - Vote.objects.get_votes_count_today_from_user(request.user)
                     if votes_left <= VOTE_RULES['scope_warn_votes_left']:
@@ -1962,3 +1982,41 @@ class UserImportService(DjangoSoapApp):
 
 user_import_service = UserImportService()
 
+#####################################
+#									#
+# Call Stuff at Platform Analytics	#
+#									#
+#####################################
+
+from suds.client import Client
+import sys
+import datetime
+import threading
+from settings import EVENTREG_LOCATION, EVENTREG_USER, EVENTREG_PASS
+
+def register_event(event_type, request, open_id, extra_info, extra_info2, extra_info3):
+    try:
+        client = Client(EVENTREG_LOCATION)
+        user_agent = request.META['HTTP_USER_AGENT']
+        new_timestamp = datetime.datetime.now().isoformat()
+        
+        event = {
+            'EventType' : event_type,
+            'OpenId' : open_id,
+            'CompanyId' : '',
+            'UserAgent' : user_agent,
+            'ExtraInfo' : extra_info,
+            'ExtraInfo2' : extra_info2,
+            'ExtraInfo3' : extra_info3,
+            'TimeStamp' : new_timestamp
+        }
+        
+        client.set_options(soapheaders={'authentication' : {'username': EVENTREG_USER, 'password': EVENTREG_PASS}})
+        
+        def reg_event (client, eventargs):
+            client.service.RegisterEvent(eventargs)
+        
+        thread = threading.Thread(target=reg_event, args=(client, event))
+        thread.start()
+    except Exception, e:
+        sys.stdout.write("Error whilst trying to register event with Platform Analytics (%s) \n" % e.message)

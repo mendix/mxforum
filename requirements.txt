@@ -13,3 +13,6 @@ pytz==2010b
 soaplib==0.8.1
 virtualenv==1.4.9
 wsgiref==0.1.2
+
+suds
+python-dateutil

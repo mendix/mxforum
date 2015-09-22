@@ -32,7 +32,7 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 
 DATABASE_NAME = 'mxforum'             # Or path to database file if using sqlite3.
 DATABASE_USER = 'mxforum'             # Not used with sqlite3.
-DATABASE_PASSWORD = '1'         # Not used with sqlite3.
+DATABASE_PASSWORD = '1234'         # Not used with sqlite3.
 
 SECRET_KEY = 'nottellingyou' # change in local_settings
 
@@ -45,6 +45,10 @@ EMAIL_HOST='10.140.10.1'
 # EMAIL_PORT='587'
 EMAIL_PORT='25'
 EMAIL_USE_TLS=False
+
+EVENTREG_LOCATION=''
+EVENTREG_USER=''
+EVENTREG_PASS=''
 
 
 
@@ -94,8 +98,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.transaction.TransactionMiddleware',
-    'forum.ssomiddleware.CheckMxIdCookie',
+    'django.middleware.transaction.TransactionMiddleware'
+    #'forum.ssomiddleware.CheckMxIdCookie',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -138,10 +142,6 @@ INSTALLED_APPS = (
     'forum',
 )
 
-
-AUTHENTICATION_BACKENDS = (
-    'forum.ssoauth.SSOModelBackend',
-)
 LOGIN_REDIRECT_URL = '/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE=True
 

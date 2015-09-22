@@ -9,3 +9,4 @@ log/
 markdown2.py
 mydump.sql
 venv
+.vscode/
