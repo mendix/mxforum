@@ -9,13 +9,6 @@
 <div id="main-bar" class="">
     <h3>{% if searchtag %}Labels{% else %}All questions{% endif %}
     </h3>
-    <div id="tab" class="">
-        <a id="latest" href="?sort=latest" title="Latest questions">Latest</a>
-        <a id="active" href="?sort=active" title="Most active questions">Active</a>
-        <a id="hottest" href="?sort=hottest" title="Hottest questions">Hottest</a>
-        <a id="mostvoted" href="?sort=mostvoted" title="Number of issues to vote">Most voted</a>
-    </div>
-    
 </div>
 <div id="main-body" class="">
     {% for question in questions.object_list %}
