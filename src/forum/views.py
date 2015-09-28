@@ -837,6 +837,7 @@ def vote(request, id):
                         response_data['status'] = 2
                     else:
                         voted = vote.vote
+                        answerid = ''
                         if voted > 0:
                             # cancel upvote
                             onUpVotedCanceled(vote, post, request.user)
