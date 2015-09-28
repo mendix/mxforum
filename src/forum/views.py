@@ -2004,10 +2004,10 @@ import datetime
 import threading
 from settings import EVENTREG_LOCATION, EVENTREG_USER, EVENTREG_PASS
 
+client = Client(EVENTREG_LOCATION)
+
 def register_event(event_type, request, open_id, extra_info, extra_info2, extra_info3, timestamp):
     try:
-        client = Client(EVENTREG_LOCATION)
-        
         user_agent = ''
         if request:
             user_agent = request.META['HTTP_USER_AGENT']
