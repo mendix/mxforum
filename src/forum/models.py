@@ -436,6 +436,9 @@ User.add_to_class('location', models.CharField(max_length=100, blank=True))
 User.add_to_class('about', models.TextField(blank=True))
 User._meta.get_field_by_name('username')[0].max_length=50
 
+## Added for Platform Analytics events support
+User.add_to_class('openid', models.CharField(max_length=400, blank=False))
+
 # custom signal
 tags_updated = django.dispatch.Signal(providing_args=["question"])
 edit_question_or_answer = django.dispatch.Signal(providing_args=["instance", "modified_by"])

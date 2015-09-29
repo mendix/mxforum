@@ -1992,6 +1992,45 @@ class UserImportService(DjangoSoapApp):
 
 user_import_service = UserImportService()
 
+# New Soap version that also sends over the OpenID
+
+class UserImportService2(DjangoSoapApp):
+
+    __tns__ = 'http://www.mendix-ns.org/soap/'
+
+
+    @soapmethod(soap_types.String, soap_types.String, soap_types.String, soap_types.String, soap_types.String, soap_types.String, _returns=soap_types.Boolean)
+    def set_user(self, _service_password, _email, _name, _about, _website, _openid):
+        from settings import DEBUG
+		# check authentication:
+        if not _service_password == ws_password:
+            if DEBUG==True:
+                sys.stderr.write("wrong password")
+                sys.stderr.flush()
+            return 0
+
+        u, created = User.objects.get_or_create(username=_email)
+        if DEBUG==True:
+            sys.stderr.write("MXforum WEBSERVICES set_user called with params openid: %s, email: %s, name: %s, about %s, website %s" % (_openid, _email, _name, _about, _website))
+            if created:
+                sys.stderr.write("Created user %s" % u)
+            else:
+                sys.stderr.write("Found user %s" % u)
+            sys.stderr.flush()
+
+        u.username   = _email
+        u.openid = _openid
+        u.real_name  = _name
+        if _about is not None:
+            u.about = _about
+        if _website is not None:
+            u.website = _website	
+        u.set_password("sapperdeflap")
+        u.save()
+        return 1
+
+user_import_service2 = UserImportService2()
+
 #####################################
 #									#
 # Call Stuff at Platform Analytics	#
@@ -2004,7 +2043,11 @@ import datetime
 import threading
 from settings import EVENTREG_LOCATION, EVENTREG_USER, EVENTREG_PASS
 
-client = Client(EVENTREG_LOCATION)
+try:
+    client = Client(EVENTREG_LOCATION)
+except Exception, e:
+    sys.stdout.write("ERROR: Could NOT open platform analytics WSDL at location: (%s) \n" % EVENTREG_LOCATION)
+    sys.stdout.write("ERROR: THIS MEANS NO EVENTS CAN BE SENT \n")
 
 def register_event(event_type, request, open_id, extra_info, extra_info2, extra_info3, timestamp):
     try:
