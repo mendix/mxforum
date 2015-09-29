@@ -68,7 +68,7 @@ class Command(BaseCommand):
                 register_event('ReceivedDownvote', None, question.author.username, question.id, '', '', vote.voted_at)
                 
         # type 16
-        fav_questions = FavoriteQuestion.objects.filter()
+        fav_questions = FavoriteQuestion.objects.all()
         sys.stdout.write("Migrating %s fav_questions \n" % len(fav_questions))                        
         for fav_q in fav_questions:
             question = get_object_or_none(Question, fav_q.question_id)
