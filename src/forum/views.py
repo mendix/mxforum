@@ -251,7 +251,7 @@ def ask(request):
                 text       = form.cleaned_data['text']
             )
             
-            register_event('QuestionPosted', request, request.user.username, question.id, '', '', None)
+            register_event('QuestionPosted', request, request.user.openid, question.id, '', '', None)
 
             return HttpResponseRedirect(question.get_absolute_url())
 
@@ -644,7 +644,7 @@ def answer(request, id):
                 text       = form.cleaned_data['text']
             )
             
-            register_event('AnswerPosted', request, request.user.username, question.id, answer.id, '', None)
+            register_event('AnswerPosted', request, request.user.openid, question.id, answer.id, '', None)
 
     return HttpResponseRedirect(question.get_absolute_url())
 
@@ -770,8 +770,8 @@ def vote(request, id):
                         onAnswerAcceptCanceled(answer, request.user)
                         response_data['status'] = 1
                         
-                        register_event('RetractAcceptedAnswer', request.user.username, question.id, answer.id, '', None)
-                        register_event('AcceptedAnswerRemoved', answer.author.username, question.id, answer.id, '', None)
+                        register_event('RetractAcceptedAnswer', request.user.openid, question.id, answer.id, '', None)
+                        register_event('AcceptedAnswerRemoved', answer.author.openid, question.id, answer.id, '', None)
                     else:
                         # set other answers in this question not accepted first
                         for answer_of_question in Answer.objects.get_answers_from_question(question, request.user):
@@ -782,8 +782,8 @@ def vote(request, id):
                         answer = get_object_or_404(Answer, id=answer_id)
                         onAnswerAccept(answer, request.user)
                         
-                        register_event('MarkedAnswerAsAccepted', request.user.username, question.id, answer.id, '', None)
-                        register_event('MarkAnswerAccepted', answer.author.username, question.id, answer.id, '', None)
+                        register_event('MarkedAnswerAsAccepted', request.user.openid, question.id, answer.id, '', None)
+                        register_event('MarkAnswerAccepted', answer.author.openid, question.id, answer.id, '', None)
                 else:
                     response_data['allowed'] = 0
                     response_data['success'] = 0
@@ -801,15 +801,15 @@ def vote(request, id):
                             if response_data['count'] < 0:
                                 response_data['count'] = 0
                             has_favorited = True
-                            register_event('RetractLikedQuestion', request, request.user.username, question.id, '', '', None)
-                            register_event('LikedQuestionRemoved', request, question.author.username, question.id, '', '', None)
+                            register_event('RetractLikedQuestion', request, request.user.openid, question.id, '', '', None)
+                            register_event('LikedQuestionRemoved', request, question.author.openid, question.id, '', '', None)
                 # if above deletion has not been executed, just insert a new favorite question
                 if not has_favorited:
                     new_item = FavoriteQuestion(question=question, user=request.user)
                     new_item.save()
                     response_data['count']  = FavoriteQuestion.objects.filter(question=question).count()
-                    register_event('LikedQuestion', request, request.user.username, question.id, '', '', None)
-                    register_event('ReceivedLike', request, question.author.username, question.id, '', '', None)
+                    register_event('LikedQuestion', request, request.user.openid, question.id, '', '', None)
+                    register_event('ReceivedLike', request, question.author.openid, question.id, '', '', None)
                     
                 Question.objects.update_favorite_count(question)
 
@@ -841,13 +841,13 @@ def vote(request, id):
                         if voted > 0:
                             # cancel upvote
                             onUpVotedCanceled(vote, post, request.user)
-                            register_event('RetractUpvote', request, request.user.username, question.id, answerid, '', None)
-                            register_event('UpvoteRemoved', request, post.author.username, question.id, answerid, '', None)
+                            register_event('RetractUpvote', request, request.user.openid, question.id, answerid, '', None)
+                            register_event('UpvoteRemoved', request, post.author.openid, question.id, answerid, '', None)
                         else:
                             # cancel downvote
                             onDownVotedCanceled(vote, post, request.user)
-                            register_event('RetractDownvote', request, request.user.username, question.id, answerid, '', None)
-                            register_event('DownvoteRemoved', request, post.author.username, question.id, answerid, '', None)
+                            register_event('RetractDownvote', request, request.user.openid, question.id, answerid, '', None)
+                            register_event('DownvoteRemoved', request, post.author.openid, question.id, answerid, '', None)
                             
                         response_data['status'] = 1
                         response_data['count'] = post.score
@@ -863,14 +863,14 @@ def vote(request, id):
                         
                         onUpVoted(vote, post, request.user)
                         
-                        register_event('Upvoted', request, request.user.username, question.id, answerid, '', None)
-                        register_event('ReceivedUpvote', request, post.author.username, question.id, answerid, '', None)
+                        register_event('Upvoted', request, request.user.openid, question.id, answerid, '', None)
+                        register_event('ReceivedUpvote', request, post.author.openid, question.id, answerid, '', None)
                     else:
                         # downvote
                         onDownVoted(vote, post, request.user)
                         
-                        register_event('DownVoted', request, request.user.username, post.id, '', '', None)
-                        register_event('ReceivedDownvote', request, post.author.username, post.id, '', '', None)
+                        register_event('DownVoted', request, request.user.openid, post.id, '', '', None)
+                        register_event('ReceivedDownvote', request, post.author.openid, post.id, '', '', None)
 
                     votes_left = VOTE_RULES['scope_votes_per_user_per_day'] - Vote.objects.get_votes_count_today_from_user(request.user)
                     if votes_left <= VOTE_RULES['scope_warn_votes_left']:
@@ -1675,6 +1675,12 @@ def __comments(request, obj, type, user):
             comment_data = request.POST.get('comment')
             comment = Comment(content_object=obj, comment=comment_data, user=request.user)
             comment.save()
+            if (comment.content_type_id == ContentType.objects.get_for_model(Question)):
+                register_event('CommentPosted', request, request.user.openid, comment.object_id, '', '', None)
+            else:
+                answer = get_object_or_404(Answer, comment.object_id)
+                register_event('CommentPosted', request, request.user.openid, answer.question.id , answer.id, '', None)
+            
             obj.comment_count = obj.comment_count + 1
             obj.save()
             return __generate_comments_json(obj, type, user)
@@ -1709,6 +1715,9 @@ def delete_question_comment(request, question_id, comment_id):
         question.comments.remove(comment)
         question.comment_count = question.comment_count - 1
         question.save()
+        
+        register_event('CommentRemoved', request, request.user.openid, question.id, '', '', None)
+        
         user = request.user
         return __generate_comments_json(question, 'question', user)
 
@@ -1720,6 +1729,9 @@ def delete_answer_comment(request, answer_id, comment_id):
         answer.comments.remove(comment)
         answer.comment_count = answer.comment_count - 1
         answer.save()
+        
+        register_event('CommentRemoved', request, request.user.openid, answer.question.id, answer.id, '', None)
+        
         user = request.user
         return __generate_comments_json(answer, 'answer', user)
 
@@ -2047,9 +2059,9 @@ try:
     client = Client(EVENTREG_LOCATION)
 except Exception, e:
     sys.stdout.write("ERROR: Could NOT open platform analytics WSDL at location: (%s) \n" % EVENTREG_LOCATION)
-    sys.stdout.write("ERROR: THIS MEANS NO EVENTS CAN BE SENT \n")
+    sys.stdout.write("ERROR: THIS MEANS NO EVENTS WILL BE SENT \n")
 
-def register_event(event_type, request, open_id, extra_info, extra_info2, extra_info3, timestamp):
+def register_event(event_type, request, open_id, extra_info, extra_info2, extra_info3, timestamp, *sync):
     try:
         user_agent = ''
         if request:
@@ -2074,7 +2086,11 @@ def register_event(event_type, request, open_id, extra_info, extra_info2, extra_
         def reg_event (client, eventargs):
             client.service.RegisterEvent(eventargs)
         
-        thread = threading.Thread(target=reg_event, args=(client, event))
-        thread.start()
-    except Exception, e:
+        if sync:
+            reg_event(client, event)
+        else:
+            thread = threading.Thread(target=reg_event, args=(client, event))
+            thread.start()
+
+    except e:
         sys.stdout.write("Error whilst trying to register event with Platform Analytics (%s) \n" % e.message)
