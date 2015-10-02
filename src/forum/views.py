@@ -2049,48 +2049,61 @@ user_import_service2 = UserImportService2()
 #									#
 #####################################
 
-from suds.client import Client
 import sys
 import datetime
-import threading
+import redis
+import pickle
+from suds.client import Client
+from rq import Queue
 from settings import EVENTREG_LOCATION, EVENTREG_USER, EVENTREG_PASS
+
+ALAN_ACTIVE = False
 
 try:
     client = Client(EVENTREG_LOCATION)
-except Exception, e:
-    sys.stdout.write("ERROR: Could NOT open platform analytics WSDL at location: (%s) \n" % EVENTREG_LOCATION)
-    sys.stdout.write("ERROR: THIS MEANS NO EVENTS WILL BE SENT \n")
+    ALAN_ACTIVE = True
+    r = redis.Redis()
+    q = Queue(connection=r)
+except:
+    ALAN_ACTIVE = False
+    sys.stdout.write("ALAN: Could NOT open platform analytics WSDL at location: (%s). \n" % EVENTREG_LOCATION)
+    sys.stdout.write("ALAN: THIS MEANS NO EVENTS WILL BE SENT. \n")
 
-def register_event(event_type, request, open_id, extra_info, extra_info2, extra_info3, timestamp, *sync):
-    try:
-        user_agent = ''
-        if request:
-            user_agent = request.META['HTTP_USER_AGENT']
+def send_event(_event):
+    if ALAN_ACTIVE:
+        try:
+            event = pickle.load(_event)
             
-        if not timestamp:
-            timestamp = datetime.datetime.now().isoformat()
-        
-        event = {
-            'EventType' : event_type,
-            'OpenId' : open_id,
-            'CompanyId' : '',
-            'UserAgent' : user_agent,
-            'ExtraInfo' : extra_info,
-            'ExtraInfo2' : extra_info2,
-            'ExtraInfo3' : extra_info3,
-            'TimeStamp' : timestamp
-        }
-        
-        client.set_options(soapheaders={'authentication' : {'username': EVENTREG_USER, 'password': EVENTREG_PASS}})
-        
-        def reg_event (client, eventargs):
+            client.set_options(soapheaders={'authentication' : {'username': EVENTREG_USER, 'password': EVENTREG_PASS}})
+            
             client.service.RegisterEvent(eventargs)
-        
-        if sync:
-            reg_event(client, event)
-        else:
-            thread = threading.Thread(target=reg_event, args=(client, event))
-            thread.start()
+    
+        except e:
+            sys.stdout.write("Error whilst trying to register event with Platform Analytics (%s) \n" % e.message)
+            job = q.enqueue(send_event, _event)
+    else:
+        sys.stdout.write("ALAN: Failed to send event, ALAN is NOT active. \n")
+        # ALAN is not running, put event back into queue
+        job = q.enqueue(send_event, _event)
 
-    except e:
-        sys.stdout.write("Error whilst trying to register event with Platform Analytics (%s) \n" % e.message)
+def register_event(event_type, request, open_id, extra_info, extra_info2, extra_info3, timestamp):
+    user_agent = ''
+    if request:
+        user_agent = request.META['HTTP_USER_AGENT']
+        
+    if not timestamp:
+        timestamp = datetime.datetime.now().isoformat()
+
+    event = {
+        'EventType' : event_type,
+        'OpenId' : open_id,
+        'CompanyId' : '',
+        'UserAgent' : user_agent,
+        'ExtraInfo' : extra_info,
+        'ExtraInfo2' : extra_info2,
+        'ExtraInfo3' : extra_info3,
+        'TimeStamp' : timestamp
+    }
+    
+    p = pickle.dumps(event)
+    job = q.enqueue(send_event, p)
