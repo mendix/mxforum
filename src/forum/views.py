@@ -2076,7 +2076,9 @@ def send_event(_event):
             
             client.set_options(soapheaders={'authentication' : {'username': EVENTREG_USER, 'password': EVENTREG_PASS}})
             
-            client.service.RegisterEvent(eventargs)
+            sys.stdout.write("ALAN: Stub for event sending with type: %s ", event.EventType)
+            
+            #client.service.RegisterEvent(eventargs)
     
         except e:
             sys.stdout.write("ALAN: Error whilst trying to register event (%s) \n" % e.message)
