@@ -2055,14 +2055,14 @@ import redis
 import pickle
 from suds.client import Client
 from rq import Queue
-from settings import EVENTREG_LOCATION, EVENTREG_USER, EVENTREG_PASS
+from settings import EVENTREG_LOCATION, EVENTREG_USER, EVENTREG_PASS, REDIS_LOC, REDIS_PASS
 
 ALAN_ACTIVE = False
 
 try:
     client = Client(EVENTREG_LOCATION)
     ALAN_ACTIVE = True
-    r = redis.Redis()
+    r = redis.Redis(REDIS_LOC, password=REDIS_PASS)
     q = Queue(connection=r)
 except:
     ALAN_ACTIVE = False
@@ -2079,7 +2079,7 @@ def send_event(_event):
             client.service.RegisterEvent(eventargs)
     
         except e:
-            sys.stdout.write("Error whilst trying to register event with Platform Analytics (%s) \n" % e.message)
+            sys.stdout.write("ALAN: Error whilst trying to register event (%s) \n" % e.message)
             job = q.enqueue(send_event, _event)
     else:
         sys.stdout.write("ALAN: Failed to send event, ALAN is NOT active. \n")
