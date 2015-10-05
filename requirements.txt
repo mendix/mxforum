@@ -14,6 +14,6 @@ soaplib==0.8.1
 virtualenv==1.4.9
 wsgiref==0.1.2
 
-suds=0.4
-python-dateutil=2.4.2
-rq=0.5.5
+suds==0.4
+python-dateutil==2.4.2
+rq==0.5.5
