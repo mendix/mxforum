@@ -2072,7 +2072,7 @@ except:
 def send_event(_event):
     if ALAN_ACTIVE:
         try:
-            event = pickle.load(_event)
+            event = pickle.loads(_event)
             
             client.set_options(soapheaders={'authentication' : {'username': EVENTREG_USER, 'password': EVENTREG_PASS}})
             
