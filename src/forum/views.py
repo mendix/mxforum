@@ -2052,12 +2052,17 @@ user_import_service2 = UserImportService2()
 import sys
 import datetime
 import redis
-import pickle
+import json
 from suds.client import Client
 from rq import Queue
 from settings import EVENTREG_LOCATION, EVENTREG_USER, EVENTREG_PASS, REDIS_LOC, REDIS_PASS
 
 ALAN_ACTIVE = False
+
+def log(string):
+    with open('forum.log', 'a+') as f:
+        f.write( "["+datetime.datetime.now().isoformat()+"] "+string+"\n\n")
+
 
 try:
     client = Client(EVENTREG_LOCATION)
@@ -2066,25 +2071,25 @@ try:
     q = Queue(connection=r)
 except:
     ALAN_ACTIVE = False
-    sys.stdout.write("ALAN: Could NOT open platform analytics WSDL at location: (%s). \n" % EVENTREG_LOCATION)
-    sys.stdout.write("ALAN: THIS MEANS NO EVENTS WILL BE SENT. \n")
+    log("ALAN: Could NOT open platform analytics WSDL at location: (%s). \n" % EVENTREG_LOCATION)
+    log("ALAN: THIS MEANS NO EVENTS WILL BE SENT. \n")
 
 def send_event(_event):
     if ALAN_ACTIVE:
         try:
-            event = pickle.loads(_event)
+            event = json.loads(_event)
             
             client.set_options(soapheaders={'authentication' : {'username': EVENTREG_USER, 'password': EVENTREG_PASS}})
             
-            sys.stdout.write("ALAN: Stub for event sending with type: %s ", event.EventType)
+            log("ALAN: Stub for event sending with type: %s ", event.EventType)
             
             #client.service.RegisterEvent(eventargs)
     
         except e:
-            sys.stdout.write("ALAN: Error whilst trying to register event (%s) \n" % e.message)
+            log("ALAN: Error whilst trying to register event (%s) \n" % e.message)
             job = q.enqueue(send_event, _event)
     else:
-        sys.stdout.write("ALAN: Failed to send event, ALAN is NOT active. \n")
+        log("ALAN: Failed to send event, ALAN is NOT active. \n")
         # ALAN is not running, put event back into queue
         job = q.enqueue(send_event, _event)
 
@@ -2107,5 +2112,6 @@ def register_event(event_type, request, open_id, extra_info, extra_info2, extra_
         'TimeStamp' : timestamp
     }
     
-    p = pickle.dumps(event)
+    p = json.dumps(event)
+    log("ALAN INFO: queueing - %s \n" % p)
     job = q.enqueue(send_event, p)
