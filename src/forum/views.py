@@ -2048,50 +2048,9 @@ user_import_service2 = UserImportService2()
 # Call Stuff at Platform Analytics	#
 #									#
 #####################################
-
-import sys
 import datetime
-import redis
 import json
-from suds.client import Client
-from rq import Queue
-from settings import EVENTREG_LOCATION, EVENTREG_USER, EVENTREG_PASS, REDIS_LOC, REDIS_PASS
-
-ALAN_ACTIVE = False
-
-def log(string):
-    with open('forum.log', 'a+') as f:
-        f.write( "["+datetime.datetime.now().isoformat()+"] "+string+"\n\n")
-
-
-try:
-    client = Client(EVENTREG_LOCATION)
-    ALAN_ACTIVE = True
-    r = redis.Redis(REDIS_LOC, password=REDIS_PASS)
-    q = Queue(connection=r)
-except:
-    ALAN_ACTIVE = False
-    log("ALAN: Could NOT open platform analytics WSDL at location: (%s). \n" % EVENTREG_LOCATION)
-    log("ALAN: THIS MEANS NO EVENTS WILL BE SENT. \n")
-
-def send_event(_event):
-    if ALAN_ACTIVE:
-        try:
-            event = json.loads(_event)
-            
-            client.set_options(soapheaders={'authentication' : {'username': EVENTREG_USER, 'password': EVENTREG_PASS}})
-            
-            log("ALAN: Stub for event sending with type: %s ", event.EventType)
-            
-            #client.service.RegisterEvent(eventargs)
-    
-        except e:
-            log("ALAN: Error whilst trying to register event (%s) \n" % e.message)
-            job = q.enqueue(send_event, _event)
-    else:
-        log("ALAN: Failed to send event, ALAN is NOT active. \n")
-        # ALAN is not running, put event back into queue
-        job = q.enqueue(send_event, _event)
+import events
 
 def register_event(event_type, request, open_id, extra_info, extra_info2, extra_info3, timestamp):
     user_agent = ''
@@ -2114,4 +2073,4 @@ def register_event(event_type, request, open_id, extra_info, extra_info2, extra_
     
     p = json.dumps(event)
     log("ALAN INFO: queueing - %s \n" % p)
-    job = q.enqueue(send_event, p)
+    events.send_event.delay(p)
