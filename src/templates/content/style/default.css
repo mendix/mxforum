@@ -2510,18 +2510,18 @@ td.label {
 		#navigation-menu {
 			height: 67px;
 			overflow: visible; 
-			padding: 0;
+			padding: 0 10px;
 		}
 		#cse-search-box {
 			display: inline-block;
-			left: 0;
+			left: 10px;
 		    top: 40px;
 		    width: 282px;
 		}
 		#cse-search-box #q {
-			float:none;
+			float: none;
 			width: 254px;
-			padding: 6px 0 4px 27px;
+			padding: 6px 15px 4px 10px;
 		}
 
 		/* Header */
@@ -2581,6 +2581,9 @@ td.label {
 	    #cse-search-box input#searchsubmit {
 	    	background-image: url(../images/search-icon@2x.png);
 	        background-size: 15px 14px;
+	        right: 10px;
+		    top: -2px;
+		    left: auto;
 	    }
 	    .updatedtime {
 	    	background-image: url(../images/clock1@2x.png);
