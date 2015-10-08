@@ -124,10 +124,10 @@ h1 {
 h3 {
 	margin: 10px 0;
     padding: 0 0 15px;
-	color: #FF5A00;
+	color: #141412;
     font-size: 1.313em;
-    font-weight: normal;
-    border-bottom: 1px solid #ECECEC;
+    font-weight: bold;
+    border-bottom: 2px solid #e9e9e9;
     padding-bottom: 10px;
 }
 h3 a { color: #FF5A00; }
@@ -680,15 +680,16 @@ a.mxid_topbar_login:hover {
 	text-decoration: none;
 	color: #0285FF;	
 }
+#question-table {
+	display: table;
+    width: 100%;
+}
 #item-right {
 	display: table-cell;
-	min-width: 610px;
-    /*float:left;
-	width: 597px;*/
+    vertical-align: top;
+    width: 100%;
 }
 #main-body {
-    /*float:left;
-    width:100%;*/
 	margin-bottom: 35px;
 }
 #main-bar .golden { background:url(/content/images/bg_title_golden.gif) no-repeat; }
@@ -1212,7 +1213,7 @@ a.mxid_topbar_login:hover {
     float: left;
     margin: 0;
     padding: 20px 0 10px 0;
-    border-bottom: 1px dotted #D8D2A9;
+    border-bottom: 1px dotted #e9e9e9;
 }
 .boxes {
     float:left;
@@ -1287,10 +1288,6 @@ a.mxid_topbar_login:hover {
     float:right;
     width:465px;
 }
-/*.summary h3 {
-	margin-bottom: 20px;
-	font-weight: bold;	
-}*/
 .homepage .summary {
 	width: 870px;
 }
@@ -1308,11 +1305,12 @@ a.mxid_topbar_login:hover {
     font-size: 0.750em;
 }
 .answer {
-    border-bottom:1px dotted #666666;
-    padding-bottom:20px;
-    padding-top:20px;
-    width: 100%;
-    margin-bottom:10px;
+	display: table;
+	width: 100%;
+    border-bottom: 1px solid #CCC;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 10px;
 }
 .answer-body { 
 	min-height: 80px; 
@@ -1335,10 +1333,6 @@ a.mxid_topbar_login:hover {
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);	
   	border: 1px solid #467e2a;
 }
-/*.answered-accepted {
-	background: #75845C;
-	color: #E1E818;
-}*/
 .answered-by-owner { background: #E0EAF1; }
 .answered-by-owner .comments-link { background-color:#D6E4EE; }
 .answered-by-owner .comments-container { background-color: #eee; }
@@ -1483,17 +1477,10 @@ a.mxid_topbar_login:hover {
 	margin-right: 2px;
 }
 #recent-tags .post-tag {
-	/*border: none;
-	margin: 0;
-	font-size: 100%;
-	color: black !important;*/
+
 }
 #recent-tags .post-tag:hover {
-	/*background-color: #777;
-	color: White !important;
-	border: none;
-	margin: 0;
-	text-decoration: none;*/
+
 }
 #related-tags{ line-height:30px; }
 .list-item{ list-style:inside square }
@@ -1603,14 +1590,12 @@ div.grippie {
 	margin-left: 5px;
 }
 .item-right {
-    /*float:left;
-	width: 640px;*/
 	display: table-cell;
-	min-width: 599px;
+	width: 100%;
+	vertical-align: top;
 	margin-right: 10px;
 }
 #question-controls {
-	/*width: 640px;*/
 	margin-bottom: 20px;
 	padding-top: 5px;
 	border-top: 1px dotted #cacaca;	
@@ -2128,9 +2113,6 @@ div.votebox span {
   	border: 1px solid #467e2a;
   	color: white;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
-
-    /*color: #E1E818;
-    background: #75845C;*/
 }
 .answered-accepted,
 .vote,
@@ -2161,14 +2143,6 @@ div.votebox span {
     width:600px;
     line-height:22px;
 }
-/*.user-stats-table .answered-accepted {
-	color: #E1E818;
-	min-width: 20px;
-    text-shadow: none;
-    border-style: none;
-    box-shadow: none;
-    background: #60AC39;
-}*/
 .user-stats-table .post-tag {
 	font-size: 90%;
 }
@@ -2216,7 +2190,6 @@ div.started .reputation-score { margin-left:1px; }
     width:20px;
 }
 .answered-accepted {
-    /*background:#75845C none repeat scroll 0 0;*/
     color:#E1E818;
 }
 .answer-link {
@@ -2537,18 +2510,18 @@ td.label {
 		#navigation-menu {
 			height: 67px;
 			overflow: visible; 
-			padding: 0;
+			padding: 0 10px;
 		}
 		#cse-search-box {
 			display: inline-block;
-			left: 0;
+			left: 10px;
 		    top: 40px;
 		    width: 282px;
 		}
 		#cse-search-box #q {
-			float:none;
+			float: none;
 			width: 254px;
-			padding: 6px 0 4px 27px;
+			padding: 6px 15px 4px 10px;
 		}
 
 		/* Header */
@@ -2608,6 +2581,9 @@ td.label {
 	    #cse-search-box input#searchsubmit {
 	    	background-image: url(../images/search-icon@2x.png);
 	        background-size: 15px 14px;
+	        right: 10px;
+		    top: -2px;
+		    left: auto;
 	    }
 	    .updatedtime {
 	    	background-image: url(../images/clock1@2x.png);
