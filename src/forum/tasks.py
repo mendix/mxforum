@@ -36,5 +36,6 @@ def send_event(self, _event):
     
         except Exception as e:
             flog("ALAN: Error whilst trying to register event (%s)" % e)
+            raise self.try(exc=e)
     else:
         flog("ALAN: Failed to send event, ALAN is NOT active.")

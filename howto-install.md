@@ -14,3 +14,6 @@
 
 - python manage.py runserver
 - Goto localhost:8000
+
+- To run the celery worker use: `user@src 4-$ ../venv/bin/celery -A forum.tasks worker --loglevel=info`
+- make sure you start this from the src folder
