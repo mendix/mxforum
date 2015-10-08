@@ -53,6 +53,11 @@ EVENTREG_PASS=''
 REDIS_LOC = ''
 REDIS_PASS = ''
 
+# CELERY SETTINGS
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json', 'pickle']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
 
 # Local time zone for this installation. Choices can be found here:

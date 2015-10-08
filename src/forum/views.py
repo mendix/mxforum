@@ -2050,7 +2050,8 @@ user_import_service2 = UserImportService2()
 #####################################
 import datetime
 import json
-import events
+import tasks
+from forum.flylogger import flog
 
 def register_event(event_type, request, open_id, extra_info, extra_info2, extra_info3, timestamp):
     user_agent = ''
@@ -2062,7 +2063,7 @@ def register_event(event_type, request, open_id, extra_info, extra_info2, extra_
 
     event = {
         'EventType' : event_type,
-        'OpenId' : open_id,
+        'OpenId' : 'testing',
         'CompanyId' : '',
         'UserAgent' : user_agent,
         'ExtraInfo' : extra_info,
@@ -2072,5 +2073,5 @@ def register_event(event_type, request, open_id, extra_info, extra_info2, extra_
     }
     
     p = json.dumps(event)
-    log("ALAN INFO: queueing - %s \n" % p)
-    events.send_event.delay(p)
+    flog("ALAN INFO: queueing - %s" % p)
+    tasks.send_event.delay(p)
