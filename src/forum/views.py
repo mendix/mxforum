@@ -2063,7 +2063,7 @@ def register_event(event_type, request, open_id, extra_info, extra_info2, extra_
 
     event = {
         'EventType' : event_type,
-        'OpenId' : 'testing',
+        'OpenId' : open_id,
         'CompanyId' : '',
         'UserAgent' : user_agent,
         'ExtraInfo' : extra_info,
