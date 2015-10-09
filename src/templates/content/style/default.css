@@ -733,7 +733,7 @@ a.mxid_topbar_login:hover {
 }
 #header-links {
 	font-size: 12px;
-    left: 520px;
+    left: 550px;
     position: absolute;
     top: 34px;
 }
@@ -2469,7 +2469,7 @@ td.label {
 }
 #cse-search-box {
 	position: absolute;
-	left: 332px;
+	left: 380px;
 }
 #cse-search-box label {
 	display: none;
@@ -2479,7 +2479,7 @@ td.label {
 	width: 150px;
 	font-size: 0.750em;
 	line-height: 1.2em;
-	padding: 8px 0 6px 27px;
+	padding: 8px 0 6px 10px;
 	border: 1px solid #A7A9AA;
 	box-shadow: none;
 }
@@ -2520,8 +2520,6 @@ td.label {
 		}
 		#cse-search-box #q {
 			float: none;
-			width: 254px;
-			padding: 6px 15px 4px 10px;
 		}
 
 		/* Header */
@@ -2581,9 +2579,9 @@ td.label {
 	    #cse-search-box input#searchsubmit {
 	    	background-image: url(../images/search-icon@2x.png);
 	        background-size: 15px 14px;
-	        right: 10px;
-		    top: -2px;
-		    left: auto;
+			right: 0;
+			top: -2px;
+			left: 136px;
 	    }
 	    .updatedtime {
 	    	background-image: url(../images/clock1@2x.png);
