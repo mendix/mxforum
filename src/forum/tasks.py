@@ -25,7 +25,7 @@ except:
 app.config_from_object('django.conf:settings')
 app.autodiscover_tasks(lambda: djsettings.INSTALLED_APPS)
 
-@app.task(bind=True)
+@app.task(bind=True, max_retries=20)
 def send_event(self, _event):
     if ALAN_ACTIVE:
         try:
@@ -36,6 +36,6 @@ def send_event(self, _event):
     
         except Exception as e:
             flog("ALAN: Error whilst trying to register event (%s)" % e)
-            raise self.retry(exc=e)
+            raise self.retry(exc=e, countdown=60 * 10)
     else:
         flog("ALAN: Failed to send event, ALAN is NOT active.")
