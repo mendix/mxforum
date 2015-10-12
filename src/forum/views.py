@@ -2073,5 +2073,4 @@ def register_event(event_type, request, open_id, extra_info, extra_info2, extra_
     }
     
     p = json.dumps(event)
-    flog("ALAN INFO: queueing - %s" % p)
     tasks.send_event.delay(p)
