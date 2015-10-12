@@ -2,6 +2,7 @@
 *swp
 */*pyc
 */*swp
+*.log
 pytz
 soaplib
 local_settings.py
@@ -11,3 +12,4 @@ mydump.sql
 venv
 .vscode/
 *.xlsx
+
