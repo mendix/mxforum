@@ -691,6 +691,7 @@ a.mxid_topbar_login:hover {
 }
 #main-body {
 	margin-bottom: 35px;
+	overflow: hidden;
 }
 #main-bar .golden { background:url(/content/images/bg_title_golden.gif) no-repeat; }
 #main-bar .pink { background:url(/content/images/bg_title_red.gif) no-repeat; }
@@ -835,20 +836,16 @@ a.mxid_topbar_login:hover {
 /* Tail
 /***************************/
 #tail { 
+	clear: both;
+	overflow: hidden;
 	margin-bottom: 20px;
-	padding-top:20px;
+	padding-top: 20px;
 }
 #tail h3 {
 	font-weight: normal;
 	font-size: 0.688em;
 	color: #555;	
 }
-#tail a {
-	font-size: 0.688em;
-	color: #0285FF;	
-}
-#tail a:hover,
-#tail a:focus { color: #84755C; }
 #tail h4 {
 	margin-top: 10px;
 	padding: 5px 0;
@@ -1841,17 +1838,19 @@ form .errorlist li{ color: red; }
     padding-left:10px;
     margin-bottom:50px;
 }
-.revision .answerbody{ padding:10px 0 5px 10px; }
+.revision .answerbody { 
+	padding: 10px 0 5px 10px; 
+}
 
 /** PAGINATOR **/
 .paginator {
-    padding:5px 0 10px 0;
-    font:normal .8em arial;
+    padding: 10px 0 10px 0;
+    float: left;
+    font-size: 12px;
 }
 .paginator .prev-na,
 .paginator .next-na {
-	padding:.3em;
-	font:bold .875em arial;
+	padding: .3em;
 }
 .paginator .prev-na,
 .paginator .next-na {
@@ -1860,56 +1859,50 @@ form .errorlist li{ color: red; }
 	color:#aaa;
 	font-weight:normal;
 }
-.paginator .prev a, .paginator .prev a:visited,
-.paginator .next a, .paginator .next a:visited {
-	border:1px solid #fff;
-	background-color:#fff;
-	color:#777;
-	padding:.3em;
-	font:bold 100% arial;
+.paginator .prev, 
+.paginator .prev-na { 
+	margin-right: .5em; 
 }
-.paginator .prev, .paginator .prev-na { margin-right:.5em; }
-.paginator .next, .paginator .next-na { margin-left:.5em; }
-.paginator .page a, .paginator .page a:visited, .paginator .curr {
-	padding:.25em;
-	font:normal .875em verdana;
-	border:1px solid #ccc;
-	background-color:#fff;
-	margin:0em .25em;
-	color:#777;
+.paginator .next, 
+.paginator .next-na { 
+	margin-left: .5em; 
+}
+.paginator .page a, 
+.paginator .page a:visited, 
+.paginator .curr {
+	padding: 3px 10px;
+	border: 1px solid #ccc;
+	margin: 0em .25em;
+	color: #777;
 }
 .paginator .curr {
-	background-color:#777;
-	color:#fff;
-	border:1px solid #777;
-	font-weight:bold;
+	background-color: #777;
+	color: #fff;
+	border: 1px solid #777;
+	font-weight: bold;
 }
 .paginator .page a:hover,
 .paginator .curr a:hover {
-	color:#fff;
-	border:1px solid #777;
-    text-decoration:none;
+	border: 1px solid #777;
 }
 .paginator .prev a:hover,
 .paginator .next a:hover {
 	border-style: none;
 }
 .paginator .text{
-    color:#777;
-	padding:.3em;
-	font:bold 100% arial;
+    color: #777;
+	padding: .3em;
 }
 .paginator-container{
     float: right;
     padding: 10px 0 10px 0;
-    margin-top: 40px;
 }
 .paginator-container-left{
-    padding:5px 0 10px 0;
+    padding: 5px 0 10px 0;
 }
 .user-info {
-    clear:both;
-    height:45px;
+    clear: both;
+    height: 45px;
 }
 .user-info .user-action-time {
     margin-bottom:4px;
