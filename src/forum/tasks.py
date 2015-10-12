@@ -18,7 +18,6 @@ try:
 except:
     ALAN_ACTIVE = False
     flog("ALAN: Could NOT open platform analytics WSDL at location: (%s)." % EVENTREG_LOCATION)
-    flog("ALAN: THIS MEANS NO EVENTS WILL BE SENT.")
 
 # Using a string here means the worker will not have to
 # pickle the object when using Windows.
