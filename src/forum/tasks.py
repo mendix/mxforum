@@ -4,7 +4,7 @@ import redis
 import json
 from forum.flylogger import flog
 from suds.client import Client
-from settings import EVENTREG_LOCATION, EVENTREG_USER, EVENTREG_PASS
+from settings import EVENTREG_ENABLED, EVENTREG_LOCATION, EVENTREG_USER, EVENTREG_PASS
 from celery import Celery
 from django.conf import settings as djsettings
 
@@ -26,15 +26,18 @@ app.autodiscover_tasks(lambda: djsettings.INSTALLED_APPS)
 
 @app.task(bind=True, max_retries=20)
 def send_event(self, _event):
-    if ALAN_ACTIVE:
-        try:
-            event = json.loads(_event)
-            
-            client.set_options(soapheaders={'authentication' : {'username': EVENTREG_USER, 'password': EVENTREG_PASS}})
-            client.service.RegisterEvent(event)
-    
-        except Exception as e:
-            flog("ALAN: Error whilst trying to register event (%s)" % e)
-            raise self.retry(exc=e, countdown=60 * 10)
+    if EVENTREG_ENABLED:
+        if ALAN_ACTIVE:
+            try:
+                event = json.loads(_event)
+                
+                client.set_options(soapheaders={'authentication' : {'username': EVENTREG_USER, 'password': EVENTREG_PASS}})
+                client.service.RegisterEvent(event)
+        
+            except Exception as e:
+                flog("ALAN: Error whilst trying to register event (%s)" % e)
+                raise self.retry(exc=e, countdown=60 * 10)
+        else:
+            flog("ALAN: Failed to send event, ALAN is NOT active.")
     else:
-        flog("ALAN: Failed to send event, ALAN is NOT active.")
+        flog("ALAN: Event registration is DISABLED.")
