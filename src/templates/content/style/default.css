@@ -67,15 +67,16 @@ input#name {
 	margin-left:15px;
 	padding:5px;	
 }
-input#ipSearchTag { padding:5px; }
+input#ipSearchTag { 
+	padding: 5px; 
+}
 pre {
 	margin-bottom: 10px;
 	overflow: auto;
-	width: 580px;
-	background-color: #F5F5F5;
-    padding-left:5px;
-    padding-top:5px;
-	padding-bottom: 20px !ie7;
+	width: 700px;
+    padding-left: 5px;
+    padding-top: 5px;
+    background-color: #F5F5F5;
 }
 code {
     font-size: 100%;
@@ -89,19 +90,16 @@ blockquote {
 }
 b, strong { font-weight: bold; }
 i, em { font-style: italic; }
-ul
-{
+ul {
 	list-style: disc;
 	margin-left: 30px;
 	margin-bottom: 1em;
-}
-p
-{
+} 
+p {
 	clear: both;
 	margin-bottom: 1em;
-}
-ol
-{
+} 
+ol {
 	list-style: decimal;
 	margin-left: 30px;
 	margin-bottom: 1em;
@@ -2529,7 +2527,7 @@ td.label {
 		#question-title h3 { clear: both; font-size: 1em; line-height: 22px; }
 		#item-right, .item-right { min-width: 150px; width: auto; }
 		.item-right { padding-right: 10px; }
-		pre { display: none; max-width: 322px; width: auto; }
+		pre { max-width: 322px; }
 		#question-tags { float: none; width: auto; }
 		#question-controls { clear: both; }
 		#askform .question-mark { clear: both; display: inline-block; float: none; }
