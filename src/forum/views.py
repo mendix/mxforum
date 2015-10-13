@@ -2051,7 +2051,6 @@ user_import_service2 = UserImportService2()
 import datetime
 import json
 import tasks
-from forum.flylogger import flog
 
 def register_event(event_type, request, open_id, extra_info, extra_info2, extra_info3, timestamp):
     user_agent = ''
