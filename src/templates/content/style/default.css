@@ -1754,12 +1754,12 @@ form .errorlist li{ color: red; }
 	display: none;
 	position: absolute;
 	padding: 15px;
-    color: White;
+    color: #FFF;
 	background-color: #AE0000;
 }
 .vote-notification a {
-    color: White;
-	text-decoration:underline;
+    color: #FFF;
+	text-decoration: underline;
 }
 .center-container{ width:960px; }
 #revisions { width:960px; }
@@ -2191,7 +2191,6 @@ div.comments div {
 	border-bottom: 1px dotted #555;
 }
 div.post-comments { 
-/*width: 640px;*/
 	clear: both;
 	margin-bottom: 20px;
  }
@@ -2439,7 +2438,6 @@ td.label {
 }
 
 	@media only screen and (max-width: 840px) {
-		body { background: none; }
 		p { word-break: break-all; }
 		.menu, #footer, .nav-rss, .line, #subNavigationWrapper, #header-links { display: none; }
 		
