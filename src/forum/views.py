@@ -2053,6 +2053,9 @@ import json
 import tasks
 
 def register_event(event_type, request, open_id, extra_info, extra_info2, extra_info3, timestamp):
+    if open_id == None or open_id == "":
+        return
+    
     user_agent = ''
     if request:
         user_agent = request.META['HTTP_USER_AGENT']
