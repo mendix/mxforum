@@ -648,7 +648,6 @@ a.mxid_topbar_login:hover {
 	line-height: 1.625;
 }
 #main {
-	display: inline;
     float: left;
     width: 790px;
 }
@@ -1455,13 +1454,16 @@ a.mxid_topbar_login:hover {
     margin-bottom: 10px;
 }
 #editor {
-	width: 580px;
+	width: 97%;
 	padding: 10px;
     min-height: 200px;
     line-height: 18px;
+    margin-right: 0 !important; /* overwrite jquery inline styling */
+}
+.form-ask-question #editor {
+	width: 100%;
 }
 .wmd-preview {
-	width: 590px;
     margin-top: 10px;
     padding: 6px;
     min-height:20px;
@@ -1470,16 +1472,15 @@ a.mxid_topbar_login:hover {
     background-color: #F1F1F1;
 }
 /*adjustment for editor preview*/
-.wmd-preview pre { background-color:#E7F1F8; }
+.wmd-preview pre { background-color: #E7F1F8; }
 .wmd-preview blockquote { background-color: #eee; }
-.wmd-preview img { max-width:600px; }
-.preview-toggle{
-    font-size:90%;
-    font-weight:600;
-    margin-bottom:-10px;
-    width:600px;
-    color:#aaa;
-    letter-spacing:1px;
+.wmd-preview img { max-width: 600px; }
+.preview-toggle {
+    font-size: 90%;
+    font-weight: 600;
+    margin-bottom: -10px;
+    color: #aaa;
+    letter-spacing: 1px;
 }
 .preview-toggle span:hover{ cursor:pointer; }
 .edit-content-html{
@@ -1489,14 +1490,14 @@ a.mxid_topbar_login:hover {
 }
 /* 2 textarea resizer styles */
 div.grippie {
-    background:#EEEEEE url(/content/images/grippie.png) no-repeat scroll center 2px;
-    border-color:#DDDDDD;
-    border-style:solid;
-    border-width:0pt 1px 1px;
-    cursor:s-resize;
-    height:9px;
-    overflow:hidden;
-    width:600px;
+    background: #EEE url(/content/images/grippie.png) no-repeat scroll center 2px;
+    border-color: #DDD;
+    border-style: solid;
+    border-width: 0pt 1px 1px;
+    cursor: s-resize;
+    height: 9px;
+    overflow: hidden;
+    margin-right: 0 !important; /* overwrite jquery widget */
 }
 .resizable-textarea textarea {
     display:block;
@@ -2476,7 +2477,6 @@ td.label {
 		.post-comments { padding: 10px 0; }
 
 		/* User Logged In */
-		#editor { width: auto; }
 		div.grippie { display: none; }
 		.wmd-preview { width: auto; }
 		.preview-toggle { width: auto; }
@@ -2493,8 +2493,6 @@ td.label {
 		#main #wmd-button-bar #wmd-undo-button { left: 250px; }
 		#main #wmd-button-bar #wmd-redo-button { left: 275px; }
 
-		.form-ask-question textarea, .form-ask-question input#id_title, .form-ask-question input#id_tags { width: auto; max-width: 300px; }
-
 		/* Homepage */
 		.homepage .summary { float: none; width: auto; }
 		.answered-accepted, .vote, .unanswered, .view, .answered { min-width: 40px; padding: 0 !important; }
@@ -2503,6 +2501,8 @@ td.label {
 
 		/* Sidebar */
 		#sidebar { float: none; clear: both; width: auto; padding: 0 10px; display: inline-block; }
+
+		.form-ask-question input.submit { width: 100%; }
 	}
 
 	/* Mobile Sprites Fix IOs */
