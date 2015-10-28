@@ -32,40 +32,32 @@
             <table height="100%">
                 <tr>
                     <td width="50px" class="boxes-cell">
-                        <div class="vote" style="padding:5px">
-                            <table style="padding:5px;text-align:center;width:100%">
+                       <div class="vote">
+                            <table>
                                 <tr>
-                                    <td>
-                                        <span class="box-number">{{ question.score|intcomma }}</span>
-                                    </td>
+                                    <td><span class="box-number">{{ question.score|intcomma }}</span></td>
                                 </tr>
                                 <tr>
-                                    <td>
-                    <div class="box-unit">Vote{% ifnotequal question.score 1 %}s{% endifnotequal %}</div>
-                                    </td>
+                                    <td><div class="box-unit">Vote{% ifnotequal question.score 1 %}s{% endifnotequal %}</div></td>
                                 </tr>
                             </table>
                         </div>
                     </td>
                     <td width="50px" class="boxes-cell">
-                        <div {% if question.answer_accepted %}class="answered-accepted"{% else %}{% ifequal question.answer_count 0 %}class="unanswered"{% else %}class="answered"{% endifequal %}{% endif %}  style="padding:5px;">
-                            <table style="padding:5px;text-align:center;width:100%">
+                        <div {% if question.answer_accepted %}class="answered-accepted"{% else %}{% ifequal question.answer_count 0 %}class="unanswered"{% else %}class="answered"{% endifequal %}{% endif %}>
+                            <table>
                                 <tr>
-                                    <td>
-                                        <span class="box-number">{{ question.answer_count|intcomma }}</span>
-                                    </td>
+                                    <td><span class="box-number">{{ question.answer_count|intcomma }}</span></td>
                                 </tr>
                                 <tr>
-                                    <td>
-                    <div class="box-unit">Answer{% ifnotequal question.answer_count 1 %}s{% endifnotequal %}</div>
-                                    </td>
+                                    <td><div class="box-unit">Answer{% ifnotequal question.answer_count 1 %}s{% endifnotequal %}</div></td>
                                 </tr>
                             </table>
                         </div>
                     </td>
                     <td width="50px" class="boxes-cell">
-                        <div class="view" style="padding:5px">
-                            <table style="padding:5px;text-align:center;width:100%">
+                        <div class="view">
+                            <table>
                                 <tr>
                                     <td>
                                         <span class="box-number">{{ question.view_count|rint }}</span>
@@ -81,9 +73,10 @@
                     </td>
                 </tr>
             </table>
-        </div>
+        </div> <!-- /.boxes -->
+        
         <div class="summary">
-            <div class="qustion-title">
+            <div class="question-title">
                 <h4>
                     <a href="{{ question.get_absolute_url|urlencode }}" title="{{ question.summary }}...">
                         {{ question.get_question_title }}

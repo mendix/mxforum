@@ -7,135 +7,113 @@
 {% endblock %}
 {% block content %}
 <div id="main-bar" class="">
-    <h3>{% if searchtag %}Labels{% else %}All questions{% endif %}
-    </h3>
+    <h3>{% if searchtag %}Labels{% else %}All questions{% endif %}</h3>
 </div>
+
 <div id="main-body" class="">
     {% for question in questions.object_list %}
     <div class="question-item">
-        <table class="questions-boxes-container">
-            <tr>
-                <td>
-                    <div class="questions-boxes">
-                        <div class="vote" style="text-align:center">
-                            <div class="questions-votebox">
-                                 <span class="questions-vote-number">{{ question.score|intcomma }}</span><br>
-								 <span class="box-unit">Vote{% ifnotequal question.score 1 %}s{% endifnotequal %}</span>
-                            </div>
-                            <div class="questions-answerbox">
-                                <div {% if question.answer_accepted %}class="answered-accepted"{% else %}{% ifequal question.answer_count 0 %}class="unanswered"{% else %}class="answered"{% endifequal %}{% endif %} id="questions-answerbox-cell">
-                                    <span class="questions-answer-number">{{ question.answer_count|intcomma }}</span><br>
-									<span class="box-unit">Answer{% ifnotequal question.answer_count 1 %}s{% endifnotequal %}</span>
-                                </div>
-                            </div>
+        <div class="boxes">
+            <table height="100%">
+                <tr>
+                    <td width="50px" class="boxes-cell">
+                       <div class="vote">
+                            <table>
+                                <tr>
+                                    <td><span class="box-number">{{ question.score|intcomma }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="box-unit">Vote{% ifnotequal question.score 1 %}s{% endifnotequal %}</div></td>
+                                </tr>
+                            </table>
                         </div>
-                        <div class="questions-viewbox">
-                            <span class="box-unit">{{ question.view_count|rint }} views</span>
+                    </td>
+                    <td width="50px" class="boxes-cell">
+                        <div {% if question.answer_accepted %}class="answered-accepted"{% else %}{% ifequal question.answer_count 0 %}class="unanswered"{% else %}class="answered"{% endifequal %}{% endif %}>
+                            <table>
+                                <tr>
+                                    <td><span class="box-number">{{ question.answer_count|intcomma }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><div class="box-unit">Answer{% ifnotequal question.answer_count 1 %}s{% endifnotequal %}</div></td>
+                                </tr>
+                            </table>
                         </div>
-                    </div>
-                </td>
-                <td class="questions-boxicon">
-                <img src="/content/images/box-arrow.gif">
-                </td>
-            </tr>
-	        
-        </table>
-        
-        <div class="questions-summary-container">
-            <div class="qustion-title">
+                    </td>
+                    <td width="50px" class="boxes-cell">
+                        <div class="view">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <span class="box-number">{{ question.view_count|rint }}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      <div class="box-unit">views</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div> <!-- /.boxes -->
+
+        <div class="summary">
+            <div class="question-title">
                 <h4>
-                    <a href="{{ question.get_absolute_url }}" title="{{ question.summary }}...">
+                    <a href="{{ question.get_absolute_url|urlencode }}" title="{{ question.summary }}...">
                         {{ question.get_question_title }}
                     </a>
                 </h4>
-                
             </div>
-            <div class="qustions-summary">
+
+            <div class="question-summary">
                 {{ question.summary }}...                
             </div>
+
             <div class="question-tag">
                 {% for tag in question.tagname_list %}
-                    <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="View of the '{{ tag }}' of the problem" rel="tag">{{ tag }}</a>
+                    <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="View of the '{{ tag }}' question" rel="tag">{{ tag }}</a>
                 {% endfor %}
             </div>
-            <div class="questions-mark">
-                {% ifequal tab_id 'active'%}
-                <table width="100%">
-                    <tr>
-                        <td colspan="2" class="gray"> 
-                        Last updated at <span title="{{ question.last_activity_at }}"><strong>{% diff_date question.last_activity_at %}</strong></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width:40px;vertical-align:bottom">
-                        {% gravatar question.last_activity_by 32 %}
-                        </td>
-                        <td style="width:120px;vertical-align:top">
-                            <div><a href="/users/{{ question.last_activity_by.id }}/{{ question.last_activity_by.real_name }}"><span class="big">{{ question.last_activity_by.real_name }}</span></a></div>
-                            <div>
-                            {% get_score_badge question.last_activity_by %}
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                {% else %}
-                {% if question.wiki %}
-                <span class="gray">Community Wiki</span>
-                {% else %}
-                <table width="100%">
-                    <tr>
-                        <td colspan="2" class="gray"> 
-                        Question in <span title="{{ question.added_at }}"><strong>{% diff_date question.added_at %}</strong></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width:40px;vertical-align:bottom">
-                        {% gravatar question.author 32 %}
-                        </td>
-                        <td style="width:120px;vertical-align:top">
-                            <div><a href="/users/{{ question.author.id }}/{{ question.author.real_name }}"><span class="big">{{ question.author.real_name }}</span></a></div>
-                            <div>
-                            {% get_score_badge question.author %}
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                {% endif %}
-                {% endifequal %}
+            <div class="question-started">
+                    {% if question.wiki %}
+                    <span class="gray">Community Wiki</span>
+                    {% else %}
+          <span class="updatedtime" title="{{ question.last_activity_at }}">{% diff_date question.last_activity_at %}</span> <span class="big"><a href="/users/{{ question.last_activity_by.id }}/{{ question.last_activity_by.real_name }}/">{{ question.last_activity_by.real_name }}</a></span>&nbsp;{% get_score_badge question.last_activity_by %}
+                    {% endif %}
             </div>
-            
-        </div>
-    </div>
+
+        </div> <!-- /.summary -->
+
+    </div> <!-- /.question-item -->
     {% endfor %}
-</div>
+</div> <!-- /#main-body -->
 {% endblock %}
 
 {% block tail %}
-                            {% cnprog_paginator context %}
-                        <div class="paginator-container">
-                            {% cnprog_pagesize context %}
-                        </div>
+{% cnprog_paginator context %}
+    <div class="paginator-container">
+        {% cnprog_pagesize context %}
+    </div>
 {% endblock %}
 
 {% block sidebar %}
 <div class="gray-box gray-box-bg">
 	<div>
 		<center>
-    You are browsing <br><div class="questions-count">{{ questions_count|intcomma }}</div>
-        <div class="paragraph"> Questions
-            {% if searchtag %}
-                marked as
-                <span class="post-tag">
-                    {{ searchtag }}
-									</span><!-- of -->
-            {% endif %}
-					</div>
-				</center>
-
+            You are browsing <br>
+            <div class="questions-count">{{ questions_count|intcomma }}</div>
+            <div class="paragraph">
+                Questions {% if searchtag %} marked as <span class="post-tag">{{ searchtag }}</span><!-- of --> {% endif %}
+			</div>
+		</center>
         <div class="paragraph">You can also use <a href="/tags/" title="View all tags"><strong>tags</strong></a> and <a href="#" title="Search problems"><strong>searchs</strong></a> to find questions.</div>
-
     </div>
 </div>
+
 <h3 class="outside">Related tags</h3>
 <div class="gray-box gray-box-bg">
     <div id="related-tags">
