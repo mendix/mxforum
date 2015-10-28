@@ -1219,10 +1219,11 @@ a.mxid_topbar_login:hover {
     color: #444;
 }
 .question-body img { 
-	max-width: 590px; 
-	border: #D2D2D2 1px solid;
+	display: block;
+	max-width: 100%;
+	margin: 10px auto;
 	padding: 5px;
-	background: white;
+	background: #FFF;
 }
 .questions-mark {
     float:right;
