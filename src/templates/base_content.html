@@ -61,20 +61,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			</div>
 			{% endif %}
 
-        <div id="container">
             <div id="header">
                  {% include "header.html" %}
             </div>
             <div id="content">
-                <div id="container">
-                    {% block content%}
-                    {% endblock%}
-
-                </div>
-
+                {% block content%}
+                {% endblock%}
             </div>
-
-        </div>
         {% block endjs %}
         {% endblock %}
 	{% include 'footer.html' %}

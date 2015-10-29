@@ -62,7 +62,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       {% endif %}
 
-        <div id="container">
              <div id="header">
                  {% include "header.html" %}
             </div>
@@ -73,17 +72,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
                 </div>
 
-                <div id="sidebar">
+                <!-- <div id="sidebar">
                     {% block sidebar%}
                     {% endblock%}
 
-                </div>
-                <div id="tail" style="clear:both;">
+                </div> -->
+                <div id="tail">
                     {% block tail %}
                     {% endblock %}
                 </div>
             </div>
-        </div>
+
         {% include "footer.html" %}
         {% block endjs %}
         {% endblock %}
