@@ -12,6 +12,7 @@
 .atv { color: #080; }
 .dec { color: #606; }
 pre.prettyprint { 
+  max-width: 685px;
   margin-bottom: 10px;
   overflow: auto;
   background-color: #f8f8f8;
