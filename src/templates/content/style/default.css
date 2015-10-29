@@ -681,7 +681,6 @@ a.mxid_topbar_login:hover {
 }
 #main-body {
 	margin-bottom: 35px;
-	overflow: hidden;
 }
 #main-bar .golden { background:url(/content/images/bg_title_golden.gif) no-repeat; }
 #main-bar .pink { background:url(/content/images/bg_title_red.gif) no-repeat; }
@@ -731,7 +730,9 @@ a.mxid_topbar_login:hover {
 
 /* Footer  
 ***********************/
-
+.MxClient_bottomPane {
+	clear: both;
+}
 .site-footer {
 	padding-top: 29px;
 	background-color: #393939;
@@ -1745,12 +1746,13 @@ div.grippie {
     width: 650px; /*IE*/
     margin-bottom: 20px
 }
-.taglist-td{
-    width:190px;
-    line-height:26px;
+.taglist-td {
+    width: 190px;
+    line-height: 26px;
 }
-.list-table{ margin-left:15px; }
-.list-td{ width:185px; }
+.list-td { 
+	width: 220px; 
+}
 .submit{
     cursor:pointer;
     background-color:#D4D0C8;
@@ -1871,18 +1873,18 @@ form .errorlist li{ color: red; }
 }
 .user-info {
     clear: both;
-    height: 45px;
+    height: 70px;
 }
 .user-info .user-action-time {
     margin-bottom:4px;
     margin-top:2px;
 }
 .user-info .user-details {
-    float:left;
-    margin-left:5px;
-    overflow:hidden;
-    white-space:nowrap;
-    width:138px;
+    float: left;
+    margin-left: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 138px;
 }
 .user-details {
     color:#888888;
@@ -1893,9 +1895,12 @@ table.user-details td {
     padding:4px 0;
 }
 table.user-details td.dark { color: #555; }
-.user-info .user-gravatar32 {
-    float:left;
-    width:32px;
+.user-info .user-gravatar {
+    float: left;
+    width: 40px;
+}
+.user-info .user-gravatar img {
+	border-radius: 50%;
 }
 #mainbar-full { 
 	max-width: 970px; 
@@ -2412,7 +2417,7 @@ td.label {
 ------------------------------------------------*/
 #cse-search-box {
 	position: absolute;
-	left: 317px;
+	left: 410px;
 }
 #cse-search-box label {
 	display: none;
