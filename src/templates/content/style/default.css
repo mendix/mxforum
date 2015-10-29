@@ -70,14 +70,6 @@ input#name {
 input#ipSearchTag { 
 	padding: 5px; 
 }
-pre {
-	margin-bottom: 10px;
-	overflow: auto;
-	width: 700px;
-    padding-left: 5px;
-    padding-top: 5px;
-    background-color: #F5F5F5;
-}
 code {
     font-size: 100%;
 }
@@ -885,7 +877,27 @@ a.mxid_topbar_login:hover {
 #askform #description { 
 	padding: 5px 0 10px 0; 
 }
-#container .comments-link:hover {
+.comments-link {
+    color: #333;
+    padding: 5px;
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    border: 1px solid #BBB;
+	background-color: #f5f5f5;
+	*background-color: #e6e6e6;
+	background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+	background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+  	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false) !important;
+  	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+.comments-link:hover {
 	background-color: #f5f5f5;
 	*background-color: #e6e6e6;
 	background-image: -moz-linear-gradient(top, #e6e6e6, #FFFFFF);
@@ -1307,7 +1319,6 @@ a.mxid_topbar_login:hover {
 .answered-by-owner { background: #E0EAF1; }
 .answered-by-owner .comments-link { background-color:#D6E4EE; }
 .answered-by-owner .comments-container { background-color: #eee; }
-.answered-by-owner .answer-mark, .accepted-answer .answer-mark { margin-right: 15px; }
 .answered-accepted strong { color: #E1E818; }
 .unanswered {
 	color: #FFF;
@@ -1567,9 +1578,10 @@ div.grippie {
 	display: table-cell;
 	width: 100%;
 	vertical-align: top;
-	margin-right: 10px;
+	padding-right: 20px;
 }
 #question-controls {
+	clear: both;
 	margin-bottom: 20px;
 	padding-top: 5px;
 	border-top: 1px dotted #cacaca;	
@@ -1617,7 +1629,6 @@ div.grippie {
     box-shadow: 0 1px 0 #ECEEF0;
     -webkit-box-shadow: 0 1px 0 #ECEEF0;
 }
-.answer-mark { margin-right: 10px; }
 .question-mark strong {
 	padding-left: 20px;
 	padding-top: 2px;
@@ -1674,7 +1685,8 @@ div.grippie {
 }
 .question-edit {
 	color: #777;
-	display: inline-block;
+    padding-left: 3px;
+    font-style: italic;
 }
 .question-edit div {
 	display: inline-block;
@@ -2284,11 +2296,11 @@ div.comments-container-deleted {
 div.comments-container, 
 a.comments-link {
 	width: auto;
-	margin-top: 1px;
 	border: 1px solid #BBB;
     background-color: #F1F1F1;
 }
 div.comments-container {
+	margin-top: 6px;
 	background: #ebebec;
 	-webkit-border-radius: 0 3px 3px 3px;
 	border-radius: 0 3px 3px 3px; 
@@ -2297,32 +2309,13 @@ div.comments-container {
 .post-comments a {
     padding: 0 3px 2px;
 }
-#container .comments-link {
-    color: #333;
-    padding: 5px;
-    font-weight: bold;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
-    border: 1px solid #BBB;
-	background-color: #f5f5f5;
-	*background-color: #e6e6e6;
-	background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
-	background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
-	background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
-	background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
-	background-repeat: repeat-x;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
-  	filter: progid:DXImageTransform.Microsoft.gradient(enabled=false) !important;
-  	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-}
 a.comments-link, 
 a.comments-link-accepted, 
 a.comments-link-owner, 
 a.comments-link-deleted {
+	border-radius: 3px;
     color: #222;
-    padding: 5px;
+    padding: 7px;
     cursor: pointer;
 }
 a.comment-user, 
@@ -2477,9 +2470,7 @@ td.label {
 		#question-title h3 { clear: both; font-size: 1em; line-height: 22px; }
 		#item-right, .item-right { min-width: 150px; width: auto; }
 		.item-right { padding-right: 10px; }
-		pre { max-width: 322px; }
 		#question-tags { float: none; width: auto; }
-		#question-controls { clear: both; }
 		#askform .question-mark { clear: both; display: inline-block; float: none; }
 		.post-comments { padding: 10px 0; }
 

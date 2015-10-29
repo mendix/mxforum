@@ -94,7 +94,7 @@
                     <div id="question-modeler-version" class="question-body-item">
                         Modeler version: {{ question.modeler_version }}
                     </div>
-                    <div id="question-controls" style="clear:both;">
+                    <div id="question-controls">
                         <div class="question-controls-links">             
                             {% if request.user|can_edit_post:question %}
                             <span class="action-link"><a href="{% url edit_question question.id %}">Edit</a></span>
@@ -117,33 +117,30 @@
                             {% endif %}
                             
                             <span id="question-offensive-flag-{{ question.id }}" class="offensive-flag" title="Report as spam"><a>Mark as spam?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if question.offensive_flag_count %}({{ question.offensive_flag_count }}){% endif %}{% endif %}</span></span>
+
+                            {% if question.last_edited_by %}
+                            <div class="question-edit">
+                                Updated <a href="{% url question_revisions question.id %}"><strong title="{{question.last_edited_at }}">{% diff_date question.last_edited_at  %}</strong></a>
+                                    {% if question.wiki %}
+                                        {% gravatar question.last_edited_by 32 %}
+                                        <a href="/users/{{ question.last_edited_by.id }}/{{ question.last_edited_by.real_name }}">{{ question.last_edited_by.real_name }}</a>
+                                    {% else %}
+                                    {% ifequal question.last_edited_by question.author %}
+                                    {% else %}
+                                        {% gravatar question.last_edited_by 32 %}
+                                        <div><a href="/users/{{ question.last_edited_by.id }}/{{ question.last_edited_by.real_name }}">{{ question.last_edited_by.real_name }}</a></div>
+                                        <div>
+                                            {% get_score_badge question.last_edited_by %}
+                                        </div>
+                                    {% endifequal %}
+                                    {% endif %}
+                            </div>
+                            <!-- .question-edit -->
+                            {% endif %}
                         </div>
                         <!-- .question-controls-links -->
-
-                        {% if question.last_edited_by %}
-                        <div class="question-edit">
-                            Updated <a href="{% url question_revisions question.id %}"><strong title="{{question.last_edited_at }}">{% diff_date question.last_edited_at  %}</strong></a>
-                                {% if question.wiki %}
-                                    {% gravatar question.last_edited_by 32 %}
-                                    <a href="/users/{{ question.last_edited_by.id }}/{{ question.last_edited_by.real_name }}">{{ question.last_edited_by.real_name }}</a>
-                                {% else %}
-                                {% ifequal question.last_edited_by question.author %}
-                                {% else %}
-                                    {% gravatar question.last_edited_by 32 %}
-                                    <div><a href="/users/{{ question.last_edited_by.id }}/{{ question.last_edited_by.real_name }}">{{ question.last_edited_by.real_name }}</a></div>
-                                    <div>
-                                        {% get_score_badge question.last_edited_by %}
-                                    </div>
-                                {% endifequal %}
-                                {% endif %}
-                        </div>
-                        <!-- .question-edit -->
-                        {% endif %}
-                                    
-                    </div>
-                    <!-- #question-controls -->
-
-                    {% if question.wiki %}
+                        
+                        {% if question.wiki %}
                         <span class="wiki-category">Community Wiki</span>
                         <div style="margin-bottom:10px"></div>
                         {% else %}
@@ -154,7 +151,10 @@
                                 {% get_score_badge question.author %}&nbsp;
                         </div>
                         {% endif %}
-                    <!-- .question-mark  -->
+                        <!-- .question-mark  -->
+
+                    </div>
+                    <!-- #question-controls -->
                     
                     <div class="post-comments">
                         <input id="can-post-comments-question-{{question.id}}" type="hidden" value="{{ request.user|can_add_comments }}"/>
@@ -228,31 +228,31 @@
                         </span>
                         <span class="action-link-separator">|</span>
                         <span id="answer-offensive-flag-{{ answer.id }}" class="offensive-flag" title="Report as spam"><a>Mark as spam / offensive?</a><span class="darkred">{% if request.user|can_view_offensive_flags %}{% if answer.offensive_flag_count %}({{ answer.offensive_flag_count }}){% endif %}{% endif %}</span></span>
+
+                        {% if answer.last_edited_by %}
+                        <div class="question-edit">
+                        Updated <a href="{% url answer_revisions answer.id %}"><strong title="{{answer.last_edited_at }}">{% diff_date answer.last_edited_at %}</strong></a>
+                                                                    
+                        {% if answer.wiki %}
+
+                            {% gravatar answer.last_edited_by 32 %}
+                            <a href="/users/{{ answer.last_edited_by.id }}/{{ answer.last_edited_by.real_name }}">{{ answer.last_edited_by.real_name }}</a>
+                                                                   
+                            {% else %}
+                                {% ifequal answer.last_edited_by answer.author %}
+                            {% else %}
+
+                            {% gravatar answer.last_edited_by 32 %}
+                            <a href="/users/{{ answer.last_edited_by.id }}/{{ answer.last_edited_by.real_name }}">{{ answer.last_edited_by.real_name }}</a>
+                            {% get_score_badge answer.last_edited_by %}
+       
+                            {% endifequal %}
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        <!-- .question-edit -->
                     </div>
                     <!-- .question-controls-links -->
-
-                    {% if answer.last_edited_by %}
-                    <div class="question-edit">
-                    Updated <a href="{% url answer_revisions answer.id %}"><strong title="{{answer.last_edited_at }}">{% diff_date answer.last_edited_at %}</strong></a>
-                                                                
-                    {% if answer.wiki %}
-
-                        {% gravatar answer.last_edited_by 32 %}
-                        <a href="/users/{{ answer.last_edited_by.id }}/{{ answer.last_edited_by.real_name }}">{{ answer.last_edited_by.real_name }}</a>
-                                                               
-                        {% else %}
-                            {% ifequal answer.last_edited_by answer.author %}
-                        {% else %}
-
-                        {% gravatar answer.last_edited_by 32 %}
-                        <a href="/users/{{ answer.last_edited_by.id }}/{{ answer.last_edited_by.real_name }}">{{ answer.last_edited_by.real_name }}</a>
-                        {% get_score_badge answer.last_edited_by %}
-   
-                        {% endifequal %}
-                        {% endif %}
-                    </div>
-                    {% endif %}
-                    <!-- .question-edit -->
                                                     
                     {% if answer.wiki %}
                     <span class="wiki-category">Community wiki</span>
