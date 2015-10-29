@@ -235,14 +235,14 @@
                                                                     
                         {% if answer.wiki %}
 
-                            {% gravatar answer.last_edited_by 32 %}
+                            <!-- {% gravatar answer.last_edited_by 32 %} -->
                             <a href="/users/{{ answer.last_edited_by.id }}/{{ answer.last_edited_by.real_name }}">{{ answer.last_edited_by.real_name }}</a>
                                                                    
                             {% else %}
                                 {% ifequal answer.last_edited_by answer.author %}
                             {% else %}
 
-                            {% gravatar answer.last_edited_by 32 %}
+                            <!-- {% gravatar answer.last_edited_by 32 %} -->
                             <a href="/users/{{ answer.last_edited_by.id }}/{{ answer.last_edited_by.real_name }}">{{ answer.last_edited_by.real_name }}</a>
                             {% get_score_badge answer.last_edited_by %}
        
