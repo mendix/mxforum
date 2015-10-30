@@ -1,15 +1,15 @@
 {% load extra_filters %}
-<!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<!DOCTYPE HTML>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="nl"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="nl"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="nl"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" itemscope="" itemtype="http://schema.org/WebPage"> <!--<![endif]-->
     <head>
         <title>{% block title %}{% endblock %} - Mendix Forum</title>
         {% spaceless %}
         {% block meta %}{% endblock %}
         {% endspaceless %}
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,300,600,700" rel="stylesheet" type="text/css">
 		<link href="https://www.mendix.com/favicon.ico" rel="shortcut icon">
