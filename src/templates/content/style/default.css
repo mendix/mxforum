@@ -1007,6 +1007,10 @@ a.mxid_topbar_login:hover {
     padding: 1px 0 0 20px;
     background: url(../images/user1.png) no-repeat left;
 }
+.faq-points {
+	text-align: right;
+	padding-right: 5px;
+}
 .paragraph {
 	margin: 10px 0;
     line-height: 20px;
