@@ -11,27 +11,17 @@
 {% endblock %}
 {% block content %}
 <div id="main-bar" class="">
-    <h3>
-        Reset problem
-    </h3>
+    <h3>Reset problem</h3>
 </div>
-<div id="main-body" style="width:100%">
-    <div class="paragraph">You will open up this problem has been closed: <a href="{{ question.get_absolute_url }}"><span class="big">{{ question.get_question_title }}</span></a>
-    
-    </div>   
+<div id="main-body">
+    <div class="paragraph">You will open up this problem has been closed: <a href="{{ question.get_absolute_url }}"><span class="big">{{ question.get_question_title }}</span></a></div>   
 	<div class="paragraph big">The problem has “{{ question.get_close_reason_display }}” the reason being<a href="/users/{{ question.closed_by.id }}/{{ question.closed_by.real_name  }}/">{{ question.closed_by.real_name }}</a> in{% diff_date question.closed_at %}<font class="darkred">close</font></div>
     
     <form id="fmclose" action="{% url reopen question.id %}" method="post" >
-
-        <div id="" style="padding-top:20px">
+        <div style="padding-top:20px">
             <input type="submit" value="Open this issue to determine" class="submit" />
             <input id="btBack" type="button" value="Cancel"  />
-            
         </div>
-        
     </form>
 </div>
 {% endblock %}
-
-
-

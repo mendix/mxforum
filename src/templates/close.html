@@ -11,25 +11,19 @@
 {% endblock %}
 {% block content %}
 <div id="main-bar" class="">
-    <h3>
-        Closure
-    </h3>
+    <h3>Closure</h3>
 </div>
-<div id="main-body" style="width:100%;margin-bottom:10px">
+<div id="main-body">
     <div class="paragraph">For the following reasons, you have to shut down this issue: <a href="{{ question.get_absolute_url }}"><span class="big">{{ question.get_question_title }}</span></a></div>   
     
     <form id="fmclose" action="{% url close question.id %}" method="post" >
         <span class="big">Reasons：</span> {{ form.reason }}
         
-        <div id="" style="padding-top:20px">
+        <div class="closure">
             <input type="submit" value="OK to close the" class="submit" />
             <input id="btBack" type="button" value="Cancel"  />
-            
         </div>
         
     </form>
 </div>
 {% endblock %}
-
-
-

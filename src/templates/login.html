@@ -7,37 +7,32 @@
 {% block content %}
 
 <div id="main-bar" class="">
-    <h3>
-        Log in
-    </h3>
-
+    <h3>Log in</h3>
 </div>
-<div id="main-body" style="width:100%">
-	<div id="" class="paragraph">
+<div id="main-body">
+	<div class="paragraph">
 		{% if form.errors %}
 		<p>Your username and password didn't match. Please try again.</p>
 		{% endif %}
 
 		<form method="post" action="/accounts/login/">
-		<table style="margin: 2px;">
-		<tr>
-				<td width="100px" style="padding: 2px;" class="label">{{ form.username.label_tag }}:</td>
-				<td style="padding: 2px;">{{ form.username }}</td>
-		</tr>
-		<tr>
-				<td style="padding: 2px;" class="label">{{ form.password.label_tag }}:</td>
-				<td style="padding: 2px;">{{ form.password }}</td>
-		</tr>
-		
-
-		<tr>
-			<td></td>
-			<td style="padding: 2px;">
-				<input type="submit" value="login" class="login" />
-			</td>
-		</tr>
-		</table>
-		<input type="hidden" name="next" value="{{ next }}" />
+			<table>
+				<tr>
+					<td style="padding: 2px;" class="label">{{ form.username.label_tag }}:</td>
+					<td style="padding: 2px;">{{ form.username }}</td>
+				</tr>
+				<tr>
+					<td style="padding: 2px;" class="label">{{ form.password.label_tag }}:</td>
+					<td style="padding: 2px;">{{ form.password }}</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td style="padding: 2px;">
+						<input type="submit" value="login" class="login" />
+					</td>
+				</tr>
+			</table>
+			<input type="hidden" name="next" value="{{ next }}" />
 		</form>
 
 	</div>
