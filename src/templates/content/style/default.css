@@ -245,7 +245,7 @@ button,
 .btn-start-for-free, .btn-start-for-free:visited {
 	padding: 6px 15px 5px 15px;
 	background: #76ca02;
-	font-size: 16px;
+	font-size: 15px;
 }
 .btn-start-for-free:hover, .btn-start-for-free:focus {
 	background: #ff9e00;
@@ -274,7 +274,6 @@ button,
 }
 .main-navigation {
 	position: relative;
-	font-family: "proxima-nova",sans-serif;
 	float: right;
 	margin: 0 auto;
 	max-width: 1100px;
@@ -298,7 +297,7 @@ ul.nav-menu, div.nav-menu > ul {
 	padding: 39px 10px 40px 10px;
 	color: #fff;
 	display: block;
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: 700;
 	text-transform: uppercase;
 	line-height: 1;
@@ -336,7 +335,7 @@ ul.nav-menu, div.nav-menu > ul {
 	display: block;
 	padding: 0 0 0 20px;
 	white-space: nowrap;
-	font-size: 15px;
+	font-size: 14px;
 	color: #1b82ba;
 	font-weight: 600;
 	-webkit-transition: none;
@@ -372,7 +371,6 @@ ul.nav-menu, div.nav-menu > ul {
 	display: none;
 }
 .header-buttons {
-	font-family: "proxima-nova",sans-serif;
 	position: absolute;
 	top: 30px;
 	right: 0;
@@ -388,7 +386,6 @@ ul.nav-menu, div.nav-menu > ul {
 #mxid_topbar_attachpoint {
 	position: relative;
 	top: -1px;
-	font-family: "proxima-nova",sans-serif;
 }
 a.mxid_topbar_login {
 	display: inline-block;
@@ -2431,7 +2428,7 @@ td.label {
 #cse-search-box input#searchsubmit {
 	position: absolute;
 	width: 15px;
-	left: 8px;
+	right: 8px;
 	border-style: none;
 	text-indent: -9999px;
 	background: url(../images/search-icon.png) no-repeat left;
@@ -2512,9 +2509,7 @@ td.label {
 	    #cse-search-box input#searchsubmit {
 	    	background-image: url(../images/search-icon@2x.png);
 	        background-size: 15px 14px;
-			right: 0;
 			top: -2px;
-			left: 136px;
 	    }
 	    .updatedtime {
 	    	background-image: url(../images/clock1@2x.png);
