@@ -1180,6 +1180,9 @@ a.mxid_topbar_login:hover {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
+.browsing {
+	text-align: center;
+}
 .gray-box-bg a.real_name { font-size: 0.688em; }
 .gray-box-bg .paragraph span.subject { color: #232323; }
 .question-item {

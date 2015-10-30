@@ -103,13 +103,13 @@
 {% block sidebar %}
 <div class="gray-box gray-box-bg">
 	<div>
-		<center>
+		<div class="browsing">
             You are browsing <br>
             <div class="questions-count">{{ questions_count|intcomma }}</div>
             <div class="paragraph">
                 Questions {% if searchtag %} marked as <span class="post-tag">{{ searchtag }}</span><!-- of --> {% endif %}
 			</div>
-		</center>
+		</div>
         <div class="paragraph">You can also use <a href="/tags/" title="View all tags"><strong>tags</strong></a> and <a href="#" title="Search problems"><strong>searchs</strong></a> to find questions.</div>
     </div>
 </div>
