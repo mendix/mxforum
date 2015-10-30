@@ -1922,6 +1922,38 @@ table.user-details td.dark { color: #555; }
 .user-info .user-gravatar img {
 	border-radius: 50%;
 }
+
+.user-info-header {
+	margin: 20px 0;
+}
+.user-info-avatar {
+	display: inline-block;
+}
+.user-info-avatar img {
+	border-radius: 50%;
+}
+.user-info-meta {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 15px;
+}
+.user-info-meta small {
+    color: #808185;
+}
+.user-info-name {
+	font-size: 16px;
+	font-weight: bold;
+}
+.user-info-points {
+	font-size: 14px;
+	font-weight: bold;
+	color: #808185;
+}
+.user-info-description {
+	color: #808185;
+}
+
+
 #mainbar-full { 
 	max-width: 970px; 
 	font-size: 0.750em; 
@@ -1969,20 +2001,16 @@ table.user-details td.dark { color: #555; }
 	border-bottom: 1px dotted #ccc;
 }
 #mainbar-full .repsonses_column p { margin: 5px 0 0 0; }
-#subheader {
-    border-bottom:1px solid #CACACA;
-    clear:both;
-    height:34px;
-    width:100%;
+.subheader {
+    border-bottom: 1px solid #CACACA;
+    clear: both;
+    height: 34px;
+    width: 100%;
 }
 #tabs {
     float:right;
     font-weight:bold;
     position:relative;
-}
-.summaryinfo {
-    color:#808185;
-    text-align:center;
 }
 .summarycount {
     color:#808185;
@@ -1998,23 +2026,6 @@ table.user-details td.dark { color: #555; }
     font-size:250%;
     font-weight:bold;
     text-align:center;
-}
-.reg-user {
-	font-size: 1em;
-    margin-bottom: 0;
-    margin-top: 13px;
-}
-#user-about-me {
-    height:200px;
-    width:90%;
-    line-height:20px;
-    color:#555555;
-	font-size: 1.2em;
-    margin:10px;
-    overflow:auto;
-    padding:10px;
-    border:1px solid #CCCCCC;
-    background-color: #F1F1F1;
 }
 .favorites-count-off {
     color:#919191;
@@ -2109,7 +2120,6 @@ div.votebox span {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
-
 .user-stats-table .answered-accepted {
 	min-width: 20px;
 	background: #60AC39;

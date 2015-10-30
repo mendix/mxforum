@@ -1,5 +1,5 @@
 {% load extra_filters %}
-<div id="subheader">
+<div class="subheader">
     <div id="tab">
         <a id="stats" {% ifequal tab_name "stats" %}class="youarehere"{% endifequal %} href="/users/{{view_user.id}}/{{view_user.real_name}}?sort=stats">Stats</a>
         <a id="recent" {% ifequal tab_name "recent" %}class="youarehere"{% endifequal %} href="/users/{{view_user.id}}/{{view_user.real_name}}?sort=recent">Recent activity</a>

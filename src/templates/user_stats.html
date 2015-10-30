@@ -3,7 +3,6 @@
 {% load humanize %}
 		{% block usercontent %}
 		<div style="margin-top: 10px;"></div>
-        <a name="questions"></a>
         <table>
             <tr>
                 <td>
@@ -16,7 +15,6 @@
         </table>
 		{% include "users_questions.html" %}
         <p>&nbsp;</p>
-        <a name="answers"></a>
         <table>
             <tr>
                 <td>
@@ -40,12 +38,11 @@
             {% endfor %}
             {% if answered_questions|length %}
                 <div>
-                    <a href="/users/{{ view_user.id }}/{{ view_user.real_name }}?page={{ next_page }}">>> more questions by this author</a>
+                    <a href="/users/{{ view_user.id|urlencode }}/{{ view_user.real_name|urlencode }}?page={{ next_page }}">>> more questions by this author</a>
                 </div>
             {% endif %}
         </div>
         <p>&nbsp;</p>
-        <a name="votes"></a>
         <table>
             <tr>
                 <td>
@@ -77,7 +74,6 @@
             </table>
         </div>
         <hr />
-        <a name="tags"></a>
         <table>
             <tr>
                 <td>
@@ -104,7 +100,6 @@
             </table>
         </div>
         <p>&nbsp;</p>
-        <a name="badges"></a>
         <table>
             <tr>
                 <td>
