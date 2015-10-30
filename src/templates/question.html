@@ -43,16 +43,12 @@
             
             setupFormValidation("#fmanswer", CPValidator.getQuestionFormRules(), CPValidator.getQuestionFormMessages());
         }
-         
         </script>
 {% endblock %}
         
 {% block content %}
 <div id="question-title" class="">
-    <h3>
-        <a href="{{ question.get_absolute_url }}">{{ question.get_question_title }}</a>
-    </h3>
-    
+    <h3><a href="{{ question.get_absolute_url }}">{{ question.get_question_title }}</a></h3>
 </div>
 
 <div id="main-body" class="">
@@ -168,11 +164,6 @@
             </div>
         </div>
         <!-- #question-table -->
-
-
-
-
-
 
         {% if question.closed %}
         <div class="question-status" style="margin-bottom:15px">
@@ -290,7 +281,6 @@
         {% else %}
         <div class="line"></div>
         {% endifnotequal %}
-<!--         <div style="clear:both"></div> -->
             
         {% if not question.closed %}
         {% if request.user.is_authenticated %}
@@ -319,8 +309,7 @@
         {% else %}
         <input class="btLogin" id="btLogin" type="button" value="Log in and answer the question">
         {% endif %}
-        {% endif %}
-        <br><br>   
+        {% endif %} 
         </form>
     </div>
     <!-- #askform -->
@@ -345,7 +334,7 @@
         <span class="subject">Asked:</span> <div class="big" title="{{ question.added_at }}">{{ question.added_at|timesince }} ago</div>
     </div>
     <div class="paragraph"> 
-     <span class="subject">Viewed:</span> <div class="big">{{ question.view_count|intcomma }} views</div>
+        <span class="subject">Viewed:</span> <div class="big">{{ question.view_count|intcomma }} views</div>
     </div>
     <div class="paragraph"> 
         <span class="subject">Latest activity:</span><div class="big" title="{{ question.last_activity_at }}">{{ question.last_activity_at|timesince }} ago</div>
@@ -353,19 +342,18 @@
 </div>
 <h3 class="outside">Similar questions: </h3>
 <div class="gray-box gray-box-bg"> 
-    <div  class="">
+    <div class="">
         <ul class="list-item">
         {% for question in similar_questions %}
             <li><a href="/questions/{{question.id}}/{{ question.get_question_title }}">{{ question.get_question_title }}</a><span class="small" title="{{ question.last_activity_at }}"> ({% diff_date question.last_activity_at %})</span></li>
         {% endfor %}
         </ul>
   </div>
-    <br>  
 </div>
 {% if request.user.is_authenticated %}
   <h3 class="outside">Subscribe to Question</h3>
   <div class="gray-box gray-box-bg">
-        <a href="/addsubscription?question={{ question.id }}">Click here</a> to have updates to this question sent to: {{ request.user.username }}
+    <a href="/addsubscription?question={{ question.id }}">Click here</a> to have updates to this question sent to: {{ request.user.username }}
   </div>
 {% endif %}
 {% endblock %}
