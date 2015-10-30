@@ -93,7 +93,7 @@
                     {% if question.wiki %}
                     <span class="gray">Community Wiki</span>
                     {% else %}
-          <span class="updatedtime" title="{{ question.last_activity_at }}">{% diff_date question.last_activity_at %}</span> <span class="big"><a href="/users/{{ question.last_activity_by.id||urlencode }}/{{ question.last_activity_by.real_name||urlencode }}/">{{ question.last_activity_by.real_name }}</a></span>&nbsp;{% get_score_badge question.last_activity_by %}
+          <span class="updatedtime" title="{{ question.last_activity_at }}">{% diff_date question.last_activity_at %}</span> <span class="big"><a href="/users/{{ question.last_activity_by.id|urlencode }}/{{ question.last_activity_by.real_name|urlencode }}/">{{ question.last_activity_by.real_name }}</a></span>&nbsp;{% get_score_badge question.last_activity_by %}
                     {% endif %}
             </div>
 
