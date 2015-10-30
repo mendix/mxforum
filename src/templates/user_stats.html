@@ -2,29 +2,13 @@
 {% load extra_tags %}
 {% load humanize %}
 		{% block usercontent %}
-		<div style="margin-top: 10px;"></div>
-        <table>
-            <tr>
-                <td>
-                    <div style="text-align: right;" class="summarysubcount">{{questions|length}}</div>
-                </td>
-                <td style="vertical-align: bottom; padding-left: 10px;">
-                    <h2 class="outside">Questions</h2>
-                </td>
-            </tr>
-        </table>
+        <div class="forum-topic-title">
+            <strong class="summarysubcount">{{questions|length}}</strong> <h2 class="outside">Questions</h2>
+        </div>
 		{% include "users_questions.html" %}
-        <p>&nbsp;</p>
-        <table>
-            <tr>
-                <td>
-                    <div style="text-align: right;" class="summarysubcount">{{answered_questions_count}}</div>
-                </td>
-                <td style="vertical-align: bottom; padding-left: 10px;">
-                    <h2 class="outside">Answers</h2>
-                </td>
-            </tr>
-        </table>
+        <div class="forum-topic-title">
+            <strong class="summarysubcount">{{answered_questions_count}}</strong> <h2 class="outside">Answers</h2>
+        </div>
         <div class="user-stats-table">
             {% for answered_question in answered_questions %}
             <div class="answer-summary">
@@ -42,17 +26,9 @@
                 </div>
             {% endif %}
         </div>
-        <p>&nbsp;</p>
-        <table>
-            <tr>
-                <td>
-                    <div style="text-align: right;" class="summarysubcount">{{total_votes}}</div>
-                </td>
-                <td style="vertical-align: bottom; padding-left: 10px;">
-                    <h2 class="outside">Votes</h2>                    
-                </td>
-            </tr>
-        </table>
+        <div class="forum-topic-title">
+            <strong class="summarysubcount">{{total_votes}}</strong> <h2 class="outside">Votes</h2>
+        </div>
         <div class="user-stats-table">
             <table>
                 <tr>
@@ -73,17 +49,9 @@
                 </tr>
             </table>
         </div>
-        <hr />
-        <table>
-            <tr>
-                <td>
-                    <div style="text-align: right;" class="summarysubcount">{{tags|length}}</div>
-                </td>
-                <td style="vertical-align: bottom; padding-left: 10px;">
-                    <h2 class="outside">Labels</h2>
-                </td>
-            </tr>
-        </table>
+        <div class="forum-topic-title">
+            <strong class="summarysubcount">{{tags|length}}</strong> <h2 class="outside">Labels</h2>
+        </div>
         <div class="user-stats-table">
             <table>
                 <tr>
@@ -99,17 +67,9 @@
                 </tr>
             </table>
         </div>
-        <p>&nbsp;</p>
-        <table>
-            <tr>
-                <td>
-                    <div style="text-align: right;" class="summarysubcount">{{total_awards}}</div>
-                </td>
-                <td style="vertical-align: bottom; padding-left: 10px;">
-                    <h2 class="outside">Badges</h2>
-                </td>
-            </tr>
-        </table>
+        <div class="forum-topic-title">
+            <strong class="summarysubcount">{{total_awards}}</strong> <h2 class="outside">Badges</h2>
+        </div>
         <div class="user-stats-table">
             <table>
                 <tr>

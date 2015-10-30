@@ -1952,8 +1952,18 @@ table.user-details td.dark { color: #555; }
 .user-info-description {
 	color: #808185;
 }
-
-
+.forum-topic-title {
+	margin: 20px 0;
+}
+.forum-topic-title strong {
+	padding-right: 5px;
+}
+.forum-topic-title h2,
+.forum-topic-title strong {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
 #mainbar-full { 
 	max-width: 970px; 
 	font-size: 0.750em; 
@@ -2052,7 +2062,6 @@ table.user-details td.dark { color: #555; }
 .narrow .stats {
     background:transparent none repeat scroll 0 0;
     float:left;
-    height: 48px;
     margin:0 0 0 7px;
     padding:0;
     width:auto;
@@ -2135,8 +2144,8 @@ div.votebox span {
     text-align:center;
 }
 .user-stats-table .summary {
-    width:600px;
-    line-height:22px;
+    width: 550px;
+    line-height: 22px;
 }
 .user-stats-table .post-tag {
 	font-size: 90%;
@@ -2149,6 +2158,11 @@ div.votebox span {
 }
 .user-stats-table h4 {
 	font-size: 1.3em;
+}
+.user-stats-table-question {
+	clear: both;
+	overflow: hidden;
+	margin-bottom: 10px;
 }
 div.tags {
     float:left;

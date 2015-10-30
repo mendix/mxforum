@@ -2,6 +2,7 @@
 {% load humanize %}
 {% load extra_filters %}
 <div class="user-stats-table">
+    <div class="user-stats-table-question">
     {% for question in questions%}
         {% if question.favourite_count %}
             {% if question.favorited_myself %}
@@ -16,61 +17,59 @@
         {% else %}
             <div class="if-favorite-empty"> </div>
         {% endif %}
-    <div id="question-summary-{{question.id}}" class="question-summary narrow">
-        <a href="/questions/{{question.id}}/{{question.get_question_title}}">
-            <div class="stats">
-                <div class="votes">
-                    <div class="votebox">
+        <div id="question-summary-{{question.id}}" class="question-summary narrow">
+            <a href="/questions/{{question.id}}/{{question.get_question_title}}">
+                <div class="stats">
+                    <div class="votes">
+                        <div class="votebox">
+                            <table width="100%">
+                                <tr>
+                                    <td height="25" style="vertical-align: middle;">
+                                        <span class="vote-count-post"><strong style="font-size: 190%;color:#555">{{question.vote_count|intcomma}}</strong></span> 
+                                    </td>
+                                </tr>
+                                <tr><td class="box-unit" style="color:#555">Votes</td></tr>
+                            </table>               
+                        </div>
+                    </div>
+                    <div title="{% if question.answer_accepted %}The answer has been accepted as the correct answer{% endif %}" class="status {% if question.answer_accepted %}answered-accepted{% endif %} {% ifequal question.answer_count 0 %}unanswered{% endifequal %}{% ifnotequal question.answer_count 0 %}answered{% endifnotequal %}">
                         <table width="100%">
                             <tr>
                                 <td height="25" style="vertical-align: middle;">
-                                    <span class="vote-count-post"><strong style="font-size: 190%;color:#555">{{question.vote_count|intcomma}}</strong></span> 
+                                    <strong style="font-size: 190%;">{{question.answer_count|intcomma}}</strong>
                                 </td>
                             </tr>
-                            <tr><td class="box-unit" style="color:#555">Votes</td></tr>
+                            <tr><td class="box-unit">Answer</td></tr>
                         </table>               
                     </div>
+                    <div class="views">
+                        <table width="100%">
+                            <tr>
+                                <td height="25" style="vertical-align: middle;">
+                                    <strong style="font-size: 190%;">{{question.view_count|rint}}</strong>
+                                </td>
+                            </tr>
+                            <tr><td class="box-unit">views</td></tr>
+                        </table>
+                    </div>
                 </div>
-                <div title="{% if question.answer_accepted %}The answer has been accepted as the correct answer{% endif %}" class="status {% if question.answer_accepted %}answered-accepted{% endif %} {% ifequal question.answer_count 0 %}unanswered{% endifequal %}{% ifnotequal question.answer_count 0 %}answered{% endifnotequal %}">
-                    <table width="100%">
-                        <tr>
-                            <td height="25" style="vertical-align: middle;">
-                                <strong style="font-size: 190%;">{{question.answer_count|intcomma}}</strong>
-                            </td>
-                        </tr>
-                        <tr><td class="box-unit">Answer</td></tr>
-                    </table>               
+            </a>
+            <div class="summary">
+                <h4><a title="{{question.summary}}" href="/questions/{{question.id}}/{{question.title}}">{{question.title}}</a></h4>
+                <div class="tags">
+                    {% convert2tagname_list question %}
+                    {% for tag in question.tagnames %}
+                        <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="See related '{{ tag }}' the problem of" rel="tag">{{ tag }}</a>
+                    {% endfor %}
                 </div>
-                <div class="views">
-                    <table width="100%">
-                        <tr>
-                            <td height="25" style="vertical-align: middle;">
-                                <strong style="font-size: 190%;">{{question.view_count|rint}}</strong>
-                            </td>
-                        </tr>
-                        <tr><td class="box-unit">views</td></tr>
-                    </table>
+                <div class="started">
+                    <span class="relativetime" title="{{question.last_activity_at}}">{% diff_date question.last_activity_at %}</span>
+                    {% if question.la_username %}
+                        <a href="/users/{{question.la_user_id|urlencode}}/{{question.la_real_name|urlencode}}">{{question.la_real_name}}</a> {% get_score_badge_by_details question.la_user_reputation question.la_user_gold question.la_user_silver question.la_user_bronze%}
+                    {% endif %}
                 </div>
-            </div>
-        </a>
-        <div class="summary">
-            <h4>
-                <a title="{{question.summary}}" href="/questions/{{question.id}}/{{question.title}}">{{question.title}}</a>
-            </h4>
-            <div class="tags">
-                {% convert2tagname_list question %}
-                {% for tag in question.tagnames %}
-                    <a href="{% url forum.views.tag tag|urlencode %}" class="post-tag" title="See related '{{ tag }}' the problem of" rel="tag">{{ tag }}</a>
-                {% endfor %}
-            </div>
-            <div class="started">
-                <span class="relativetime" title="{{question.last_activity_at}}">{% diff_date question.last_activity_at %}</span>
-                {% if question.la_username %}
-                    <a href="/users/{{question.la_user_id}}/{{question.la_real_name}}">{{question.la_real_name}}</a> {% get_score_badge_by_details question.la_user_reputation question.la_user_gold question.la_user_silver question.la_user_bronze%}
-                {% endif %}
             </div>
         </div>
+        {% endfor %}
     </div>
-    <br clear="both"/>
-    {% endfor %}
 </div>
