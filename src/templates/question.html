@@ -211,7 +211,7 @@
                 </div>
                 <!--.answer-body -->
                                         
-                <div class="answer-controls" style="clear:both;">
+                <div class="answer-controls">
                     <div class="question-controls-links"> 
                         {% if request.user|can_edit_post:answer %}
                         <span class="action-link"><a href="{% url edit_answer answer.id %}">Edit</a></span>
@@ -290,11 +290,11 @@
         {% else %}
         <div class="line"></div>
         {% endifnotequal %}
-        <div style="clear:both"></div>
+<!--         <div style="clear:both"></div> -->
             
         {% if not question.closed %}
         {% if request.user.is_authenticated %}
-        <div style="padding:10px 0 0 0;">
+        <div class="your-answer">
             <h3 class="outside">Your answer: </h3>
         </div>
 

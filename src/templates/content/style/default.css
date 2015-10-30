@@ -877,6 +877,10 @@ a.mxid_topbar_login:hover {
 #askform #description { 
 	padding: 5px 0 10px 0; 
 }
+.your-answer {
+    padding-top: 20px;
+    clear: both;
+}
 .comments-link {
     color: #333;
     padding: 5px;
@@ -2492,10 +2496,10 @@ td.label {
 		#main #wmd-button-bar #wmd-redo-button { left: 275px; }
 
 		/* Homepage */
-		.homepage .summary { float: none; width: auto; }
+		.summary, .homepage .summary { float: none; width: auto; }
+		.box-number { font-size: 1em; }
+		.box-unit { padding: 0 3px; }
 		.answered-accepted, .vote, .unanswered, .view, .answered { min-width: 40px; padding: 0 !important; }
-		.homepage .box-number { font-size: 1em; }
-		.homepage .box-unit { padding: 0 3px; }
 
 		/* Sidebar */
 		#sidebar { float: none; clear: both; width: auto; padding: 0 10px; display: inline-block; }
