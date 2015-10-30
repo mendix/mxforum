@@ -29,9 +29,9 @@
     <div class="question-item">
 
         <div class="boxes">
-            <table height="100%">
+            <table>
                 <tr>
-                    <td width="50px" class="boxes-cell">
+                    <td class="boxes-cell">
                        <div class="vote">
                             <table>
                                 <tr>
@@ -43,7 +43,7 @@
                             </table>
                         </div>
                     </td>
-                    <td width="50px" class="boxes-cell">
+                    <td class="boxes-cell">
                         <div {% if question.answer_accepted %}class="answered-accepted"{% else %}{% ifequal question.answer_count 0 %}class="unanswered"{% else %}class="answered"{% endifequal %}{% endif %}>
                             <table>
                                 <tr>
@@ -55,7 +55,7 @@
                             </table>
                         </div>
                     </td>
-                    <td width="50px" class="boxes-cell">
+                    <td class="boxes-cell">
                         <div class="view">
                             <table>
                                 <tr>
