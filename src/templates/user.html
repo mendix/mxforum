@@ -2,17 +2,10 @@
 {% load extra_tags %}
 {% load humanize %}
 {% block title %}{% spaceless %}{{ page_title }}{% endspaceless %}{% endblock %}
-{% block forestyle%}
-    <style type="text/css">
- 		.history-table td { padding: 5px; }
- 		.user-stats-table { margin-left:50px; }
-	</style>
-{% endblock %}
 {% block forejs %}
         <script type="text/javascript">
             $().ready(function(){
                 $("#nav_users").attr('className',"youarehere");
-
             });     
         </script>
         {% block userjs %}
@@ -25,6 +18,5 @@
         {% include "user_tabs.html" %}
         {% block usercontent %}
         {% endblock %}
-        {% include "user_footer.html" %}
 	</div>
 {% endblock %}
