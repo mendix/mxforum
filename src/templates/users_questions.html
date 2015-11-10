@@ -24,7 +24,7 @@
                         <div class="votebox">
                             <table width="100%">
                                 <tr>
-                                    <td height="25" style="vertical-align: middle;">
+                                    <td style="vertical-align: middle;">
                                         <span class="vote-count-post"><strong style="font-size: 190%;color:#555">{{question.vote_count|intcomma}}</strong></span> 
                                     </td>
                                 </tr>
@@ -35,7 +35,7 @@
                     <div title="{% if question.answer_accepted %}The answer has been accepted as the correct answer{% endif %}" class="status {% if question.answer_accepted %}answered-accepted{% endif %} {% ifequal question.answer_count 0 %}unanswered{% endifequal %}{% ifnotequal question.answer_count 0 %}answered{% endifnotequal %}">
                         <table width="100%">
                             <tr>
-                                <td height="25" style="vertical-align: middle;">
+                                <td style="vertical-align: middle;">
                                     <strong style="font-size: 190%;">{{question.answer_count|intcomma}}</strong>
                                 </td>
                             </tr>
@@ -45,7 +45,7 @@
                     <div class="views">
                         <table width="100%">
                             <tr>
-                                <td height="25" style="vertical-align: middle;">
+                                <td style="vertical-align: middle;">
                                     <strong style="font-size: 190%;">{{question.view_count|rint}}</strong>
                                 </td>
                             </tr>
