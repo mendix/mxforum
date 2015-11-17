@@ -1306,7 +1306,7 @@ a.mxid_topbar_login:hover {
 .answer-body { 
 	min-height: 80px; 
 }
-.answer-body img { max-width: 600px; }
+.answer-body img { max-width: 100%; }
 .answer-controls { 
 	clear: both;
 	padding-top: 5px;
