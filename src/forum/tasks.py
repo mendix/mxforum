@@ -19,25 +19,29 @@ except:
     ALAN_ACTIVE = False
     flog("ALAN: Could NOT open platform analytics WSDL at location: (%s)." % EVENTREG_LOCATION)
 
-# Using a string here means the worker will not have to
-# pickle the object when using Windows.
-app.config_from_object('django.conf:settings')
-app.autodiscover_tasks(lambda: djsettings.INSTALLED_APPS)
-
-@app.task(bind=True, max_retries=20)
-def send_event(self, _event):
-    if EVENTREG_ENABLED:
-        if ALAN_ACTIVE:
-            try:
-                event = json.loads(_event)
-                
-                client.set_options(soapheaders={'authentication' : {'username': EVENTREG_USER, 'password': EVENTREG_PASS}})
-                client.service.RegisterEvent(event)
-        
-            except Exception as e:
-                flog("ALAN: Error whilst trying to register event (%s)" % e)
-                raise self.retry(exc=e, countdown=60 * 10)
+if client:
+    # Using a string here means the worker will not have to
+    # pickle the object when using Windows.
+    app.config_from_object('django.conf:settings')
+    app.autodiscover_tasks(lambda: djsettings.INSTALLED_APPS)
+    
+    @app.task(bind=True, max_retries=20)
+    def send_event(self, _event):
+        if EVENTREG_ENABLED:
+            if ALAN_ACTIVE:
+                try:
+                    event = json.loads(_event)
+                    
+                    client.set_options(soapheaders={'authentication' : {'username': EVENTREG_USER, 'password': EVENTREG_PASS}})
+                    client.service.RegisterEvent(event)
+            
+                except Exception as e:
+                    flog("ALAN: Error whilst trying to register event (%s)" % e)
+                    raise self.retry(exc=e, countdown=60 * 10)
+            else:
+                flog("ALAN: Failed to send event, ALAN is NOT active.")
         else:
-            flog("ALAN: Failed to send event, ALAN is NOT active.")
-    else:
-        flog("ALAN: Event registration is DISABLED.")
+            flog("ALAN: Event registration is DISABLED.")
+else:
+    ALAN_ACTIVE = False
+    flog("ALAN: Send_event task not registered as SUDS client is not loaded." % EVENTREG_LOCATION)
