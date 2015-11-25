@@ -9,6 +9,7 @@ from celery import Celery
 from django.conf import settings as djsettings
 
 ALAN_ACTIVE = False
+client = None
 
 try:
     client = Client(EVENTREG_LOCATION)
@@ -44,4 +45,4 @@ if client:
             flog("ALAN: Event registration is DISABLED.")
 else:
     ALAN_ACTIVE = False
-    flog("ALAN: Send_event task not registered as SUDS client is not loaded." % EVENTREG_LOCATION)
+    flog("ALAN: Send_event task not registered as SUDS client is not loaded.")
