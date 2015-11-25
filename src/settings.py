@@ -46,7 +46,17 @@ EMAIL_HOST='10.140.10.1'
 EMAIL_PORT='25'
 EMAIL_USE_TLS=False
 
+EVENTREG_ENABLED=False
+EVENTREG_LOCATION=''
+EVENTREG_USER=''
+EVENTREG_PASS=''
 
+# CELERY SETTINGS
+# These are automatically picked up by celery
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 
 
 # Local time zone for this installation. Choices can be found here:
@@ -54,7 +64,7 @@ EMAIL_USE_TLS=False
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'Europe/WET'
+TIME_ZONE = 'Europe/Amsterdam'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
