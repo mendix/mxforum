@@ -2053,26 +2053,27 @@ import json
 import tasks
 
 def register_event(event_type, request, open_id, extra_info, extra_info2, extra_info3, timestamp):
-    if open_id == None or open_id == "":
-        return
-    
-    user_agent = ''
-    if request:
-        user_agent = request.META['HTTP_USER_AGENT']
+    if hasattr(tasks, 'send_event'):
+        if open_id == None or open_id == "":
+            return
         
-    if not timestamp:
-        timestamp = datetime.datetime.now().isoformat()
-
-    event = {
-        'EventType' : event_type,
-        'OpenId' : open_id,
-        'CompanyId' : '',
-        'UserAgent' : user_agent,
-        'ExtraInfo' : extra_info,
-        'ExtraInfo2' : extra_info2,
-        'ExtraInfo3' : extra_info3,
-        'TimeStamp' : timestamp
-    }
+        user_agent = ''
+        if request:
+            user_agent = request.META['HTTP_USER_AGENT']
+            
+        if not timestamp:
+            timestamp = datetime.datetime.now().isoformat()
     
-    p = json.dumps(event)
-    tasks.send_event.delay(p)
+        event = {
+            'EventType' : event_type,
+            'OpenId' : open_id,
+            'CompanyId' : '',
+            'UserAgent' : user_agent,
+            'ExtraInfo' : extra_info,
+            'ExtraInfo2' : extra_info2,
+            'ExtraInfo3' : extra_info3,
+            'TimeStamp' : timestamp
+        }
+        
+        p = json.dumps(event)
+        tasks.send_event.delay(p)
