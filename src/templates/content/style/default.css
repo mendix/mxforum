@@ -243,12 +243,12 @@ button,
 	cursor: pointer;
 }
 .btn-start-for-free, .btn-start-for-free:visited {
-	padding: 6px 15px 5px 15px;
+	padding: 6px 12px 5px 10px;
 	background: #76ca02;
-	font-size: 15px;
+	font-size: 14px;
 }
 .btn-start-for-free:hover, .btn-start-for-free:focus {
-	background: #ff9e00;
+	background: #4ba303;
 }
 .site-header {
 	position: relative;
@@ -333,7 +333,7 @@ ul.nav-menu, div.nav-menu > ul {
 }
 .nav-menu .sub-menu li a {
 	display: block;
-	padding: 0 0 0 20px;
+	padding: 0;
 	white-space: nowrap;
 	font-size: 14px;
 	color: #1b82ba;
@@ -344,28 +344,11 @@ ul.nav-menu, div.nav-menu > ul {
 	-o-transition: none;
 	transition: none;
 }
-.nav-menu .sub-menu li a.navFAQs { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-faqs.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navHowTos { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-how-tos.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navReferenceGuide { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-reference-guide.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navAPIs { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-apis.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navReleaseNotes { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-release-notes.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navDeveloperTools { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-developer-tools.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navGetStarted { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-get-started.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navVideoTutorials { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-video-tutorials.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navClassroomCourses { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-classroom-courses.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navIntroductionCourse { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-introduction-course.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navOnDemandWebinars { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-webinars.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navCertification { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-certification.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navJobs { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-jobs.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navForum { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-forum.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navModelShare { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-model-share.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navAppStore { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-app-store.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navBlog { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-blog.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navEvents { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-events.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a.navSupportOverview { background: transparent url(https://developers.mendix.com/wp-content/themes/mendix/images/nav-support-overview.png) 0 0 no-repeat; }
-.nav-menu .sub-menu li a:hover, .nav-menu .sub-menu li a:focus {
+.nav-menu .sub-menu li a span {
+	color: #797979;
+}
+.nav-menu .sub-menu li a:hover, .nav-menu .sub-menu li a:focus, .nav-menu .sub-menu li a:hover span, .nav-menu .sub-menu li a:focus span {
 	color: #23a7e8 !important;
-	background-position: 0 -20px !important;
 }
 .menu-toggle {
 	display: none;
@@ -378,6 +361,7 @@ ul.nav-menu, div.nav-menu > ul {
 }
 .header-buttons a.btn-start-for-free {
 	margin-right: 7px;
+	border-radius: 3px;
 }
 .header-buttons a.btn-start-for-free, #mxid_topbar_attachpoint {
 	float: left;
@@ -438,11 +422,11 @@ a.mxid_topbar_login:hover {
 	display: block;
 	position: absolute;
 	top: 67px;
-	left: -146px;
+	right: 0;
 	z-index: 99999;
 	background: #f0f0ee;
 	padding: 28px 21px 12px 27px;
-	width: 170px;
+	width: 218px;
 }
 .mxid_topbar .mxid_topbar_menuTrigger:hover .mxid_topbar_menu a {
 	display: block;
