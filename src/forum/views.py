@@ -1678,7 +1678,7 @@ def __comments(request, obj, type, user):
             comment_data = request.POST.get('comment')
             comment = Comment(content_object=obj, comment=comment_data, user=request.user)
             comment.save()
-            if (comment.content_type_id == ContentType.objects.get_for_model(Question)):
+            if (comment.content_type_id == ContentType.objects.get_for_model(Question).id):
                 register_event('CommentPosted', request, request.user.openid, comment.object_id, '', '', None)
             else:
                 answer = get_object_or_404(Answer, id=comment.object_id)
