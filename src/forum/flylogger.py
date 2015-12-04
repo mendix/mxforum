@@ -6,7 +6,7 @@ def flog(string):
     path = ''
     # Windows
     if os.name == 'nt':
-        path = '%s\\forum.log' % settings.SITE_SRC_ROOT
+        path = os.path.abspath(os.path.join('src', 'forum.log'))
     else:
         path = '%s/forum.log' % settings.SITE_SRC_ROOT
 
