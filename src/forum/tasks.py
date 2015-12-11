@@ -18,7 +18,10 @@ try:
     flog("WSDL was loaded successfully")
 except:
     ALAN_ACTIVE = False
-    flog("ALAN: Could NOT open platform analytics WSDL at location: (%s)." % EVENTREG_LOCATION)
+    if EVENTREG_LOCATION:
+        flog("ALAN: Could NOT open platform analytics WSDL at location: (%s)." % EVENTREG_LOCATION)
+    else:
+        flog("ALAN: Could NOT open platform analytics WSDL as not event registration location was set.")
 
 if client:
     # Using a string here means the worker will not have to
