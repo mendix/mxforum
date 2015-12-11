@@ -10,9 +10,8 @@ class Command(BaseCommand):
     
         with open('events.csv', 'a+') as csvfile:
         
-            fieldnames = ['type', 'ua', 'openid', 'qid', 'aid', 'd3', 'time']
-            eventswriter = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            eventswriter.writeheader()
+            #fieldnames = ['type', 'ua', 'openid', 'qid', 'aid', 'd3', 'time']
+            eventswriter = csv.writer(csvfile)
             
             sys.stdout.write("Migrating activities \n")
     
@@ -27,20 +26,20 @@ class Command(BaseCommand):
             questions = Question.objects.all()
             sys.stdout.write("Migrating %s questions \n" % len(questions))
             for question in questions:
-                eventswriter.writerow({'type': 'QuestionPosted', 'ua': None, 'openid': question.author.openid, 'qid': question.id, 'aid': '', 'd3': '', 'time': question.added_at.isoformat()})
+                eventswriter.writerow(['QuestionPosted', None, question.author.openid, question.id, '', '', question.added_at.isoformat()])
             
             # type 2
             answers = Answer.objects.all()
             sys.stdout.write("Migrating %s answers \n" % len(answers))
             for answer in answers:
-                eventswriter.writerow({'type': 'AnswerPosted', 'ua': None, 'openid': answer.author.openid, 'qid': answer.question.id, 'aid': answer.id, 'd3': '', 'time': answer.added_at.isoformat()})
+                eventswriter.writerow(['AnswerPosted', None, answer.author.openid, answer.question.id, answer.id, '', answer.added_at.isoformat()])
             
             # type 3 - comment on question
             comments_q = Comment.objects.filter(content_type=ContentType.objects.get_for_model(Question))
             sys.stdout.write("Migrating %s comments on questions \n" % len(comments_q))
             for comment in comments_q:
                 author = get_object_or_none(User, comment.user_id)
-                eventswriter.writerow({'type': 'CommentPosted', 'ua': None, 'openid': author.openid, 'qid': comment.object_id, 'aid': '', 'd3': '', 'time': comment.added_at.isoformat()})
+                eventswriter.writerow(['CommentPosted', None, author.openid, comment.object_id, '', '', comment.added_at.isoformat()])
                 
             # type 4 - comment on answer
             comments_a = Comment.objects.filter(content_type=ContentType.objects.get_for_model(Answer))
@@ -48,15 +47,15 @@ class Command(BaseCommand):
             for comment in comments_a:
                 author = get_object_or_none(User, comment.user_id)
                 answer = get_object_or_none(Answer, comment.object_id)
-                eventswriter.writerow({'type': 'CommentPosted', 'ua': None, 'openid': author.openid, 'qid': answer.question.id, 'aid': answer.id, 'd3': '', 'time': comment.added_at.isoformat()})
+                eventswriter.writerow(['CommentPosted', None, author.openid, answer.question.id, answer.id, '', comment.added_at.isoformat()])
             
             # type 8
             accp_answers = Answer.objects.filter(accepted=1)
             sys.stdout.write("Migrating %s accp_answers \n" % len(accp_answers))
             for answer in accp_answers:
                 question = get_object_or_none(Question, answer.question_id)
-                eventswriter.writerow({'type': 'MarkedAnswerAsAccepted', 'ua': None, 'openid': question.author.openid, 'qid': question.id, 'aid': answer.id, 'd3': '', 'time': answer.accepted_at.isoformat()})
-                eventswriter.writerow({'type': 'AnswerWasMarkedAsAccepted','ua':  None, 'openid': answer.author.openid,'qid': question.id, 'aid': answer.id, 'd3': '', 'time': answer.accepted_at.isoformat()})
+                eventswriter.writerow(['MarkedAnswerAsAccepted', None, question.author.openid, question.id, answer.id, '', answer.accepted_at.isoformat()])
+                eventswriter.writerow(['AnswerWasMarkedAsAccepted', None, answer.author.openid,question.id, answer.id, '', answer.accepted_at.isoformat()])
                 
             # type 9
             upvotes = Vote.objects.filter(vote=1)
@@ -65,13 +64,13 @@ class Command(BaseCommand):
                 if (ContentType.objects.get_for_id(vote.content_type_id) == ContentType.objects.get_for_model(Answer)):
                     answer = get_object_or_none(Answer, vote.object_id)
                     user = get_object_or_none(User, vote.user_id)
-                    eventswriter.writerow({'type': 'Upvoted', 'ua': None, 'openid': user.openid, 'qid': answer.question_id, 'aid' : answer.id, 'd3': '', 'time': vote.voted_at.isoformat()})
-                    eventswriter.writerow({'type': 'ReceivedUpvote', 'ua': None, 'openid': answer.author.openid, 'qid': answer.question_id, 'aid': answer.id, 'd3': '', 'time': vote.voted_at.isoformat()})
+                    eventswriter.writerow(['Upvoted', None, user.openid, answer.question_id, answer.id, '', vote.voted_at.isoformat()])
+                    eventswriter.writerow(['ReceivedUpvote', None, answer.author.openid, answer.question_id, answer.id, '', vote.voted_at.isoformat()])
                 else:
                     question = get_object_or_none(Question, vote.object_id)
                     user = get_object_or_none(User, vote.user_id)
-                    eventswriter.writerow({'type': 'Upvoted', 'ua': None, 'openid': user.openid, 'qid': question.id, 'aid' : '', 'd3': '', 'time': vote.voted_at.isoformat()})
-                    eventswriter.writerow({'type': 'ReceivedUpvote', 'ua': None, 'openid': question.author.openid, 'qid': question.id, 'aid': '', 'd3': '', 'time': vote.voted_at.isoformat()})
+                    eventswriter.writerow(['Upvoted', None, user.openid, question.id, '', '', vote.voted_at.isoformat()])
+                    eventswriter.writerow(['ReceivedUpvote', None, question.author.openid, question.id, '', '', vote.voted_at.isoformat()])
                     
             # type 10
             downvotes = Vote.objects.filter(vote=-1)
@@ -80,13 +79,13 @@ class Command(BaseCommand):
                 if (ContentType.objects.get_for_id(vote.content_type_id) == ContentType.objects.get_for_model(Answer)):
                     answer = get_object_or_none(Answer, vote.object_id)
                     user = get_object_or_none(User, vote.user_id)
-                    eventswriter.writerow({'type': 'Downvoted', 'ua': None, 'openid': user.openid, 'qid': answer.question_id, 'aid': answer.id, 'd3': '', 'time': vote.voted_at.isoformat()})
-                    eventswriter.writerow({'type': 'ReceivedDownvote', 'ua': None, 'openid': answer.author.openid, 'qid': answer.question_id, 'aid': answer.id, 'd3': '', 'time': vote.voted_at.isoformat()})
+                    eventswriter.writerow(['Downvoted', None, user.openid, answer.question_id, answer.id, '', vote.voted_at.isoformat()])
+                    eventswriter.writerow(['ReceivedDownvote', None, answer.author.openid, answer.question_id, answer.id, '', vote.voted_at.isoformat()])
                 else:
                     question = get_object_or_none(Question, vote.object_id)
                     user = get_object_or_none(User, vote.user_id)
-                    eventswriter.writerow({'type': 'Downvoted', 'ua': None, 'openid': user.openid, 'qid': question.id, 'aid': '', 'd3': '', 'time': vote.voted_at.isoformat()})
-                    eventswriter.writerow({'type': 'ReceivedDownvote', 'ua': None, 'openid': question.author.openid, 'qid': question.id, 'aid': '', 'd3': '', 'time': vote.voted_at.isoformat()})
+                    eventswriter.writerow(['Downvoted', None, user.openid, question.id, '', '', vote.voted_at.isoformat()])
+                    eventswriter.writerow(['ReceivedDownvote', None, question.author.openid, question.id, '', '', vote.voted_at.isoformat()])
                     
             # type 16
             fav_questions = FavoriteQuestion.objects.all()
@@ -94,7 +93,7 @@ class Command(BaseCommand):
             for fav_q in fav_questions:
                 question = get_object_or_none(Question, fav_q.question_id)
                 user = get_object_or_none(User, fav_q.user_id)
-                eventswriter.writerow({'type': 'LikedQuestion', 'ua': None, 'openid': user.openid, 'qid': question.id, 'aid': '', 'd3': '', 'time': fav_q.added_at.isoformat()})
-                eventswriter.writerow({'type': 'ReceivedLike', 'ua': None, 'openid': question.author.openid, 'qid': question.id, 'aid': '', 'd3': '', 'time': fav_q.added_at.isoformat()})
+                eventswriter.writerow(['LikedQuestion', None, user.openid, question.id, '', '', fav_q.added_at.isoformat()])
+                eventswriter.writerow(['ReceivedLike', None, question.author.openid, question.id, '', '', fav_q.added_at.isoformat()])
             
             sys.stdout.write("Finished migrating activities \n")
