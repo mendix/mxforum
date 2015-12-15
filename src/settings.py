@@ -1,4 +1,5 @@
 # Django settings for lanai project.
+import os
 import os.path
 
 DEBUG = True
@@ -48,6 +49,7 @@ EMAIL_USE_TLS=False
 
 EVENTREG_ENABLED=False
 EVENTREG_LOCATION=''
+EVENTREG_WSDL='file:///%s/%s' % (os.getcwd(), 'EventsRegistration.wsdl')
 EVENTREG_USER=''
 EVENTREG_PASS=''
 

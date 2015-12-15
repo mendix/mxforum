@@ -4,7 +4,8 @@ import redis
 import json
 from forum.flylogger import flog
 from suds.client import Client
-from settings import EVENTREG_ENABLED, EVENTREG_LOCATION, EVENTREG_USER, EVENTREG_PASS
+from settings import EVENTREG_ENABLED, EVENTREG_WSDL, EVENTREG_LOCATION, \
+EVENTREG_USER, EVENTREG_PASS
 from celery import Celery
 from django.conf import settings as djsettings
 
@@ -12,14 +13,14 @@ ALAN_ACTIVE = False
 client = None
 
 try:
-    client = Client(EVENTREG_LOCATION)
+    client = Client(EVENTREG_WSDL, location=EVENTREG_LOCATION)
     ALAN_ACTIVE = True
     app = Celery('forum')
     flog("WSDL was loaded successfully")
-except:
+except Exception as  e:
     ALAN_ACTIVE = False
     if EVENTREG_LOCATION:
-        flog("ALAN: Could NOT open platform analytics WSDL at location: (%s)." % EVENTREG_LOCATION)
+        flog("ALAN: Could NOT open platform analytics WSDL at location: (%s): %s" % (EVENTREG_LOCATION, e))
     else:
         flog("ALAN: Could NOT open platform analytics WSDL as not event registration location was set.")
 

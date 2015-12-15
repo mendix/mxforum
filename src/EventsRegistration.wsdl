@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="EventsRegistration" targetNamespace="http://www.example.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://www.example.com/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.example.com/">
+      <xsd:element name="RegisterEvent">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Event">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="EventType">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="200" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="OpenId" minOccurs="0">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="200" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="CompanyId" minOccurs="0">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="200" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="UserAgent" minOccurs="0" type="xsd:string" />
+                  <xsd:element name="ExtraInfoType" minOccurs="0">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="200" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="ExtraInfo" minOccurs="0" type="xsd:string" />
+                  <xsd:element name="ExtraInfoType2" minOccurs="0">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="200" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="ExtraInfo2" minOccurs="0" type="xsd:string" />
+                  <xsd:element name="ExtraInfoType3" minOccurs="0">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="200" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="ExtraInfo3" minOccurs="0" type="xsd:string" />
+                  <xsd:element name="TimeStamp" minOccurs="0" type="xsd:dateTime" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RegisterEventResponse">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="authentication">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="username" type="xsd:string" />
+            <xsd:element name="password" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="RegisterEventRequest">
+    <wsdl:part name="request_header" element="tns:authentication" />
+    <wsdl:part name="parameters" element="tns:RegisterEvent" />
+  </wsdl:message>
+  <wsdl:message name="RegisterEventResponse">
+    <wsdl:part name="result" element="tns:RegisterEventResponse" />
+  </wsdl:message>
+  <wsdl:portType name="EventsRegistrationPortType">
+    <wsdl:operation name="RegisterEvent">
+      <wsdl:documentation></wsdl:documentation>
+      <wsdl:input message="tns:RegisterEventRequest" />
+      <wsdl:output message="tns:RegisterEventResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EventsRegistrationSoap" type="tns:EventsRegistrationPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegisterEvent">
+      <soap:operation soapAction="http://www.example.com/RegisterEvent" />
+      <wsdl:input>
+        <soap:header message="tns:RegisterEventRequest" part="request_header" use="literal" />
+        <soap:body parts="parameters" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EventsRegistration">
+    <wsdl:port name="EventsRegistrationPort" binding="tns:EventsRegistrationSoap">
+      <soap:address location="https://analytics.mendixcloud.com/ws/EventsRegistration" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
