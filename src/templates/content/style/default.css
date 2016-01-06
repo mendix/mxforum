@@ -701,6 +701,9 @@ a.mxid_topbar_login:hover {
 	color: #FFF;
 	background-color: #0595db;
 }
+#tab a:visited {
+	color: #0595db;
+}
 #tab a.youarehere {
     color: #FFF;
 	background-color: #0595db;
