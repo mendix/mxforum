@@ -53,19 +53,11 @@
             <strong class="summarysubcount">{{tags|length}}</strong> <h2 class="outside">Labels</h2>
         </div>
         <div class="user-stats-table">
-            <table>
-                <tr>
-                    <td width="180">
-                        {% for tag in tags%}
-                        <a rel="tag" title="See related '{{ tag }}' the problem of" class="post-tag" href="{% url forum.views.tag tag|urlencode %}">{{tag.name}}</a><span class="tag-number"> × {{ tag.used_count|intcomma }}</span><br>
-                            {% if forloop.counter|divisibleby:"10" %}
-                                </td>
-                                <td width="180">
-                            {% endif %}
-                        {% endfor %}
-                    </td>
-                </tr>
-            </table>
+            {% for tag in tags%}
+            <div class="user-stats-label"><a rel="tag" title="See related '{{ tag }}' the problem of" class="post-tag" href="{% url forum.views.tag tag|urlencode %}">{{tag.name}}</a><span class="tag-number"> × {{ tag.used_count|intcomma }}</span></div>
+                {% if forloop.counter|divisibleby:"10" %}
+                {% endif %}
+            {% endfor %}
         </div>
         <div class="forum-topic-title">
             <strong class="summarysubcount">{{total_awards}}</strong> <h2 class="outside">Badges</h2>

@@ -2164,6 +2164,10 @@ div.votebox span {
 	overflow: hidden;
 	margin-bottom: 10px;
 }
+.user-stats-table .user-stats-label {
+	display: inline-block;
+	margin: 0 5px 5px 0;
+}
 div.tags {
     float:left;
     line-height:18px;
