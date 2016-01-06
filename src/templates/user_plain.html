@@ -3,6 +3,7 @@
 {% load humanize %}
 {% block title %}{% spaceless %}{{ page_title }}{% endspaceless %}{% endblock %}
 {% block forejs %}
+        <base target="_blank">
         <script type="text/javascript">
             $().ready(function(){
                 $("#nav_users").attr('className',"youarehere");
