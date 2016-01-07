@@ -2,7 +2,7 @@ import os
 import os.path
 import json
 
-DEBUG = os.getenv('DEBUG', 'true').lower() == 'true'
+DEBUG = os.getenv('DEBUG', 'false').lower() == 'true'
 
 TEMPLATE_DEBUG = DEBUG
 
