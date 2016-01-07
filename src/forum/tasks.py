@@ -6,7 +6,10 @@ from forum.flylogger import flog
 from suds.client import Client
 from settings import EVENTREG_ENABLED, EVENTREG_WSDL, EVENTREG_LOCATION, \
 EVENTREG_USER, EVENTREG_PASS
-from celery import Celery
+try:
+    from celery import Celery
+except ImportError:
+    pass
 from django.conf import settings as djsettings
 
 ALAN_ACTIVE = False
