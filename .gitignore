@@ -1,15 +1,2 @@
-*pyc
-*swp
-*/*pyc
-*/*swp
-*.log
-pytz
-soaplib
-local_settings.py
-log/
-markdown2.py
-mydump.sql
+*.pyc
 venv
-.vscode/
-*.xlsx
-
