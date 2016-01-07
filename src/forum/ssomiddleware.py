@@ -4,6 +4,7 @@ from forum.login_views import mxid_login
 from forum.login_views import login_redirect
 from forum.views import users_feed
 from forum.views import questions_feed
+from forum.views import error
 
 
 class CheckMxIdCookie():
@@ -11,6 +12,9 @@ class CheckMxIdCookie():
 
 	def process_view(self, request, view_func, view_args, view_kwargs):
 		if view_func == mxid_login:
+			return None
+
+		if view_func == error:
 			return None
 
 		if view_func == login_redirect:
