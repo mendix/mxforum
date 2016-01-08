@@ -980,7 +980,7 @@ def user(request, id):
     user_view = dict((v.id, v) for v in USER_TEMPLATE_VIEWS).get(sort, USER_TEMPLATE_VIEWS[0])
     from forum import views
     func = getattr(views, user_view.view_name)
-    return func(request, id, user_view, False)
+    return func(request, id, user_view, "user.html")
     
 def user_view(request, openid):
     sort = request.GET.get('sort', 'stats')
@@ -988,9 +988,9 @@ def user_view(request, openid):
     from forum import views
     func = getattr(views, user_view.view_name)
     user = get_object_or_404(User, openid=openid)
-    return func(request, user.id, user_view, True)
+    return func(request, user.id, user_view, "user_plain.html")
 
-def user_stats(request, user_id, user_view, use_plain):
+def user_stats(request, user_id, user_view, usertemplate):
     user = get_object_or_404(User, id=user_id)
     
     offset = 0
@@ -1081,10 +1081,6 @@ def user_stats(request, user_id, user_view, use_plain):
     total_awards = awards.count()
     awards.query.group_by = ['badge_id']
     
-    usertemplate = "user.html"
-    if use_plain:
-        usertemplate = "user_plain.html"
-    
     return render_to_response(user_view.template_file,{
         "tab_name" : user_view.id,
         "user_template" : usertemplate,
@@ -1105,7 +1101,7 @@ def user_stats(request, user_id, user_view, use_plain):
         "next_page" : offset/100+1,
     }, context_instance=RequestContext(request))
 
-def user_recent(request, user_id, user_view, use_plain):
+def user_recent(request, user_id, user_view, usertemplate):
     user = get_object_or_404(User, id=user_id)
     def get_type_name(type_id):
         for item in TYPE_ACTIVITY:
@@ -1342,10 +1338,6 @@ def user_recent(request, user_id, user_view, use_plain):
         activities.extend(awards)
 
     activities.sort(lambda x,y: cmp(y.time, x.time))
-    
-    usertemplate = "user.html"
-    if use_plain:
-        usertemplate = "user_plain.html"
 
     return render_to_response(user_view.template_file,{
         "tab_name" : user_view.id,
@@ -1356,7 +1348,7 @@ def user_recent(request, user_id, user_view, use_plain):
         "activities" : activities[:user_view.data_size]
     }, context_instance=RequestContext(request))
 
-def user_responses(request, user_id, user_view, use_plain):
+def user_responses(request, user_id, user_view, usertemplate):
     """
     We list answers for question, comments, and answer accepted by others for this user.
     """
@@ -1500,10 +1492,6 @@ def user_responses(request, user_id, user_view, use_plain):
 
     # sort posts by time
     responses.sort(lambda x,y: cmp(y.time, x.time))
-    
-    usertemplate = "user.html"
-    if use_plain:
-        usertemplate = "user_plain.html"
 
     return render_to_response(user_view.template_file,{
         "tab_name" : user_view.id,
@@ -1515,7 +1503,7 @@ def user_responses(request, user_id, user_view, use_plain):
 
     }, context_instance=RequestContext(request))
 
-def user_votes(request, user_id, user_view, use_plain):
+def user_votes(request, user_id, user_view, usertemplate):
     user = get_object_or_404(User, id=user_id)
     if not can_view_user_votes(request.user, user):
         raise Http404
@@ -1567,10 +1555,6 @@ def user_votes(request, user_id, user_view, use_plain):
         votes.extend(answer_votes)
     votes.sort(lambda x,y: cmp(y['voted_at'], x['voted_at']))
     
-    usertemplate = "user.html"
-    if use_plain:
-        usertemplate = "user_plain.html"
-    
     return render_to_response(user_view.template_file,{
         "tab_name" : user_view.id,
         "user_template" : usertemplate,
@@ -1581,7 +1565,7 @@ def user_votes(request, user_id, user_view, use_plain):
 
     }, context_instance=RequestContext(request))
 
-def user_reputation(request, user_id, user_view, use_plain):
+def user_reputation(request, user_id, user_view, usertemplate):
     user = get_object_or_404(User, id=user_id)
     reputation = Repute.objects.extra(
         select={'positive': 'sum(positive)', 'negative': 'sum(negative)', 'question_id':'question_id', 'title': 'question.title'},
@@ -1614,7 +1598,7 @@ def user_reputation(request, user_id, user_view, use_plain):
         "reps" : reps
     }, context_instance=RequestContext(request))
 
-def user_favorites(request, user_id, user_view, use_plain):
+def user_favorites(request, user_id, user_view, usertemplate):
     user = get_object_or_404(User, id=user_id)
     questions = Question.objects.extra(
         select={
@@ -1655,10 +1639,6 @@ def user_favorites(request, user_id, user_view, use_plain):
              'la_user_reputation',
              'la_real_name')
              
-    usertemplate = "user.html"
-    if use_plain:
-        usertemplate = "user_plain.html"
-             
     return render_to_response(user_view.template_file,{
         "tab_name" : user_view.id,
         "user_template" : usertemplate,
@@ -1669,7 +1649,7 @@ def user_favorites(request, user_id, user_view, use_plain):
     }, context_instance=RequestContext(request))
 
 
-def user_preferences(request, user_id, user_view, use_plain):
+def user_preferences(request, user_id, user_view, usertemplate):
     user = get_object_or_404(User, id=user_id)
     return render_to_response(user_view.template_file,{
         "tab_name" : user_view.id,
@@ -1678,7 +1658,7 @@ def user_preferences(request, user_id, user_view, use_plain):
         "view_user" : user,
     }, context_instance=RequestContext(request))
 
-def user_subscriptions(request, user_id, user_view):
+def user_subscriptions(request, user_id, usertemplate):
     """
     user_view is provided as legacy param to work with old b0rked cnprog code
     """
