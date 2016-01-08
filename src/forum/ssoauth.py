@@ -4,7 +4,8 @@ from base64 import b64encode
 import urllib
 from hashlib import sha256
 from django.utils import simplejson
- 
+
+
 class SSOModelBackend(object):
 
     def authenticate_token(self, request, token):
