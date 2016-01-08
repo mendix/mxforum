@@ -49,7 +49,7 @@ body {
 	font-size: 14px;
 	margin: 0;
 	font-family: 'Open Sans', sans-serif;
-}
+}	
 blockquote, q { quotes: none; }
 blockquote:before, blockquote:after, q:before, q:after {
 	content: '';
@@ -675,34 +675,31 @@ a.mxid_topbar_login:hover {
 #main-bar .pink { background:url(/content/images/bg_title_red.gif) no-repeat; }
 #main-bar .orange { background:url(/content/images/bg_title_orange.gif) no-repeat; }
 #main-bar .green { background:url(/content/images/bg_title_green.gif) no-repeat; }
+.subheader {
+    margin-bottom: 20px;
+}
 #tab {
-    float:right;
-    position:relative;
-    display:block;
+
 }
 #tab a {
-	float: left;
-	display: block;
-	height: 23px;
-	line-height: 22px;
-	margin: 8px 0 0 4px;
-	padding: 2px 12px 0 10px;
-	border: 1px solid transparent;
-	border-radius: 4px 4px 0 0;
-	-moz-border-radius: 4px 4px 0 0;
-	-webkit-border-radius: 4px 4px 0 0;
+	color: #0496da;
+	font-size: 14px;
+	display: inline-block;
+	margin: 0 3px 0 0;
+	padding: 6px 14px;
+	border: 1px solid #0595db;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
 }
-#tab a:hover {
-	border-color: #eeeeee #eeeeee #dddddd;
-	background-color: #EEE;
+#tab a:hover,
+#tab a:focus {
+	color: #FFF;
+	background-color: #0595db;
 }
 #tab a.youarehere {
-	height: 23px;
-	line-height: 22px;
-    color: #555;
-	border: 1px solid #CACACA;
-	border-bottom-color: #fff;
-	background: #fff;
+    color: #FFF;
+	background-color: #0595db;
 }
 #sidebar {
 	display: inline;
@@ -1971,7 +1968,8 @@ table.user-details td.dark { color: #555; }
 #mainbar-full h2.outside {
 	margin: 0 0 10px;
     padding: 10px 0;
-    font-size: 1.3em;
+    font-size: 16px;
+    font-weight: 600;
 }
 #mainbar-full .subscription {
 	overflow: hidden;
@@ -2003,20 +2001,15 @@ table.user-details td.dark { color: #555; }
 	font-weight: bold;
 }
 #mainbar-full .repsonses_column {
-	clear:both;
+	clear: both;
+	padding: 10px 0;
 	overflow: hidden;
 	color: #555;
 	margin-bottom: 5px;
 	line-height: 18px;
-	border-bottom: 1px dotted #ccc;
+	border-bottom: 1px solid #d7d7d7;
 }
 #mainbar-full .repsonses_column p { margin: 5px 0 0 0; }
-.subheader {
-    border-bottom: 1px solid #CACACA;
-    clear: both;
-    height: 34px;
-    width: 100%;
-}
 #tabs {
     float:right;
     font-weight:bold;
@@ -2058,7 +2051,10 @@ table.user-details td.dark { color: #555; }
     font-size: 12px;
     margin-bottom: 10px;
 }
-.user-stats-table .question-summary { width:800px; }
+.user-stats-table .question-summary { 
+	width: 800px; 
+	overflow: hidden;
+}
 .narrow .stats {
     background:transparent none repeat scroll 0 0;
     float:left;
@@ -2144,7 +2140,7 @@ div.votebox span {
     text-align:center;
 }
 .user-stats-table .summary {
-    width: 550px;
+    width: 590px;
     line-height: 22px;
 }
 .user-stats-table .post-tag {
@@ -2163,6 +2159,10 @@ div.votebox span {
 	clear: both;
 	overflow: hidden;
 	margin-bottom: 10px;
+}
+.user-stats-table .user-stats-label {
+	display: inline-block;
+	margin: 0 5px 5px 0;
 }
 div.tags {
     float:left;
@@ -2422,7 +2422,7 @@ td.label {
 
 /* User Profile: Recent Activity */
 .recent-activity {
-	padding-top: 5px;
+	padding: 10px 0;
 }
 .repsonses_column_1 {
 	float: left;
@@ -2430,12 +2430,12 @@ td.label {
 }
 .repsonses_column_2 {
 	float: left;
-	width: 100px;
+	width: 200px;
 }
 .repsonses_column_3 {
 	float: left;
 	overflow: hidden;
-	width: 680px
+	width: 580px
 }
 
 /* =Chrome

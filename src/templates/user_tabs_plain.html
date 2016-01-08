@@ -1,0 +1,16 @@
+{% load extra_filters %}
+<div class="subheader">
+    <div id="tab">
+        <a id="stats" {% ifequal tab_name "stats" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/{{view_user.real_name}}?sort=stats">Stats</a>
+        <a id="recent" {% ifequal tab_name "recent" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/{{view_user.real_name}}?sort=recent">Recent activity</a>
+        <a id="responses" {% ifequal tab_name "responses" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/{{view_user.real_name}}?sort=responses">Responses</a>
+        <a id="reputation" {% ifequal tab_name "reputation" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/{{view_user.real_name}}?sort=reputation">Reputation</a>
+        {% if request.user|can_view_user_votes:view_user %}
+        <a id="votes" {% ifequal tab_name "votes" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/{{view_user.real_name}}?sort=votes">Votes</a>
+        {% endif %}
+        <a id="favorites" {% ifequal tab_name "favorites" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/{{view_user.real_name}}?sort=favorites">Favorites</a>
+		{% ifequal request.user view_user %}
+        <a id="subscriptions" {% ifequal tab_name "subscriptions" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/{{view_user.real_name}}?sort=subscriptions">Email notifications</a>
+		{% endifequal %}
+    </div>
+</div>

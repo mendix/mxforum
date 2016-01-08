@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="nl"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="nl"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="nl"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" itemscope="" itemtype="http://schema.org/WebPage"> <!--<![endif]-->
+    <head>
+        <title>{% block title %}{% endblock %} - Mendix Forum</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,300,600,700" rel="stylesheet" type="text/css">
+		<link href="https://www.mendix.com/favicon.ico" rel="shortcut icon">
+        <link href="/content/style/default.css" rel="stylesheet" type="text/css">
+		 {% spaceless %}
+        {% block forestyle %}{% endblock %}
+        {% endspaceless %}
+        <script type='text/javascript' src='/content/js/com.cnprog.utils.js'></script>
+        <script src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript" src="{{ mxid_url }}/navigation/mxid/mxidtopbar.js"></script>
+        <script type="text/javascript" src="{{ mxid_url}}/navigation/mxid/jsonloader.js"></script>
+        <script>google.load("jquery", "1.2.6");</script>
+        {% if request.user.is_anonymous and not request.session.message_silent %}
+        <script type="text/javascript">
+            $().ready(function() {
+                notify.show();
+            });
+         </script>
+        {% else %}
+        {% with request.user.get_messages as messages%}
+        {% if messages %}
+        <style type="text/css">
+            body { margin-top:2.4em; }
+        </style>
+        <script type="text/javascript">
+            $().ready(function() {
+                notify.show();
+            });
+        </script>
+        {% endif %}
+        {% endwith %}
+        {% endif %}
+        {% block forejs %}
+        {% endblock %}
+    </head>
+    <body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-QJG4" 
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-QJG4');</script>
+<!-- End Google Tag Manager -->
+			{% if request.user.get_messages %}
+			<div class="notify" style="display:none">
+				<span>
+					Congratulations, you, the community presented a medal to you：{% for message in request.user.get_messages %}
+					<font class="darkred">{{ message }}</font>, {% endfor %}View
+					<a href="{{ request.user.get_profile_url }}">Personal Data</a></span>
+
+				<a class="close-notify" onclick="notify.close(true)">&times;</a>
+			</div>
+			{% endif %}
+
+            <div id="content">
+                {% block content%}
+                {% endblock%}
+            </div>
+        {% block endjs %}
+        {% endblock %}
+    </body>
+</html>

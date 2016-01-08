@@ -1,0 +1,22 @@
+{% extends "base_content_plain.html" %}
+{% load extra_tags %}
+{% load humanize %}
+{% block title %}{% spaceless %}{{ page_title }}{% endspaceless %}{% endblock %}
+{% block forejs %}
+        <base target="_blank">
+        <script type="text/javascript">
+            $().ready(function(){
+                $("#nav_users").attr('className',"youarehere");
+            });     
+        </script>
+        {% block userjs %}
+        {% endblock %}
+{% endblock %}
+
+{% block content %}
+    <div id="mainbar-full">
+        {% include "user_tabs_plain.html" %}
+        {% block usercontent %}
+        {% endblock %}
+	</div>
+{% endblock %}
