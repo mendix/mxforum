@@ -59,23 +59,4 @@
                 {% endif %}
             {% endfor %}
         </div>
-        <div class="forum-topic-title">
-            <strong class="summarysubcount">{{total_awards}}</strong> <h2 class="outside">Badges</h2>
-        </div>
-        <div class="user-stats-table">
-            <table>
-                <tr>
-                    <td width="250" style="line-height:35px">
-                        {% for award in awards %}
-                            <a href="/badges/{{award.id}}/{{award.name}}" title="{{ award.description }}" class="badge"><span class="badge{{ award.type }}">&#9679;</span>&nbsp;{{ award.name }}</a><span class="tag-number">&nbsp;x&nbsp;{{ award.count|intcomma }}</span><br>
-                            {% if forloop.counter|divisibleby:"6" %}
-                                </td>
-                                <td width="250" style="line-height:35px">
-                            {% endif %}
-                        {% endfor %}
-                    </td>
-                </tr>
-            </table>
-        </div>
-
 {% endblock %}
