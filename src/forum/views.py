@@ -1073,16 +1073,7 @@ def user_stats(request, user_id, user_view, usertemplate):
     votes_today = Vote.objects.get_votes_count_today_from_user(user)
     votes_total = VOTE_RULES['scope_votes_per_user_per_day']
     tags = user.created_tags.all().order_by('-used_count')[:50]
-    awards = Award.objects.extra(
-        select={'id': 'badge.id', 'count': 'count(badge_id)', 'name':'badge.name', 'description': 'badge.description', 'type': 'badge.type'},
-        tables=['award', 'badge'],
-        order_by=['-awarded_at'],
-        where=['user_id=%s AND badge_id=badge.id'],
-        params=[user.id]
-    ).values('id', 'count', 'name', 'description', 'type')
-    total_awards = awards.count()
-    awards.query.group_by = ['badge_id']
-    
+
     return render_to_response(user_view.template_file,{
         "tab_name" : user_view.id,
         "user_template" : usertemplate,
@@ -1097,8 +1088,6 @@ def user_stats(request, user_id, user_view, usertemplate):
         "votes_today_left": votes_total-votes_today,
         "votes_total_per_day": votes_total,
         "tags" : tags,
-        "awards": awards,
-        "total_awards" : total_awards,
         "answered_questions_count" : answered_questions_count,
         "next_page" : offset/100+1,
     }, context_instance=RequestContext(request))
