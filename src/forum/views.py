@@ -1583,10 +1583,6 @@ def user_reputation(request, user_id, user_view, usertemplate):
         rep_list.append(dic)
     reps = ','.join(rep_list)
     reps = '[%s]' % reps
-    
-    usertemplate = "user.html"
-    if use_plain:
-        usertemplate = "user_plain.html"
 
     return render_to_response(user_view.template_file,{
         "tab_name" : user_view.id,
