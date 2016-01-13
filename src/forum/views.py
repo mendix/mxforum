@@ -1645,7 +1645,7 @@ def user_preferences(request, user_id, user_view, usertemplate):
         "view_user" : user,
     }, context_instance=RequestContext(request))
 
-def user_subscriptions(request, user_id, usertemplate):
+def user_subscriptions(request, user_id, user_view, usertemplate):
     """
     user_view is provided as legacy param to work with old b0rked cnprog code
     """
