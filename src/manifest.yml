@@ -1,0 +1,7 @@
+---
+applications:
+- name: forum-celery
+  memory: 256M
+  command: bash start.sh
+  no-route: true
+  no-hostname: true
