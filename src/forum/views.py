@@ -33,7 +33,6 @@ from forum.models import *
 from forum.auth import *
 from forum.const import *
 from forum.user import *
-from forum.flylogger import flog
 from forum import auth
 from base64 import b64encode
 from hashlib import sha256
@@ -984,12 +983,14 @@ def user(request, id):
     return func(request, id, user_view, "user.html")
     
 def user_view(request, openid):
+    print "user_view opened with openid: %s" % openid
     sort = request.GET.get('sort', 'stats')
     user_view = dict((v.id, v) for v in USER_TEMPLATE_VIEWS).get(sort, USER_TEMPLATE_VIEWS[0])
     from forum import views
     func = getattr(views, user_view.view_name)
     decoded_openid = urllib.unquote(openid).decode('utf8')
     user = get_object_or_404(User, openid=decoded_openid)
+    print "user_View retrieved user with id: %s" % user.id
     return func(request, user.id, user_view, "user_plain.html")
 
 def user_stats(request, user_id, user_view, usertemplate):
