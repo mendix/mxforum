@@ -13,3 +13,4 @@ soaplib==0.8.1
 suds==0.4
 wheel==0.24.0
 wsgiref==0.1.2
+celery
