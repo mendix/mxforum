@@ -3,3 +3,5 @@ venv
 mysql
 local_settings.py
 .vscode/
+*.xlsx
+mysql
