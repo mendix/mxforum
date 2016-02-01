@@ -12,4 +12,4 @@ mydump.sql
 venv
 .vscode/
 *.xlsx
-
+mysql
