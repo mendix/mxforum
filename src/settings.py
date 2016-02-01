@@ -164,6 +164,10 @@ DATABASE_HOST = db_credentials['hostname']
 DATABASE_PORT = db_credentials['port']
 DATABASE_USER = db_credentials['username']
 DATABASE_PASSWORD = db_credentials['password']
+DATABASE_OPTIONS = {'ssl':
+                    {'ca': '/%s/%s/%s' % (os.getcwd(), 'mysql', 'ca'),
+                     'cert': '/%s/%s/%s' % (os.getcwd(), 'mysql', 'cert'),
+                     'key': '/%s/%s/%s' % (os.getcwd(), 'mysql', 'key')}}
 
 SECRET_KEY = os.environ['SECRET_KEY']
 LOGIN_REDIRECT_URL = '/'
