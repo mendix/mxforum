@@ -439,6 +439,11 @@ User._meta.get_field_by_name('username')[0].max_length=50
 ## Added for Platform Analytics events support
 User.add_to_class('openid', models.CharField(max_length=400, blank=False))
 
+# Added for new points view
+User.add_to_class('totalpts', models.IntegerField(default=0))
+User.add_to_class('forumpts', models.IntegerField(default=0))
+User.add_to_class('level', models.IntegerField(default=0))
+
 # custom signal
 tags_updated = django.dispatch.Signal(providing_args=["question"])
 edit_question_or_answer = django.dispatch.Signal(providing_args=["instance", "modified_by"])
