@@ -119,12 +119,12 @@
                                 Updated <a href="{% url question_revisions question.id|urlencode %}"><strong title="{{question.last_edited_at|urlencode }}">{% diff_date question.last_edited_at  %}</strong></a>
                                     {% if question.wiki %}
                                         {% gravatar question.last_edited_by 32 %}
-                                        <a href="/users/{{ question.last_edited_by.id|urlencode }}/{{ question.last_edited_by.real_name|urlencode }}">{{ question.last_edited_by.real_name }}</a>
+                                        <a href="{{myprofile_url}}/link/profile/{{ question.last_edited_by.openid|urlencode }}">{{ question.last_edited_by.real_name }}</a>
                                     {% else %}
                                     {% ifequal question.last_edited_by question.author %}
                                     {% else %}
                                         {% gravatar question.last_edited_by 32 %}
-                                        <div><a href="/users/{{ question.last_edited_by.id|urlencode }}/{{ question.last_edited_by.real_name|urlencode }}">{{ question.last_edited_by.real_name }}</a></div>
+                                        <div><a href="{{myprofile_url}}/link/profile/{{ question.last_edited_by.openid|urlencode }}">{{ question.last_edited_by.real_name }}</a></div>
                                         <div>
                                             {% get_score_badge question.last_edited_by %}
                                         </div>
@@ -143,7 +143,7 @@
                         <div class="question-mark">
                             <span class="posted-on">Posted on&nbsp;</span><strong title="{{ question.added_at }}">{% diff_date question.added_at %}</strong>
                             {% gravatar question.author 32 %}
-                                 <a href="/users/{{ question.author.id|urlencode }}/{{ question.author.real_name|urlencode }}">{{ question.author.real_name }} </a>
+                                 <a href="{{myprofile_url}}/link/profile/{{ question.author.openid|urlencode }}">{{ question.author.real_name }} </a>
                                 {% get_score_badge question.author %}&nbsp;
                         </div>
                         {% endif %}
@@ -227,14 +227,14 @@
                         {% if answer.wiki %}
 
                             <!-- {% gravatar answer.last_edited_by 32 %} -->
-                            <a href="/users/{{ answer.last_edited_by.id|urlencode }}/{{ answer.last_edited_by.real_name|urlencode }}">{{ answer.last_edited_by.real_name }}</a>
+                            <a href="{{myprofile_url}}/link/profile/{{ answer.last_edited_by.openid|urlencode }}">{{ answer.last_edited_by.real_name }}</a>
                                                                    
                             {% else %}
                                 {% ifequal answer.last_edited_by answer.author %}
                             {% else %}
 
                             <!-- {% gravatar answer.last_edited_by 32 %} -->
-                            <a href="/users/{{ answer.last_edited_by.id|urlencode }}/{{ answer.last_edited_by.real_name|urlencode }}">{{ answer.last_edited_by.real_name }}</a>
+                            <a href="{{myprofile_url}}/link/profile/{{ answer.last_edited_by.openid|urlencode }}">{{ answer.last_edited_by.real_name }}</a>
                             {% get_score_badge answer.last_edited_by %}
        
                             {% endifequal %}
@@ -252,7 +252,7 @@
                     <div  class="answer-mark"> 
                         <span class="posted-on">Added on &nbsp;</span><strong title="{{answer.added_at}}">{% diff_date answer.added_at %}</strong>
                         {% gravatar answer.author 32 %}
-                        <a href="/users/{{ answer.author.id|urlencode }}/{{ answer.author.real_name|urlencode }}">{{ answer.author.real_name }}</a>
+                        <a href="{{myprofile_url}}/link/profile/{{ answer.author.openid|urlencode }}">{{ answer.author.real_name }}</a>
                         {% get_score_badge answer.author %}&nbsp;
                     </div>
                     <!-- .answer-mark -->
