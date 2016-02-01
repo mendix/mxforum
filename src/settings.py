@@ -121,6 +121,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 	'forum.context_processors.mxacademy_url',
 	'forum.context_processors.modelshare_url',
 	'forum.context_processors.gettingstarted_url',
+    'forum.context_processors.myprofile_url',
 	'forum.context_processors.mxwww_url',
 	'forum.context_processors.footer_json_mxwww_url',
 )

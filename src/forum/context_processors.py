@@ -28,3 +28,6 @@ def modelshare_url(request):
 
 def gettingstarted_url(request):
 	return {'gettingstarted_url' : settings.GETTINGSTARTED_URL}
+
+def myprofile_url(request):
+	return {'myprofile_url' : settings.MYPROFILE_URL}
