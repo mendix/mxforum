@@ -1454,8 +1454,11 @@ a.mxid_topbar_login:hover {
 	font-size: 120%;
 	color: #CC9966;
 }
-.badgecount { 
-	color: #999; 
+.level { 
+	color: #999;
+    border: 1px solid #999;
+    border-radius: 100%;
+    padding: 0 4px 0 4px;
 }
 .reputation-score {
 	color: #999;

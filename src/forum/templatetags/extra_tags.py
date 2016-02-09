@@ -121,28 +121,16 @@ def cnprog_pagesize(context):
 def get_score_badge(user):
     BADGE_TEMPLATE = '<span class="reputation-score" title="%(forumpts)s Forum points">%(reputation)s</span>'
     
-    if user.gold > 0 :
-        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(gold)s Gold medals">'
-        '<span class="badge1">●</span>'
-        '<span class="badgecount">%(gold)s</span>'
+    if user.level > 0 :
+        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="Level %(level)s">'
+        '<span class="level">%(level)s</span>'
         '</span>')
-    if user.silver > 0:
-        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(silver)s Silver medals">'
-        '<span class="badge2">●</span>'
-        '<span class="badgecount">%(silver)s</span>'
-        '</span>')
-    if user.bronze > 0:
-        BADGE_TEMPLATE = '%s%s' % (BADGE_TEMPLATE, '<span title="%(bronze)s Bronze medals">'
-        '<span class="badge3">●</span>'
-        '<span class="badgecount">%(bronze)s</span>'
-        '</span>')
+
     BADGE_TEMPLATE = smart_unicode(BADGE_TEMPLATE, encoding='utf-8', strings_only=False, errors='strict')
     return mark_safe(BADGE_TEMPLATE % {
         'reputation' : user.totalpts,
         'forumpts' : user.forumpts,
-        'gold' : user.gold,
-        'silver' : user.silver,
-        'bronze' : user.bronze,
+        'level' : user.level
     })
     
 @register.simple_tag
