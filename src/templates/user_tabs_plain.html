@@ -4,7 +4,7 @@
         <a id="stats" {% ifequal tab_name "stats" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/?sort=stats">Stats</a>
         <a id="recent" {% ifequal tab_name "recent" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/?sort=recent">Recent activity</a>
         <a id="responses" {% ifequal tab_name "responses" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/?sort=responses">Responses</a>
-        <a id="reputation" {% ifequal tab_name "reputation" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/?sort=reputation">Reputation</a>
+        <a id="reputation" {% ifequal tab_name "reputation" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/?sort=reputation" style="display:none;">Reputation</a>
         {% if request.user|can_view_user_votes:view_user %}
         <a id="votes" {% ifequal tab_name "votes" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/?sort=votes">Votes</a>
         {% endif %}
