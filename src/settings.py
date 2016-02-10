@@ -40,14 +40,16 @@ EMAIL_USE_TLS = False
 
 # CELERY SETTINGS
 # These are automatically picked up by celery
-redis_credentials = json.loads(
-    os.environ['VCAP_SERVICES']
-)['rediscloud'][0]['credentials']
-BROKER_URL = 'redis://:{password}@{host}:{port}/0'.format(
-    host=redis_credentials['hostname'],
-    password=redis_credentials['password'],
-    port=redis_credentials['port'],
-)
+if os.environ.get('VCAP_SERVICES'):
+    redis_credentials = json.loads(
+        os.environ['VCAP_SERVICES']
+    )['rediscloud'][0]['credentials']
+    BROKER_URL = 'redis://:{password}@{host}:{port}/0'.format(
+        host=redis_credentials['hostname'],
+        password=redis_credentials['password'],
+        port=redis_credentials['port'],
+    )
+
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
@@ -156,41 +158,47 @@ LOGIN_REDIRECT_URL = '/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 
-db_credentials = json.loads(
-    os.environ['VCAP_SERVICES']
-)['cleardb'][0]['credentials']
-DATABASE_ENGINE = 'mysql'
-DATABASE_NAME = db_credentials['name']
-DATABASE_HOST = db_credentials['hostname']
-DATABASE_PORT = db_credentials['port']
-DATABASE_USER = db_credentials['username']
-DATABASE_PASSWORD = db_credentials['password']
-DATABASE_OPTIONS = {'ssl':
-                    {'ca': '/%s/%s/%s' % (os.getcwd(), 'mysql', 'ca'),
-                     'cert': '/%s/%s/%s' % (os.getcwd(), 'mysql', 'cert'),
-                     'key': '/%s/%s/%s' % (os.getcwd(), 'mysql', 'key')}}
+if os.environ.get('VCAP_SERVICES'):
+    db_credentials = json.loads(
+        os.environ.get('VCAP_SERVICES')
+    )['cleardb'][0]['credentials']
+    DATABASE_ENGINE = 'mysql'
+    DATABASE_NAME = db_credentials['name']
+    DATABASE_HOST = db_credentials['hostname']
+    DATABASE_PORT = db_credentials['port']
+    DATABASE_USER = db_credentials['username']
+    DATABASE_PASSWORD = db_credentials['password']
+    DATABASE_OPTIONS = {'ssl':
+                        {'ca': '/%s/%s/%s' % (os.getcwd(), 'mysql', 'ca'),
+                        'cert': '/%s/%s/%s' % (os.getcwd(), 'mysql', 'cert'),
+                        'key': '/%s/%s/%s' % (os.getcwd(), 'mysql', 'key')}}
 
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.environ.get('SECRET_KEY')
 LOGIN_REDIRECT_URL = '/'
-MY_HOST = os.environ['MY_HOST']
+MY_HOST = os.environ.get('MY_HOST')
 MY_URL = "https://%s/" % MY_HOST
-MXID_URL = os.environ['MXID_URL']
-MXWWW_URL = os.environ['MXWWW_URL']
-MXDEVSITE_URL = os.environ['MXDEVSITE_URL']
-MXSPRINTR_URL = os.environ['MXSPRINTR_URL']
-MXAPPSTORE_URL = os.environ['MXAPPSTORE_URL']
-MXSPRINTR_URL = os.environ['MXSPRINTR_URL']
-MXDEVSITE_URL = os.environ['MXDEVSITE_URL']
-MXCONFL_URL = os.environ['MXCONFL_URL']
-MXACADEMY_URL = os.environ['MXACADEMY_URL']
-MODELSHARE_URL = os.environ['MODELSHARE_URL']
-GETTINGSTARTED_URL = os.environ['GETTINGSTARTED_URL']
-FOOTER_JSON_MXWWW_URL = os.environ['FOOTER_JSON_MXWWW_URL']
-WEBSERVICE_PASSWORD = os.environ['WEBSERVICE_PASSWORD']
+MXID_URL = os.environ.get('MXID_URL')
+MXWWW_URL = os.environ.get('MXWWW_URL')
+MXDEVSITE_URL = os.environ.get('MXDEVSITE_URL')
+MXSPRINTR_URL = os.environ.get('MXSPRINTR_URL')
+MXAPPSTORE_URL = os.environ.get('MXAPPSTORE_URL')
+MXSPRINTR_URL = os.environ.get('MXSPRINTR_URL')
+MXDEVSITE_URL = os.environ.get('MXDEVSITE_URL')
+MXCONFL_URL = os.environ.get('MXCONFL_URL')
+MXACADEMY_URL = os.environ.get('MXACADEMY_URL')
+MODELSHARE_URL = os.environ.get('MODELSHARE_URL')
+GETTINGSTARTED_URL = os.environ.get('GETTINGSTARTED_URL')
+FOOTER_JSON_MXWWW_URL = os.environ.get('FOOTER_JSON_MXWWW_URL')
+WEBSERVICE_PASSWORD = os.environ.get('WEBSERVICE_PASSWORD')
 
 EVENTREG_WSDL = 'file:///%s/%s' % (os.getcwd(), 'EventsRegistration.wsdl')
 
-EVENTREG_LOCATION = os.environ['EVENTREG_LOCATION']
-EVENTREG_USER = os.environ['EVENTREG_USER']
-EVENTREG_PASS = os.environ['EVENTREG_PASS']
-EVENTREG_ENABLED = os.environ['EVENTREG_ENABLED'].lower() == 'true'
+EVENTREG_LOCATION = os.environ.get('EVENTREG_LOCATION')
+EVENTREG_USER = os.environ.get('EVENTREG_USER')
+EVENTREG_PASS = os.environ.get('EVENTREG_PASS')
+EVENTREG_ENABLED = os.getenv('EVENTREG_ENABLED', 'false').lower() == 'true'
+
+try:
+    from local_settings import *
+except ImportError, exp:
+    pass
