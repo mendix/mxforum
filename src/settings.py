@@ -189,6 +189,7 @@ MXACADEMY_URL = os.environ.get('MXACADEMY_URL')
 MODELSHARE_URL = os.environ.get('MODELSHARE_URL')
 GETTINGSTARTED_URL = os.environ.get('GETTINGSTARTED_URL')
 FOOTER_JSON_MXWWW_URL = os.environ.get('FOOTER_JSON_MXWWW_URL')
+MYPROFILE_URL = os.environ.get('MYPROFILE_URL')
 WEBSERVICE_PASSWORD = os.environ.get('WEBSERVICE_PASSWORD')
 
 EVENTREG_WSDL = 'file:///%s/%s' % (os.getcwd(), 'EventsRegistration.wsdl')
