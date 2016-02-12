@@ -70,7 +70,7 @@
     
     <div id="header-links">
       {% if request.user.is_authenticated %}
-        <a href="{{myprofile_url}}/link/profile/{{ request.user.openid }}">{{ request.user.real_name }}</a> {% get_score_badge request.user %} 
+        <a href="{{myprofile_url}}{{ request.user.openid }}">{{ request.user.real_name }}</a> {% get_score_badge request.user %} 
       {% endif %}
     </div>
 
