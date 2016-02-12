@@ -14,17 +14,18 @@ from django.conf import settings as djsettings
 ALAN_ACTIVE = False
 client = None
 
-try:
-    client = Client(EVENTREG_WSDL, location=EVENTREG_LOCATION)
-    ALAN_ACTIVE = True
-    app = Celery('forum')
-    print "WSDL was loaded successfully"
-except Exception as  e:
-    ALAN_ACTIVE = False
-    if EVENTREG_LOCATION:
-        print "ALAN: Could NOT open platform analytics WSDL at location: (%s): %s" % (EVENTREG_LOCATION, e)
-    else:
-        print "ALAN: Could NOT open platform analytics WSDL as no event registration location was set."
+if client == None:
+    try:
+        client = Client(EVENTREG_WSDL, location=EVENTREG_LOCATION)
+        ALAN_ACTIVE = True
+        app = Celery('forum')
+        print "WSDL was loaded successfully"
+    except Exception as  e:
+        ALAN_ACTIVE = False
+        if EVENTREG_LOCATION:
+            print "ALAN: Could NOT open platform analytics WSDL at location: (%s): %s" % (EVENTREG_LOCATION, e)
+        else:
+            print "ALAN: Could NOT open platform analytics WSDL as no event registration location was set."
 
 if client:
     # Using a string here means the worker will not have to
