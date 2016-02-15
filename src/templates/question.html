@@ -180,7 +180,7 @@
   
         {% for answer in answers %}
         <a name="{{ answer.id }}"></a>
-        <div id="answer-container-{{ answer.id }}" class="answer {% if answer.accepted %}accepted-answer{% endif %}{% if answer.deleted %}deleted{% endif %} {% ifequal answer.author_id question.author_id %} answered-by-owner{% endifequal %}">
+        <div id="answer-container-{{ answer.id }}" class="answer {% if answer.accepted %}accepted-answer{% endif %}{% if answer.deleted %}deleted{% endif %} ">
                 
             <div class="vote-buttons">
                 <img alt="Vote up" id="answer-img-upvote-{{ answer.id }}" class="answer-img-upvote" src="/content/images/vote-arrow-up{% get_user_vote_image user_answer_votes answer.id 1 %}.png" title="Vote up" />

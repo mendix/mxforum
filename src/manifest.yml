@@ -1,6 +1,6 @@
 ---
 applications:
-- name: forum-celery
+- name: celery
   memory: 256M
   command: bash start.sh
   no-route: true
