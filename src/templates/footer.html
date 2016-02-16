@@ -27,12 +27,11 @@
 
 <script type="text/javascript" src="/content/js/activate-responsive-header.js"></script>
 <script type="text/javascript" src="/content/js/retina.js"></script>
-<script src="{{ mxid_url }}/topbar/mxid_topbar.v2.min.js"></script>
+<script src="{{ myprofile_url }}/topbar.js"></script>
 <script type="text/javascript">
 	var newDate = new Date();
 	jQuery('#theCopyright').html(newDate.getFullYear());
 	jQuery(document).ready(function ($) {
-		$(".mxid_topbar_menu a:contains('My Profile')").attr("href", "{{ mxsprintr_url }}/link/myprofile");
 		$("a.mxid_topbar_login").attr("href", "{{ mxid_url }}/mxid/login?a=Forum");
 	});
 </script>
