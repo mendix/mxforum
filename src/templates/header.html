@@ -1,54 +1,109 @@
 {% load extra_tags %}
+
+<script>
+	function buildmenu(data) {
+		var whichMenu = data.navigation[0].whichmenu;
+		// if there are already links, that means the function has already run
+		var theLinks = $("#" + whichMenu + " li a").length;
+		
+		if (theLinks == 0) {
+			// create top navigation link
+			var topLink = $("<a></a>");
+			if (data.navigation[0].subnav.length > 0) {
+				topLink.html(data.navigation[0].title).attr("href", data.navigation[0].link).addClass("topLevelLink expandableNav").appendTo($("#" + whichMenu + " li"));
+			} else {
+				topLink.html(data.navigation[0].title).attr("href", data.navigation[0].link).addClass("topLevelLink").appendTo($("#" + whichMenu + " li"));
+			}
+			
+			// create navigation menu
+			if (data.navigation[0].subnav.length > 0) {
+				var navMenuList = $("<ul></ul>").addClass("navMenu");
+				for ( var i=0; i < data.navigation[0].subnav.length; i++ ) {
+					var theListItem = $(navMenuList).append('<li><a href="'+ data.navigation[0].subnav[i].link + '">' + '<span class="' + data.navigation[0].subnav[i].icon + '"></span>' + data.navigation[0].subnav[i].title + '</a></li>');
+			    }
+				navMenuList.insertAfter($("#" + whichMenu + " li a.topLevelLink"));
+			}
+		}
+	}
+	jQuery(document).ready(function ($) {
+	
+		$("#btnMobileMenu").click(function () {
+			toggleMobileNav();
+			return false;
+		});
+		
+		$(".expandableNav").click(function () {
+			// this media query matches what we use in the responsive CSS
+			var isMobile = window.matchMedia("only screen and (max-width: 870px)");
+		    if (isMobile.matches) {
+		        expandMobileMenu(this);
+				return false;
+		    }
+		});
+	});
+	
+	function toggleMobileNav() {
+		$(".headerWrapper").toggleClass("activateMobile");
+	}
+	
+	function expandMobileMenu(theLink) {
+		theSubMenu = theLink.parentNode.parentNode;
+		$(theSubMenu).toggleClass("activateMobileSubMenu");
+	}
+</script>
+
   <div class="MxClient_topPane">
   
-	<header id="masthead" class="site-header site-header-page">
-		<div class="entry-header">
-			<div class="nav-wrapper clear">
-				<a class="home-link" href="{{ mxdevsite_url }}/" rel="home"><img src="{{ mxdevsite_url }}/wp-content/themes/mendix/images/logo.png" alt="Mendix Developers" /></a>
-				<div class="navbar">
-					<nav id="site-navigation" class="navigation main-navigation">
-						<button class="menu-toggle">Menu</button>
-						<a class="screen-reader-text skip-link" href="#content" title="Skip to content">Skip to content</a>
-						<div class="menu-nav-container">
-							<ul id="menu-nav" class="nav-menu">
-								<li><a href="https://world.mendix.com/display/docs/Overview">Docs &amp; API</a></li>
+	<div class="headerWrapper">
+		<div class="row">
+			<div class="large-4 medium-5 small-6 column"><a href="{{ mxdevsite_url }}/" rel="home" id="devLogo">Mendix Developers</a></div>
+			<div class="large-8 medium-7 small-6 column" id="menuColumn">
+				<div class="mobileIcons">
+					<a href="#" id="btnMobileMenu"><span class="icon-menu"></span><span class="icon-x"></span><em>menu</em></a>
+				</div>
+				<div id="navTable">
+					<div id="navRow">
+						<div class="navCell">
+							<ul id="docsMenu">
 								<li>
-									<a href="{{ mxdevsite_url }}/training/">Training</a>
-									<ul class="sub-menu">
-										<li><a href="{{ mxdevsite_url }}/training/get-started/" class="navGetStarted">Get Started</a></li>
-										<li><a href="{{ gettingstarted_url }}/link/courses/introductioncourse" class="navIntroductionCourse" target="_blank">Introduction Course</a></li>
-										<li><a href="{{ mxacademy_url }}/training/courses" class="navClassroomCourses">Classroom Courses</a></li>
-										<li><a href="{{ mxdevsite_url }}/training/certification" class="navCertification">Certification</a></li>
-										<li><a href="{{ mxdevsite_url }}/training/webinars/" class="navOnDemandWebinars">On-Demand Webinars</a></li>
-									</ul>
-								</li>
-								<li>
-									<a href="{{ mxdevsite_url }}/community/">Community</a>
-									<ul class="sub-menu">
-										<li><a href="{{ mxdevsite_url }}/jobs" class="navJobs">Jobs</a></li>
-										<li><a href="{{ my_url }}" class="navForum">Forum</a></li>
-										<li><a href="{{ modelshare_url }}" class="navModelShare">Model Share</a></li>
-										<li><a href="{{ mxappstore_url }}/" target="_blank" class="navAppStore">App Store</a></li>
-										<li><a href="{{ mxwww_url }}/tag/developers/" class="navBlog">Developer Blog</a></li>
-										<li><a href="{{ mxdevsite_url }}/spotlight/" class="navBlog">Community Blog</a></li>
-										<li><a href="{{ mxdevsite_url }}/community#devtools" class="navEvents">Developer Tools</a></li>
-									</ul>
-								</li>
-								<li>
-									<a href="{{ mxdevsite_url }}/support/">Support</a>
+									
 								</li>
 							</ul>
+							<script src="{{ mxdevsite_url }}/wp-content/themes/mendix/nav-docs-api.php?callback=buildmenu"></script>
 						</div>
-					</nav>
-					<div class="header-buttons">
-						<a class="btn-default btn-start-for-free" href="{{ mxdevsite_url }}/start-for-free/">Start For Free</a>
-						<div id="mxid_topbar_attachpoint"></div>
-					</div>
+						<div class="navCell">
+							<ul id="trainingMenu">
+								<li>
+									
+								</li>
+							</ul>
+							<script src="{{ mxdevsite_url }}/wp-content/themes/mendix/nav-training.php?callback=buildmenu"></script>
+						</div>
+						<div class="navCell">
+							<ul id="communityMenu">
+								<li>
+									
+								</li>
+							</ul>
+							<script src="{{ mxdevsite_url }}/wp-content/themes/mendix/nav-community.php?callback=buildmenu"></script>
+						</div>
+						<div class="navCell">
+							<ul id="supportMenu">
+								<li>
+								
+								</li>
+							</ul>
+							<script src="{{ mxdevsite_url }}/wp-content/themes/mendix/nav-support.php?callback=buildmenu"></script>
+						</div>
+						<div class="navCell" id="startCell"><a href="{{ mxdevsite_url }}/start-for-free/" class="button">Start For Free</a></div>
+						<div class="navCell" id="theLogin"><div id="mxid_topbar_attachpoint"></div></div>
+					</div>	
 				</div>
 			</div>
 		</div>
-	</header>
-  
+	</div>
+
+	 
   <div id="navigation-menu">
     <div class="nav">
       <ul>
@@ -79,3 +134,4 @@
     </div>
   </div>
 </div>
+
