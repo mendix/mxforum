@@ -168,10 +168,6 @@ if os.environ.get('VCAP_SERVICES'):
     DATABASE_PORT = db_credentials['port']
     DATABASE_USER = db_credentials['username']
     DATABASE_PASSWORD = db_credentials['password']
-    DATABASE_OPTIONS = {'ssl':
-                        {'ca': '/%s/%s/%s' % (os.getcwd(), 'mysql', 'ca'),
-                        'cert': '/%s/%s/%s' % (os.getcwd(), 'mysql', 'cert'),
-                        'key': '/%s/%s/%s' % (os.getcwd(), 'mysql', 'key')}}
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 LOGIN_REDIRECT_URL = '/'
