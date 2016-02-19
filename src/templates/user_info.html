@@ -9,7 +9,6 @@
 		{% if view_user.real_name %}
     	<span class="user-info-name">{{view_user.real_name}}</span>
     	{% endif %}
-        <div class="user-info-points">{{view_user.reputation|intcomma}} Points</div>
         {% if view_user.last_seen %}
         <small>Last activity: <span class="relativetime" title="{{ view_user.last_seen }}">{{ view_user.last_seen|timesince }} ago</span></small> | 
         {% endif %}
