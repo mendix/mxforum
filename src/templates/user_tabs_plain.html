@@ -9,8 +9,5 @@
         <a id="votes" {% ifequal tab_name "votes" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/?sort=votes">Votes</a>
         {% endif %}
         <a id="favorites" {% ifequal tab_name "favorites" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/?sort=favorites">Favorites</a>
-		{% ifequal request.user view_user %}
-        <a id="subscriptions" {% ifequal tab_name "subscriptions" %}class="youarehere"{% endifequal %} target="_self" href="/userview/{{view_user.openid|urlencode}}/?sort=subscriptions">Email notifications</a>
-		{% endifequal %}
     </div>
 </div>
