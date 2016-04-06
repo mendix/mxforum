@@ -187,6 +187,7 @@ GETTINGSTARTED_URL = os.environ.get('GETTINGSTARTED_URL')
 FOOTER_JSON_MXWWW_URL = os.environ.get('FOOTER_JSON_MXWWW_URL')
 MYPROFILE_URL = os.environ.get('MYPROFILE_URL')
 WEBSERVICE_PASSWORD = os.environ.get('WEBSERVICE_PASSWORD')
+OPENID_PREFIX = os.environ.get('OPENID_PREFIX')
 
 EVENTREG_WSDL = 'file:///%s/%s' % (os.getcwd(), 'EventsRegistration.wsdl')
 

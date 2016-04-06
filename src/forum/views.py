@@ -36,7 +36,7 @@ from forum.user import *
 from forum import auth
 from base64 import b64encode
 from hashlib import sha256
-from settings import MXID_URL
+from settings import MXID_URL, OPENID_PREFIX
 
 
 # used in index page
@@ -987,7 +987,11 @@ def user_view(request, openid):
     user_view = dict((v.id, v) for v in USER_TEMPLATE_VIEWS).get(sort, USER_TEMPLATE_VIEWS[0])
     from forum import views
     func = getattr(views, user_view.view_name)
+    
     decoded_openid = urllib.unquote(openid).decode('utf8')
+    if not decoded_openid.startswith("https"):
+        decoded_openid = OPENID_PREFIX + decoded_openid
+    
     user = get_object_or_404(User, openid=decoded_openid)
     return func(request, user.id, user_view, "user_plain.html")
 
