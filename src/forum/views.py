@@ -992,8 +992,7 @@ def user_view(request, openid):
     if not decoded_openid.startswith("https"):
         decoded_openid = OPENID_PREFIX + decoded_openid
         
-    if decoded_openid.endswith("/"):
-        decoded_openid = decoded_openid[:-1]
+    decoded_openid = decoded_openid.rstrip("/")
     
     user = get_object_or_404(User, openid=decoded_openid)
     return func(request, user.id, user_view, "user_plain.html")
