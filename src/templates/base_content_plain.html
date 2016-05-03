@@ -8,10 +8,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,300,600,700" rel="stylesheet" type="text/css">
-		<link href="https://www.mendix.com/favicon.ico" rel="shortcut icon">
+        <link href="https://www.mendix.com/favicon.ico" rel="shortcut icon">
         <link href="/content/style/default.css" rel="stylesheet" type="text/css">
-		<link href="https://developers.mendix.com/wp-content/themes/mendix/assets/css/fonts.css" rel="stylesheet" type="text/css" />
-		<link href="https://developers.mendix.com/wp-content/themes/mendix/assets/css/external-header-footer.css" rel="stylesheet" type="text/css" />
+        <link href="https://developers.mendix.com/wp-content/themes/mendix/assets/css/fonts.css" rel="stylesheet" type="text/css" />
+        <link href="https://developers.mendix.com/wp-content/themes/mendix/assets/css/external-header-footer.css" rel="stylesheet" type="text/css" />
         <script src="https://use.typekit.net/ytc8qtv.js"></script>
         <script>try{Typekit.load({ async: true });}catch(e){}</script>
         {% spaceless %}
@@ -53,16 +53,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-QJG4');</script>
 <!-- End Google Tag Manager -->
-			{% if request.user.get_messages %}
-			<div class="notify" style="display:none">
-				<span>
-					Congratulations, you, the community presented a medal to you：{% for message in request.user.get_messages %}
-					<font class="darkred">{{ message }}</font>, {% endfor %}View
-					<a href="{{ request.user.get_profile_url }}">Personal Data</a></span>
+            {% if request.user.get_messages %}
+            <div class="notify" style="display:none">
+                <span>
+                    Congratulations, you, the community presented a medal to you：{% for message in request.user.get_messages %}
+                    <font class="darkred">{{ message }}</font>, {% endfor %}View
+                    <a href="{{ request.user.get_profile_url }}">Personal Data</a></span>
 
-				<a class="close-notify" onclick="notify.close(true)">&times;</a>
-			</div>
-			{% endif %}
+                <a class="close-notify" onclick="notify.close(true)">&times;</a>
+            </div>
+            {% endif %}
 
             <div id="content">
                 {% block content%}
