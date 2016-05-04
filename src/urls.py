@@ -74,4 +74,5 @@ urlpatterns = patterns('',
     (r'^users_csv/$', 'forum.views.csv_users'),
     (r'^questions_csv/$', 'forum.views.csv_questions'),
     (r'^answers_csv/$', 'forum.views.csv_answers'),
+    (r'^ideaforum/$', app.open_ideaforum),
 )

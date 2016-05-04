@@ -996,6 +996,14 @@ def user_view(request, openid):
     
     user = get_object_or_404(User, openid=decoded_openid)
     return func(request, user.id, user_view, "user_plain.html")
+    
+def open_ideaforum(request):
+    try:
+        q = Question.objects.order_by('-added_at').filter(title__icontains='[idea forum]')[0]
+    except:
+        raise Http404('Could not find any Idea Forum posts.')
+    
+    return question(request, q.id)
 
 def user_stats(request, user_id, user_view, usertemplate):
     user = get_object_or_404(User, id=user_id)
